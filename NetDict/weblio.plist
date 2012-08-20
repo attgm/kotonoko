@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hosts</key>
+	<array>
+		<string>www.weblio.jp</string>
+	</array>
+	<key>InputEncoding</key>
+	<string>UTF-8</string>
+	<key>SearchMethods</key>
+	<array>
+		<dict>
+			<key>SearchID</key>
+			<integer>0</integer>
+			<key>SearchURL</key>
+			<string>http://www.weblio.jp/content</string>
+			<key>Template</key>
+			<string>?query={searchTerms}</string>
+			<key>Title</key>
+			<string>を含む</string>
+		</dict>
+	</array>
+	<key>ShortName</key>
+	<string>weblio辞書</string>
+	<key>Version</key>
+	<real>1</real>
+	<key>title</key>
+	<string>weblio辞書</string>
+</dict>
+</plist>

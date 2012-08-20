@@ -1,0 +1,41 @@
+﻿.error-container {
+    position: relative;
+    padding: 10px;
+    min-height: 90px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 49px;
+    border: 1px solid #999999;
+    -webkit-border-radius: 10px;
+}
+
+.icon {
+    position: absolute;
+    top: 11px;
+    left: 7px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.error-title
+{
+    color: #888888;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 0px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    margin-left:38px;
+}
+
+
+.error-message {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 23px;
+    padding-right: 23px;
+    margin-left: 38px;
+    font-size: 12px;
+}

@@ -1,0 +1,1866 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D099C200DE66BD400500818 /* DictionayArrayController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D099C1E0DE66BD400500818 /* DictionayArrayController.h */; };
+		0D099C210DE66BD400500818 /* DictionayArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D099C1F0DE66BD400500818 /* DictionayArrayController.m */; };
+		0D0A6CC40C0D618E00E17D6B /* ContentsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D0A6CC20C0D618E00E17D6B /* ContentsController.h */; };
+		0D0A6CC50C0D618E00E17D6B /* ContentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0A6CC30C0D618E00E17D6B /* ContentsController.m */; };
+		0D10B6100D81120A00C4BAD8 /* FontCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D10B60E0D81120A00C4BAD8 /* FontCell.h */; };
+		0D10B6110D81120A00C4BAD8 /* FontCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D10B60F0D81120A00C4BAD8 /* FontCell.m */; };
+		0D1316490BA145D90003E924 /* PreferenceDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D1316480BA145D80003E924 /* PreferenceDefines.h */; };
+		0D131B8E0BA651F40003E924 /* PreferenceModal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D131B8C0BA651F40003E924 /* PreferenceModal.h */; };
+		0D131B8F0BA651F40003E924 /* PreferenceModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D131B8D0BA651F40003E924 /* PreferenceModal.m */; };
+		0D131BB80BA6544D0003E924 /* PreferenceUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D131BB60BA6544D0003E924 /* PreferenceUtilities.h */; };
+		0D131BB90BA6544D0003E924 /* PreferenceUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D131BB70BA6544D0003E924 /* PreferenceUtilities.m */; };
+		0D131C340BA66C9E0003E924 /* FontNameToFontTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D131C300BA66C9D0003E924 /* FontNameToFontTransformer.h */; };
+		0D131C350BA66C9E0003E924 /* FontNameToFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D131C310BA66C9D0003E924 /* FontNameToFontTransformer.m */; };
+		0D131C360BA66C9E0003E924 /* FontWell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D131C320BA66C9D0003E924 /* FontWell.h */; };
+		0D131C370BA66C9E0003E924 /* FontWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D131C330BA66C9D0003E924 /* FontWell.m */; };
+		0D131C3A0BA66CCB0003E924 /* ColorNameToColorTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D131C380BA66CCB0003E924 /* ColorNameToColorTransformer.h */; };
+		0D131C3B0BA66CCB0003E924 /* ColorNameToColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D131C390BA66CCB0003E924 /* ColorNameToColorTransformer.m */; };
+		0D1320160BA793BD0003E924 /* toolbar_bookset.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D1320110BA793BD0003E924 /* toolbar_bookset.tiff */; };
+		0D1320170BA793BD0003E924 /* toolbar_ebook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D1320120BA793BD0003E924 /* toolbar_ebook.tiff */; };
+		0D1320180BA793BD0003E924 /* toolbar_etc.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D1320130BA793BD0003E924 /* toolbar_etc.tiff */; };
+		0D1320190BA793BD0003E924 /* toolbar_font.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D1320140BA793BD0003E924 /* toolbar_font.tiff */; };
+		0D1493B80D7568A4007AAA91 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1493B70D7568A4007AAA91 /* libz.dylib */; };
+		0D1AD8C41475DDD800A6C900 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1AD8C31475DDD800A6C900 /* QuartzCore.framework */; };
+		0D1F39E30D516DB300172FAA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1F39E20D516DB300172FAA /* WebKit.framework */; };
+		0D272FFC15DCE18B00C6A097 /* AcknowledgmentsWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D272FFA15DCE18B00C6A097 /* AcknowledgmentsWindowController.h */; };
+		0D272FFD15DCE18B00C6A097 /* AcknowledgmentsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D272FFB15DCE18B00C6A097 /* AcknowledgmentsWindowController.m */; };
+		0D272FFF15DCE1B100C6A097 /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0D272FFE15DCE1B100C6A097 /* Acknowledgments.rtf */; };
+		0D27300115DCE40D00C6A097 /* AcknowledgmentsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D27300015DCE40D00C6A097 /* AcknowledgmentsWindow.xib */; };
+		0D27C9EC0BA8C1C20032D5C7 /* DictionaryListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D27C9EA0BA8C1C20032D5C7 /* DictionaryListItem.h */; };
+		0D27C9ED0BA8C1C20032D5C7 /* DictionaryListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D27C9EB0BA8C1C20032D5C7 /* DictionaryListItem.m */; };
+		0D310AD50C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D310AD30C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.h */; settings = {ATTRIBUTES = (); }; };
+		0D310AD60C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D310AD40C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.m */; };
+		0D315C240C0F96F900534ED5 /* navi_close_on.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D315C220C0F96F900534ED5 /* navi_close_on.tiff */; };
+		0D315C250C0F96F900534ED5 /* navi_close.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D315C230C0F96F900534ED5 /* navi_close.tiff */; };
+		0D334BF00DD9073E000BDEF9 /* NetDict in Resources */ = {isa = PBXBuildFile; fileRef = 0D334BEC0DD9073D000BDEF9 /* NetDict */; };
+		0D334C1A0DD907D5000BDEF9 /* template in Resources */ = {isa = PBXBuildFile; fileRef = 0D334C180DD907D5000BDEF9 /* template */; };
+		0D3D93320C06FF4C0090CFB9 /* navibar_gaiji_on.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */; };
+		0D3D93330C06FF4C0090CFB9 /* navibar_gaiji.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */; };
+		0D3F2A050DACBFCA005F557E /* ColoredView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3F2A030DACBFCA005F557E /* ColoredView.h */; };
+		0D3F2A060DACBFCA005F557E /* ColoredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3F2A040DACBFCA005F557E /* ColoredView.m */; };
+		0D3FD68B0ECC46E500E6DD6D /* LineTextAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF3AE9E0EB07A4F004EDD37 /* LineTextAttachmentCell.m */; };
+		0D3FD68D0ECC470800E6DD6D /* LineTextAttachmentCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DF3AE9D0EB07A4F004EDD37 /* LineTextAttachmentCell.h */; };
+		0D40D52F13FE97AC0019A631 /* FontPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D51813FE97AC0019A631 /* FontPanel.xib */; };
+		0D40D53013FE97AC0019A631 /* GaijiPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D51A13FE97AC0019A631 /* GaijiPanel.xib */; };
+		0D40D53113FE97AC0019A631 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D51C13FE97AC0019A631 /* MainMenu.xib */; };
+		0D40D53213FE97AC0019A631 /* MultiSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D51E13FE97AC0019A631 /* MultiSearchView.xib */; };
+		0D40D53313FE97AC0019A631 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52013FE97AC0019A631 /* Preferences.xib */; };
+		0D40D53413FE97AC0019A631 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52213FE97AC0019A631 /* SearchView.xib */; };
+		0D40D53513FE97AC0019A631 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52A13FE97AC0019A631 /* MainWindow.xib */; };
+		0D40D53613FE97AC0019A631 /* MoviePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52B13FE97AC0019A631 /* MoviePanel.xib */; };
+		0D40D53713FE97AC0019A631 /* MultiSearchEntry.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52C13FE97AC0019A631 /* MultiSearchEntry.xib */; };
+		0D40D53813FE97AC0019A631 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52D13FE97AC0019A631 /* ProgressPanel.xib */; };
+		0D40D53913FE97AC0019A631 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D40D52E13FE97AC0019A631 /* WebView.xib */; };
+		0D411AB00D7C10CB007C6CE9 /* toolbar_import.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D411AAF0D7C10CB007C6CE9 /* toolbar_import.png */; };
+		0D411AB50D7C26B1007C6CE9 /* icon_bitmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D411AB40D7C26B1007C6CE9 /* icon_bitmap.png */; };
+		0D411AB70D7C26C4007C6CE9 /* icon_font.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D411AB60D7C26C4007C6CE9 /* icon_font.png */; };
+		0D56B0D115B28AAC001D2A6D /* toolbar_view.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B0D015B28AAC001D2A6D /* toolbar_view.png */; };
+		0D56B11515B454D9001D2A6D /* icon_automatic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B10F15B454D8001D2A6D /* icon_automatic@2x.png */; };
+		0D56B11615B454D9001D2A6D /* icon_bitmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11015B454D8001D2A6D /* icon_bitmap@2x.png */; };
+		0D56B11715B454D9001D2A6D /* icon_font@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11115B454D9001D2A6D /* icon_font@2x.png */; };
+		0D56B11815B454D9001D2A6D /* icon_horizonal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11215B454D9001D2A6D /* icon_horizonal@2x.png */; };
+		0D56B11915B454D9001D2A6D /* icon_underline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11315B454D9001D2A6D /* icon_underline@2x.png */; };
+		0D56B11A15B454D9001D2A6D /* icon_vertical@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11415B454D9001D2A6D /* icon_vertical@2x.png */; };
+		0D56B12415B454F1001D2A6D /* toolbar_bookset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11B15B454EC001D2A6D /* toolbar_bookset@2x.png */; };
+		0D56B12515B454F1001D2A6D /* toolbar_ebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11C15B454EC001D2A6D /* toolbar_ebook@2x.png */; };
+		0D56B12615B454F1001D2A6D /* toolbar_etc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11D15B454ED001D2A6D /* toolbar_etc@2x.png */; };
+		0D56B12715B454F1001D2A6D /* toolbar_export@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11E15B454ED001D2A6D /* toolbar_export@2x.png */; };
+		0D56B12815B454F1001D2A6D /* toolbar_font@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B11F15B454ED001D2A6D /* toolbar_font@2x.png */; };
+		0D56B12915B454F1001D2A6D /* toolbar_import@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12015B454EE001D2A6D /* toolbar_import@2x.png */; };
+		0D56B12A15B454F1001D2A6D /* toolbar_network@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12115B454EE001D2A6D /* toolbar_network@2x.png */; };
+		0D56B12B15B454F1001D2A6D /* toolbar_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12215B454EF001D2A6D /* toolbar_tag@2x.png */; };
+		0D56B12C15B454F1001D2A6D /* toolbar_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12315B454EF001D2A6D /* toolbar_view@2x.png */; };
+		0D56B13915B45511001D2A6D /* navibar_back_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12D15B45511001D2A6D /* navibar_back_on@2x.png */; };
+		0D56B13A15B45511001D2A6D /* navibar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12E15B45511001D2A6D /* navibar_back@2x.png */; };
+		0D56B13B15B45511001D2A6D /* navibar_coninuity_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B12F15B45511001D2A6D /* navibar_coninuity_on@2x.png */; };
+		0D56B13C15B45511001D2A6D /* navibar_coninuity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13015B45511001D2A6D /* navibar_coninuity@2x.png */; };
+		0D56B13D15B45511001D2A6D /* navibar_forward_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13115B45511001D2A6D /* navibar_forward_on@2x.png */; };
+		0D56B13E15B45511001D2A6D /* navibar_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13215B45511001D2A6D /* navibar_forward@2x.png */; };
+		0D56B13F15B45511001D2A6D /* navibar_gaiji_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13315B45511001D2A6D /* navibar_gaiji_on@2x.png */; };
+		0D56B14015B45511001D2A6D /* navibar_gaiji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13415B45511001D2A6D /* navibar_gaiji@2x.png */; };
+		0D56B14115B45511001D2A6D /* navibar_large_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13515B45511001D2A6D /* navibar_large_on@2x.png */; };
+		0D56B14215B45511001D2A6D /* navibar_large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13615B45511001D2A6D /* navibar_large@2x.png */; };
+		0D56B14315B45511001D2A6D /* navibar_small_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13715B45511001D2A6D /* navibar_small_on@2x.png */; };
+		0D56B14415B45511001D2A6D /* navibar_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D56B13815B45511001D2A6D /* navibar_small@2x.png */; };
+		0D57EF470C1A4365009BBEE5 /* icon_underline.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D57EF460C1A4364009BBEE5 /* icon_underline.tiff */; };
+		0D5CF8610BA7D33900C0BA26 /* icon_add.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D5CF85F0BA7D33900C0BA26 /* icon_add.tiff */; };
+		0D5CF8620BA7D33900C0BA26 /* icon_delete.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D5CF8600BA7D33900C0BA26 /* icon_delete.tiff */; };
+		0D613EE51476A12500AFD9FC /* ContentsHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D613EE31476A12500AFD9FC /* ContentsHistory.h */; };
+		0D613EE61476A12500AFD9FC /* ContentsHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D613EE41476A12500AFD9FC /* ContentsHistory.m */; };
+		0D6421130BBCB38500640D27 /* DictionarySetModal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D008DE60BAEC01600C53BD8 /* DictionarySetModal.h */; };
+		0D6421140BBCB38D00640D27 /* DictionarySetModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D008DEF0BAEC06B00C53BD8 /* DictionarySetModal.m */; };
+		0D6424B00BC36E8B00640D27 /* ProgressPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D6424AE0BC36E8B00640D27 /* ProgressPanel.h */; };
+		0D6424B10BC36E8B00640D27 /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6424AF0BC36E8B00640D27 /* ProgressPanel.m */; };
+		0D6535BC0D98ED9C00DA7AEF /* MultiSearchEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D6535BA0D98ED9C00DA7AEF /* MultiSearchEntry.h */; };
+		0D6535BD0D98ED9C00DA7AEF /* MultiSearchEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6535BB0D98ED9C00DA7AEF /* MultiSearchEntry.m */; };
+		0D84A9530FFCE08F00A06D69 /* PasteboardWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D84A9510FFCE08F00A06D69 /* PasteboardWatcher.h */; };
+		0D84A9540FFCE08F00A06D69 /* PasteboardWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84A9520FFCE08F00A06D69 /* PasteboardWatcher.m */; };
+		0D8DF4A8147511940062A5E7 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D8DF4A6147511930062A5E7 /* SwipeView.h */; };
+		0D8DF4A9147511940062A5E7 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8DF4A7147511940062A5E7 /* SwipeView.m */; };
+		0D93A90E0D6A5EDB005A2A05 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D93A90D0D6A5EDB005A2A05 /* QTKit.framework */; };
+		0D9645630D78008E0006C9C7 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 0D96455B0D78008E0006C9C7 /* Credits.html */; };
+		0D9645640D78008E0006C9C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D96455D0D78008E0006C9C7 /* InfoPlist.strings */; };
+		0D9645650D78008E0006C9C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D96455F0D78008E0006C9C7 /* Localizable.strings */; };
+		0D9645660D78008E0006C9C7 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D9645610D78008E0006C9C7 /* ServicesMenu.strings */; };
+		0D9645B10D78008E0006C9C7 /* VerboseComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9645AF0D78008E0006C9C7 /* VerboseComboBox.m */; };
+		0D9645B20D78008E0006C9C7 /* VerboseComboBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9645B00D78008E0006C9C7 /* VerboseComboBox.h */; };
+		0D9645B40D78008E0006C9C7 /* icon_automatic.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D9645B30D78008E0006C9C7 /* icon_automatic.tiff */; };
+		0D98D4DB0D7B6FC300382BCE /* toolbar_export.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D98D4DA0D7B6FC300382BCE /* toolbar_export.png */; };
+		0D99736C0D85004900D7FEC9 /* FontMatrixController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D99736A0D85004800D7FEC9 /* FontMatrixController.h */; };
+		0D99736D0D85004900D7FEC9 /* FontMatrixController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99736B0D85004800D7FEC9 /* FontMatrixController.m */; };
+		0D9B5E110D651D67002210D3 /* VerboseFieldEditer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9B5E0F0D651D67002210D3 /* VerboseFieldEditer.h */; };
+		0D9B5E120D651D67002210D3 /* VerboseFieldEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B5E100D651D67002210D3 /* VerboseFieldEditer.m */; };
+		0D9D6D0A0DD46C45001F1751 /* navibar_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D6D060DD46C45001F1751 /* navibar_small.png */; };
+		0D9D6D0B0DD46C45001F1751 /* navibar_small_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D6D070DD46C45001F1751 /* navibar_small_on.png */; };
+		0D9D6D0C0DD46C45001F1751 /* navibar_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D6D080DD46C45001F1751 /* navibar_large.png */; };
+		0D9D6D0D0DD46C45001F1751 /* navibar_large_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D6D090DD46C45001F1751 /* navibar_large_on.png */; };
+		0D9D91E20BC4A13E00B76BFD /* DictionaryTreeController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D91E00BC4A13E00B76BFD /* DictionaryTreeController.h */; };
+		0D9D91E30BC4A13E00B76BFD /* DictionaryTreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D91E10BC4A13E00B76BFD /* DictionaryTreeController.m */; };
+		0D9D9A3E0BD5220000B76BFD /* DictionaryBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D9A3C0BD5220000B76BFD /* DictionaryBinder.h */; };
+		0D9D9A3F0BD5220000B76BFD /* DictionaryBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D9A3D0BD5220000B76BFD /* DictionaryBinder.m */; };
+		0D9D9A4E0BD5231500B76BFD /* DictionaryBinderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D9A4C0BD5231500B76BFD /* DictionaryBinderManager.h */; };
+		0D9D9A4F0BD5231500B76BFD /* DictionaryBinderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D9A4D0BD5231500B76BFD /* DictionaryBinderManager.m */; };
+		0D9DF2A30DA1FF5A003A2604 /* toolbar_network.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9DF2A20DA1FF5A003A2604 /* toolbar_network.png */; };
+		0D9F2B1F148E5B4B0012D271 /* backgroundPattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */; };
+		0DA3A4BB0D52115800E94421 /* EBStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA3A4B90D52115800E94421 /* EBStyleSheet.h */; };
+		0DA3A4BC0D52115800E94421 /* EBStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3A4BA0D52115800E94421 /* EBStyleSheet.m */; };
+		0DA942AB0DF38CB300768A1D /* PreferenceToolbar.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DA942A90DF38CB300768A1D /* PreferenceToolbar.strings */; };
+		0DA9FF230D7FE97E00A64EF4 /* EBookUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA9FF210D7FE97E00A64EF4 /* EBookUtilities.h */; };
+		0DA9FF240D7FE97E00A64EF4 /* EBookUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA9FF220D7FE97E00A64EF4 /* EBookUtilities.m */; };
+		0DABC0CC0BB7458D00CF1D2B /* icon_horizonal.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DABC0CA0BB7458B00CF1D2B /* icon_horizonal.tiff */; };
+		0DABC0CD0BB7458E00CF1D2B /* icon_vertical.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DABC0CB0BB7458C00CF1D2B /* icon_vertical.tiff */; };
+		0DAE54080D8EA64700AB22DC /* chujiten.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE54060D8EA64700AB22DC /* chujiten.plist */; };
+		0DAE54090D8EA64700AB22DC /* dgx01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DAE54070D8EA64700AB22DC /* dgx01.plist */; };
+		0DAEEDE50DE39A5600186382 /* GradientButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DAEEDE30DE39A5600186382 /* GradientButton.h */; };
+		0DAEEDE60DE39A5600186382 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAEEDE40DE39A5600186382 /* GradientButton.m */; };
+		0DAFA8D30EA738F600C7A50D /* navibar_coninuity_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DAFA8D10EA738F600C7A50D /* navibar_coninuity_on.png */; };
+		0DAFA8D40EA738F600C7A50D /* navibar_coninuity.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DAFA8D20EA738F600C7A50D /* navibar_coninuity.png */; };
+		0DB71B230DC87B070099606C /* NetDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DB71B210DC87B070099606C /* NetDictionary.h */; };
+		0DB71B240DC87B070099606C /* NetDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB71B220DC87B070099606C /* NetDictionary.m */; };
+		0DBDC7EA0BDCF53A00E67A3C /* LinerMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBDC7E80BDCF53A00E67A3C /* LinerMatrix.h */; };
+		0DBDC7EB0BDCF53A00E67A3C /* LinerMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDC7E90BDCF53A00E67A3C /* LinerMatrix.m */; };
+		0DBFC5D3126FB7D60088A54C /* appendix.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5A9126FB7D60088A54C /* appendix.c */; };
+		0DBFC5D4126FB7D60088A54C /* appsub.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AA126FB7D60088A54C /* appsub.c */; };
+		0DBFC5D5126FB7D60088A54C /* bcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AB126FB7D60088A54C /* bcd.c */; };
+		0DBFC5D6126FB7D60088A54C /* binary.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AC126FB7D60088A54C /* binary.c */; };
+		0DBFC5D7126FB7D60088A54C /* bitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AD126FB7D60088A54C /* bitmap.c */; };
+		0DBFC5D8126FB7D60088A54C /* book.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AE126FB7D60088A54C /* book.c */; };
+		0DBFC5D9126FB7D60088A54C /* booklist.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5AF126FB7D60088A54C /* booklist.c */; };
+		0DBFC5DA126FB7D60088A54C /* copyright.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B0126FB7D60088A54C /* copyright.c */; };
+		0DBFC5DB126FB7D60088A54C /* cross.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B1126FB7D60088A54C /* cross.c */; };
+		0DBFC5DC126FB7D60088A54C /* dummyin6.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B2126FB7D60088A54C /* dummyin6.c */; };
+		0DBFC5DD126FB7D60088A54C /* eb.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B3126FB7D60088A54C /* eb.c */; };
+		0DBFC5DE126FB7D60088A54C /* ebnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B4126FB7D60088A54C /* ebnet.c */; };
+		0DBFC5DF126FB7D60088A54C /* endword.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B5126FB7D60088A54C /* endword.c */; };
+		0DBFC5E0126FB7D60088A54C /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B6126FB7D60088A54C /* error.c */; };
+		0DBFC5E1126FB7D60088A54C /* exactword.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B7126FB7D60088A54C /* exactword.c */; };
+		0DBFC5E2126FB7D60088A54C /* filename.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B8126FB7D60088A54C /* filename.c */; };
+		0DBFC5E3126FB7D60088A54C /* font.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5B9126FB7D60088A54C /* font.c */; };
+		0DBFC5E4126FB7D60088A54C /* getaddrinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BA126FB7D60088A54C /* getaddrinfo.c */; };
+		0DBFC5E5126FB7D60088A54C /* hook.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BB126FB7D60088A54C /* hook.c */; };
+		0DBFC5E6126FB7D60088A54C /* jacode.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BC126FB7D60088A54C /* jacode.c */; };
+		0DBFC5E7126FB7D60088A54C /* keyword.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BD126FB7D60088A54C /* keyword.c */; };
+		0DBFC5E8126FB7D60088A54C /* linebuf.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BE126FB7D60088A54C /* linebuf.c */; };
+		0DBFC5E9126FB7D60088A54C /* lock.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5BF126FB7D60088A54C /* lock.c */; };
+		0DBFC5EA126FB7D60088A54C /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C0126FB7D60088A54C /* log.c */; };
+		0DBFC5EB126FB7D60088A54C /* match.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C1126FB7D60088A54C /* match.c */; };
+		0DBFC5EC126FB7D60088A54C /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C2126FB7D60088A54C /* menu.c */; };
+		0DBFC5ED126FB7D60088A54C /* multi.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C3126FB7D60088A54C /* multi.c */; };
+		0DBFC5EE126FB7D60088A54C /* multiplex.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C4126FB7D60088A54C /* multiplex.c */; };
+		0DBFC5EF126FB7D60088A54C /* narwalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C5126FB7D60088A54C /* narwalt.c */; };
+		0DBFC5F0126FB7D60088A54C /* narwfont.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C6126FB7D60088A54C /* narwfont.c */; };
+		0DBFC5F1126FB7D60088A54C /* readtext.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C7126FB7D60088A54C /* readtext.c */; };
+		0DBFC5F2126FB7D60088A54C /* search.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C8126FB7D60088A54C /* search.c */; };
+		0DBFC5F3126FB7D60088A54C /* setword.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5C9126FB7D60088A54C /* setword.c */; };
+		0DBFC5F4126FB7D60088A54C /* stopcode.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CA126FB7D60088A54C /* stopcode.c */; };
+		0DBFC5F5126FB7D60088A54C /* strcasecmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CB126FB7D60088A54C /* strcasecmp.c */; };
+		0DBFC5F6126FB7D60088A54C /* subbook.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CC126FB7D60088A54C /* subbook.c */; };
+		0DBFC5F7126FB7D60088A54C /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CD126FB7D60088A54C /* text.c */; };
+		0DBFC5F8126FB7D60088A54C /* urlparts.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CE126FB7D60088A54C /* urlparts.c */; };
+		0DBFC5F9126FB7D60088A54C /* widealt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5CF126FB7D60088A54C /* widealt.c */; };
+		0DBFC5FA126FB7D60088A54C /* widefont.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5D0126FB7D60088A54C /* widefont.c */; };
+		0DBFC5FB126FB7D60088A54C /* word.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5D1126FB7D60088A54C /* word.c */; };
+		0DBFC5FC126FB7D60088A54C /* zio.c in Sources */ = {isa = PBXBuildFile; fileRef = 0DBFC5D2126FB7D60088A54C /* zio.c */; };
+		0DBFC60E126FB7E10088A54C /* appendix.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC5FD126FB7E10088A54C /* appendix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC60F126FB7E10088A54C /* binary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC5FE126FB7E10088A54C /* binary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC610126FB7E10088A54C /* booklist.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC5FF126FB7E10088A54C /* booklist.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC611126FB7E10088A54C /* build-post.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC600126FB7E10088A54C /* build-post.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC612126FB7E10088A54C /* build-pre.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC601126FB7E10088A54C /* build-pre.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC613126FB7E10088A54C /* defs.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC602126FB7E10088A54C /* defs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC614126FB7E10088A54C /* dummyin6.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC603126FB7E10088A54C /* dummyin6.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC615126FB7E10088A54C /* eb.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC604126FB7E10088A54C /* eb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC616126FB7E10088A54C /* ebnet.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC605126FB7E10088A54C /* ebnet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC617126FB7E10088A54C /* error.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC606126FB7E10088A54C /* error.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC618126FB7E10088A54C /* font.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC607126FB7E10088A54C /* font.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC619126FB7E10088A54C /* getaddrinfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC608126FB7E10088A54C /* getaddrinfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC61A126FB7E10088A54C /* linebuf.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC609126FB7E10088A54C /* linebuf.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC61B126FB7E10088A54C /* sysdefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC60A126FB7E10088A54C /* sysdefs.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC61C126FB7E10088A54C /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC60B126FB7E10088A54C /* text.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC61D126FB7E10088A54C /* urlparts.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC60C126FB7E10088A54C /* urlparts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC61E126FB7E10088A54C /* zio.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC60D126FB7E10088A54C /* zio.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DBFC620126FB7EE0088A54C /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBFC61F126FB7EE0088A54C /* config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DC4A32C0C62A68B008F4D35 /* tab_highlight_center.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DC4A32B0C62A68B008F4D35 /* tab_highlight_center.tiff */; };
+		0DD395780BAAAE7300670DA4 /* DictionaryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DD395760BAAAE7300670DA4 /* DictionaryManager.h */; };
+		0DD395790BAAAE7300670DA4 /* DictionaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD395770BAAAE7300670DA4 /* DictionaryManager.m */; };
+		0DD91A500AA547F000593C9F /* EBookController.h in Headers */ = {isa = PBXBuildFile; fileRef = F506157B00DEB36201000001 /* EBookController.h */; };
+		0DD91A510AA547F000593C9F /* DictionaryElement.h in Headers */ = {isa = PBXBuildFile; fileRef = F529231800E4E76801000001 /* DictionaryElement.h */; };
+		0DD91A520AA547F000593C9F /* PreferenceWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = F53830D700E947CD01000001 /* PreferenceWindowController.h */; };
+		0DD91A540AA547F000593C9F /* FontTableElement.h in Headers */ = {isa = PBXBuildFile; fileRef = F51DEF05016EB5D001BE55A6 /* FontTableElement.h */; };
+		0DD91A560AA547F000593C9F /* ContentsView.h in Headers */ = {isa = PBXBuildFile; fileRef = F584D286019EA7A3015F21BA /* ContentsView.h */; };
+		0DD91A570AA547F000593C9F /* EBook.h in Headers */ = {isa = PBXBuildFile; fileRef = F584D28F019EBB63015F21BA /* EBook.h */; };
+		0DD91A580AA547F000593C9F /* ELDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = F56B011A01A32D06016C3A9A /* ELDefines.h */; };
+		0DD91A590AA547F000593C9F /* HistoryDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = F5AD6EA0024C72B101A80014 /* HistoryDataSource.h */; };
+		0DD91A5B0AA547F000593C9F /* WindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA94B5C0444F186008B3137 /* WindowController.h */; };
+		0DD91A5C0AA547F000593C9F /* SearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D83EE6604733F23008CBA53 /* SearchViewController.h */; };
+		0DD91A5D0AA547F000593C9F /* MultiSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE4C5CA052C45790042A2B2 /* MultiSearchViewController.h */; };
+		0DD91A650AA547F000593C9F /* EBookContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3CB6D0074825F200EFD503 /* EBookContainer.h */; };
+		0DD91A670AA547F000593C9F /* EBookHookFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DC3A0000749FE2C00CEE199 /* EBookHookFunctions.h */; };
+		0DD91A680AA547F000593C9F /* CandidateContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA94553074CC35100750A2C /* CandidateContainer.h */; };
+		0DD91A6B0AA547F000593C9F /* FontPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DBD27C8079624E3001C40A1 /* FontPanelController.h */; };
+		0DD91A730AA547F000593C9F /* ham_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5AE05CD0181659A011834CB /* ham_icon.icns */; };
+		0DD91A880AA547F000593C9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		0DD91A890AA547F000593C9F /* EBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F506157300DEB15001000001 /* EBook.m */; };
+		0DD91A8A0AA547F000593C9F /* EBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = F506157A00DEB36201000001 /* EBookController.m */; };
+		0DD91A8B0AA547F000593C9F /* DictionaryElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F529231900E4E76801000001 /* DictionaryElement.m */; };
+		0DD91A8C0AA547F000593C9F /* PreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F53830D800E947CD01000001 /* PreferenceWindowController.m */; };
+		0DD91A8E0AA547F000593C9F /* FontTableElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F51DEF06016EB5D001BE55A6 /* FontTableElement.m */; };
+		0DD91A900AA547F000593C9F /* ContentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F584D287019EA7A3015F21BA /* ContentsView.m */; };
+		0DD91A910AA547F000593C9F /* HistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AD6EA1024C72B101A80014 /* HistoryDataSource.m */; };
+		0DD91A940AA547F000593C9F /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA94B5D0444F186008B3137 /* WindowController.m */; };
+		0DD91A950AA547F000593C9F /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D83EE6704733F23008CBA53 /* SearchViewController.m */; };
+		0DD91A960AA547F000593C9F /* MultiSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE4C5CB052C45790042A2B2 /* MultiSearchViewController.m */; };
+		0DD91A9E0AA547F000593C9F /* EBookContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CB6D1074825F200EFD503 /* EBookContainer.m */; };
+		0DD91AA00AA547F000593C9F /* EBookHookFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC3A0010749FE2C00CEE199 /* EBookHookFunctions.m */; };
+		0DD91AA10AA547F000593C9F /* CandidateContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA94554074CC35100750A2C /* CandidateContainer.m */; };
+		0DD91AA40AA547F000593C9F /* FontPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD27C9079624E3001C40A1 /* FontPanelController.m */; };
+		0DD91AA70AA547F000593C9F /* eb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51DEE8C0169F32A01BE55A6 /* eb.framework */; };
+		0DD91AA80AA547F000593C9F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		0DD91AFC0AA547F000593C9F /* eb.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0DD91AF90AA547F000593C9F /* eb.framework */; };
+		0DDF38E10DAA729900F6973B /* AlternativeStringField.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DDF38DF0DAA729900F6973B /* AlternativeStringField.h */; };
+		0DDF38E20DAA729900F6973B /* AlternativeStringField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF38E00DAA729900F6973B /* AlternativeStringField.m */; };
+		0DE1C2EB0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE1C2E90BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.h */; };
+		0DE1C2EC0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1C2EA0BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.m */; };
+		0DE1C3230BFF4FE4001D1EF9 /* KeyEquivalentManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE1C3210BFF4FE4001D1EF9 /* KeyEquivalentManager.h */; };
+		0DE1C3240BFF4FE4001D1EF9 /* KeyEquivalentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1C3220BFF4FE4001D1EF9 /* KeyEquivalentManager.m */; };
+		0DE3C9930C065C560039ADDB /* HeadingController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE3C9910C065C560039ADDB /* HeadingController.h */; };
+		0DE3C9940C065C560039ADDB /* HeadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3C9920C065C560039ADDB /* HeadingController.m */; };
+		0DE3CA1F0C0694210039ADDB /* navibar.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE3CA1E0C0694200039ADDB /* navibar.tiff */; };
+		0DE3CA240C06947C0039ADDB /* NavibarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE3CA220C06947C0039ADDB /* NavibarView.h */; };
+		0DE3CA250C06947C0039ADDB /* NavibarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3CA230C06947C0039ADDB /* NavibarView.m */; };
+		0DE3CA390C069F860039ADDB /* navibar_back_on.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE3CA370C069F860039ADDB /* navibar_back_on.tiff */; };
+		0DE3CA3A0C069F860039ADDB /* navibar_back.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE3CA380C069F860039ADDB /* navibar_back.tiff */; };
+		0DE3CA520C06B0160039ADDB /* navibar_forward_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE3CA500C06B0150039ADDB /* navibar_forward_on.png */; };
+		0DE3CA530C06B0160039ADDB /* navibar_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DE3CA510C06B0150039ADDB /* navibar_forward.png */; };
+		0DE8279E0C4F4A670003BFBB /* BGButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D99A3180C3277F3004047C4 /* BGButtonCell.h */; };
+		0DE827A00C4F4A840003BFBB /* BGButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99A3190C3277F3004047C4 /* BGButtonCell.m */; };
+		0DE828A20C4F80260003BFBB /* tab_highlight_left.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE8289B0C4F80260003BFBB /* tab_highlight_left.tiff */; };
+		0DE828A40C4F80260003BFBB /* tab_off_center.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE8289D0C4F80260003BFBB /* tab_off_center.tiff */; };
+		0DE828A50C4F80260003BFBB /* tab_off_left.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE8289E0C4F80260003BFBB /* tab_off_left.tiff */; };
+		0DE828A60C4F80260003BFBB /* tab_on_center.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE8289F0C4F80260003BFBB /* tab_on_center.tiff */; };
+		0DE828A70C4F80260003BFBB /* tab_on_left.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE828A00C4F80260003BFBB /* tab_on_left.tiff */; };
+		0DE828A80C4F80260003BFBB /* tab_right.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DE828A10C4F80260003BFBB /* tab_right.tiff */; };
+		0DEA46DC0D6BF93300440043 /* icon_movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA46DB0D6BF93300440043 /* icon_movie.png */; };
+		0DEA46F30D6BFAC800440043 /* icon_wave.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA46F20D6BFAC800440043 /* icon_wave.png */; };
+		0DEE61130BF48CEF0012C6EF /* ACMenuBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DEE610F0BF48CEF0012C6EF /* ACMenuBinder.h */; };
+		0DEE61140BF48CEF0012C6EF /* ACMenuBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE61100BF48CEF0012C6EF /* ACMenuBinder.m */; };
+		0DEE61150BF48CEF0012C6EF /* ACMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DEE61110BF48CEF0012C6EF /* ACMenuItem.h */; };
+		0DEE61160BF48CEF0012C6EF /* ACMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE61120BF48CEF0012C6EF /* ACMenuItem.m */; };
+		0DEE612A0BF48D760012C6EF /* ACBindingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEE61280BF48D760012C6EF /* ACBindingItem.m */; };
+		0DEE65090BFAA46A0012C6EF /* toolbar_tag.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0DEE65080BFAA46A0012C6EF /* toolbar_tag.tiff */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0DD91AFA0AA547F000593C9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DD91AB20AA547F000593C9F;
+			remoteInfo = "eb（アップグレードしました）";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0DD91AA90AA547F000593C9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0DD91AFC0AA547F000593C9F /* eb.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0D008DE60BAEC01600C53BD8 /* DictionarySetModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionarySetModal.h; path = sources/DictionarySetModal.h; sourceTree = "<group>"; };
+		0D008DEF0BAEC06B00C53BD8 /* DictionarySetModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionarySetModal.m; path = sources/DictionarySetModal.m; sourceTree = "<group>"; };
+		0D099C1E0DE66BD400500818 /* DictionayArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionayArrayController.h; path = sources/DictionayArrayController.h; sourceTree = "<group>"; };
+		0D099C1F0DE66BD400500818 /* DictionayArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionayArrayController.m; path = sources/DictionayArrayController.m; sourceTree = "<group>"; };
+		0D0A6CC20C0D618E00E17D6B /* ContentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentsController.h; path = sources/ContentsController.h; sourceTree = "<group>"; };
+		0D0A6CC30C0D618E00E17D6B /* ContentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentsController.m; path = sources/ContentsController.m; sourceTree = "<group>"; };
+		0D10B60E0D81120A00C4BAD8 /* FontCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontCell.h; path = sources/FontCell.h; sourceTree = "<group>"; };
+		0D10B60F0D81120A00C4BAD8 /* FontCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontCell.m; path = sources/FontCell.m; sourceTree = "<group>"; };
+		0D1316480BA145D80003E924 /* PreferenceDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PreferenceDefines.h; path = sources/PreferenceDefines.h; sourceTree = "<group>"; };
+		0D131B8C0BA651F40003E924 /* PreferenceModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferenceModal.h; path = sources/PreferenceModal.h; sourceTree = "<group>"; };
+		0D131B8D0BA651F40003E924 /* PreferenceModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferenceModal.m; path = sources/PreferenceModal.m; sourceTree = "<group>"; };
+		0D131BB60BA6544D0003E924 /* PreferenceUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferenceUtilities.h; path = sources/PreferenceUtilities.h; sourceTree = "<group>"; };
+		0D131BB70BA6544D0003E924 /* PreferenceUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferenceUtilities.m; path = sources/PreferenceUtilities.m; sourceTree = "<group>"; };
+		0D131C300BA66C9D0003E924 /* FontNameToFontTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontNameToFontTransformer.h; path = sources/FontNameToFontTransformer.h; sourceTree = "<group>"; };
+		0D131C310BA66C9D0003E924 /* FontNameToFontTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontNameToFontTransformer.m; path = sources/FontNameToFontTransformer.m; sourceTree = "<group>"; };
+		0D131C320BA66C9D0003E924 /* FontWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontWell.h; path = sources/FontWell.h; sourceTree = "<group>"; };
+		0D131C330BA66C9D0003E924 /* FontWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontWell.m; path = sources/FontWell.m; sourceTree = "<group>"; };
+		0D131C380BA66CCB0003E924 /* ColorNameToColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorNameToColorTransformer.h; path = sources/ColorNameToColorTransformer.h; sourceTree = "<group>"; };
+		0D131C390BA66CCB0003E924 /* ColorNameToColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorNameToColorTransformer.m; path = sources/ColorNameToColorTransformer.m; sourceTree = "<group>"; };
+		0D1320110BA793BD0003E924 /* toolbar_bookset.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = toolbar_bookset.tiff; path = resources/toolbar_bookset.tiff; sourceTree = "<group>"; };
+		0D1320120BA793BD0003E924 /* toolbar_ebook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = toolbar_ebook.tiff; path = resources/toolbar_ebook.tiff; sourceTree = "<group>"; };
+		0D1320130BA793BD0003E924 /* toolbar_etc.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = toolbar_etc.tiff; path = resources/toolbar_etc.tiff; sourceTree = "<group>"; };
+		0D1320140BA793BD0003E924 /* toolbar_font.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = toolbar_font.tiff; path = resources/toolbar_font.tiff; sourceTree = "<group>"; };
+		0D1493B70D7568A4007AAA91 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = "<absolute>"; };
+		0D1AD8C31475DDD800A6C900 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D1F39E20D516DB300172FAA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		0D272FFA15DCE18B00C6A097 /* AcknowledgmentsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AcknowledgmentsWindowController.h; path = sources/AcknowledgmentsWindowController.h; sourceTree = "<group>"; };
+		0D272FFB15DCE18B00C6A097 /* AcknowledgmentsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AcknowledgmentsWindowController.m; path = sources/AcknowledgmentsWindowController.m; sourceTree = "<group>"; };
+		0D272FFE15DCE1B100C6A097 /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Acknowledgments.rtf; path = text/Acknowledgments.rtf; sourceTree = "<group>"; };
+		0D27300015DCE40D00C6A097 /* AcknowledgmentsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AcknowledgmentsWindow.xib; sourceTree = "<group>"; };
+		0D27C9EA0BA8C1C20032D5C7 /* DictionaryListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryListItem.h; path = sources/DictionaryListItem.h; sourceTree = "<group>"; };
+		0D27C9EB0BA8C1C20032D5C7 /* DictionaryListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryListItem.m; path = sources/DictionaryListItem.m; sourceTree = "<group>"; };
+		0D310AD30C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontNameToFontFamilyTransformer.h; path = sources/FontNameToFontFamilyTransformer.h; sourceTree = "<group>"; };
+		0D310AD40C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontNameToFontFamilyTransformer.m; path = sources/FontNameToFontFamilyTransformer.m; sourceTree = "<group>"; };
+		0D315C220C0F96F900534ED5 /* navi_close_on.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navi_close_on.tiff; path = resources/navi_close_on.tiff; sourceTree = "<group>"; };
+		0D315C230C0F96F900534ED5 /* navi_close.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navi_close.tiff; path = resources/navi_close.tiff; sourceTree = "<group>"; };
+		0D334BEC0DD9073D000BDEF9 /* NetDict */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetDict; sourceTree = "<group>"; };
+		0D334C180DD907D5000BDEF9 /* template */ = {isa = PBXFileReference; lastKnownFileType = folder; path = template; sourceTree = "<group>"; };
+		0D3CB6D0074825F200EFD503 /* EBookContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBookContainer.h; path = sources/EBookContainer.h; sourceTree = "<group>"; };
+		0D3CB6D1074825F200EFD503 /* EBookContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBookContainer.m; path = sources/EBookContainer.m; sourceTree = "<group>"; };
+		0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_gaiji_on.tiff; path = resources/navibar_gaiji_on.tiff; sourceTree = "<group>"; };
+		0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_gaiji.tiff; path = resources/navibar_gaiji.tiff; sourceTree = "<group>"; };
+		0D3F2A030DACBFCA005F557E /* ColoredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredView.h; path = sources/ColoredView.h; sourceTree = "<group>"; };
+		0D3F2A040DACBFCA005F557E /* ColoredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredView.m; path = sources/ColoredView.m; sourceTree = "<group>"; };
+		0D40D51913FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FontPanel.xib; sourceTree = "<group>"; };
+		0D40D51B13FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/GaijiPanel.xib; sourceTree = "<group>"; };
+		0D40D51D13FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D40D51F13FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MultiSearchView.xib; sourceTree = "<group>"; };
+		0D40D52113FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		0D40D52313FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SearchView.xib; sourceTree = "<group>"; };
+		0D40D52413FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/FontPanel.xib; sourceTree = "<group>"; };
+		0D40D52513FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/GaijiPanel.xib; sourceTree = "<group>"; };
+		0D40D52613FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0D40D52713FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/MultiSearchView.xib; sourceTree = "<group>"; };
+		0D40D52813FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/Preferences.xib; sourceTree = "<group>"; };
+		0D40D52913FE97AC0019A631 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Japanese; path = Japanese.lproj/SearchView.xib; sourceTree = "<group>"; };
+		0D40D52A13FE97AC0019A631 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		0D40D52B13FE97AC0019A631 /* MoviePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePanel.xib; sourceTree = "<group>"; };
+		0D40D52C13FE97AC0019A631 /* MultiSearchEntry.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiSearchEntry.xib; sourceTree = "<group>"; };
+		0D40D52D13FE97AC0019A631 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
+		0D40D52E13FE97AC0019A631 /* WebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		0D411AAF0D7C10CB007C6CE9 /* toolbar_import.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolbar_import.png; path = resources/toolbar_import.png; sourceTree = "<group>"; };
+		0D411AB40D7C26B1007C6CE9 /* icon_bitmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_bitmap.png; path = resources/icon_bitmap.png; sourceTree = "<group>"; };
+		0D411AB60D7C26C4007C6CE9 /* icon_font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_font.png; path = resources/icon_font.png; sourceTree = "<group>"; };
+		0D56B0D015B28AAC001D2A6D /* toolbar_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolbar_view.png; path = resources/toolbar_view.png; sourceTree = "<group>"; };
+		0D56B10F15B454D8001D2A6D /* icon_automatic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_automatic@2x.png"; path = "resources2x/icon_automatic@2x.png"; sourceTree = "<group>"; };
+		0D56B11015B454D8001D2A6D /* icon_bitmap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_bitmap@2x.png"; path = "resources2x/icon_bitmap@2x.png"; sourceTree = "<group>"; };
+		0D56B11115B454D9001D2A6D /* icon_font@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_font@2x.png"; path = "resources2x/icon_font@2x.png"; sourceTree = "<group>"; };
+		0D56B11215B454D9001D2A6D /* icon_horizonal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_horizonal@2x.png"; path = "resources2x/icon_horizonal@2x.png"; sourceTree = "<group>"; };
+		0D56B11315B454D9001D2A6D /* icon_underline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_underline@2x.png"; path = "resources2x/icon_underline@2x.png"; sourceTree = "<group>"; };
+		0D56B11415B454D9001D2A6D /* icon_vertical@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_vertical@2x.png"; path = "resources2x/icon_vertical@2x.png"; sourceTree = "<group>"; };
+		0D56B11B15B454EC001D2A6D /* toolbar_bookset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_bookset@2x.png"; path = "resources2x/toolbar_bookset@2x.png"; sourceTree = "<group>"; };
+		0D56B11C15B454EC001D2A6D /* toolbar_ebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_ebook@2x.png"; path = "resources2x/toolbar_ebook@2x.png"; sourceTree = "<group>"; };
+		0D56B11D15B454ED001D2A6D /* toolbar_etc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_etc@2x.png"; path = "resources2x/toolbar_etc@2x.png"; sourceTree = "<group>"; };
+		0D56B11E15B454ED001D2A6D /* toolbar_export@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_export@2x.png"; path = "resources2x/toolbar_export@2x.png"; sourceTree = "<group>"; };
+		0D56B11F15B454ED001D2A6D /* toolbar_font@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_font@2x.png"; path = "resources2x/toolbar_font@2x.png"; sourceTree = "<group>"; };
+		0D56B12015B454EE001D2A6D /* toolbar_import@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_import@2x.png"; path = "resources2x/toolbar_import@2x.png"; sourceTree = "<group>"; };
+		0D56B12115B454EE001D2A6D /* toolbar_network@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_network@2x.png"; path = "resources2x/toolbar_network@2x.png"; sourceTree = "<group>"; };
+		0D56B12215B454EF001D2A6D /* toolbar_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_tag@2x.png"; path = "resources2x/toolbar_tag@2x.png"; sourceTree = "<group>"; };
+		0D56B12315B454EF001D2A6D /* toolbar_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toolbar_view@2x.png"; path = "resources2x/toolbar_view@2x.png"; sourceTree = "<group>"; };
+		0D56B12D15B45511001D2A6D /* navibar_back_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_back_on@2x.png"; path = "resources2x/navibar_back_on@2x.png"; sourceTree = "<group>"; };
+		0D56B12E15B45511001D2A6D /* navibar_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_back@2x.png"; path = "resources2x/navibar_back@2x.png"; sourceTree = "<group>"; };
+		0D56B12F15B45511001D2A6D /* navibar_coninuity_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_coninuity_on@2x.png"; path = "resources2x/navibar_coninuity_on@2x.png"; sourceTree = "<group>"; };
+		0D56B13015B45511001D2A6D /* navibar_coninuity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_coninuity@2x.png"; path = "resources2x/navibar_coninuity@2x.png"; sourceTree = "<group>"; };
+		0D56B13115B45511001D2A6D /* navibar_forward_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_forward_on@2x.png"; path = "resources2x/navibar_forward_on@2x.png"; sourceTree = "<group>"; };
+		0D56B13215B45511001D2A6D /* navibar_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_forward@2x.png"; path = "resources2x/navibar_forward@2x.png"; sourceTree = "<group>"; };
+		0D56B13315B45511001D2A6D /* navibar_gaiji_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_gaiji_on@2x.png"; path = "resources2x/navibar_gaiji_on@2x.png"; sourceTree = "<group>"; };
+		0D56B13415B45511001D2A6D /* navibar_gaiji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_gaiji@2x.png"; path = "resources2x/navibar_gaiji@2x.png"; sourceTree = "<group>"; };
+		0D56B13515B45511001D2A6D /* navibar_large_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_large_on@2x.png"; path = "resources2x/navibar_large_on@2x.png"; sourceTree = "<group>"; };
+		0D56B13615B45511001D2A6D /* navibar_large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_large@2x.png"; path = "resources2x/navibar_large@2x.png"; sourceTree = "<group>"; };
+		0D56B13715B45511001D2A6D /* navibar_small_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_small_on@2x.png"; path = "resources2x/navibar_small_on@2x.png"; sourceTree = "<group>"; };
+		0D56B13815B45511001D2A6D /* navibar_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navibar_small@2x.png"; path = "resources2x/navibar_small@2x.png"; sourceTree = "<group>"; };
+		0D57EF460C1A4364009BBEE5 /* icon_underline.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_underline.tiff; path = resources/icon_underline.tiff; sourceTree = "<group>"; };
+		0D5CF85F0BA7D33900C0BA26 /* icon_add.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_add.tiff; path = resources/icon_add.tiff; sourceTree = "<group>"; };
+		0D5CF8600BA7D33900C0BA26 /* icon_delete.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_delete.tiff; path = resources/icon_delete.tiff; sourceTree = "<group>"; };
+		0D613EE31476A12500AFD9FC /* ContentsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentsHistory.h; path = sources/ContentsHistory.h; sourceTree = "<group>"; };
+		0D613EE41476A12500AFD9FC /* ContentsHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentsHistory.m; path = sources/ContentsHistory.m; sourceTree = "<group>"; };
+		0D6424AE0BC36E8B00640D27 /* ProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressPanel.h; path = sources/ProgressPanel.h; sourceTree = "<group>"; };
+		0D6424AF0BC36E8B00640D27 /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressPanel.m; path = sources/ProgressPanel.m; sourceTree = "<group>"; };
+		0D6535BA0D98ED9C00DA7AEF /* MultiSearchEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiSearchEntry.h; path = sources/MultiSearchEntry.h; sourceTree = "<group>"; };
+		0D6535BB0D98ED9C00DA7AEF /* MultiSearchEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiSearchEntry.m; path = sources/MultiSearchEntry.m; sourceTree = "<group>"; };
+		0D83EE6604733F23008CBA53 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = sources/SearchViewController.h; sourceTree = "<group>"; };
+		0D83EE6704733F23008CBA53 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = sources/SearchViewController.m; sourceTree = "<group>"; };
+		0D84A9510FFCE08F00A06D69 /* PasteboardWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasteboardWatcher.h; path = sources/PasteboardWatcher.h; sourceTree = "<group>"; };
+		0D84A9520FFCE08F00A06D69 /* PasteboardWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PasteboardWatcher.m; path = sources/PasteboardWatcher.m; sourceTree = "<group>"; };
+		0D8DF4A6147511930062A5E7 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipeView.h; path = sources/SwipeView.h; sourceTree = "<group>"; };
+		0D8DF4A7147511940062A5E7 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = sources/SwipeView.m; sourceTree = "<group>"; };
+		0D93A90D0D6A5EDB005A2A05 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		0D96455C0D78008E0006C9C7 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = English; path = text/English.lproj/Credits.html; sourceTree = "<group>"; };
+		0D96455E0D78008E0006C9C7 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D9645600D78008E0006C9C7 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D9645620D78008E0006C9C7 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		0D9645670D78008E0006C9C7 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Japanese; path = text/Japanese.lproj/Credits.html; sourceTree = "<group>"; };
+		0D9645680D78008E0006C9C7 /* Japanese */ = {isa = PBXFileReference; explicitFileType = text.plist.strings; name = Japanese; path = text/Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D96458C0D78008E0006C9C7 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = text/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0D96458F0D78008E0006C9C7 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = text/Japanese.lproj/ServicesMenu.strings; sourceTree = "<group>"; };
+		0D9645AF0D78008E0006C9C7 /* VerboseComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerboseComboBox.m; path = sources/VerboseComboBox.m; sourceTree = "<group>"; };
+		0D9645B00D78008E0006C9C7 /* VerboseComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerboseComboBox.h; path = sources/VerboseComboBox.h; sourceTree = "<group>"; };
+		0D9645B30D78008E0006C9C7 /* icon_automatic.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_automatic.tiff; path = resources/icon_automatic.tiff; sourceTree = "<group>"; };
+		0D98D4DA0D7B6FC300382BCE /* toolbar_export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolbar_export.png; path = resources/toolbar_export.png; sourceTree = "<group>"; };
+		0D99736A0D85004800D7FEC9 /* FontMatrixController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontMatrixController.h; path = sources/FontMatrixController.h; sourceTree = "<group>"; };
+		0D99736B0D85004800D7FEC9 /* FontMatrixController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontMatrixController.m; path = sources/FontMatrixController.m; sourceTree = "<group>"; };
+		0D99A3180C3277F3004047C4 /* BGButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGButtonCell.h; path = sources/BGButtonCell.h; sourceTree = "<group>"; };
+		0D99A3190C3277F3004047C4 /* BGButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGButtonCell.m; path = sources/BGButtonCell.m; sourceTree = "<group>"; };
+		0D9B5E0F0D651D67002210D3 /* VerboseFieldEditer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerboseFieldEditer.h; path = sources/VerboseFieldEditer.h; sourceTree = "<group>"; };
+		0D9B5E100D651D67002210D3 /* VerboseFieldEditer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerboseFieldEditer.m; path = sources/VerboseFieldEditer.m; sourceTree = "<group>"; };
+		0D9D6D060DD46C45001F1751 /* navibar_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_small.png; path = resources/navibar_small.png; sourceTree = "<group>"; };
+		0D9D6D070DD46C45001F1751 /* navibar_small_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_small_on.png; path = resources/navibar_small_on.png; sourceTree = "<group>"; };
+		0D9D6D080DD46C45001F1751 /* navibar_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_large.png; path = resources/navibar_large.png; sourceTree = "<group>"; };
+		0D9D6D090DD46C45001F1751 /* navibar_large_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_large_on.png; path = resources/navibar_large_on.png; sourceTree = "<group>"; };
+		0D9D91E00BC4A13E00B76BFD /* DictionaryTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryTreeController.h; path = sources/DictionaryTreeController.h; sourceTree = "<group>"; };
+		0D9D91E10BC4A13E00B76BFD /* DictionaryTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryTreeController.m; path = sources/DictionaryTreeController.m; sourceTree = "<group>"; };
+		0D9D9A3C0BD5220000B76BFD /* DictionaryBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryBinder.h; path = sources/DictionaryBinder.h; sourceTree = "<group>"; };
+		0D9D9A3D0BD5220000B76BFD /* DictionaryBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryBinder.m; path = sources/DictionaryBinder.m; sourceTree = "<group>"; };
+		0D9D9A4C0BD5231500B76BFD /* DictionaryBinderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryBinderManager.h; path = sources/DictionaryBinderManager.h; sourceTree = "<group>"; };
+		0D9D9A4D0BD5231500B76BFD /* DictionaryBinderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryBinderManager.m; path = sources/DictionaryBinderManager.m; sourceTree = "<group>"; };
+		0D9DF2A20DA1FF5A003A2604 /* toolbar_network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolbar_network.png; path = resources/toolbar_network.png; sourceTree = "<group>"; };
+		0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundPattern.png; path = resources/backgroundPattern.png; sourceTree = "<group>"; };
+		0DA3A4B90D52115800E94421 /* EBStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBStyleSheet.h; path = sources/EBStyleSheet.h; sourceTree = "<group>"; };
+		0DA3A4BA0D52115800E94421 /* EBStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBStyleSheet.m; path = sources/EBStyleSheet.m; sourceTree = "<group>"; };
+		0DA942AA0DF38CB300768A1D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/PreferenceToolbar.strings; sourceTree = "<group>"; };
+		0DA942AF0DF38CCC00768A1D /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = text/Japanese.lproj/PreferenceToolbar.strings; sourceTree = "<group>"; };
+		0DA94553074CC35100750A2C /* CandidateContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CandidateContainer.h; path = sources/CandidateContainer.h; sourceTree = "<group>"; };
+		0DA94554074CC35100750A2C /* CandidateContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CandidateContainer.m; path = sources/CandidateContainer.m; sourceTree = "<group>"; };
+		0DA94B5C0444F186008B3137 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowController.h; path = sources/WindowController.h; sourceTree = "<group>"; };
+		0DA94B5D0444F186008B3137 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowController.m; path = sources/WindowController.m; sourceTree = "<group>"; };
+		0DA9FF210D7FE97E00A64EF4 /* EBookUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBookUtilities.h; path = sources/EBookUtilities.h; sourceTree = "<group>"; };
+		0DA9FF220D7FE97E00A64EF4 /* EBookUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBookUtilities.m; path = sources/EBookUtilities.m; sourceTree = "<group>"; };
+		0DABC0CA0BB7458B00CF1D2B /* icon_horizonal.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_horizonal.tiff; path = resources/icon_horizonal.tiff; sourceTree = "<group>"; };
+		0DABC0CB0BB7458C00CF1D2B /* icon_vertical.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon_vertical.tiff; path = resources/icon_vertical.tiff; sourceTree = "<group>"; };
+		0DAE54060D8EA64700AB22DC /* chujiten.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = chujiten.plist; path = plist/chujiten.plist; sourceTree = "<group>"; };
+		0DAE54070D8EA64700AB22DC /* dgx01.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; name = dgx01.plist; path = plist/dgx01.plist; sourceTree = "<group>"; };
+		0DAEEDE30DE39A5600186382 /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientButton.h; path = sources/GradientButton.h; sourceTree = "<group>"; };
+		0DAEEDE40DE39A5600186382 /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientButton.m; path = sources/GradientButton.m; sourceTree = "<group>"; };
+		0DAFA8D10EA738F600C7A50D /* navibar_coninuity_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_coninuity_on.png; path = resources/navibar_coninuity_on.png; sourceTree = "<group>"; };
+		0DAFA8D20EA738F600C7A50D /* navibar_coninuity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_coninuity.png; path = resources/navibar_coninuity.png; sourceTree = "<group>"; };
+		0DB71B210DC87B070099606C /* NetDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetDictionary.h; path = sources/NetDictionary.h; sourceTree = "<group>"; };
+		0DB71B220DC87B070099606C /* NetDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetDictionary.m; path = sources/NetDictionary.m; sourceTree = "<group>"; };
+		0DBD27C8079624E3001C40A1 /* FontPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontPanelController.h; path = sources/FontPanelController.h; sourceTree = "<group>"; };
+		0DBD27C9079624E3001C40A1 /* FontPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontPanelController.m; path = sources/FontPanelController.m; sourceTree = "<group>"; };
+		0DBDC7E80BDCF53A00E67A3C /* LinerMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinerMatrix.h; path = sources/LinerMatrix.h; sourceTree = "<group>"; };
+		0DBDC7E90BDCF53A00E67A3C /* LinerMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinerMatrix.m; path = sources/LinerMatrix.m; sourceTree = "<group>"; };
+		0DBFC5A9126FB7D60088A54C /* appendix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = appendix.c; path = "eblib/eb-4.4.3/eb/appendix.c"; sourceTree = "<group>"; };
+		0DBFC5AA126FB7D60088A54C /* appsub.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = appsub.c; path = "eblib/eb-4.4.3/eb/appsub.c"; sourceTree = "<group>"; };
+		0DBFC5AB126FB7D60088A54C /* bcd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bcd.c; path = "eblib/eb-4.4.3/eb/bcd.c"; sourceTree = "<group>"; };
+		0DBFC5AC126FB7D60088A54C /* binary.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = binary.c; path = "eblib/eb-4.4.3/eb/binary.c"; sourceTree = "<group>"; };
+		0DBFC5AD126FB7D60088A54C /* bitmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitmap.c; path = "eblib/eb-4.4.3/eb/bitmap.c"; sourceTree = "<group>"; };
+		0DBFC5AE126FB7D60088A54C /* book.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = book.c; path = "eblib/eb-4.4.3/eb/book.c"; sourceTree = "<group>"; };
+		0DBFC5AF126FB7D60088A54C /* booklist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = booklist.c; path = "eblib/eb-4.4.3/eb/booklist.c"; sourceTree = "<group>"; };
+		0DBFC5B0126FB7D60088A54C /* copyright.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = copyright.c; path = "eblib/eb-4.4.3/eb/copyright.c"; sourceTree = "<group>"; };
+		0DBFC5B1126FB7D60088A54C /* cross.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cross.c; path = "eblib/eb-4.4.3/eb/cross.c"; sourceTree = "<group>"; };
+		0DBFC5B2126FB7D60088A54C /* dummyin6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dummyin6.c; path = "eblib/eb-4.4.3/eb/dummyin6.c"; sourceTree = "<group>"; };
+		0DBFC5B3126FB7D60088A54C /* eb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = eb.c; path = "eblib/eb-4.4.3/eb/eb.c"; sourceTree = "<group>"; };
+		0DBFC5B4126FB7D60088A54C /* ebnet.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ebnet.c; path = "eblib/eb-4.4.3/eb/ebnet.c"; sourceTree = "<group>"; };
+		0DBFC5B5126FB7D60088A54C /* endword.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = endword.c; path = "eblib/eb-4.4.3/eb/endword.c"; sourceTree = "<group>"; };
+		0DBFC5B6126FB7D60088A54C /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error.c; path = "eblib/eb-4.4.3/eb/error.c"; sourceTree = "<group>"; };
+		0DBFC5B7126FB7D60088A54C /* exactword.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = exactword.c; path = "eblib/eb-4.4.3/eb/exactword.c"; sourceTree = "<group>"; };
+		0DBFC5B8126FB7D60088A54C /* filename.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = filename.c; path = "eblib/eb-4.4.3/eb/filename.c"; sourceTree = "<group>"; };
+		0DBFC5B9126FB7D60088A54C /* font.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = font.c; path = "eblib/eb-4.4.3/eb/font.c"; sourceTree = "<group>"; };
+		0DBFC5BA126FB7D60088A54C /* getaddrinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = getaddrinfo.c; path = "eblib/eb-4.4.3/eb/getaddrinfo.c"; sourceTree = "<group>"; };
+		0DBFC5BB126FB7D60088A54C /* hook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hook.c; path = "eblib/eb-4.4.3/eb/hook.c"; sourceTree = "<group>"; };
+		0DBFC5BC126FB7D60088A54C /* jacode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = jacode.c; path = "eblib/eb-4.4.3/eb/jacode.c"; sourceTree = "<group>"; };
+		0DBFC5BD126FB7D60088A54C /* keyword.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = keyword.c; path = "eblib/eb-4.4.3/eb/keyword.c"; sourceTree = "<group>"; };
+		0DBFC5BE126FB7D60088A54C /* linebuf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = linebuf.c; path = "eblib/eb-4.4.3/eb/linebuf.c"; sourceTree = "<group>"; };
+		0DBFC5BF126FB7D60088A54C /* lock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lock.c; path = "eblib/eb-4.4.3/eb/lock.c"; sourceTree = "<group>"; };
+		0DBFC5C0126FB7D60088A54C /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = log.c; path = "eblib/eb-4.4.3/eb/log.c"; sourceTree = "<group>"; };
+		0DBFC5C1126FB7D60088A54C /* match.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = match.c; path = "eblib/eb-4.4.3/eb/match.c"; sourceTree = "<group>"; };
+		0DBFC5C2126FB7D60088A54C /* menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = menu.c; path = "eblib/eb-4.4.3/eb/menu.c"; sourceTree = "<group>"; };
+		0DBFC5C3126FB7D60088A54C /* multi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = multi.c; path = "eblib/eb-4.4.3/eb/multi.c"; sourceTree = "<group>"; };
+		0DBFC5C4126FB7D60088A54C /* multiplex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = multiplex.c; path = "eblib/eb-4.4.3/eb/multiplex.c"; sourceTree = "<group>"; };
+		0DBFC5C5126FB7D60088A54C /* narwalt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = narwalt.c; path = "eblib/eb-4.4.3/eb/narwalt.c"; sourceTree = "<group>"; };
+		0DBFC5C6126FB7D60088A54C /* narwfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = narwfont.c; path = "eblib/eb-4.4.3/eb/narwfont.c"; sourceTree = "<group>"; };
+		0DBFC5C7126FB7D60088A54C /* readtext.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = readtext.c; path = "eblib/eb-4.4.3/eb/readtext.c"; sourceTree = "<group>"; };
+		0DBFC5C8126FB7D60088A54C /* search.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = search.c; path = "eblib/eb-4.4.3/eb/search.c"; sourceTree = "<group>"; };
+		0DBFC5C9126FB7D60088A54C /* setword.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = setword.c; path = "eblib/eb-4.4.3/eb/setword.c"; sourceTree = "<group>"; };
+		0DBFC5CA126FB7D60088A54C /* stopcode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stopcode.c; path = "eblib/eb-4.4.3/eb/stopcode.c"; sourceTree = "<group>"; };
+		0DBFC5CB126FB7D60088A54C /* strcasecmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strcasecmp.c; path = "eblib/eb-4.4.3/eb/strcasecmp.c"; sourceTree = "<group>"; };
+		0DBFC5CC126FB7D60088A54C /* subbook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = subbook.c; path = "eblib/eb-4.4.3/eb/subbook.c"; sourceTree = "<group>"; };
+		0DBFC5CD126FB7D60088A54C /* text.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = text.c; path = "eblib/eb-4.4.3/eb/text.c"; sourceTree = "<group>"; };
+		0DBFC5CE126FB7D60088A54C /* urlparts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = urlparts.c; path = "eblib/eb-4.4.3/eb/urlparts.c"; sourceTree = "<group>"; };
+		0DBFC5CF126FB7D60088A54C /* widealt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = widealt.c; path = "eblib/eb-4.4.3/eb/widealt.c"; sourceTree = "<group>"; };
+		0DBFC5D0126FB7D60088A54C /* widefont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = widefont.c; path = "eblib/eb-4.4.3/eb/widefont.c"; sourceTree = "<group>"; };
+		0DBFC5D1126FB7D60088A54C /* word.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = word.c; path = "eblib/eb-4.4.3/eb/word.c"; sourceTree = "<group>"; };
+		0DBFC5D2126FB7D60088A54C /* zio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zio.c; path = "eblib/eb-4.4.3/eb/zio.c"; sourceTree = "<group>"; };
+		0DBFC5FD126FB7E10088A54C /* appendix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appendix.h; path = "eblib/eb-4.4.3/eb/appendix.h"; sourceTree = "<group>"; };
+		0DBFC5FE126FB7E10088A54C /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = binary.h; path = "eblib/eb-4.4.3/eb/binary.h"; sourceTree = "<group>"; };
+		0DBFC5FF126FB7E10088A54C /* booklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = booklist.h; path = "eblib/eb-4.4.3/eb/booklist.h"; sourceTree = "<group>"; };
+		0DBFC600126FB7E10088A54C /* build-post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "build-post.h"; path = "eblib/eb-4.4.3/eb/build-post.h"; sourceTree = "<group>"; };
+		0DBFC601126FB7E10088A54C /* build-pre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "build-pre.h"; path = "eblib/eb-4.4.3/eb/build-pre.h"; sourceTree = "<group>"; };
+		0DBFC602126FB7E10088A54C /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defs.h; path = "eblib/eb-4.4.3/eb/defs.h"; sourceTree = "<group>"; };
+		0DBFC603126FB7E10088A54C /* dummyin6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dummyin6.h; path = "eblib/eb-4.4.3/eb/dummyin6.h"; sourceTree = "<group>"; };
+		0DBFC604126FB7E10088A54C /* eb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eb.h; path = "eblib/eb-4.4.3/eb/eb.h"; sourceTree = "<group>"; };
+		0DBFC605126FB7E10088A54C /* ebnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ebnet.h; path = "eblib/eb-4.4.3/eb/ebnet.h"; sourceTree = "<group>"; };
+		0DBFC606126FB7E10088A54C /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = error.h; path = "eblib/eb-4.4.3/eb/error.h"; sourceTree = "<group>"; };
+		0DBFC607126FB7E10088A54C /* font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = font.h; path = "eblib/eb-4.4.3/eb/font.h"; sourceTree = "<group>"; };
+		0DBFC608126FB7E10088A54C /* getaddrinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getaddrinfo.h; path = "eblib/eb-4.4.3/eb/getaddrinfo.h"; sourceTree = "<group>"; };
+		0DBFC609126FB7E10088A54C /* linebuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = linebuf.h; path = "eblib/eb-4.4.3/eb/linebuf.h"; sourceTree = "<group>"; };
+		0DBFC60A126FB7E10088A54C /* sysdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sysdefs.h; path = "eblib/eb-4.4.3/eb/sysdefs.h"; sourceTree = "<group>"; };
+		0DBFC60B126FB7E10088A54C /* text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = text.h; path = "eblib/eb-4.4.3/eb/text.h"; sourceTree = "<group>"; };
+		0DBFC60C126FB7E10088A54C /* urlparts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = urlparts.h; path = "eblib/eb-4.4.3/eb/urlparts.h"; sourceTree = "<group>"; };
+		0DBFC60D126FB7E10088A54C /* zio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zio.h; path = "eblib/eb-4.4.3/eb/zio.h"; sourceTree = "<group>"; };
+		0DBFC61F126FB7EE0088A54C /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = "eblib/eb-4.4.3/config.h"; sourceTree = "<group>"; };
+		0DC3A0000749FE2C00CEE199 /* EBookHookFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBookHookFunctions.h; path = sources/EBookHookFunctions.h; sourceTree = "<group>"; };
+		0DC3A0010749FE2C00CEE199 /* EBookHookFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBookHookFunctions.m; path = sources/EBookHookFunctions.m; sourceTree = "<group>"; };
+		0DC4A32B0C62A68B008F4D35 /* tab_highlight_center.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_highlight_center.tiff; path = resources/tab_highlight_center.tiff; sourceTree = "<group>"; };
+		0DD395760BAAAE7300670DA4 /* DictionaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryManager.h; path = sources/DictionaryManager.h; sourceTree = "<group>"; };
+		0DD395770BAAAE7300670DA4 /* DictionaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryManager.m; path = sources/DictionaryManager.m; sourceTree = "<group>"; };
+		0DD91AAF0AA547F000593C9F /* Info-ebooks.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-ebooks.plist"; sourceTree = "<group>"; };
+		0DD91AB00AA547F000593C9F /* kotonoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kotonoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DD91AF80AA547F000593C9F /* Info-eb.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-eb.plist"; sourceTree = "<group>"; };
+		0DD91AF90AA547F000593C9F /* eb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = eb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DDF38DF0DAA729900F6973B /* AlternativeStringField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlternativeStringField.h; path = sources/AlternativeStringField.h; sourceTree = "<group>"; };
+		0DDF38E00DAA729900F6973B /* AlternativeStringField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlternativeStringField.m; path = sources/AlternativeStringField.m; sourceTree = "<group>"; };
+		0DE1C2E90BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyEquivalentToNumberTransformer.h; path = sources/KeyEquivalentToNumberTransformer.h; sourceTree = "<group>"; };
+		0DE1C2EA0BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyEquivalentToNumberTransformer.m; path = sources/KeyEquivalentToNumberTransformer.m; sourceTree = "<group>"; };
+		0DE1C3210BFF4FE4001D1EF9 /* KeyEquivalentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyEquivalentManager.h; path = sources/KeyEquivalentManager.h; sourceTree = "<group>"; };
+		0DE1C3220BFF4FE4001D1EF9 /* KeyEquivalentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyEquivalentManager.m; path = sources/KeyEquivalentManager.m; sourceTree = "<group>"; };
+		0DE3C9910C065C560039ADDB /* HeadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeadingController.h; path = sources/HeadingController.h; sourceTree = "<group>"; };
+		0DE3C9920C065C560039ADDB /* HeadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeadingController.m; path = sources/HeadingController.m; sourceTree = "<group>"; };
+		0DE3CA1E0C0694200039ADDB /* navibar.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar.tiff; path = resources/navibar.tiff; sourceTree = "<group>"; };
+		0DE3CA220C06947C0039ADDB /* NavibarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavibarView.h; path = sources/NavibarView.h; sourceTree = "<group>"; };
+		0DE3CA230C06947C0039ADDB /* NavibarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavibarView.m; path = sources/NavibarView.m; sourceTree = "<group>"; };
+		0DE3CA370C069F860039ADDB /* navibar_back_on.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_back_on.tiff; path = resources/navibar_back_on.tiff; sourceTree = "<group>"; };
+		0DE3CA380C069F860039ADDB /* navibar_back.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_back.tiff; path = resources/navibar_back.tiff; sourceTree = "<group>"; };
+		0DE3CA500C06B0150039ADDB /* navibar_forward_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_forward_on.png; path = resources/navibar_forward_on.png; sourceTree = "<group>"; };
+		0DE3CA510C06B0150039ADDB /* navibar_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navibar_forward.png; path = resources/navibar_forward.png; sourceTree = "<group>"; };
+		0DE4C5CA052C45790042A2B2 /* MultiSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiSearchViewController.h; path = sources/MultiSearchViewController.h; sourceTree = "<group>"; };
+		0DE4C5CB052C45790042A2B2 /* MultiSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiSearchViewController.m; path = sources/MultiSearchViewController.m; sourceTree = "<group>"; };
+		0DE8289B0C4F80260003BFBB /* tab_highlight_left.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_highlight_left.tiff; path = resources/tab_highlight_left.tiff; sourceTree = "<group>"; };
+		0DE8289D0C4F80260003BFBB /* tab_off_center.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_off_center.tiff; path = resources/tab_off_center.tiff; sourceTree = "<group>"; };
+		0DE8289E0C4F80260003BFBB /* tab_off_left.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_off_left.tiff; path = resources/tab_off_left.tiff; sourceTree = "<group>"; };
+		0DE8289F0C4F80260003BFBB /* tab_on_center.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_on_center.tiff; path = resources/tab_on_center.tiff; sourceTree = "<group>"; };
+		0DE828A00C4F80260003BFBB /* tab_on_left.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_on_left.tiff; path = resources/tab_on_left.tiff; sourceTree = "<group>"; };
+		0DE828A10C4F80260003BFBB /* tab_right.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = tab_right.tiff; path = resources/tab_right.tiff; sourceTree = "<group>"; };
+		0DEA46DB0D6BF93300440043 /* icon_movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_movie.png; path = resources/icon_movie.png; sourceTree = "<group>"; };
+		0DEA46F20D6BFAC800440043 /* icon_wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_wave.png; path = resources/icon_wave.png; sourceTree = "<group>"; };
+		0DEE610F0BF48CEF0012C6EF /* ACMenuBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACMenuBinder.h; path = sources/ACMenuBinder.h; sourceTree = "<group>"; };
+		0DEE61100BF48CEF0012C6EF /* ACMenuBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACMenuBinder.m; path = sources/ACMenuBinder.m; sourceTree = "<group>"; };
+		0DEE61110BF48CEF0012C6EF /* ACMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACMenuItem.h; path = sources/ACMenuItem.h; sourceTree = "<group>"; };
+		0DEE61120BF48CEF0012C6EF /* ACMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACMenuItem.m; path = sources/ACMenuItem.m; sourceTree = "<group>"; };
+		0DEE61270BF48D760012C6EF /* ACBindingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACBindingItem.h; path = sources/ACBindingItem.h; sourceTree = "<group>"; };
+		0DEE61280BF48D760012C6EF /* ACBindingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACBindingItem.m; path = sources/ACBindingItem.m; sourceTree = "<group>"; };
+		0DEE65080BFAA46A0012C6EF /* toolbar_tag.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = toolbar_tag.tiff; path = resources/toolbar_tag.tiff; sourceTree = "<group>"; };
+		0DF3AE9D0EB07A4F004EDD37 /* LineTextAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineTextAttachmentCell.h; path = sources/LineTextAttachmentCell.h; sourceTree = "<group>"; };
+		0DF3AE9E0EB07A4F004EDD37 /* LineTextAttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineTextAttachmentCell.m; path = sources/LineTextAttachmentCell.m; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sources/main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		F506157300DEB15001000001 /* EBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBook.m; path = sources/EBook.m; sourceTree = "<group>"; };
+		F506157A00DEB36201000001 /* EBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBookController.m; path = sources/EBookController.m; sourceTree = "<group>"; };
+		F506157B00DEB36201000001 /* EBookController.h */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = sourcecode.c.h; name = EBookController.h; path = sources/EBookController.h; sourceTree = "<group>"; };
+		F51DEE8C0169F32A01BE55A6 /* eb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = eb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51DEF05016EB5D001BE55A6 /* FontTableElement.h */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = sourcecode.c.h; name = FontTableElement.h; path = sources/FontTableElement.h; sourceTree = "<group>"; };
+		F51DEF06016EB5D001BE55A6 /* FontTableElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontTableElement.m; path = sources/FontTableElement.m; sourceTree = "<group>"; };
+		F529231800E4E76801000001 /* DictionaryElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryElement.h; path = sources/DictionaryElement.h; sourceTree = "<group>"; };
+		F529231900E4E76801000001 /* DictionaryElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryElement.m; path = sources/DictionaryElement.m; sourceTree = "<group>"; };
+		F53830D700E947CD01000001 /* PreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferenceWindowController.h; path = sources/PreferenceWindowController.h; sourceTree = "<group>"; };
+		F53830D800E947CD01000001 /* PreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferenceWindowController.m; path = sources/PreferenceWindowController.m; sourceTree = "<group>"; };
+		F56B011A01A32D06016C3A9A /* ELDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELDefines.h; path = sources/ELDefines.h; sourceTree = "<group>"; };
+		F584D286019EA7A3015F21BA /* ContentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentsView.h; path = sources/ContentsView.h; sourceTree = "<group>"; };
+		F584D287019EA7A3015F21BA /* ContentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentsView.m; path = sources/ContentsView.m; sourceTree = "<group>"; };
+		F584D28F019EBB63015F21BA /* EBook.h */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = sourcecode.c.h; name = EBook.h; path = sources/EBook.h; sourceTree = "<group>"; };
+		F5AD6EA0024C72B101A80014 /* HistoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryDataSource.h; path = sources/HistoryDataSource.h; sourceTree = "<group>"; };
+		F5AD6EA1024C72B101A80014 /* HistoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryDataSource.m; path = sources/HistoryDataSource.m; sourceTree = "<group>"; };
+		F5AE05CD0181659A011834CB /* ham_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ham_icon.icns; path = resources/ham_icon.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0DD91AA60AA547F000593C9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D1AD8C41475DDD800A6C900 /* QuartzCore.framework in Frameworks */,
+				0DD91AA70AA547F000593C9F /* eb.framework in Frameworks */,
+				0DD91AA80AA547F000593C9F /* Cocoa.framework in Frameworks */,
+				0D1F39E30D516DB300172FAA /* WebKit.framework in Frameworks */,
+				0D93A90E0D6A5EDB005A2A05 /* QTKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DD91AF10AA547F000593C9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D1493B80D7568A4007AAA91 /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* kotonoko */ = {
+			isa = PBXGroup;
+			children = (
+				0DAAB64006D969F400E908E1 /* Application Controller */,
+				0D3CB6CD074825B500EFD503 /* EBookInterface */,
+				0D9D9A510BD5232300B76BFD /* DictionaryBinder */,
+				0DD3957C0BAAAE7F00670DA4 /* Dictionary */,
+				0D497F1107128ED900E6CC7F /* MainWindow */,
+				0DEE611A0BF48D000012C6EF /* BindingClass */,
+				0D131C3E0BA66CE00003E924 /* View_Controller */,
+				0D131C3D0BA66CDC0003E924 /* Transformer */,
+				0DBD27B8079623C7001C40A1 /* FontPanel */,
+				0DD9E6080559C96500C5B6BE /* MultiSearh */,
+				F526B2D203636BDD01A80003 /* Preferences */,
+				0D272FF815DCE16E00C6A097 /* Acknowledgment */,
+			);
+			name = kotonoko;
+			sourceTree = "<group>";
+		};
+		0D131C3D0BA66CDC0003E924 /* Transformer */ = {
+			isa = PBXGroup;
+			children = (
+				0D310AD30C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.h */,
+				0D310AD40C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.m */,
+				0DE1C2E90BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.h */,
+				0DE1C2EA0BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.m */,
+				0D131C300BA66C9D0003E924 /* FontNameToFontTransformer.h */,
+				0D131C310BA66C9D0003E924 /* FontNameToFontTransformer.m */,
+				0D131C380BA66CCB0003E924 /* ColorNameToColorTransformer.h */,
+				0D131C390BA66CCB0003E924 /* ColorNameToColorTransformer.m */,
+			);
+			name = Transformer;
+			sourceTree = "<group>";
+		};
+		0D131C3E0BA66CE00003E924 /* View_Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D9B5E0F0D651D67002210D3 /* VerboseFieldEditer.h */,
+				0D9B5E100D651D67002210D3 /* VerboseFieldEditer.m */,
+				0D9645B00D78008E0006C9C7 /* VerboseComboBox.h */,
+				0D9645AF0D78008E0006C9C7 /* VerboseComboBox.m */,
+				0D131C320BA66C9D0003E924 /* FontWell.h */,
+				0D131C330BA66C9D0003E924 /* FontWell.m */,
+				0DBDC7E80BDCF53A00E67A3C /* LinerMatrix.h */,
+				0DBDC7E90BDCF53A00E67A3C /* LinerMatrix.m */,
+				0DE3CA220C06947C0039ADDB /* NavibarView.h */,
+				0DE3CA230C06947C0039ADDB /* NavibarView.m */,
+				0D99A3180C3277F3004047C4 /* BGButtonCell.h */,
+				0D99A3190C3277F3004047C4 /* BGButtonCell.m */,
+				0D3F2A030DACBFCA005F557E /* ColoredView.h */,
+				0D3F2A040DACBFCA005F557E /* ColoredView.m */,
+				0DAEEDE30DE39A5600186382 /* GradientButton.h */,
+				0DAEEDE40DE39A5600186382 /* GradientButton.m */,
+			);
+			name = View_Controller;
+			sourceTree = "<group>";
+		};
+		0D13200D0BA793820003E924 /* Toolbar Icon */ = {
+			isa = PBXGroup;
+			children = (
+				0D56B0D015B28AAC001D2A6D /* toolbar_view.png */,
+				0D1320110BA793BD0003E924 /* toolbar_bookset.tiff */,
+				0D1320120BA793BD0003E924 /* toolbar_ebook.tiff */,
+				0D1320130BA793BD0003E924 /* toolbar_etc.tiff */,
+				0D1320140BA793BD0003E924 /* toolbar_font.tiff */,
+				0DEE65080BFAA46A0012C6EF /* toolbar_tag.tiff */,
+				0D9DF2A20DA1FF5A003A2604 /* toolbar_network.png */,
+			);
+			name = "Toolbar Icon";
+			sourceTree = "<group>";
+		};
+		0D272FF815DCE16E00C6A097 /* Acknowledgment */ = {
+			isa = PBXGroup;
+			children = (
+				0D272FFA15DCE18B00C6A097 /* AcknowledgmentsWindowController.h */,
+				0D272FFB15DCE18B00C6A097 /* AcknowledgmentsWindowController.m */,
+			);
+			name = Acknowledgment;
+			sourceTree = "<group>";
+		};
+		0D3CB6CD074825B500EFD503 /* EBookInterface */ = {
+			isa = PBXGroup;
+			children = (
+				F584D28F019EBB63015F21BA /* EBook.h */,
+				F506157300DEB15001000001 /* EBook.m */,
+				0DA9FF210D7FE97E00A64EF4 /* EBookUtilities.h */,
+				0DA9FF220D7FE97E00A64EF4 /* EBookUtilities.m */,
+				F529231800E4E76801000001 /* DictionaryElement.h */,
+				F529231900E4E76801000001 /* DictionaryElement.m */,
+				0DA94553074CC35100750A2C /* CandidateContainer.h */,
+				0DA94554074CC35100750A2C /* CandidateContainer.m */,
+				0DC3A0000749FE2C00CEE199 /* EBookHookFunctions.h */,
+				0DC3A0010749FE2C00CEE199 /* EBookHookFunctions.m */,
+				0D3CB6D0074825F200EFD503 /* EBookContainer.h */,
+				0D3CB6D1074825F200EFD503 /* EBookContainer.m */,
+			);
+			name = EBookInterface;
+			sourceTree = "<group>";
+		};
+		0D40D51713FE97AC0019A631 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				0D40D51813FE97AC0019A631 /* FontPanel.xib */,
+				0D40D51A13FE97AC0019A631 /* GaijiPanel.xib */,
+				0D40D51C13FE97AC0019A631 /* MainMenu.xib */,
+				0D40D51E13FE97AC0019A631 /* MultiSearchView.xib */,
+				0D40D52013FE97AC0019A631 /* Preferences.xib */,
+				0D40D52213FE97AC0019A631 /* SearchView.xib */,
+				0D40D52A13FE97AC0019A631 /* MainWindow.xib */,
+				0D40D52B13FE97AC0019A631 /* MoviePanel.xib */,
+				0D40D52C13FE97AC0019A631 /* MultiSearchEntry.xib */,
+				0D40D52D13FE97AC0019A631 /* ProgressPanel.xib */,
+				0D40D52E13FE97AC0019A631 /* WebView.xib */,
+				0D27300015DCE40D00C6A097 /* AcknowledgmentsWindow.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		0D497F1107128ED900E6CC7F /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				0DF3AE9D0EB07A4F004EDD37 /* LineTextAttachmentCell.h */,
+				0DF3AE9E0EB07A4F004EDD37 /* LineTextAttachmentCell.m */,
+				0D6424AE0BC36E8B00640D27 /* ProgressPanel.h */,
+				0D6424AF0BC36E8B00640D27 /* ProgressPanel.m */,
+				F5AD6EA0024C72B101A80014 /* HistoryDataSource.h */,
+				F5AD6EA1024C72B101A80014 /* HistoryDataSource.m */,
+				0DA94B5C0444F186008B3137 /* WindowController.h */,
+				0DA94B5D0444F186008B3137 /* WindowController.m */,
+				0D83EE6604733F23008CBA53 /* SearchViewController.h */,
+				0D83EE6704733F23008CBA53 /* SearchViewController.m */,
+				0D0A6CC20C0D618E00E17D6B /* ContentsController.h */,
+				0D0A6CC30C0D618E00E17D6B /* ContentsController.m */,
+				0D613EE31476A12500AFD9FC /* ContentsHistory.h */,
+				0D613EE41476A12500AFD9FC /* ContentsHistory.m */,
+				F584D286019EA7A3015F21BA /* ContentsView.h */,
+				F584D287019EA7A3015F21BA /* ContentsView.m */,
+				0DE3C9910C065C560039ADDB /* HeadingController.h */,
+				0DE3C9920C065C560039ADDB /* HeadingController.m */,
+				0D8DF4A6147511930062A5E7 /* SwipeView.h */,
+				0D8DF4A7147511940062A5E7 /* SwipeView.m */,
+			);
+			name = MainWindow;
+			sourceTree = "<group>";
+		};
+		0D56B0E015B29865001D2A6D /* Toolbar Icon @2x */ = {
+			isa = PBXGroup;
+			children = (
+				0D56B11B15B454EC001D2A6D /* toolbar_bookset@2x.png */,
+				0D56B11C15B454EC001D2A6D /* toolbar_ebook@2x.png */,
+				0D56B11D15B454ED001D2A6D /* toolbar_etc@2x.png */,
+				0D56B11E15B454ED001D2A6D /* toolbar_export@2x.png */,
+				0D56B11F15B454ED001D2A6D /* toolbar_font@2x.png */,
+				0D56B12015B454EE001D2A6D /* toolbar_import@2x.png */,
+				0D56B12115B454EE001D2A6D /* toolbar_network@2x.png */,
+				0D56B12215B454EF001D2A6D /* toolbar_tag@2x.png */,
+				0D56B12315B454EF001D2A6D /* toolbar_view@2x.png */,
+			);
+			name = "Toolbar Icon @2x";
+			sourceTree = "<group>";
+		};
+		0D56B0E115B2AAAC001D2A6D /* Navibar@2x */ = {
+			isa = PBXGroup;
+			children = (
+				0D56B12D15B45511001D2A6D /* navibar_back_on@2x.png */,
+				0D56B12E15B45511001D2A6D /* navibar_back@2x.png */,
+				0D56B12F15B45511001D2A6D /* navibar_coninuity_on@2x.png */,
+				0D56B13015B45511001D2A6D /* navibar_coninuity@2x.png */,
+				0D56B13115B45511001D2A6D /* navibar_forward_on@2x.png */,
+				0D56B13215B45511001D2A6D /* navibar_forward@2x.png */,
+				0D56B13315B45511001D2A6D /* navibar_gaiji_on@2x.png */,
+				0D56B13415B45511001D2A6D /* navibar_gaiji@2x.png */,
+				0D56B13515B45511001D2A6D /* navibar_large_on@2x.png */,
+				0D56B13615B45511001D2A6D /* navibar_large@2x.png */,
+				0D56B13715B45511001D2A6D /* navibar_small_on@2x.png */,
+				0D56B13815B45511001D2A6D /* navibar_small@2x.png */,
+			);
+			name = "Navibar@2x";
+			sourceTree = "<group>";
+		};
+		0D56B0FE15B2DAE9001D2A6D /* Icon @2x */ = {
+			isa = PBXGroup;
+			children = (
+				0D56B10F15B454D8001D2A6D /* icon_automatic@2x.png */,
+				0D56B11015B454D8001D2A6D /* icon_bitmap@2x.png */,
+				0D56B11115B454D9001D2A6D /* icon_font@2x.png */,
+				0D56B11215B454D9001D2A6D /* icon_horizonal@2x.png */,
+				0D56B11315B454D9001D2A6D /* icon_underline@2x.png */,
+				0D56B11415B454D9001D2A6D /* icon_vertical@2x.png */,
+			);
+			name = "Icon @2x";
+			sourceTree = "<group>";
+		};
+		0D5CF8640BA7D34200C0BA26 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				F5AE05CD0181659A011834CB /* ham_icon.icns */,
+				0D98D4DA0D7B6FC300382BCE /* toolbar_export.png */,
+				0D411AAF0D7C10CB007C6CE9 /* toolbar_import.png */,
+				0D411AB60D7C26C4007C6CE9 /* icon_font.png */,
+				0D411AB40D7C26B1007C6CE9 /* icon_bitmap.png */,
+				0DABC0CA0BB7458B00CF1D2B /* icon_horizonal.tiff */,
+				0DABC0CB0BB7458C00CF1D2B /* icon_vertical.tiff */,
+				0D9645B30D78008E0006C9C7 /* icon_automatic.tiff */,
+				0D57EF460C1A4364009BBEE5 /* icon_underline.tiff */,
+				0D5CF85F0BA7D33900C0BA26 /* icon_add.tiff */,
+				0D5CF8600BA7D33900C0BA26 /* icon_delete.tiff */,
+			);
+			name = icon;
+			sourceTree = "<group>";
+		};
+		0D9645530D78008E0006C9C7 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				0D272FFE15DCE1B100C6A097 /* Acknowledgments.rtf */,
+				0DA942A90DF38CB300768A1D /* PreferenceToolbar.strings */,
+				0D96455B0D78008E0006C9C7 /* Credits.html */,
+				0D96455D0D78008E0006C9C7 /* InfoPlist.strings */,
+				0D96455F0D78008E0006C9C7 /* Localizable.strings */,
+				0D9645610D78008E0006C9C7 /* ServicesMenu.strings */,
+			);
+			name = text;
+			sourceTree = "<group>";
+		};
+		0D9D9A510BD5232300B76BFD /* DictionaryBinder */ = {
+			isa = PBXGroup;
+			children = (
+				0DE1C3210BFF4FE4001D1EF9 /* KeyEquivalentManager.h */,
+				0DE1C3220BFF4FE4001D1EF9 /* KeyEquivalentManager.m */,
+				0D9D9A4C0BD5231500B76BFD /* DictionaryBinderManager.h */,
+				0D9D9A4D0BD5231500B76BFD /* DictionaryBinderManager.m */,
+				0D9D9A3C0BD5220000B76BFD /* DictionaryBinder.h */,
+				0D9D9A3D0BD5220000B76BFD /* DictionaryBinder.m */,
+			);
+			name = DictionaryBinder;
+			sourceTree = "<group>";
+		};
+		0DAAB64006D969F400E908E1 /* Application Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D84A9510FFCE08F00A06D69 /* PasteboardWatcher.h */,
+				0D84A9520FFCE08F00A06D69 /* PasteboardWatcher.m */,
+				F506157B00DEB36201000001 /* EBookController.h */,
+				F506157A00DEB36201000001 /* EBookController.m */,
+			);
+			name = "Application Controller";
+			sourceTree = "<group>";
+		};
+		0DBD27B8079623C7001C40A1 /* FontPanel */ = {
+			isa = PBXGroup;
+			children = (
+				0D10B60E0D81120A00C4BAD8 /* FontCell.h */,
+				0D10B60F0D81120A00C4BAD8 /* FontCell.m */,
+				0D99736A0D85004800D7FEC9 /* FontMatrixController.h */,
+				0D99736B0D85004800D7FEC9 /* FontMatrixController.m */,
+				0DBD27C8079624E3001C40A1 /* FontPanelController.h */,
+				0DBD27C9079624E3001C40A1 /* FontPanelController.m */,
+				F51DEF05016EB5D001BE55A6 /* FontTableElement.h */,
+				F51DEF06016EB5D001BE55A6 /* FontTableElement.m */,
+				0DDF38DF0DAA729900F6973B /* AlternativeStringField.h */,
+				0DDF38E00DAA729900F6973B /* AlternativeStringField.m */,
+			);
+			name = FontPanel;
+			sourceTree = "<group>";
+		};
+		0DD3957C0BAAAE7F00670DA4 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				0DD395760BAAAE7300670DA4 /* DictionaryManager.h */,
+				0DD395770BAAAE7300670DA4 /* DictionaryManager.m */,
+				0D27C9EA0BA8C1C20032D5C7 /* DictionaryListItem.h */,
+				0D27C9EB0BA8C1C20032D5C7 /* DictionaryListItem.m */,
+				0DB71B210DC87B070099606C /* NetDictionary.h */,
+				0DB71B220DC87B070099606C /* NetDictionary.m */,
+				0D099C1E0DE66BD400500818 /* DictionayArrayController.h */,
+				0D099C1F0DE66BD400500818 /* DictionayArrayController.m */,
+			);
+			name = Dictionary;
+			sourceTree = "<group>";
+		};
+		0DD9E6080559C96500C5B6BE /* MultiSearh */ = {
+			isa = PBXGroup;
+			children = (
+				0D6535BA0D98ED9C00DA7AEF /* MultiSearchEntry.h */,
+				0D6535BB0D98ED9C00DA7AEF /* MultiSearchEntry.m */,
+				0DE4C5CA052C45790042A2B2 /* MultiSearchViewController.h */,
+				0DE4C5CB052C45790042A2B2 /* MultiSearchViewController.m */,
+			);
+			name = MultiSearh;
+			sourceTree = "<group>";
+		};
+		0DE3CA1B0C0693F30039ADDB /* Navibar */ = {
+			isa = PBXGroup;
+			children = (
+				0DAFA8D10EA738F600C7A50D /* navibar_coninuity_on.png */,
+				0DAFA8D20EA738F600C7A50D /* navibar_coninuity.png */,
+				0D9D6D060DD46C45001F1751 /* navibar_small.png */,
+				0D9D6D070DD46C45001F1751 /* navibar_small_on.png */,
+				0D9D6D080DD46C45001F1751 /* navibar_large.png */,
+				0D9D6D090DD46C45001F1751 /* navibar_large_on.png */,
+				0D315C220C0F96F900534ED5 /* navi_close_on.tiff */,
+				0D315C230C0F96F900534ED5 /* navi_close.tiff */,
+				0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */,
+				0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */,
+				0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */,
+				0DE3CA500C06B0150039ADDB /* navibar_forward_on.png */,
+				0DE3CA510C06B0150039ADDB /* navibar_forward.png */,
+				0DE3CA370C069F860039ADDB /* navibar_back_on.tiff */,
+				0DE3CA380C069F860039ADDB /* navibar_back.tiff */,
+				0DE3CA1E0C0694200039ADDB /* navibar.tiff */,
+			);
+			name = Navibar;
+			sourceTree = "<group>";
+		};
+		0DE8289A0C4F80090003BFBB /* tab */ = {
+			isa = PBXGroup;
+			children = (
+				0DE8289B0C4F80260003BFBB /* tab_highlight_left.tiff */,
+				0DC4A32B0C62A68B008F4D35 /* tab_highlight_center.tiff */,
+				0DE8289D0C4F80260003BFBB /* tab_off_center.tiff */,
+				0DE8289E0C4F80260003BFBB /* tab_off_left.tiff */,
+				0DE8289F0C4F80260003BFBB /* tab_on_center.tiff */,
+				0DE828A00C4F80260003BFBB /* tab_on_left.tiff */,
+				0DE828A10C4F80260003BFBB /* tab_right.tiff */,
+			);
+			name = tab;
+			sourceTree = "<group>";
+		};
+		0DEA46B70D6BF12F00440043 /* CSS Image */ = {
+			isa = PBXGroup;
+			children = (
+				0DEA46DB0D6BF93300440043 /* icon_movie.png */,
+				0DEA46F20D6BFAC800440043 /* icon_wave.png */,
+			);
+			name = "CSS Image";
+			sourceTree = "<group>";
+		};
+		0DEE611A0BF48D000012C6EF /* BindingClass */ = {
+			isa = PBXGroup;
+			children = (
+				0DEE610F0BF48CEF0012C6EF /* ACMenuBinder.h */,
+				0DEE61100BF48CEF0012C6EF /* ACMenuBinder.m */,
+				0DEE61110BF48CEF0012C6EF /* ACMenuItem.h */,
+				0DEE61120BF48CEF0012C6EF /* ACMenuItem.m */,
+				0DEE61270BF48D760012C6EF /* ACBindingItem.h */,
+				0DEE61280BF48D760012C6EF /* ACBindingItem.m */,
+			);
+			name = BindingClass;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DD91AF90AA547F000593C9F /* eb.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D1AD8C31475DDD800A6C900 /* QuartzCore.framework */,
+				0D93A90D0D6A5EDB005A2A05 /* QTKit.framework */,
+				0D1F39E20D516DB300172FAA /* WebKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				0D1493B70D7568A4007AAA91 /* libz.dylib */,
+				F51DEE8C0169F32A01BE55A6 /* eb.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DD91AB00AA547F000593C9F /* kotonoko.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* ebooks */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* kotonoko */,
+				29B97315FDCFA39411CA2CEA /* main */,
+				F5BA8C9800DAE9EC01000001 /* eblib */,
+				0D9645530D78008E0006C9C7 /* text */,
+				0D40D51713FE97AC0019A631 /* xib */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				0DD91AAF0AA547F000593C9F /* Info-ebooks.plist */,
+				0DD91AF80AA547F000593C9F /* Info-eb.plist */,
+			);
+			name = ebooks;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* main */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0D334C180DD907D5000BDEF9 /* template */,
+				0D334BEC0DD9073D000BDEF9 /* NetDict */,
+				0DEA46B70D6BF12F00440043 /* CSS Image */,
+				0DE8289A0C4F80090003BFBB /* tab */,
+				0D56B0E115B2AAAC001D2A6D /* Navibar@2x */,
+				0DE3CA1B0C0693F30039ADDB /* Navibar */,
+				0D56B0E015B29865001D2A6D /* Toolbar Icon @2x */,
+				0D13200D0BA793820003E924 /* Toolbar Icon */,
+				F550C193020B66E401A80014 /* dictionary */,
+				0D56B0FE15B2DAE9001D2A6D /* Icon @2x */,
+				0D5CF8640BA7D34200C0BA26 /* icon */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F526B2D203636BDD01A80003 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				F56B011A01A32D06016C3A9A /* ELDefines.h */,
+				0D1316480BA145D80003E924 /* PreferenceDefines.h */,
+				0DA3A4B90D52115800E94421 /* EBStyleSheet.h */,
+				0DA3A4BA0D52115800E94421 /* EBStyleSheet.m */,
+				0D131B8C0BA651F40003E924 /* PreferenceModal.h */,
+				0D131B8D0BA651F40003E924 /* PreferenceModal.m */,
+				0D131BB60BA6544D0003E924 /* PreferenceUtilities.h */,
+				0D131BB70BA6544D0003E924 /* PreferenceUtilities.m */,
+				F53830D700E947CD01000001 /* PreferenceWindowController.h */,
+				F53830D800E947CD01000001 /* PreferenceWindowController.m */,
+				0D008DE60BAEC01600C53BD8 /* DictionarySetModal.h */,
+				0D008DEF0BAEC06B00C53BD8 /* DictionarySetModal.m */,
+				0D9D91E00BC4A13E00B76BFD /* DictionaryTreeController.h */,
+				0D9D91E10BC4A13E00B76BFD /* DictionaryTreeController.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		F550C193020B66E401A80014 /* dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				0DAE54060D8EA64700AB22DC /* chujiten.plist */,
+				0DAE54070D8EA64700AB22DC /* dgx01.plist */,
+			);
+			name = dictionary;
+			sourceTree = "<group>";
+		};
+		F569256A021E806B01A80014 /* config_h */ = {
+			isa = PBXGroup;
+			children = (
+				0DBFC61F126FB7EE0088A54C /* config.h */,
+			);
+			name = config_h;
+			sourceTree = "<group>";
+		};
+		F5BA8C9800DAE9EC01000001 /* eblib */ = {
+			isa = PBXGroup;
+			children = (
+				F569256A021E806B01A80014 /* config_h */,
+				F5BA8C9900DAE9EC01000001 /* headers */,
+				F5BA8CA200DAE9EC01000001 /* sources */,
+			);
+			name = eblib;
+			sourceTree = "<group>";
+		};
+		F5BA8C9900DAE9EC01000001 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				0DBFC5FD126FB7E10088A54C /* appendix.h */,
+				0DBFC5FE126FB7E10088A54C /* binary.h */,
+				0DBFC5FF126FB7E10088A54C /* booklist.h */,
+				0DBFC600126FB7E10088A54C /* build-post.h */,
+				0DBFC601126FB7E10088A54C /* build-pre.h */,
+				0DBFC602126FB7E10088A54C /* defs.h */,
+				0DBFC603126FB7E10088A54C /* dummyin6.h */,
+				0DBFC604126FB7E10088A54C /* eb.h */,
+				0DBFC605126FB7E10088A54C /* ebnet.h */,
+				0DBFC606126FB7E10088A54C /* error.h */,
+				0DBFC607126FB7E10088A54C /* font.h */,
+				0DBFC608126FB7E10088A54C /* getaddrinfo.h */,
+				0DBFC609126FB7E10088A54C /* linebuf.h */,
+				0DBFC60A126FB7E10088A54C /* sysdefs.h */,
+				0DBFC60B126FB7E10088A54C /* text.h */,
+				0DBFC60C126FB7E10088A54C /* urlparts.h */,
+				0DBFC60D126FB7E10088A54C /* zio.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		F5BA8CA200DAE9EC01000001 /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				0DBFC5A9126FB7D60088A54C /* appendix.c */,
+				0DBFC5AA126FB7D60088A54C /* appsub.c */,
+				0DBFC5AB126FB7D60088A54C /* bcd.c */,
+				0DBFC5AC126FB7D60088A54C /* binary.c */,
+				0DBFC5AD126FB7D60088A54C /* bitmap.c */,
+				0DBFC5AE126FB7D60088A54C /* book.c */,
+				0DBFC5AF126FB7D60088A54C /* booklist.c */,
+				0DBFC5B0126FB7D60088A54C /* copyright.c */,
+				0DBFC5B1126FB7D60088A54C /* cross.c */,
+				0DBFC5B2126FB7D60088A54C /* dummyin6.c */,
+				0DBFC5B3126FB7D60088A54C /* eb.c */,
+				0DBFC5B4126FB7D60088A54C /* ebnet.c */,
+				0DBFC5B5126FB7D60088A54C /* endword.c */,
+				0DBFC5B6126FB7D60088A54C /* error.c */,
+				0DBFC5B7126FB7D60088A54C /* exactword.c */,
+				0DBFC5B8126FB7D60088A54C /* filename.c */,
+				0DBFC5B9126FB7D60088A54C /* font.c */,
+				0DBFC5BA126FB7D60088A54C /* getaddrinfo.c */,
+				0DBFC5BB126FB7D60088A54C /* hook.c */,
+				0DBFC5BC126FB7D60088A54C /* jacode.c */,
+				0DBFC5BD126FB7D60088A54C /* keyword.c */,
+				0DBFC5BE126FB7D60088A54C /* linebuf.c */,
+				0DBFC5BF126FB7D60088A54C /* lock.c */,
+				0DBFC5C0126FB7D60088A54C /* log.c */,
+				0DBFC5C1126FB7D60088A54C /* match.c */,
+				0DBFC5C2126FB7D60088A54C /* menu.c */,
+				0DBFC5C3126FB7D60088A54C /* multi.c */,
+				0DBFC5C4126FB7D60088A54C /* multiplex.c */,
+				0DBFC5C5126FB7D60088A54C /* narwalt.c */,
+				0DBFC5C6126FB7D60088A54C /* narwfont.c */,
+				0DBFC5C7126FB7D60088A54C /* readtext.c */,
+				0DBFC5C8126FB7D60088A54C /* search.c */,
+				0DBFC5C9126FB7D60088A54C /* setword.c */,
+				0DBFC5CA126FB7D60088A54C /* stopcode.c */,
+				0DBFC5CB126FB7D60088A54C /* strcasecmp.c */,
+				0DBFC5CC126FB7D60088A54C /* subbook.c */,
+				0DBFC5CD126FB7D60088A54C /* text.c */,
+				0DBFC5CE126FB7D60088A54C /* urlparts.c */,
+				0DBFC5CF126FB7D60088A54C /* widealt.c */,
+				0DBFC5D0126FB7D60088A54C /* widefont.c */,
+				0DBFC5D1126FB7D60088A54C /* word.c */,
+				0DBFC5D2126FB7D60088A54C /* zio.c */,
+			);
+			name = sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0DD91A4F0AA547F000593C9F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DD91A500AA547F000593C9F /* EBookController.h in Headers */,
+				0DD91A510AA547F000593C9F /* DictionaryElement.h in Headers */,
+				0DD91A520AA547F000593C9F /* PreferenceWindowController.h in Headers */,
+				0DD91A540AA547F000593C9F /* FontTableElement.h in Headers */,
+				0DD91A560AA547F000593C9F /* ContentsView.h in Headers */,
+				0DD91A570AA547F000593C9F /* EBook.h in Headers */,
+				0DD91A580AA547F000593C9F /* ELDefines.h in Headers */,
+				0DD91A590AA547F000593C9F /* HistoryDataSource.h in Headers */,
+				0DD91A5B0AA547F000593C9F /* WindowController.h in Headers */,
+				0DD91A5C0AA547F000593C9F /* SearchViewController.h in Headers */,
+				0DD91A5D0AA547F000593C9F /* MultiSearchViewController.h in Headers */,
+				0DD91A650AA547F000593C9F /* EBookContainer.h in Headers */,
+				0DD91A670AA547F000593C9F /* EBookHookFunctions.h in Headers */,
+				0DD91A680AA547F000593C9F /* CandidateContainer.h in Headers */,
+				0DD91A6B0AA547F000593C9F /* FontPanelController.h in Headers */,
+				0D1316490BA145D90003E924 /* PreferenceDefines.h in Headers */,
+				0D131B8E0BA651F40003E924 /* PreferenceModal.h in Headers */,
+				0D131BB80BA6544D0003E924 /* PreferenceUtilities.h in Headers */,
+				0D131C340BA66C9E0003E924 /* FontNameToFontTransformer.h in Headers */,
+				0D310AD50C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.h in Headers */,
+				0D131C360BA66C9E0003E924 /* FontWell.h in Headers */,
+				0D131C3A0BA66CCB0003E924 /* ColorNameToColorTransformer.h in Headers */,
+				0D27C9EC0BA8C1C20032D5C7 /* DictionaryListItem.h in Headers */,
+				0DD395780BAAAE7300670DA4 /* DictionaryManager.h in Headers */,
+				0D6421130BBCB38500640D27 /* DictionarySetModal.h in Headers */,
+				0D6424B00BC36E8B00640D27 /* ProgressPanel.h in Headers */,
+				0D9D91E20BC4A13E00B76BFD /* DictionaryTreeController.h in Headers */,
+				0D9D9A3E0BD5220000B76BFD /* DictionaryBinder.h in Headers */,
+				0D9D9A4E0BD5231500B76BFD /* DictionaryBinderManager.h in Headers */,
+				0DBDC7EA0BDCF53A00E67A3C /* LinerMatrix.h in Headers */,
+				0DEE61130BF48CEF0012C6EF /* ACMenuBinder.h in Headers */,
+				0DEE61150BF48CEF0012C6EF /* ACMenuItem.h in Headers */,
+				0DE1C2EB0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.h in Headers */,
+				0DE1C3230BFF4FE4001D1EF9 /* KeyEquivalentManager.h in Headers */,
+				0DE3C9930C065C560039ADDB /* HeadingController.h in Headers */,
+				0DE3CA240C06947C0039ADDB /* NavibarView.h in Headers */,
+				0D0A6CC40C0D618E00E17D6B /* ContentsController.h in Headers */,
+				0DE8279E0C4F4A670003BFBB /* BGButtonCell.h in Headers */,
+				0DA3A4BB0D52115800E94421 /* EBStyleSheet.h in Headers */,
+				0D9B5E110D651D67002210D3 /* VerboseFieldEditer.h in Headers */,
+				0D9645B20D78008E0006C9C7 /* VerboseComboBox.h in Headers */,
+				0DA9FF230D7FE97E00A64EF4 /* EBookUtilities.h in Headers */,
+				0D10B6100D81120A00C4BAD8 /* FontCell.h in Headers */,
+				0D99736C0D85004900D7FEC9 /* FontMatrixController.h in Headers */,
+				0D6535BC0D98ED9C00DA7AEF /* MultiSearchEntry.h in Headers */,
+				0DDF38E10DAA729900F6973B /* AlternativeStringField.h in Headers */,
+				0D3F2A050DACBFCA005F557E /* ColoredView.h in Headers */,
+				0DB71B230DC87B070099606C /* NetDictionary.h in Headers */,
+				0DAEEDE50DE39A5600186382 /* GradientButton.h in Headers */,
+				0D099C200DE66BD400500818 /* DictionayArrayController.h in Headers */,
+				0D3FD68D0ECC470800E6DD6D /* LineTextAttachmentCell.h in Headers */,
+				0D84A9530FFCE08F00A06D69 /* PasteboardWatcher.h in Headers */,
+				0D8DF4A8147511940062A5E7 /* SwipeView.h in Headers */,
+				0D613EE51476A12500AFD9FC /* ContentsHistory.h in Headers */,
+				0D272FFC15DCE18B00C6A097 /* AcknowledgmentsWindowController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DD91AB30AA547F000593C9F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DBFC60E126FB7E10088A54C /* appendix.h in Headers */,
+				0DBFC60F126FB7E10088A54C /* binary.h in Headers */,
+				0DBFC610126FB7E10088A54C /* booklist.h in Headers */,
+				0DBFC611126FB7E10088A54C /* build-post.h in Headers */,
+				0DBFC612126FB7E10088A54C /* build-pre.h in Headers */,
+				0DBFC613126FB7E10088A54C /* defs.h in Headers */,
+				0DBFC614126FB7E10088A54C /* dummyin6.h in Headers */,
+				0DBFC615126FB7E10088A54C /* eb.h in Headers */,
+				0DBFC616126FB7E10088A54C /* ebnet.h in Headers */,
+				0DBFC617126FB7E10088A54C /* error.h in Headers */,
+				0DBFC618126FB7E10088A54C /* font.h in Headers */,
+				0DBFC619126FB7E10088A54C /* getaddrinfo.h in Headers */,
+				0DBFC61A126FB7E10088A54C /* linebuf.h in Headers */,
+				0DBFC61B126FB7E10088A54C /* sysdefs.h in Headers */,
+				0DBFC61C126FB7E10088A54C /* text.h in Headers */,
+				0DBFC61D126FB7E10088A54C /* urlparts.h in Headers */,
+				0DBFC61E126FB7E10088A54C /* zio.h in Headers */,
+				0DBFC620126FB7EE0088A54C /* config.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0DD91A4C0AA547F000593C9F /* ebooks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DD91AAB0AA547F000593C9F /* Build configuration list for PBXNativeTarget "ebooks" */;
+			buildPhases = (
+				0DD91A4F0AA547F000593C9F /* Headers */,
+				0D27300615DCE75900C6A097 /* ShellScript */,
+				0DD91A6D0AA547F000593C9F /* Resources */,
+				0DD91AA90AA547F000593C9F /* CopyFiles */,
+				0DD91A870AA547F000593C9F /* Sources */,
+				0DD91AA60AA547F000593C9F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0DD91AFB0AA547F000593C9F /* PBXTargetDependency */,
+			);
+			name = ebooks;
+			productInstallPath = "$(HOME)/Applications";
+			productName = ebooks;
+			productReference = 0DD91AB00AA547F000593C9F /* kotonoko.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0DD91AB20AA547F000593C9F /* eb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DD91AF40AA547F000593C9F /* Build configuration list for PBXNativeTarget "eb" */;
+			buildPhases = (
+				0DD91AB30AA547F000593C9F /* Headers */,
+				0DD91AC50AA547F000593C9F /* Resources */,
+				0DD91AC60AA547F000593C9F /* Sources */,
+				0DD91AF10AA547F000593C9F /* Frameworks */,
+				0DD91AF30AA547F000593C9F /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = eb;
+			productInstallPath = "@executable_path/../Frameworks";
+			productName = eb;
+			productReference = 0DD91AF90AA547F000593C9F /* eb.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
+			buildConfigurationList = 0DC6B7630865B09F007810E1 /* Build configuration list for PBXProject "ebooks" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* ebooks */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0DD91A4C0AA547F000593C9F /* ebooks */,
+				0DD91AB20AA547F000593C9F /* eb */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0DD91A6D0AA547F000593C9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DD91A730AA547F000593C9F /* ham_icon.icns in Resources */,
+				0D1320160BA793BD0003E924 /* toolbar_bookset.tiff in Resources */,
+				0D1320170BA793BD0003E924 /* toolbar_ebook.tiff in Resources */,
+				0D1320180BA793BD0003E924 /* toolbar_etc.tiff in Resources */,
+				0D1320190BA793BD0003E924 /* toolbar_font.tiff in Resources */,
+				0D5CF8610BA7D33900C0BA26 /* icon_add.tiff in Resources */,
+				0D5CF8620BA7D33900C0BA26 /* icon_delete.tiff in Resources */,
+				0DABC0CC0BB7458D00CF1D2B /* icon_horizonal.tiff in Resources */,
+				0DABC0CD0BB7458E00CF1D2B /* icon_vertical.tiff in Resources */,
+				0DEE65090BFAA46A0012C6EF /* toolbar_tag.tiff in Resources */,
+				0DE3CA1F0C0694210039ADDB /* navibar.tiff in Resources */,
+				0DE3CA390C069F860039ADDB /* navibar_back_on.tiff in Resources */,
+				0DE3CA3A0C069F860039ADDB /* navibar_back.tiff in Resources */,
+				0DE3CA520C06B0160039ADDB /* navibar_forward_on.png in Resources */,
+				0DE3CA530C06B0160039ADDB /* navibar_forward.png in Resources */,
+				0D3D93320C06FF4C0090CFB9 /* navibar_gaiji_on.tiff in Resources */,
+				0D3D93330C06FF4C0090CFB9 /* navibar_gaiji.tiff in Resources */,
+				0D315C240C0F96F900534ED5 /* navi_close_on.tiff in Resources */,
+				0D315C250C0F96F900534ED5 /* navi_close.tiff in Resources */,
+				0D57EF470C1A4365009BBEE5 /* icon_underline.tiff in Resources */,
+				0DE828A20C4F80260003BFBB /* tab_highlight_left.tiff in Resources */,
+				0DE828A40C4F80260003BFBB /* tab_off_center.tiff in Resources */,
+				0DE828A50C4F80260003BFBB /* tab_off_left.tiff in Resources */,
+				0DE828A60C4F80260003BFBB /* tab_on_center.tiff in Resources */,
+				0DE828A70C4F80260003BFBB /* tab_on_left.tiff in Resources */,
+				0DE828A80C4F80260003BFBB /* tab_right.tiff in Resources */,
+				0DC4A32C0C62A68B008F4D35 /* tab_highlight_center.tiff in Resources */,
+				0DEA46DC0D6BF93300440043 /* icon_movie.png in Resources */,
+				0DEA46F30D6BFAC800440043 /* icon_wave.png in Resources */,
+				0D9645630D78008E0006C9C7 /* Credits.html in Resources */,
+				0D9645640D78008E0006C9C7 /* InfoPlist.strings in Resources */,
+				0D9645650D78008E0006C9C7 /* Localizable.strings in Resources */,
+				0D9645660D78008E0006C9C7 /* ServicesMenu.strings in Resources */,
+				0D9645B40D78008E0006C9C7 /* icon_automatic.tiff in Resources */,
+				0D98D4DB0D7B6FC300382BCE /* toolbar_export.png in Resources */,
+				0D411AB00D7C10CB007C6CE9 /* toolbar_import.png in Resources */,
+				0D411AB50D7C26B1007C6CE9 /* icon_bitmap.png in Resources */,
+				0D411AB70D7C26C4007C6CE9 /* icon_font.png in Resources */,
+				0DAE54080D8EA64700AB22DC /* chujiten.plist in Resources */,
+				0DAE54090D8EA64700AB22DC /* dgx01.plist in Resources */,
+				0D9DF2A30DA1FF5A003A2604 /* toolbar_network.png in Resources */,
+				0D9D6D0A0DD46C45001F1751 /* navibar_small.png in Resources */,
+				0D9D6D0B0DD46C45001F1751 /* navibar_small_on.png in Resources */,
+				0D9D6D0C0DD46C45001F1751 /* navibar_large.png in Resources */,
+				0D9D6D0D0DD46C45001F1751 /* navibar_large_on.png in Resources */,
+				0D334BF00DD9073E000BDEF9 /* NetDict in Resources */,
+				0D334C1A0DD907D5000BDEF9 /* template in Resources */,
+				0DA942AB0DF38CB300768A1D /* PreferenceToolbar.strings in Resources */,
+				0DAFA8D30EA738F600C7A50D /* navibar_coninuity_on.png in Resources */,
+				0DAFA8D40EA738F600C7A50D /* navibar_coninuity.png in Resources */,
+				0D40D52F13FE97AC0019A631 /* FontPanel.xib in Resources */,
+				0D40D53013FE97AC0019A631 /* GaijiPanel.xib in Resources */,
+				0D40D53113FE97AC0019A631 /* MainMenu.xib in Resources */,
+				0D40D53213FE97AC0019A631 /* MultiSearchView.xib in Resources */,
+				0D40D53313FE97AC0019A631 /* Preferences.xib in Resources */,
+				0D40D53413FE97AC0019A631 /* SearchView.xib in Resources */,
+				0D40D53513FE97AC0019A631 /* MainWindow.xib in Resources */,
+				0D40D53613FE97AC0019A631 /* MoviePanel.xib in Resources */,
+				0D40D53713FE97AC0019A631 /* MultiSearchEntry.xib in Resources */,
+				0D40D53813FE97AC0019A631 /* ProgressPanel.xib in Resources */,
+				0D40D53913FE97AC0019A631 /* WebView.xib in Resources */,
+				0D9F2B1F148E5B4B0012D271 /* backgroundPattern.png in Resources */,
+				0D56B0D115B28AAC001D2A6D /* toolbar_view.png in Resources */,
+				0D56B11515B454D9001D2A6D /* icon_automatic@2x.png in Resources */,
+				0D56B11615B454D9001D2A6D /* icon_bitmap@2x.png in Resources */,
+				0D56B11715B454D9001D2A6D /* icon_font@2x.png in Resources */,
+				0D56B11815B454D9001D2A6D /* icon_horizonal@2x.png in Resources */,
+				0D56B11915B454D9001D2A6D /* icon_underline@2x.png in Resources */,
+				0D56B11A15B454D9001D2A6D /* icon_vertical@2x.png in Resources */,
+				0D56B12415B454F1001D2A6D /* toolbar_bookset@2x.png in Resources */,
+				0D56B12515B454F1001D2A6D /* toolbar_ebook@2x.png in Resources */,
+				0D56B12615B454F1001D2A6D /* toolbar_etc@2x.png in Resources */,
+				0D56B12715B454F1001D2A6D /* toolbar_export@2x.png in Resources */,
+				0D56B12815B454F1001D2A6D /* toolbar_font@2x.png in Resources */,
+				0D56B12915B454F1001D2A6D /* toolbar_import@2x.png in Resources */,
+				0D56B12A15B454F1001D2A6D /* toolbar_network@2x.png in Resources */,
+				0D56B12B15B454F1001D2A6D /* toolbar_tag@2x.png in Resources */,
+				0D56B12C15B454F1001D2A6D /* toolbar_view@2x.png in Resources */,
+				0D56B13915B45511001D2A6D /* navibar_back_on@2x.png in Resources */,
+				0D56B13A15B45511001D2A6D /* navibar_back@2x.png in Resources */,
+				0D56B13B15B45511001D2A6D /* navibar_coninuity_on@2x.png in Resources */,
+				0D56B13C15B45511001D2A6D /* navibar_coninuity@2x.png in Resources */,
+				0D56B13D15B45511001D2A6D /* navibar_forward_on@2x.png in Resources */,
+				0D56B13E15B45511001D2A6D /* navibar_forward@2x.png in Resources */,
+				0D56B13F15B45511001D2A6D /* navibar_gaiji_on@2x.png in Resources */,
+				0D56B14015B45511001D2A6D /* navibar_gaiji@2x.png in Resources */,
+				0D56B14115B45511001D2A6D /* navibar_large_on@2x.png in Resources */,
+				0D56B14215B45511001D2A6D /* navibar_large@2x.png in Resources */,
+				0D56B14315B45511001D2A6D /* navibar_small_on@2x.png in Resources */,
+				0D56B14415B45511001D2A6D /* navibar_small@2x.png in Resources */,
+				0D272FFF15DCE1B100C6A097 /* Acknowledgments.rtf in Resources */,
+				0D27300115DCE40D00C6A097 /* AcknowledgmentsWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DD91AC50AA547F000593C9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		0DD91AF30AA547F000593C9F /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D27300615DCE75900C6A097 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INFOPLIST=\"${SRCROOT}/Info-ebooks.plist\"\n\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" ${INFOPLIST})\nBUNDLE_VERSION=$(($BUNDLE_VERSION + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUNDLE_VERSION\" ${INFOPLIST}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DD91A870AA547F000593C9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DD91A880AA547F000593C9F /* main.m in Sources */,
+				0DD91A890AA547F000593C9F /* EBook.m in Sources */,
+				0DD91A8A0AA547F000593C9F /* EBookController.m in Sources */,
+				0DD91A8B0AA547F000593C9F /* DictionaryElement.m in Sources */,
+				0DD91A8C0AA547F000593C9F /* PreferenceWindowController.m in Sources */,
+				0DD91A8E0AA547F000593C9F /* FontTableElement.m in Sources */,
+				0DD91A900AA547F000593C9F /* ContentsView.m in Sources */,
+				0DD91A910AA547F000593C9F /* HistoryDataSource.m in Sources */,
+				0DD91A940AA547F000593C9F /* WindowController.m in Sources */,
+				0DD91A950AA547F000593C9F /* SearchViewController.m in Sources */,
+				0DD91A960AA547F000593C9F /* MultiSearchViewController.m in Sources */,
+				0DD91A9E0AA547F000593C9F /* EBookContainer.m in Sources */,
+				0DD91AA00AA547F000593C9F /* EBookHookFunctions.m in Sources */,
+				0DD91AA10AA547F000593C9F /* CandidateContainer.m in Sources */,
+				0DD91AA40AA547F000593C9F /* FontPanelController.m in Sources */,
+				0D131B8F0BA651F40003E924 /* PreferenceModal.m in Sources */,
+				0D131BB90BA6544D0003E924 /* PreferenceUtilities.m in Sources */,
+				0D131C350BA66C9E0003E924 /* FontNameToFontTransformer.m in Sources */,
+				0D131C370BA66C9E0003E924 /* FontWell.m in Sources */,
+				0D131C3B0BA66CCB0003E924 /* ColorNameToColorTransformer.m in Sources */,
+				0D27C9ED0BA8C1C20032D5C7 /* DictionaryListItem.m in Sources */,
+				0DD395790BAAAE7300670DA4 /* DictionaryManager.m in Sources */,
+				0D6421140BBCB38D00640D27 /* DictionarySetModal.m in Sources */,
+				0D6424B10BC36E8B00640D27 /* ProgressPanel.m in Sources */,
+				0D9D91E30BC4A13E00B76BFD /* DictionaryTreeController.m in Sources */,
+				0D9D9A3F0BD5220000B76BFD /* DictionaryBinder.m in Sources */,
+				0D9D9A4F0BD5231500B76BFD /* DictionaryBinderManager.m in Sources */,
+				0DBDC7EB0BDCF53A00E67A3C /* LinerMatrix.m in Sources */,
+				0DEE61140BF48CEF0012C6EF /* ACMenuBinder.m in Sources */,
+				0DEE61160BF48CEF0012C6EF /* ACMenuItem.m in Sources */,
+				0DEE612A0BF48D760012C6EF /* ACBindingItem.m in Sources */,
+				0DE1C2EC0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.m in Sources */,
+				0DE1C3240BFF4FE4001D1EF9 /* KeyEquivalentManager.m in Sources */,
+				0DE3C9940C065C560039ADDB /* HeadingController.m in Sources */,
+				0DE3CA250C06947C0039ADDB /* NavibarView.m in Sources */,
+				0D0A6CC50C0D618E00E17D6B /* ContentsController.m in Sources */,
+				0D310AD60C180A5700DB4DC5 /* FontNameToFontFamilyTransformer.m in Sources */,
+				0DE827A00C4F4A840003BFBB /* BGButtonCell.m in Sources */,
+				0DA3A4BC0D52115800E94421 /* EBStyleSheet.m in Sources */,
+				0D9B5E120D651D67002210D3 /* VerboseFieldEditer.m in Sources */,
+				0D9645B10D78008E0006C9C7 /* VerboseComboBox.m in Sources */,
+				0DA9FF240D7FE97E00A64EF4 /* EBookUtilities.m in Sources */,
+				0D10B6110D81120A00C4BAD8 /* FontCell.m in Sources */,
+				0D99736D0D85004900D7FEC9 /* FontMatrixController.m in Sources */,
+				0D6535BD0D98ED9C00DA7AEF /* MultiSearchEntry.m in Sources */,
+				0DDF38E20DAA729900F6973B /* AlternativeStringField.m in Sources */,
+				0D3F2A060DACBFCA005F557E /* ColoredView.m in Sources */,
+				0DB71B240DC87B070099606C /* NetDictionary.m in Sources */,
+				0DAEEDE60DE39A5600186382 /* GradientButton.m in Sources */,
+				0D099C210DE66BD400500818 /* DictionayArrayController.m in Sources */,
+				0D3FD68B0ECC46E500E6DD6D /* LineTextAttachmentCell.m in Sources */,
+				0D84A9540FFCE08F00A06D69 /* PasteboardWatcher.m in Sources */,
+				0D8DF4A9147511940062A5E7 /* SwipeView.m in Sources */,
+				0D613EE61476A12500AFD9FC /* ContentsHistory.m in Sources */,
+				0D272FFD15DCE18B00C6A097 /* AcknowledgmentsWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DD91AC60AA547F000593C9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DBFC5D3126FB7D60088A54C /* appendix.c in Sources */,
+				0DBFC5D4126FB7D60088A54C /* appsub.c in Sources */,
+				0DBFC5D5126FB7D60088A54C /* bcd.c in Sources */,
+				0DBFC5D6126FB7D60088A54C /* binary.c in Sources */,
+				0DBFC5D7126FB7D60088A54C /* bitmap.c in Sources */,
+				0DBFC5D8126FB7D60088A54C /* book.c in Sources */,
+				0DBFC5D9126FB7D60088A54C /* booklist.c in Sources */,
+				0DBFC5DA126FB7D60088A54C /* copyright.c in Sources */,
+				0DBFC5DB126FB7D60088A54C /* cross.c in Sources */,
+				0DBFC5DC126FB7D60088A54C /* dummyin6.c in Sources */,
+				0DBFC5DD126FB7D60088A54C /* eb.c in Sources */,
+				0DBFC5DE126FB7D60088A54C /* ebnet.c in Sources */,
+				0DBFC5DF126FB7D60088A54C /* endword.c in Sources */,
+				0DBFC5E0126FB7D60088A54C /* error.c in Sources */,
+				0DBFC5E1126FB7D60088A54C /* exactword.c in Sources */,
+				0DBFC5E2126FB7D60088A54C /* filename.c in Sources */,
+				0DBFC5E3126FB7D60088A54C /* font.c in Sources */,
+				0DBFC5E4126FB7D60088A54C /* getaddrinfo.c in Sources */,
+				0DBFC5E5126FB7D60088A54C /* hook.c in Sources */,
+				0DBFC5E6126FB7D60088A54C /* jacode.c in Sources */,
+				0DBFC5E7126FB7D60088A54C /* keyword.c in Sources */,
+				0DBFC5E8126FB7D60088A54C /* linebuf.c in Sources */,
+				0DBFC5E9126FB7D60088A54C /* lock.c in Sources */,
+				0DBFC5EA126FB7D60088A54C /* log.c in Sources */,
+				0DBFC5EB126FB7D60088A54C /* match.c in Sources */,
+				0DBFC5EC126FB7D60088A54C /* menu.c in Sources */,
+				0DBFC5ED126FB7D60088A54C /* multi.c in Sources */,
+				0DBFC5EE126FB7D60088A54C /* multiplex.c in Sources */,
+				0DBFC5EF126FB7D60088A54C /* narwalt.c in Sources */,
+				0DBFC5F0126FB7D60088A54C /* narwfont.c in Sources */,
+				0DBFC5F1126FB7D60088A54C /* readtext.c in Sources */,
+				0DBFC5F2126FB7D60088A54C /* search.c in Sources */,
+				0DBFC5F3126FB7D60088A54C /* setword.c in Sources */,
+				0DBFC5F4126FB7D60088A54C /* stopcode.c in Sources */,
+				0DBFC5F5126FB7D60088A54C /* strcasecmp.c in Sources */,
+				0DBFC5F6126FB7D60088A54C /* subbook.c in Sources */,
+				0DBFC5F7126FB7D60088A54C /* text.c in Sources */,
+				0DBFC5F8126FB7D60088A54C /* urlparts.c in Sources */,
+				0DBFC5F9126FB7D60088A54C /* widealt.c in Sources */,
+				0DBFC5FA126FB7D60088A54C /* widefont.c in Sources */,
+				0DBFC5FB126FB7D60088A54C /* word.c in Sources */,
+				0DBFC5FC126FB7D60088A54C /* zio.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0DD91AFB0AA547F000593C9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0DD91AB20AA547F000593C9F /* eb */;
+			targetProxy = 0DD91AFA0AA547F000593C9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D40D51813FE97AC0019A631 /* FontPanel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D51913FE97AC0019A631 /* English */,
+				0D40D52413FE97AC0019A631 /* Japanese */,
+			);
+			name = FontPanel.xib;
+			sourceTree = "<group>";
+		};
+		0D40D51A13FE97AC0019A631 /* GaijiPanel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D51B13FE97AC0019A631 /* English */,
+				0D40D52513FE97AC0019A631 /* Japanese */,
+			);
+			name = GaijiPanel.xib;
+			sourceTree = "<group>";
+		};
+		0D40D51C13FE97AC0019A631 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D51D13FE97AC0019A631 /* English */,
+				0D40D52613FE97AC0019A631 /* Japanese */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0D40D51E13FE97AC0019A631 /* MultiSearchView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D51F13FE97AC0019A631 /* English */,
+				0D40D52713FE97AC0019A631 /* Japanese */,
+			);
+			name = MultiSearchView.xib;
+			sourceTree = "<group>";
+		};
+		0D40D52013FE97AC0019A631 /* Preferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D52113FE97AC0019A631 /* English */,
+				0D40D52813FE97AC0019A631 /* Japanese */,
+			);
+			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		0D40D52213FE97AC0019A631 /* SearchView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D40D52313FE97AC0019A631 /* English */,
+				0D40D52913FE97AC0019A631 /* Japanese */,
+			);
+			name = SearchView.xib;
+			sourceTree = "<group>";
+		};
+		0D96455B0D78008E0006C9C7 /* Credits.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D96455C0D78008E0006C9C7 /* English */,
+				0D9645670D78008E0006C9C7 /* Japanese */,
+			);
+			name = Credits.html;
+			sourceTree = "<group>";
+		};
+		0D96455D0D78008E0006C9C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D96455E0D78008E0006C9C7 /* English */,
+				0D9645680D78008E0006C9C7 /* Japanese */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0D96455F0D78008E0006C9C7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D9645600D78008E0006C9C7 /* English */,
+				0D96458C0D78008E0006C9C7 /* Japanese */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		0D9645610D78008E0006C9C7 /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D9645620D78008E0006C9C7 /* English */,
+				0D96458F0D78008E0006C9C7 /* Japanese */,
+			);
+			name = ServicesMenu.strings;
+			sourceTree = "<group>";
+		};
+		0DA942A90DF38CB300768A1D /* PreferenceToolbar.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA942AA0DF38CB300768A1D /* English */,
+				0DA942AF0DF38CCC00768A1D /* Japanese */,
+			);
+			name = PreferenceToolbar.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0DC6B7640865B09F007810E1 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx10.7;
+			};
+			name = Development;
+		};
+		0DC6B7650865B09F007810E1 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx10.7;
+			};
+			name = Deployment;
+		};
+		0DD91AAC0AA547F000593C9F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-ebooks.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-bind_at_load";
+				PRODUCT_NAME = kotonoko;
+				SDKROOT = macosx10.7;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Development;
+		};
+		0DD91AAD0AA547F000593C9F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-ebooks.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "-bind_at_load";
+				PRODUCT_NAME = kotonoko;
+				SDKROOT = macosx10.7;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Deployment;
+		};
+		0DD91AF50AA547F000593C9F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 4.4;
+				DYLIB_CURRENT_VERSION = 4.4.3;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EB_BUILD_LIBRARY,
+					HAVE_CONFIG_H,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "eblib/eb-4.3.3";
+				INFOPLIST_FILE = "Info-eb.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = eb;
+				SDKROOT = macosx10.7;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Development;
+		};
+		0DD91AF60AA547F000593C9F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 4.4;
+				DYLIB_CURRENT_VERSION = 4.4.3;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					EB_BUILD_LIBRARY,
+					HAVE_CONFIG_H,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "eblib/eb-4.4.3";
+				INFOPLIST_FILE = "Info-eb.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = eb;
+				SDKROOT = macosx10.7;
+				SECTORDER_FLAGS = "";
+				SKIP_INSTALL = YES;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0DC6B7630865B09F007810E1 /* Build configuration list for PBXProject "ebooks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DC6B7640865B09F007810E1 /* Development */,
+				0DC6B7650865B09F007810E1 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		0DD91AAB0AA547F000593C9F /* Build configuration list for PBXNativeTarget "ebooks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DD91AAC0AA547F000593C9F /* Development */,
+				0DD91AAD0AA547F000593C9F /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		0DD91AF40AA547F000593C9F /* Build configuration list for PBXNativeTarget "eb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DD91AF50AA547F000593C9F /* Development */,
+				0DD91AF60AA547F000593C9F /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

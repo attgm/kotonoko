@@ -1,0 +1,52 @@
+diff -crN eb-4.4.3.org/eb/bitmap.c eb-4.4.3/eb/bitmap.c
+*** eb-4.4.3.org/eb/bitmap.c	2010-10-20 16:41:13.000000000 -0700
+--- eb-4.4.3/eb/bitmap.c	2010-10-20 16:42:57.000000000 -0700
+***************
+*** 1214,1219 ****
+--- 1214,1228 ----
+  eb_bitmap_to_png(const char *bitmap, int width, int height, char *png,
+      size_t *png_length)
+  {
++ 	return eb_bitmap_to_png2(bitmap, width, height, png, 
++ 							 png_length, PNG_FOREGROUND_COLOR);
++ }
++ 	
++ 
++ EB_Error_Code
++ eb_bitmap_to_png2(const char *bitmap, int width, int height, char *png,
++ 	size_t *png_length, unsigned int forground_color)
++ {
+      EB_Error_Code error_code;
+      char *png_p = png;
+      char *idat_start;
+***************
+*** 1241,1247 ****
+       * Set global colors.
+       */
+      RGB2CHARS(png_p + 41, PNG_BACKGROUND_COLOR);
+!     RGB2CHARS(png_p + 44, PNG_FOREGROUND_COLOR);
+      crc = png_crc(png_p + 37, 10);
+      INT2CHARS(png_p + 47, crc);
+  
+--- 1250,1256 ----
+       * Set global colors.
+       */
+      RGB2CHARS(png_p + 41, PNG_BACKGROUND_COLOR);
+!     RGB2CHARS(png_p + 44, forground_color);
+      crc = png_crc(png_p + 37, 10);
+      INT2CHARS(png_p + 47, crc);
+  
+diff -crN eb-4.4.3.org/eb/font.h eb-4.4.3/eb/font.h
+*** eb-4.4.3.org/eb/font.h	2010-10-20 16:41:13.000000000 -0700
+--- eb-4.4.3/eb/font.h	2010-10-20 16:42:57.000000000 -0700
+***************
+*** 155,160 ****
+--- 155,162 ----
+      char *bmp, size_t *bmp_length);
+  EB_Error_Code eb_bitmap_to_png(const char *bitmap, int width, int height,
+      char *png, size_t *png_length);
++ EB_Error_Code eb_bitmap_to_png2(const char *bitmap, int width, int height,
++     char *png, size_t *png_length, unsigned int forground_color);
+  
+  /* font.c */
+  EB_Error_Code eb_font(EB_Book *book, EB_Font_Code *font_code);

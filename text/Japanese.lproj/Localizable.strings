@@ -1,0 +1,12 @@
+"Select" = "選択";
+EbMissmuchFile = "このファイルはこの辞書の外字ファイルでありません. 本当にこのファイルを使いますか?";
+"Application Name" = "コトノコ";
+"Scanning Dictionaries" = "辞書を走査しています...";
+"Show Charactor Code" = "外字番号の表示";
+"Hide Charactor Code" = "外字番号を隠す";
+"Prefix Search" = "前方一致";
+"Suffix Search" = "後方一致";
+"Keyword Search" = "条件検索";
+"Menu" = "メニュー";
+"GAIJI" = "外字:%@";
+"none" = "なし";

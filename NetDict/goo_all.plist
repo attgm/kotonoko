@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hosts</key>
+	<array>
+		<string>dictionary.goo.ne.jp</string>
+		<string>wpedia.search.goo.ne.jp</string>
+	</array>
+	<key>InputEncoding</key>
+	<string>UTF-8</string>
+	<key>SearchMethods</key>
+	<array>
+		<dict>
+			<key>SearchID</key>
+			<integer>0</integer>
+			<key>SearchURL</key>
+			<string>http://dictionary.goo.ne.jp/search.php</string>
+			<key>Template</key>
+			<string>?MT={searchTerms}&amp;IE=UTF-8&amp;OE=UTF-8&amp;kind=all&amp;mode=0</string>
+			<key>Title</key>
+			<string>で始まる</string>
+		</dict>
+		<dict>
+			<key>SearchID</key>
+			<string>1</string>
+			<key>SearchURL</key>
+			<string>http://dictionary.goo.ne.jp/search.php</string>
+			<key>Template</key>
+			<string>?MT={searchTerms}&amp;IE=UTF-8&amp;OE=UTF-8&amp;kind=all&amp;mode=1</string>
+			<key>Title</key>
+			<string>で終わる</string>
+		</dict>
+		<dict>
+			<key>SearchID</key>
+			<string>64</string>
+			<key>SearchURL</key>
+			<string>http://dictionary.goo.ne.jp/search.php</string>
+			<key>Template</key>
+			<string>?MT={searchTerms}&amp;IE=UTF-8&amp;OE=UTF-8&amp;kind=all&amp;mode=2</string>
+			<key>Title</key>
+			<string>に一致する</string>
+		</dict>
+		<dict>
+			<key>SearchID</key>
+			<string>65</string>
+			<key>SearchURL</key>
+			<string>http://dictionary.goo.ne.jp/search.php</string>
+			<key>Template</key>
+			<string>?MT={searchTerms}&amp;IE=UTF-8&amp;OE=UTF-8&amp;kind=all&amp;mode=3</string>
+			<key>Title</key>
+			<string>を説明文に含む</string>
+		</dict>
+	</array>
+	<key>ShortName</key>
+	<string>goo辞書(全部)</string>
+	<key>title</key>
+	<string>goo辞書(全部)</string>
+	<key>Version</key>
+	<real>1</real>
+</dict>
+</plist>
