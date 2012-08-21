@@ -17,6 +17,9 @@
 	BOOL	_animate;
 }
 
+@property (nonatomic, retain) NSString* caption;
+@property (nonatomic, assign) BOOL animate;
+
 -(void) beginSheetForWindow : (NSWindow*) window
 					caption : (NSString*) caption;
 -(void) endSheet;

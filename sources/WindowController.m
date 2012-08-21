@@ -77,7 +77,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 			NSBeep();
 		}
 		
-		[self setTitle:nil];
+		[self setWindowTitle:nil];
 		[_searchClip setBackgroundColor:[NSColor windowBackgroundColor]];
 		// 検索Viewを初期化する
 		_searchViewController = [[SearchViewController alloc] initWithWindowController:self];
@@ -129,24 +129,19 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 										 forKeyPath:kHeadingFont
 											options:NSKeyValueObservingOptionNew
 											context:(void*)kHeadingFontBindingsIdentifier];
-/*	[[NSNotificationCenter defaultCenter] addObserver:self
+	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(selectHeading:)
 												 name:NSTableViewSelectionDidChangeNotification
-											   object:_headingTable];*/
-    [_headingTable setAction:@selector(selectHeading:)];
-    //    [_headingTable setDoubleAction:@selector(selectHeading:)];
-    [_headingTable setTarget:self];
-
-	
+											   object:_headingTable];
 }
 
 
 
 #pragma mark -
 #pragma mark Window
-//-- setTitle
+//-- setWindowTitle
 // ウィンドウタイトルの設定
-- (void) setTitle : (NSString*) inTitle
+- (void) setWindowTitle : (NSString*) inTitle
 {
 	if(inTitle){
 		[_window setTitle:inTitle];
@@ -684,6 +679,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"copyright:/%d", [binder binderId]]];
 			[_contentsController setContentURL:url appendHistory:NO refleshCache:YES];
 		}
+        [self setWindowTitle:[binder tagName]];
 	}
 }
 

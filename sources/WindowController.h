@@ -71,7 +71,7 @@
 - (void) createWindowContent;
 - (void) syncWindowStyle;
 
-- (void) setTitle:(NSString*) inTitle;
+- (void) setWindowTitle:(NSString*) inTitle;
 - (void) showFront;
 - (NSWindow*) window;
 

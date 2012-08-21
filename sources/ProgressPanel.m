@@ -10,6 +10,9 @@
 
 
 @implementation ProgressPanel
+@synthesize caption = _caption;
+@synthesize animate = _animate;
+
 
 #pragma mark Progress Sheet
 //-- beginSheetForWindow:didEndSelector
@@ -29,6 +32,7 @@
 	NSRect frame = [[window contentView] frame];
 	[_panel setFrame:frame];
 	[window setContentView:_panel];
+    
 	[self setCaption:caption];
 	
 	[self setAnimate:YES];
@@ -41,39 +45,6 @@
 {
 	[_panel removeFromSuperview];
 	[self setAnimate:NO];
-}
-
-#pragma mark Bindings
-
-//-- animate
--(BOOL) animate
-{ 
-	return _animate;
-}
-
-
-//-- setAnimate
--(void) setAnimate:(BOOL) animate
-{
-	[self willChangeValueForKey:@"animate"];
-	_animate = animate;
-	[self didChangeValueForKey:@"animate"];
-}
-
-//-- caption
--(NSString*) caption
-{
-	return _caption;
-}
-
-
-//-- setCaption
--(void) setCaption:(NSString*) caption
-{
-	[self willChangeValueForKey:@"caption"];
-	[_caption release];
-	_caption = [caption copyWithZone:[self zone]];
-    [self didChangeValueForKey:@"caption"];
 }
 
 @end
