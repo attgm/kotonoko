@@ -11,9 +11,10 @@
 
 @interface LineTextAttachmentCell : NSObject <NSTextAttachmentCell> {
 	NSTextAttachment* _attachment;
-	float	_width;
+	CGFloat	_width;
 }
 
+@property (retain, nonatomic) NSTextAttachment* attachment;
 
 
 @end

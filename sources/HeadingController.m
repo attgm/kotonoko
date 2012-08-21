@@ -9,6 +9,7 @@
 #import "PreferenceModal.h"
 #import "DictionaryElement.h"
 
+
 @implementation HeadingController
 
 #pragma mark Delegate:NSTableView
@@ -24,6 +25,7 @@
     }
     return NO;
 }
+
 
 
 //-- tableView:willDisplayCell:forTableColumn:row:
@@ -58,4 +60,21 @@
 {
     return [[[self arrangedObjects] objectAtIndex:row] canSelect] ? NO : YES;
 }
+
+
+//-- viewForTableColumn:row
+//
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    DictionaryElement* entity = [self.arrangedObjects objectAtIndex:row];
+    NSTableCellView *cellView = [tableView makeViewWithIdentifier:([entity canSelect] ? @"TextCell" : @"GroupCell")
+                                                                owner:self];
+    [cellView.textField setAttributedStringValue:entity.attributedString];
+    return cellView;
+}    
+
+
 @end
+
+
+              

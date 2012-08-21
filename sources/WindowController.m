@@ -129,10 +129,13 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 										 forKeyPath:kHeadingFont
 											options:NSKeyValueObservingOptionNew
 											context:(void*)kHeadingFontBindingsIdentifier];
-	[[NSNotificationCenter defaultCenter] addObserver:self
+/*	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(selectHeading:)
 												 name:NSTableViewSelectionDidChangeNotification
-											   object:_headingTable];
+											   object:_headingTable];*/
+    [_headingTable setAction:@selector(selectHeading:)];
+    //    [_headingTable setDoubleAction:@selector(selectHeading:)];
+    [_headingTable setTarget:self];
 
 	
 }
@@ -425,7 +428,9 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		
 		if([self selectFirstHeading] == NO){
 			[_contentsController setEmptyContents];
-		}
+		}else{
+            [self selectHeading:nil];
+        }
     }
 }
 
@@ -713,13 +718,17 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 
 //-- selectHeading
 // headingを選択した時の設定
--(void) selectHeading:(NSNotification*)notification
+-(void) selectHeading :(NSNotification*)notification
 {
-	NSArray* objects = [_headingController selectedObjects];
-	if(objects && [objects count] > 0){
-		NSURL* location = [[objects lastObject] anchor];
-		[_contentsController setContentURL:location appendHistory:YES refleshCache:YES];
-	}		
+    NSIndexSet* indexes = [_headingTable selectedRowIndexes];
+    if(indexes.count == 1){
+        NSUInteger index = indexes.firstIndex;
+        id object = [_headingController.arrangedObjects objectAtIndex:index];
+        if(object != nil){
+            NSURL* location = [object anchor];
+            [_contentsController setContentURL:location appendHistory:YES refleshCache:YES];
+        }
+	}
 }
 
 

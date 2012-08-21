@@ -247,6 +247,8 @@
 		0DD91AFC0AA547F000593C9F /* eb.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0DD91AF90AA547F000593C9F /* eb.framework */; };
 		0DDF38E10DAA729900F6973B /* AlternativeStringField.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DDF38DF0DAA729900F6973B /* AlternativeStringField.h */; };
 		0DDF38E20DAA729900F6973B /* AlternativeStringField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF38E00DAA729900F6973B /* AlternativeStringField.m */; };
+		0DE101C715E2FC02005949A2 /* HeadingRowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE101C515E2FC01005949A2 /* HeadingRowView.h */; };
+		0DE101C815E2FC02005949A2 /* HeadingRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE101C615E2FC01005949A2 /* HeadingRowView.m */; };
 		0DE1C2EB0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE1C2E90BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.h */; };
 		0DE1C2EC0BFF49A7001D1EF9 /* KeyEquivalentToNumberTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1C2EA0BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.m */; };
 		0DE1C3230BFF4FE4001D1EF9 /* KeyEquivalentManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE1C3210BFF4FE4001D1EF9 /* KeyEquivalentManager.h */; };
@@ -535,6 +537,8 @@
 		0DD91AF90AA547F000593C9F /* eb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = eb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DDF38DF0DAA729900F6973B /* AlternativeStringField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlternativeStringField.h; path = sources/AlternativeStringField.h; sourceTree = "<group>"; };
 		0DDF38E00DAA729900F6973B /* AlternativeStringField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlternativeStringField.m; path = sources/AlternativeStringField.m; sourceTree = "<group>"; };
+		0DE101C515E2FC01005949A2 /* HeadingRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeadingRowView.h; path = sources/HeadingRowView.h; sourceTree = "<group>"; };
+		0DE101C615E2FC01005949A2 /* HeadingRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeadingRowView.m; path = sources/HeadingRowView.m; sourceTree = "<group>"; };
 		0DE1C2E90BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyEquivalentToNumberTransformer.h; path = sources/KeyEquivalentToNumberTransformer.h; sourceTree = "<group>"; };
 		0DE1C2EA0BFF49A6001D1EF9 /* KeyEquivalentToNumberTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyEquivalentToNumberTransformer.m; path = sources/KeyEquivalentToNumberTransformer.m; sourceTree = "<group>"; };
 		0DE1C3210BFF4FE4001D1EF9 /* KeyEquivalentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyEquivalentManager.h; path = sources/KeyEquivalentManager.h; sourceTree = "<group>"; };
@@ -753,6 +757,8 @@
 				F584D287019EA7A3015F21BA /* ContentsView.m */,
 				0DE3C9910C065C560039ADDB /* HeadingController.h */,
 				0DE3C9920C065C560039ADDB /* HeadingController.m */,
+				0DE101C515E2FC01005949A2 /* HeadingRowView.h */,
+				0DE101C615E2FC01005949A2 /* HeadingRowView.m */,
 				0D8DF4A6147511930062A5E7 /* SwipeView.h */,
 				0D8DF4A7147511940062A5E7 /* SwipeView.m */,
 			);
@@ -1230,6 +1236,7 @@
 				0D8DF4A8147511940062A5E7 /* SwipeView.h in Headers */,
 				0D613EE51476A12500AFD9FC /* ContentsHistory.h in Headers */,
 				0D272FFC15DCE18B00C6A097 /* AcknowledgmentsWindowController.h in Headers */,
+				0DE101C715E2FC02005949A2 /* HeadingRowView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1526,6 +1533,7 @@
 				0D8DF4A9147511940062A5E7 /* SwipeView.m in Sources */,
 				0D613EE61476A12500AFD9FC /* ContentsHistory.m in Sources */,
 				0D272FFD15DCE18B00C6A097 /* AcknowledgmentsWindowController.m in Sources */,
+				0DE101C815E2FC02005949A2 /* HeadingRowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

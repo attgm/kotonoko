@@ -8,9 +8,10 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface HeadingController : NSArrayController {
 
+@interface HeadingController : NSArrayController {
 }
+
 
 
 - (BOOL)	tableView : (NSTableView*) tableView

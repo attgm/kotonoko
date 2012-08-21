@@ -10,6 +10,7 @@
 
 
 @implementation LineTextAttachmentCell
+@synthesize attachment = _attachment;
 
 //-- init
 // 初期化
@@ -131,21 +132,6 @@
 	return NO;
 }
 
-
-
-//-- attachment
-- (NSTextAttachment *) attachment
-{
-	return _attachment;
-}
-
--(void) setAttachment:(NSTextAttachment*) attachment
-{
-	if(attachment != _attachment){
-		[_attachment autorelease];
-		_attachment = [attachment retain];
-	}
-}
 
 
 @end

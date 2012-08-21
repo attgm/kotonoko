@@ -7,7 +7,6 @@
 
 
 #import <Cocoa/Cocoa.h>
-
 @class EBookController;
 @class ContentsView;
 @class SearchViewController;
@@ -21,6 +20,7 @@
 
 @class LinerMatrix;
 @class VerboseFieldEditer;
+
 
 @interface WindowController :  NSObject <NSAnimationDelegate>
 {
