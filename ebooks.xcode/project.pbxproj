@@ -45,6 +45,8 @@
 		0D334C1A0DD907D5000BDEF9 /* template in Resources */ = {isa = PBXBuildFile; fileRef = 0D334C180DD907D5000BDEF9 /* template */; };
 		0D3D93320C06FF4C0090CFB9 /* navibar_gaiji_on.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */; };
 		0D3D93330C06FF4C0090CFB9 /* navibar_gaiji.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */; };
+		0D3DC44616130A6D00A7405D /* NVButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3DC44416130A6D00A7405D /* NVButtonCell.h */; };
+		0D3DC44716130A6D00A7405D /* NVButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3DC44516130A6D00A7405D /* NVButtonCell.m */; };
 		0D3F2A050DACBFCA005F557E /* ColoredView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3F2A030DACBFCA005F557E /* ColoredView.h */; };
 		0D3F2A060DACBFCA005F557E /* ColoredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3F2A040DACBFCA005F557E /* ColoredView.m */; };
 		0D3FD68B0ECC46E500E6DD6D /* LineTextAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF3AE9E0EB07A4F004EDD37 /* LineTextAttachmentCell.m */; };
@@ -102,6 +104,7 @@
 		0D6424B10BC36E8B00640D27 /* ProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6424AF0BC36E8B00640D27 /* ProgressPanel.m */; };
 		0D6535BC0D98ED9C00DA7AEF /* MultiSearchEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D6535BA0D98ED9C00DA7AEF /* MultiSearchEntry.h */; };
 		0D6535BD0D98ED9C00DA7AEF /* MultiSearchEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6535BB0D98ED9C00DA7AEF /* MultiSearchEntry.m */; };
+		0D751EB515E4BA300055C0AC /* backgroundPattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D751EB415E4BA300055C0AC /* backgroundPattern.png */; };
 		0D84A9530FFCE08F00A06D69 /* PasteboardWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D84A9510FFCE08F00A06D69 /* PasteboardWatcher.h */; };
 		0D84A9540FFCE08F00A06D69 /* PasteboardWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D84A9520FFCE08F00A06D69 /* PasteboardWatcher.m */; };
 		0D8DF4A8147511940062A5E7 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D8DF4A6147511930062A5E7 /* SwipeView.h */; };
@@ -130,7 +133,6 @@
 		0D9D9A4E0BD5231500B76BFD /* DictionaryBinderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D9A4C0BD5231500B76BFD /* DictionaryBinderManager.h */; };
 		0D9D9A4F0BD5231500B76BFD /* DictionaryBinderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D9A4D0BD5231500B76BFD /* DictionaryBinderManager.m */; };
 		0D9DF2A30DA1FF5A003A2604 /* toolbar_network.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9DF2A20DA1FF5A003A2604 /* toolbar_network.png */; };
-		0D9F2B1F148E5B4B0012D271 /* backgroundPattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */; };
 		0DA3A4BB0D52115800E94421 /* EBStyleSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA3A4B90D52115800E94421 /* EBStyleSheet.h */; };
 		0DA3A4BC0D52115800E94421 /* EBStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3A4BA0D52115800E94421 /* EBStyleSheet.m */; };
 		0DA942AB0DF38CB300768A1D /* PreferenceToolbar.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DA942A90DF38CB300768A1D /* PreferenceToolbar.strings */; };
@@ -346,6 +348,8 @@
 		0D3CB6D1074825F200EFD503 /* EBookContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBookContainer.m; path = sources/EBookContainer.m; sourceTree = "<group>"; };
 		0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_gaiji_on.tiff; path = resources/navibar_gaiji_on.tiff; sourceTree = "<group>"; };
 		0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = navibar_gaiji.tiff; path = resources/navibar_gaiji.tiff; sourceTree = "<group>"; };
+		0D3DC44416130A6D00A7405D /* NVButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVButtonCell.h; path = sources/NVButtonCell.h; sourceTree = "<group>"; };
+		0D3DC44516130A6D00A7405D /* NVButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVButtonCell.m; path = sources/NVButtonCell.m; sourceTree = "<group>"; };
 		0D3F2A030DACBFCA005F557E /* ColoredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColoredView.h; path = sources/ColoredView.h; sourceTree = "<group>"; };
 		0D3F2A040DACBFCA005F557E /* ColoredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColoredView.m; path = sources/ColoredView.m; sourceTree = "<group>"; };
 		0D40D51913FE97AC0019A631 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FontPanel.xib; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 		0D6424AF0BC36E8B00640D27 /* ProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressPanel.m; path = sources/ProgressPanel.m; sourceTree = "<group>"; };
 		0D6535BA0D98ED9C00DA7AEF /* MultiSearchEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultiSearchEntry.h; path = sources/MultiSearchEntry.h; sourceTree = "<group>"; };
 		0D6535BB0D98ED9C00DA7AEF /* MultiSearchEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultiSearchEntry.m; path = sources/MultiSearchEntry.m; sourceTree = "<group>"; };
+		0D751EB415E4BA300055C0AC /* backgroundPattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundPattern.png; path = resources/backgroundPattern.png; sourceTree = "<group>"; };
 		0D83EE6604733F23008CBA53 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = sources/SearchViewController.h; sourceTree = "<group>"; };
 		0D83EE6704733F23008CBA53 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = sources/SearchViewController.m; sourceTree = "<group>"; };
 		0D84A9510FFCE08F00A06D69 /* PasteboardWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasteboardWatcher.h; path = sources/PasteboardWatcher.h; sourceTree = "<group>"; };
@@ -441,7 +446,6 @@
 		0D9D9A4C0BD5231500B76BFD /* DictionaryBinderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryBinderManager.h; path = sources/DictionaryBinderManager.h; sourceTree = "<group>"; };
 		0D9D9A4D0BD5231500B76BFD /* DictionaryBinderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryBinderManager.m; path = sources/DictionaryBinderManager.m; sourceTree = "<group>"; };
 		0D9DF2A20DA1FF5A003A2604 /* toolbar_network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toolbar_network.png; path = resources/toolbar_network.png; sourceTree = "<group>"; };
-		0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backgroundPattern.png; path = resources/backgroundPattern.png; sourceTree = "<group>"; };
 		0DA3A4B90D52115800E94421 /* EBStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EBStyleSheet.h; path = sources/EBStyleSheet.h; sourceTree = "<group>"; };
 		0DA3A4BA0D52115800E94421 /* EBStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EBStyleSheet.m; path = sources/EBStyleSheet.m; sourceTree = "<group>"; };
 		0DA942AA0DF38CB300768A1D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/PreferenceToolbar.strings; sourceTree = "<group>"; };
@@ -665,6 +669,8 @@
 				0DBDC7E90BDCF53A00E67A3C /* LinerMatrix.m */,
 				0DE3CA220C06947C0039ADDB /* NavibarView.h */,
 				0DE3CA230C06947C0039ADDB /* NavibarView.m */,
+				0D3DC44416130A6D00A7405D /* NVButtonCell.h */,
+				0D3DC44516130A6D00A7405D /* NVButtonCell.m */,
 				0D99A3180C3277F3004047C4 /* BGButtonCell.h */,
 				0D99A3190C3277F3004047C4 /* BGButtonCell.m */,
 				0D3F2A030DACBFCA005F557E /* ColoredView.h */,
@@ -831,6 +837,14 @@
 			name = icon;
 			sourceTree = "<group>";
 		};
+		0D751EB215E4BA0E0055C0AC /* Background Image */ = {
+			isa = PBXGroup;
+			children = (
+				0D751EB415E4BA300055C0AC /* backgroundPattern.png */,
+			);
+			name = "Background Image";
+			sourceTree = "<group>";
+		};
 		0D9645530D78008E0006C9C7 /* text */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,7 +937,6 @@
 				0D315C220C0F96F900534ED5 /* navi_close_on.tiff */,
 				0D315C230C0F96F900534ED5 /* navi_close.tiff */,
 				0D3D93300C06FF4C0090CFB9 /* navibar_gaiji_on.tiff */,
-				0D9F2B1E148E5B4B0012D271 /* backgroundPattern.png */,
 				0D3D93310C06FF4C0090CFB9 /* navibar_gaiji.tiff */,
 				0DE3CA500C06B0150039ADDB /* navibar_forward_on.png */,
 				0DE3CA510C06B0150039ADDB /* navibar_forward.png */,
@@ -1038,6 +1051,7 @@
 				0D56B0E015B29865001D2A6D /* Toolbar Icon @2x */,
 				0D13200D0BA793820003E924 /* Toolbar Icon */,
 				F550C193020B66E401A80014 /* dictionary */,
+				0D751EB215E4BA0E0055C0AC /* Background Image */,
 				0D56B0FE15B2DAE9001D2A6D /* Icon @2x */,
 				0D5CF8640BA7D34200C0BA26 /* icon */,
 			);
@@ -1237,6 +1251,7 @@
 				0D613EE51476A12500AFD9FC /* ContentsHistory.h in Headers */,
 				0D272FFC15DCE18B00C6A097 /* AcknowledgmentsWindowController.h in Headers */,
 				0DE101C715E2FC02005949A2 /* HeadingRowView.h in Headers */,
+				0D3DC44616130A6D00A7405D /* NVButtonCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1316,7 +1331,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 0DC6B7630865B09F007810E1 /* Build configuration list for PBXProject "ebooks" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1404,7 +1419,6 @@
 				0D40D53713FE97AC0019A631 /* MultiSearchEntry.xib in Resources */,
 				0D40D53813FE97AC0019A631 /* ProgressPanel.xib in Resources */,
 				0D40D53913FE97AC0019A631 /* WebView.xib in Resources */,
-				0D9F2B1F148E5B4B0012D271 /* backgroundPattern.png in Resources */,
 				0D56B0D115B28AAC001D2A6D /* toolbar_view.png in Resources */,
 				0D56B11515B454D9001D2A6D /* icon_automatic@2x.png in Resources */,
 				0D56B11615B454D9001D2A6D /* icon_bitmap@2x.png in Resources */,
@@ -1435,6 +1449,7 @@
 				0D56B14415B45511001D2A6D /* navibar_small@2x.png in Resources */,
 				0D272FFF15DCE1B100C6A097 /* Acknowledgments.rtf in Resources */,
 				0D27300115DCE40D00C6A097 /* AcknowledgmentsWindow.xib in Resources */,
+				0D751EB515E4BA300055C0AC /* backgroundPattern.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1534,6 +1549,7 @@
 				0D613EE61476A12500AFD9FC /* ContentsHistory.m in Sources */,
 				0D272FFD15DCE18B00C6A097 /* AcknowledgmentsWindowController.m in Sources */,
 				0DE101C815E2FC02005949A2 /* HeadingRowView.m in Sources */,
+				0D3DC44716130A6D00A7405D /* NVButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1703,7 +1719,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Development;
 		};
@@ -1712,7 +1728,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Deployment;
 		};
@@ -1731,9 +1747,10 @@
 				INFOPLIST_FILE = "Info-ebooks.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-bind_at_load";
 				PRODUCT_NAME = kotonoko;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1757,9 +1774,10 @@
 				INFOPLIST_FILE = "Info-ebooks.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "-bind_at_load";
 				PRODUCT_NAME = kotonoko;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
 					"-Wmost",
@@ -1793,7 +1811,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = eb;
-				SDKROOT = macosx10.7;
+				SDKROOT = "";
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = (
@@ -1826,7 +1844,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = eb;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SECTORDER_FLAGS = "";
 				SKIP_INSTALL = YES;
 				WARNING_CFLAGS = (
