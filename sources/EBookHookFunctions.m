@@ -225,8 +225,8 @@ EB_Error_Code hook_wav_tags(EB_Book*			book,
 	switch(code){
 		case EB_HOOK_BEGIN_WAVE:
 		{
-			NSString* path = [NSString stringWithFormat:@"ebwave:/%d/%d/%d/%d/%d", 
-							  [container ebookNumber], argv[2], argv[3], argv[4], argv[5]];
+			NSString* path = [NSString stringWithFormat:@"ebwave:/%lu/%d/%d/%d/%d",
+							  (unsigned long)[container ebookNumber], argv[2], argv[3], argv[4], argv[5]];
 			[container stackReference];
 			[container setReferenceURL:path];
 		}
@@ -255,8 +255,8 @@ EB_Error_Code hook_mpeg_tags(EB_Book* inBook,EB_Appendix* inAppendix,void* useri
 			if (eb_compose_movie_file_name(&argv[2], filename) != EB_SUCCESS){
 				NSLog(@"compose_movie_file_name");
 			}else{
-				NSString* path = [NSString stringWithFormat:@"ebmovie:/%d/%@", 
-								  [container ebookNumber], 
+				NSString* path = [NSString stringWithFormat:@"ebmovie:/%lu/%@",
+								  (unsigned long)[container ebookNumber],
 								  [NSString stringWithCString:filename encoding:NSASCIIStringEncoding]];
 				NSUInteger start = [container referenceMaker];
 				NSImage* image = [NSImage imageNamed:@"icon_movie.png"];
@@ -338,7 +338,7 @@ EB_Error_Code hook_anchor(EB_Book*				book,
 			break;
 		case EB_HOOK_END_REFERENCE:
 		case EB_HOOK_END_CANDIDATE_GROUP:
-			[container setReferenceURL:[NSString stringWithFormat:@"eb:/%d/%d/%d", [container ebookNumber], argv[1], argv[2]]];
+			[container setReferenceURL:[NSString stringWithFormat:@"eb:/%lu/%d/%d", (unsigned long)[container ebookNumber], argv[1], argv[2]]];
 			[container insertReference];
 			break;
 	}
@@ -378,7 +378,7 @@ EB_Error_Code hook_narrow_font_tags(EB_Book*				book,
 	
 	NSNumber* showGaijiCode = [container paramatorForkey:EBShowGaijiCode];
 	if(showGaijiCode && [showGaijiCode boolValue] == YES){
-		NSString* url = [NSString stringWithFormat:@"ebgaiji:/%d/%d/%d", [container ebookNumber], page_NarrowFont, argv[0]];
+		NSString* url = [NSString stringWithFormat:@"ebgaiji:/%lu/%d/%d", (unsigned long)[container ebookNumber], page_NarrowFont, argv[0]];
 		NSUInteger start = [container referenceMaker];
 		NSString* tag = [NSString stringWithFormat:@"N:%d", argv[0]];
 		[container appendAttributedString:
@@ -430,7 +430,7 @@ EB_Error_Code hook_wide_font_tags(EB_Book*				book,
 
 	NSNumber* showGaijiCode = [container paramatorForkey:EBShowGaijiCode];
 	if(showGaijiCode && [showGaijiCode boolValue] == YES){
-		NSString* url = [NSString stringWithFormat:@"ebgaiji:/%d/%d/%d", [container ebookNumber], page_WideFont, argv[0]];
+		NSString* url = [NSString stringWithFormat:@"ebgaiji:/%lu/%d/%d", (unsigned long)[container ebookNumber], page_WideFont, argv[0]];
 		NSUInteger start = [container referenceMaker];
 		NSString* tag = [NSString stringWithFormat:@"W:%d", argv[0]];
 		[container appendAttributedString:

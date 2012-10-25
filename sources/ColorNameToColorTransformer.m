@@ -11,7 +11,7 @@
 
 //-- transformedValueClass
 //
-+ (Class) transformedValueClass
++(Class) transformedValueClass
 {
 	return [NSColor class];
 }
@@ -19,7 +19,7 @@
 
 //-- allowsReverseTransformation
 //
-+ (BOOL) allowsReverseTransformation
++(BOOL) allowsReverseTransformation
 {
 	return YES;
 }
@@ -27,7 +27,7 @@
 
 //-- transformedValue
 // transfer fontname to NSColor
-- (id) transformedValue:(id)value
+-(id) transformedValue:(id)value
 {
 	return [PreferenceUtilities transforColorNameToColor:value];
 }
@@ -36,7 +36,7 @@
 
 //-- reverseTransformedValue
 // reverse-transfer NSColor to font
-- (id) reverseTransformedValue:(id) value
+-(id) reverseTransformedValue:(id) value
 {
 	if (value == nil || ![value isKindOfClass:[NSColor class]]) return nil;
 	

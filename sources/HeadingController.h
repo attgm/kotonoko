@@ -14,10 +14,11 @@
 
 
 
-- (BOOL)	tableView : (NSTableView*) tableView
-	  shouldSelectRow : (int) rowIndex;
--(void) tableView:(NSTableView *)tableView
-  willDisplayCell:(id)cell 
-   forTableColumn:(NSTableColumn *) tableColumn
-			  row:(int) row;
+- (BOOL)	tableView : (NSTableView*)tableView
+	  shouldSelectRow : (int)rowIndex;
+
+-(void)         tableView:(NSTableView *)tableView
+          willDisplayCell:(id)cell
+           forTableColumn:(NSTableColumn *)tableColumn
+                      row:(int)row;
 @end

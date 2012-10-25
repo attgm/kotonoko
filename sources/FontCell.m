@@ -37,7 +37,7 @@
 	[image compositeToPoint:imageOrigin operation:NSCompositeSourceOver];
 	
 	NSFont* font = [self font];
-	float fontHeight = [font ascender] - [font descender] + 3.0;
+	CGFloat fontHeight = [font ascender] - [font descender] + 3.0;
 	NSRect fontRect = NSMakeRect(innerRect.origin.x, imageOrigin.y + 4.0, innerRect.size.width, fontHeight);
 	
 	NSMutableParagraphStyle *parapraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];

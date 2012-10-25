@@ -271,7 +271,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 - (void) searchViewAnime : (id) inUserInfo
 {
     NSRect top_frame, bottom_frame, frame;
-    float diff = 0.0;
+    CGFloat diff = 0.0;
     
     top_frame = [_searchClip frame];
     bottom_frame = [_splitView frame];
@@ -332,12 +332,12 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	}
 	
     if([_splitView isVertical] != isVertical){
-		float divThickness = [_splitView dividerThickness]; // 幅
+		CGFloat divThickness = [_splitView dividerThickness]; // 幅
         // 変換前の分割比を求めておく
         NSView* oView = [[_splitView subviews] objectAtIndex:0];
         NSRect oFrame = [oView frame];
         NSRect pFrame = [_splitView frame];
-        float ratio = [_splitView isVertical] ? oFrame.size.width / pFrame.size.width 
+        CGFloat ratio = [_splitView isVertical] ? oFrame.size.width / pFrame.size.width
 			: oFrame.size.height / pFrame.size.height;
         // 縦/横の変換を行う
         [_splitView setVertical:isVertical];
@@ -485,7 +485,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
                          paragraph,                     NSParagraphStyleAttributeName,
                          nil];
     }
-	float gap = [contentsFont ascender] - [scriptFont ascender];
+	CGFloat gap = [contentsFont ascender] - [scriptFont ascender];
 	NSDictionary* superscriptAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 										   scriptFont, NSFontAttributeName,
 										   [NSNumber numberWithFloat:gap], NSBaselineOffsetAttributeName,
@@ -495,14 +495,14 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 										 scriptFont, NSFontAttributeName,
 										 [NSNumber numberWithFloat:gap], NSBaselineOffsetAttributeName,
 										 nil];
-	int imageHeight = ceil([contentsFont ascender] - [contentsFont descender]);
+	NSInteger imageHeight = ceil([contentsFont ascender] - [contentsFont descender]);
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			superscriptAttributes,					EBSuperScriptAttributes,
 			subscriptAttributes,					EBSubScriptAttributes,
 			textAttributes,							EBTextAttributes,
 			tagAttributes,							EBTagAttributes,
-			[NSNumber numberWithInt:imageHeight],	EBFontImageHeight, nil];
+			[NSNumber numberWithInteger:imageHeight],	EBFontImageHeight, nil];
 }
 
 

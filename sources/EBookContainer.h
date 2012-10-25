@@ -20,12 +20,13 @@
 	NSString*		_referenceURL;
 }
 
+@property (assign, readonly) EBook* ebook;
+@property (assign, readonly, getter=ebookNumber) NSUInteger ebookNumber;
+@property (retain) NSDictionary* paramator;
+
 
 -(id)initWithEBook:(EBook*)inBook;
 -(void)dealloc;
-
--(EBook*) ebook;
--(int) ebookNumber;
 
 -(void) setParamator:(NSDictionary*) paramator;
 -(id) paramatorForkey:(NSString*) key;

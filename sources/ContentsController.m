@@ -88,6 +88,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 
 @implementation ContentsController
 @synthesize history = _history;
+@synthesize textFinder = _textFinder;
 
 //-- init
 //
@@ -129,6 +130,9 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 												 name:NSViewBoundsDidChangeNotification
 											   object:contentView];
     [_textContentsView setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"backgroundPattern"]]];
+    
+    
+    self.textFinder = [[[NSTextFinder alloc] init] autorelease];
 }
 
 
@@ -304,7 +308,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSDictionary* textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 									contentsFont,							NSFontAttributeName,
 									contentsColor,							NSForegroundColorAttributeName, nil];
-	float gap = [contentsFont ascender] - [scriptFont ascender];
+	CGFloat gap = [contentsFont ascender] - [scriptFont ascender];
 	NSDictionary* superscriptAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 										   scriptFont,						NSFontAttributeName,
 										   contentsColor,					NSForegroundColorAttributeName,
@@ -314,7 +318,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 										 scriptFont,						NSFontAttributeName,
 										 contentsColor,						NSForegroundColorAttributeName,
 										 [NSNumber numberWithFloat:gap],	NSBaselineOffsetAttributeName, nil];
-	int imageHeight = ceil([contentsFont ascender] - [contentsFont descender]);
+	NSInteger imageHeight = ceil([contentsFont ascender] - [contentsFont descender]);
 	NSDictionary* emphasisAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 										contentsColor,									 NSForegroundColorAttributeName,
 										contentsFont,									 NSFontAttributeName,
@@ -465,7 +469,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSArray* path = [[url path] pathComponents];
 	NSAttributedString* text = nil;
 	if([path count] == 2){
-		unsigned binderId = [[path objectAtIndex:1] intValue];
+		NSUInteger binderId = [[path objectAtIndex:1] intValue];
 		DictionaryBinder* binder = [DictionaryBinderManager findDictionaryBinderForId:binderId];
 		if(binder){
 			text = [binder copyrightWithParamator:[self contentsParamator]];
@@ -531,6 +535,9 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 		[_smallButton setAction:@selector(makeTextSmaller:)];
 		[_smallButton setTarget:_webview];
 		[_smallButton bind:@"enabled" toObject:_webview withKeyPath:@"canMakeTextSmaller" options:nil];
+        
+        
+        _textFinder = [[NSTextFinder alloc] init];
 	}
 	
 	NSString* urlString = [url absoluteString];
@@ -646,7 +653,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // フォーカスを検索窓に移す
 -(void) moveFocusToContentsSearch
 {
-	[[_searchField window] makeFirstResponder:_searchField];
+    [[_searchField window] makeFirstResponder:_searchField];
 }
 
 
@@ -680,6 +687,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // 本文表示エリアの中を検索する
 -(IBAction) searchInContent:(id)sender
 {
+    
 	if([_textContentsView window] != nil){
 		[self searchInTextContent];
 	}
@@ -695,7 +703,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSString* searchString = [_searchField stringValue]; // 検索文字列の取得
 	
 	
- //[_webview searchFor:searchString direction:YES caseSensitive:NO wrap:YES];
+    //[_webview searchFor:searchString direction:YES caseSensitive:NO wrap:YES];
 	NSEnumerator* e = [[self webFrames:_webview] objectEnumerator];
 	WebFrame* frame;
 	while (frame = [e nextObject]) {
@@ -721,7 +729,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSString* searchString = [_searchField stringValue]; // 検索文字列の取得
 	
  	NSRange indicatorRange = NSMakeRange(0, 0);
-	
+    
+    
     [[_textView textStorage] beginEditing];// 編集開始
     // 検索用の素の文字列を取得
     NSString* contentString = [[_textView textStorage] string];
@@ -833,10 +842,10 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSRect controlBound = [_qtView movieControllerBounds];
 	if(size.width == 0) size.width = 240;
 	size.height += controlBound.size.height;
-	float movieHeight = size.height + 32;
+	CGFloat movieHeight = size.height + 32;
 	qtRect.size = size;
 	 
-	float currentHeight = 0;
+	CGFloat currentHeight = 0;
 	if([_moviePanel superview] == nil){
 		[_contentsView addSubview:_moviePanel];
 		currentHeight = 0;
@@ -1059,7 +1068,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
         NSRect webFrameRect = [clipView bounds];
         NSRect webViewRect = [_webview frame];
         
-        float scale = webViewRect.size.width / webFrameRect.size.width;
+        CGFloat scale = webViewRect.size.width / webFrameRect.size.width;
         WebViewAnimation* animation = [[[WebViewAnimation alloc] initWithWebView:_webview duration:0.2 animationCurve:NSAnimationLinear] autorelease];
         [animation setScale:scale];
         [animation setAnimationBlockingMode:NSAnimationNonblocking];

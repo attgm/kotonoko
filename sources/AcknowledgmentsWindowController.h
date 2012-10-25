@@ -7,6 +7,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AcknowledgmentsWindowController : NSObject<NSWindowDelegate>
+{
+    NSWindow*   _window;
+    NSTextView* _acknowledgmentText;
+}
 
 @property (nonatomic, strong) IBOutlet NSWindow* window;
 @property (nonatomic, assign) IBOutlet NSTextView* acknowledgmentText;

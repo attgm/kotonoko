@@ -53,7 +53,7 @@
     destRect.origin.y = 0;
     destRect.size = srcRect.size;
 	
-	float x = bounds.origin.x;
+	CGFloat x = bounds.origin.x;
     while (x < bounds.size.width + bounds.origin.x) {
         destRect.origin.x = x;
         [image drawInRect:destRect fromRect:srcRect operation:NSCompositeCopy fraction:1.0f];
@@ -70,7 +70,7 @@
 	NSRect innerRect = NSInsetRect(frame, 1.5, 1.5);
 	
 	NSFont* font = [self font];
-	float gap = (innerRect.size.height - ([font ascender] - [font descender] + 3.0));
+	CGFloat gap = (innerRect.size.height - ([font ascender] - [font descender] + 3.0));
 	
 	if(gap > 0.0){
 		innerRect = NSInsetRect(innerRect, 0, gap/2);

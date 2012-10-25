@@ -9,7 +9,7 @@
 
 @implementation AcknowledgmentsWindowController
 @synthesize acknowledgmentText = _acknowledgmentText;
-
+@synthesize window = _window;
 
 //-- init
 //

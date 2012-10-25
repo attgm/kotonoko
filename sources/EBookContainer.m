@@ -10,6 +10,8 @@
 #import "LineTextAttachmentCell.h"
 
 @implementation EBookContainer
+@synthesize ebook = _ebook;
+@synthesize paramator = _paramator;
 
 //-- initWithAttribute
 // 初期化
@@ -32,25 +34,18 @@
 // 後かたづけ
 - (void)dealloc
 {
-	[_paramator release];
-	[_string release];
+    self.paramator = nil;
+    
+    [_string release];
 	[_attribute release];
 	[_referenceURL release];
 	[super dealloc];
 }
 
 
-//-- ebook
-// 本を返す
--(EBook*) ebook
-{
-	return _ebook;
-}
-
-
 //-- ebookNumber
 // ebookのid
--(int) ebookNumber
+-(NSUInteger) ebookNumber
 {
 	return [_ebook ebookNumber];
 }
@@ -171,27 +166,11 @@
 
 
 #pragma mark Paramator
-//-- setParamator
-// パラメタ変数の設定
--(void) setParamator:(NSDictionary*) paramator
-{
-	if(_paramator != paramator){
-		[_paramator release];
-		_paramator = [paramator retain];
-	}
-}
-
-
 //-- paramatorForkey
 // パラメタ変数を返す
 -(id) paramatorForkey:(NSString*) key
 {
-	if (!key) return nil;
-	
-	if(_paramator){
-		return [_paramator objectForKey:key];
-	}
-	return nil;
+    return (key != nil && _paramator != nil) ? [_paramator objectForKey:key] : nil;
 }
 
 

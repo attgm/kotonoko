@@ -14,7 +14,8 @@ NSString* const EBApplicationName = @"Kotonoko";
 //-- MakeFontDataFromPath
 // パスからフォントデータを取得する
 NSImage* MakeFontDataFromPath(NSString* path, int size)
-{	
+{
+
 	NSArray* paths = [path pathComponents];
 	
 	if([paths count] > 3){

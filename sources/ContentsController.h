@@ -26,10 +26,13 @@
     CGFloat _endScale;
     CGFloat _startScale;
 }
+
 -(id)initWithWebView:(WebView*)webview duration:(NSTimeInterval)duration animationCurve:(NSAnimationCurve)animationCurve;
 -(void)setScale:(CGFloat) scale;
 -(void)setCurrentProgress:(NSAnimationProgress)progress;
 @end;
+
+
 
 @interface ContentsController : NSObject <SwipeViewDelegate> {
 	IBOutlet WindowController* _windowController;
@@ -70,8 +73,12 @@
 	EBLocation					_serialLocation;
     BOOL						_hasBackwordContents;
 	EBLocation					_backwordLocation;
+    
+    
+    NSTextFinder*               _textFinder;
 }
 
+@property (assign, nonatomic) NSTextFinder* textFinder;
 
 -(id) init;
 -(void) awakeFromNib;

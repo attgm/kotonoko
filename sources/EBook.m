@@ -23,16 +23,16 @@
 
 #import "LineTextAttachmentCell.h"
 
-NSString *const EBContentsConinuity		= @"contentsConinuity";
-NSString *const EBShowGaijiCode			= @"showGaijiCode";
-NSString *const EBFontImageHeight		= @"fontImageHeight";
-NSString *const EBSuperScriptAttributes = @"superSctiprAttributes";
-NSString *const EBSubScriptAttributes	= @"subSctiprAttributes";
-NSString *const EBKeywordAttributes		= @"keywordAttributes";
-NSString *const EBGaijiAttributes		= @"gaijiAttributes";
-NSString *const EBEmphasisAttributes	= @"emphasisAttributes";
-NSString *const EBTextAttributes		= @"textAttributes";
-NSString *const EBReferenceTextColor	= @"referenceTextColor";
+NSString* const EBContentsConinuity		= @"contentsConinuity";
+NSString* const EBShowGaijiCode			= @"showGaijiCode";
+NSString* const EBFontImageHeight		= @"fontImageHeight";
+NSString* const EBSuperScriptAttributes = @"superSctiprAttributes";
+NSString* const EBSubScriptAttributes	= @"subSctiprAttributes";
+NSString* const EBKeywordAttributes		= @"keywordAttributes";
+NSString* const EBGaijiAttributes		= @"gaijiAttributes";
+NSString* const EBEmphasisAttributes	= @"emphasisAttributes";
+NSString* const EBTextAttributes		= @"textAttributes";
+NSString* const EBReferenceTextColor	= @"referenceTextColor";
 NSString* const kUseAlternativeString	= @"useAlternativeString";
 NSString* const kAlternativeString		= @"alternativeString";
 NSString* const kNarrowFontTable		= @"narrowFonts";
@@ -44,14 +44,13 @@ typedef struct _SHit {
     EB_Position	content;
 } SHit;
 
-const int MAX_HITS = 50;
-const int NUMBER_OF_WORDS = 5;
+const NSUInteger MAX_HITS = 50;
+const NSUInteger NUMBER_OF_WORDS = 5;
 
-static int gEBookNumber = 1;
+static NSUInteger gEBookNumber = 1;
 static NSNumber *yes, *no;
 
 @implementation EBook
-
 @synthesize ebookNumber = _ebookNumber;
 
 #pragma mark Initalize
@@ -185,13 +184,6 @@ static NSNumber *yes, *no;
 }
 
 
-//-- ebookNumber
-// ebook識別用 id
--(int) ebookNumber
-{
-	return _ebookNumber;
-}
-
 
 #pragma mark Subbook
 
@@ -251,6 +243,7 @@ static NSNumber *yes, *no;
 		return NULL;
     }
 }
+
 
 -(void) setTagName : (NSString*) inTagName
 {
@@ -1198,7 +1191,7 @@ static NSNumber *yes, *no;
 										 kind:(int) kind
 {
 	NSString* kchar = (kind == kFontTypeNarrow) ? @"n" : @"w";
-	NSString* path = [NSString stringWithFormat:@"/%d/%@/%d", _ebookNumber, kchar, code];
+	NSString* path = [NSString stringWithFormat:@"/%lu/%@/%d", (unsigned long)_ebookNumber, kchar, code];
 	
 	return [FontTableElement elementWithURL:path
 								alternative:[self stringWithCode:code kind:kind]

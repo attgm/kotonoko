@@ -17,7 +17,7 @@ enum {
 };
 
 @interface DictionaryBinder : NSObject {
-	unsigned _identifier;
+	NSUInteger  _identifier;
 	NSMutableDictionary* _bindingItems;
 	
 	NSString*	_tagName;

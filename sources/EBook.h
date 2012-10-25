@@ -34,27 +34,27 @@ extern NSString *const EBTagAttributes;
     EB_Hookset		_candidatesHookset;
     EB_Hookset		_htmlHookset;
 	
-    int						_subbookNum;
-    EB_Subbook_Code			_subbook[EB_MAX_SUBBOOKS];
-    int						_activeSubbook;
+    int                 _subbookNum;
+    EB_Subbook_Code     _subbook[EB_MAX_SUBBOOKS];
+    int                 _activeSubbook;
     
-    EB_Multi_Search_Code	_multiCode[EB_MAX_MULTI_SEARCHES];
-    int						_multiCodeNum;
+    EB_Multi_Search_Code    _multiCode[EB_MAX_MULTI_SEARCHES];
+    int                     _multiCodeNum;
     
-    NSMutableDictionary*	_narrowFontDic;
-    NSMutableDictionary*	_wideFontDic;
+    NSMutableDictionary*    _narrowFontDic;
+    NSMutableDictionary*    _wideFontDic;
 
-    NSString*	_tagName;
-    int			_ebookNumber; // ID
+    NSString*       _tagName;
+    NSUInteger      _ebookNumber; // ID
 	
-    EB_Font_Code _smallFontType;
-    EB_Font_Code _largeFontType;
+    EB_Font_Code    _smallFontType;
+    EB_Font_Code    _largeFontType;
 	
-	BOOL	_hasSerialContents;
+	BOOL    _hasSerialContents;
 };
 
 @property (retain) NSString* tagName;
-@property (assign,readonly) int ebookNumber;
+@property (assign,readonly) NSUInteger ebookNumber;
 
 
 + (void) initalizeLibrary : (BOOL) inInit;

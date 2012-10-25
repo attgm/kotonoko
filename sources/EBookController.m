@@ -64,6 +64,7 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 	
 	
 	// Apple Eventの登録
+    /*
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
 													   andSelector:@selector(handleSearchEvent:withReplyEvent:)
 													 forEventClass:'ktNk'
@@ -73,7 +74,7 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 													 forEventClass:'ktNk'
 														andEventID:'list'];
 	
-	
+	*/
 	
 }	
 
@@ -298,7 +299,7 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 // 指定語で前方検索を行う
 - (void) searchAndPasteWord:(NSString*) inWord
 {
-	if(_binderManager){
+	if(_binderManager && inWord != nil){
 		// 最初の1行だけを取り出す
 		NSRange range = [inWord lineRangeForRange:NSMakeRange(0, 0)];
 		NSString* searchString = [inWord substringWithRange:range];

@@ -58,13 +58,15 @@
 	NSArray*					_resultsArray;
 }
 
+
+
 - (IBAction) privDictionary : (id)sender;
 - (IBAction) nextDictionary : (id)sender;
 - (IBAction) changeDictionary: (id)sender;
 - (IBAction) find:(id) sender;
 
 - (void) selectHeading:(NSNotification*)notification;
--(void) selectBinder:(DictionaryBinder*) binder;
+- (void) selectBinder:(DictionaryBinder*) binder;
 
 - (id) initWithController:(EBookController*) inController;
 - (void) createMainWindow;

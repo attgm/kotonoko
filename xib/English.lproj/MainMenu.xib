@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1187</string>
-		<string key="IBDocument.HIToolboxVersion">624.00</string>
+		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">2840</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -321,15 +321,46 @@
 									<reference key="NSOnImage" ref="13202324"/>
 									<reference key="NSMixedImage" ref="790304250"/>
 								</object>
-								<object class="NSMenuItem" id="550975133">
+								<object class="NSMenuItem" id="652470846">
 									<reference key="NSMenu" ref="20475064"/>
 									<string key="NSTitle">Find</string>
-									<string key="NSKeyEquiv">f</string>
-									<int key="NSKeyEquivModMask">1048576</int>
+									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="13202324"/>
 									<reference key="NSMixedImage" ref="790304250"/>
-									<int key="NSTag">201</int>
+									<string key="NSAction">submenuAction:</string>
+									<object class="NSMenu" key="NSSubmenu" id="845185345">
+										<string key="NSTitle">Find</string>
+										<array class="NSMutableArray" key="NSMenuItems">
+											<object class="NSMenuItem" id="823687145">
+												<reference key="NSMenu" ref="845185345"/>
+												<string key="NSTitle">Find</string>
+												<string key="NSKeyEquiv">f</string>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="13202324"/>
+												<reference key="NSMixedImage" ref="790304250"/>
+											</object>
+											<object class="NSMenuItem" id="738393945">
+												<reference key="NSMenu" ref="845185345"/>
+												<string key="NSTitle">Find Next</string>
+												<string key="NSKeyEquiv">g</string>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="13202324"/>
+												<reference key="NSMixedImage" ref="790304250"/>
+											</object>
+											<object class="NSMenuItem" id="281144136">
+												<reference key="NSMenu" ref="845185345"/>
+												<string key="NSTitle">Find Previous</string>
+												<string key="NSKeyEquiv">G</string>
+												<int key="NSKeyEquivModMask">1179648</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="13202324"/>
+												<reference key="NSMixedImage" ref="790304250"/>
+											</object>
+										</array>
+									</object>
 								</object>
 							</array>
 						</object>
@@ -628,14 +659,6 @@
 						<reference key="destination" ref="113169150"/>
 					</object>
 					<int key="connectionID">193</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">find:</string>
-						<reference key="source" ref="582952020"/>
-						<reference key="destination" ref="550975133"/>
-					</object>
-					<int key="connectionID">786</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -965,7 +988,7 @@
 							<reference ref="574381191"/>
 							<reference ref="846211023"/>
 							<reference ref="366946583"/>
-							<reference ref="550975133"/>
+							<reference ref="652470846"/>
 						</array>
 						<reference key="parent" ref="643022780"/>
 					</object>
@@ -1012,11 +1035,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">746</int>
 						<reference key="object" ref="366946583"/>
-						<reference key="parent" ref="20475064"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">747</int>
-						<reference key="object" ref="550975133"/>
 						<reference key="parent" ref="20475064"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1102,6 +1120,39 @@
 						<reference key="object" ref="544166947"/>
 						<reference key="parent" ref="625908192"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">795</int>
+						<reference key="object" ref="652470846"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="845185345"/>
+						</array>
+						<reference key="parent" ref="20475064"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">796</int>
+						<reference key="object" ref="845185345"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="823687145"/>
+							<reference ref="738393945"/>
+							<reference ref="281144136"/>
+						</array>
+						<reference key="parent" ref="652470846"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">797</int>
+						<reference key="object" ref="823687145"/>
+						<reference key="parent" ref="845185345"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">798</int>
+						<reference key="object" ref="738393945"/>
+						<reference key="parent" ref="845185345"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">799</int>
+						<reference key="object" ref="281144136"/>
+						<reference key="parent" ref="845185345"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1149,7 +1200,6 @@
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="746.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="747.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="773.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="774.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1158,6 +1208,11 @@
 				<string key="78.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="793.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="795.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="796.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="797.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="798.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="799.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1166,10 +1221,213 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">794</int>
+			<int key="maxID">799</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">ACMenuBinder</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">_menu</string>
+						<string key="NS.object.0">NSMenu</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">_menu</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">_menu</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ACMenuBinder.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ContentsController</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="backHistory:">id</string>
+						<string key="changeCharactorCode:">id</string>
+						<string key="closeCharactorCodePane:">id</string>
+						<string key="forwardHistory:">id</string>
+						<string key="searchInContent:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="backHistory:">
+							<string key="name">backHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="changeCharactorCode:">
+							<string key="name">changeCharactorCode:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="closeCharactorCodePane:">
+							<string key="name">closeCharactorCodePane:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="forwardHistory:">
+							<string key="name">forwardHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="searchInContent:">
+							<string key="name">searchInContent:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_backButton">NSButton</string>
+						<string key="_charactorCodeString">NSTextField</string>
+						<string key="_charactorCodeView">NavibarView</string>
+						<string key="_contentsConinuityButton">NSButton</string>
+						<string key="_contentsView">SwipeView</string>
+						<string key="_forwardButton">NSButton</string>
+						<string key="_largeButton">NSButton</string>
+						<string key="_moviePanel">NSView</string>
+						<string key="_progressIndicator">NSProgressIndicator</string>
+						<string key="_qtView">QTMovieView</string>
+						<string key="_searchField">NSTextField</string>
+						<string key="_showGaijiButton">NSButton</string>
+						<string key="_smallButton">NSButton</string>
+						<string key="_textContentsView">NSScrollView</string>
+						<string key="_textView">NSTextView</string>
+						<string key="_webContentsView">NSView</string>
+						<string key="_webview">WebView</string>
+						<string key="_windowController">WindowController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_backButton">
+							<string key="name">_backButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_charactorCodeString">
+							<string key="name">_charactorCodeString</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_charactorCodeView">
+							<string key="name">_charactorCodeView</string>
+							<string key="candidateClassName">NavibarView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_contentsConinuityButton">
+							<string key="name">_contentsConinuityButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_contentsView">
+							<string key="name">_contentsView</string>
+							<string key="candidateClassName">SwipeView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_forwardButton">
+							<string key="name">_forwardButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_largeButton">
+							<string key="name">_largeButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_moviePanel">
+							<string key="name">_moviePanel</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_progressIndicator">
+							<string key="name">_progressIndicator</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_qtView">
+							<string key="name">_qtView</string>
+							<string key="candidateClassName">QTMovieView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_searchField">
+							<string key="name">_searchField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_showGaijiButton">
+							<string key="name">_showGaijiButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_smallButton">
+							<string key="name">_smallButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_textContentsView">
+							<string key="name">_textContentsView</string>
+							<string key="candidateClassName">NSScrollView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_textView">
+							<string key="name">_textView</string>
+							<string key="candidateClassName">NSTextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_webContentsView">
+							<string key="name">_webContentsView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_webview">
+							<string key="name">_webview</string>
+							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_windowController">
+							<string key="name">_windowController</string>
+							<string key="candidateClassName">WindowController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/ContentsController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">EBookController</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="newSearch:">id</string>
+						<string key="print:">id</string>
+						<string key="rescanDictionary:">id</string>
+						<string key="runPageLayout:">id</string>
+						<string key="showFontTable:">id</string>
+						<string key="showPreferencePanel:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="newSearch:">
+							<string key="name">newSearch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="print:">
+							<string key="name">print:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="rescanDictionary:">
+							<string key="name">rescanDictionary:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="runPageLayout:">
+							<string key="name">runPageLayout:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showFontTable:">
+							<string key="name">showFontTable:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showPreferencePanel:">
+							<string key="name">showPreferencePanel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">_dictionaryMenuBinder</string>
+						<string key="NS.object.0">ACMenuBinder</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">_dictionaryMenuBinder</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">_dictionaryMenuBinder</string>
+							<string key="candidateClassName">ACMenuBinder</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/EBookController.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">FirstResponder</string>
 					<dictionary class="NSMutableDictionary" key="actions">
@@ -1199,6 +1457,145 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">LinerMatrix</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LinerMatrix.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NavibarView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NavibarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SwipeView</string>
+					<string key="superclassName">NSView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">_delegate</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">_delegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">_delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/SwipeView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">WebView</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">resetPageZoom:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">resetPageZoom:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">resetPageZoom:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/WebView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">WindowController</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="changeDictionary:">id</string>
+						<string key="find:">id</string>
+						<string key="nextDictionary:">id</string>
+						<string key="privDictionary:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="changeDictionary:">
+							<string key="name">changeDictionary:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="find:">
+							<string key="name">find:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="nextDictionary:">
+							<string key="name">nextDictionary:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="privDictionary:">
+							<string key="name">privDictionary:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_binderController">NSArrayController</string>
+						<string key="_binderMatrix">LinerMatrix</string>
+						<string key="_contentView">NSView</string>
+						<string key="_contentsClip">NSView</string>
+						<string key="_contentsController">ContentsController</string>
+						<string key="_headingController">NSArrayController</string>
+						<string key="_headingTable">NSTableView</string>
+						<string key="_searchClip">NSClipView</string>
+						<string key="_splitView">NSSplitView</string>
+						<string key="_window">NSWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_binderController">
+							<string key="name">_binderController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_binderMatrix">
+							<string key="name">_binderMatrix</string>
+							<string key="candidateClassName">LinerMatrix</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_contentView">
+							<string key="name">_contentView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_contentsClip">
+							<string key="name">_contentsClip</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_contentsController">
+							<string key="name">_contentsController</string>
+							<string key="candidateClassName">ContentsController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_headingController">
+							<string key="name">_headingController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_headingTable">
+							<string key="name">_headingTable</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_searchClip">
+							<string key="name">_searchClip</string>
+							<string key="candidateClassName">NSClipView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_splitView">
+							<string key="name">_splitView</string>
+							<string key="candidateClassName">NSSplitView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_window">
+							<string key="name">_window</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/WindowController.h</string>
 					</object>
 				</object>
 			</array>
