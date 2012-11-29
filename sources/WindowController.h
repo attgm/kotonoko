@@ -114,8 +114,8 @@
 
 -(DictionaryBinder*) currentDictionaryBinder;
 -(void) setCurrentDictionaryBinder:(DictionaryBinder*) binder;
-- (void) searchWord:(NSString*)inWord max:(int)inMaxNumber;
-- (void) searchEntries:(NSArray*) inWord max:(int) inMaxNumber;
+- (void) searchWord:(NSString*)inWord max:(NSInteger)inMaxNumber;
+- (void) searchEntries:(NSArray*) inWord max:(NSInteger) inMaxNumber;
 
 
 -(NSArray*) resultsArray;

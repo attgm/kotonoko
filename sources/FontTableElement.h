@@ -10,13 +10,13 @@
 @interface FontTableElement : NSObject {
 	NSString*	_alternative;
 	NSString*	_url;
-	int			_identify;
+	NSInteger	_identify;
 	BOOL		_useAlternative;
 };
 
 
--(id) initWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(int)identify;
-+(id) elementWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(int)identify;
+-(id) initWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
++(id) elementWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
 
 -(void) dealloc;
 
@@ -26,7 +26,7 @@
 -(BOOL) useAlternativeString;
 -(void) setUseAlternativeString:(BOOL) useAlternative;
 
--(int) identify;
+-(NSInteger) identify;
 -(NSImage*) largeImageRepresentation;
 
 -(NSImage*) imageRepresentation;

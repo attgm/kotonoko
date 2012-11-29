@@ -232,7 +232,7 @@ static NSNumber *yes, *no;
 -(NSString*) stringSubbookTitle
 {
     char title[EB_MAX_TITLE_LENGTH + 1];
-    int length;
+    NSUInteger length;
     NSData* tmp;
     
     if(eb_subbook_title2(&_book, _subbook[_activeSubbook], title) == EB_SUCCESS){
@@ -267,7 +267,8 @@ static NSNumber *yes, *no;
     char title[EB_MAX_MULTI_TITLE_LENGTH + 1];
     NSData* tmp;
     NSMutableArray* array;
-    int length, i;
+    NSUInteger length;
+    int i;
     EB_Error_Code err;
     
     if (_multiCodeNum == 0) return NULL;
@@ -291,13 +292,14 @@ static NSNumber *yes, *no;
 
 //-- arrayMultiSearchEntry
 // 複合検索のエントリ検索
--(NSArray*) arrayMultiSearchEntry : (int) inIndex
+-(NSArray*) arrayMultiSearchEntry : (NSInteger) inIndex
 {
     char label[EB_MAX_MULTI_LABEL_LENGTH + 1];
     EB_Multi_Entry_Code code[EB_MAX_MULTI_ENTRIES];
     NSData* tmp;
     NSMutableArray* array;
-    int length, counts, i;
+    int counts, i;
+    NSUInteger length;
     EB_Error_Code err;
     
     if(inIndex < 0 || inIndex >= _multiCodeNum){
@@ -326,8 +328,8 @@ static NSNumber *yes, *no;
 
 //-- arrayMultiSearchCandidates
 // 複合検索の候補を取得する
--(NSArray*) arrayMultiSearchCandidates : (int) inIndex
-									at : (int) inEntryID
+-(NSArray*) arrayMultiSearchCandidates : (NSInteger) inIndex
+									at : (NSInteger) inEntryID
 {
     EB_Position position;
     EB_Error_Code err;
@@ -362,8 +364,8 @@ static NSNumber *yes, *no;
     NSMutableArray* candidates = [NSMutableArray arrayWithCapacity:1];
 	CandidateContainer* container = [[[CandidateContainer alloc] initWithEBook:self] autorelease];
 	
-	position.page = inLocation.page;
-    position.offset = inLocation.offset;
+	position.page = (int) inLocation.page;
+    position.offset = (int) inLocation.offset;
     
     buffer[sizeof(buffer) - 1] = '\0';
     eb_seek_text(&_book, &position);
@@ -393,7 +395,7 @@ static NSNumber *yes, *no;
 // 最大inMaxHitsの見出し語を表示する
 - (NSArray*) search : (NSString*) inWord
 			 method : (ESearchMethod) inMethod
-                max : (int) inMaxHits
+                max : (NSInteger) inMaxHits
 		  paramator : (NSDictionary*) paramator
 {
 	NSData* eucWord = [inWord dataUsingEncoding:NSJapaneseEUCStringEncoding allowLossyConversion:NO];
@@ -468,7 +470,7 @@ static NSNumber *yes, *no;
 //-- searchKeyword:length:
 // キーワード検索を行う
 - (EB_Error_Code) searchKeyword : (char*) inWord
-                         length : (int) inLength
+                         length : (NSInteger) inLength
 {
     char* keywords[inLength/2 + 2]; // keywordは最低1文字なので length/2+1個. +1はNULLの分
     char* p = inWord;
@@ -497,7 +499,7 @@ static NSNumber *yes, *no;
 // 複合検索の実行
 -(NSArray*) multiSearch:(NSArray*) searchEntries
 				  index:(NSInteger) index
-					max:(int) maxHits
+					max:(NSInteger) maxHits
 			  paramator:(NSDictionary*) paramator
 {
 	EB_Error_Code err;
@@ -650,8 +652,8 @@ static NSNumber *yes, *no;
 						paramator:(NSDictionary*) param
 {
     EB_Position position;
-	position.page = location.page;
-    position.offset = location.offset;
+	position.page = (int)location.page;
+    position.offset = (int)location.offset;
 	
 	eb_seek_text(&_book, &position);
     NSAttributedString* string = [self readTextWithParamator:param]; 
@@ -664,8 +666,8 @@ static NSNumber *yes, *no;
 - (NSString*) htmlContentAt:(EBLocation) location
 {
     EB_Position position;
-	position.page = location.page;
-    position.offset = location.offset;
+	position.page = (int)location.page;
+    position.offset = (int)location.offset;
 
 	eb_seek_text(&_book, &position);
     EBookContainer* container = [[[EBookContainer alloc] initWithEBook:self] autorelease];
@@ -700,8 +702,8 @@ static NSNumber *yes, *no;
 -(BOOL) hasBackwordContents:(EBLocation*) location
 {
     EB_Position position;
-    position.page = location->page;
-    position.offset = location->offset;
+    position.page = (int)location->page;
+    position.offset = (int)location->offset;
     
 	if(eb_seek_text(&_book, &position) == EB_SUCCESS){
         NSInteger i = 0;
@@ -901,11 +903,11 @@ static NSNumber *yes, *no;
     EB_Error_Code err;
     NSMutableData* image = [NSMutableData dataWithCapacity:EB_SIZE_PAGE];
     ssize_t length;
-    int width = inSize.width;
-    int height = inSize.height;
+    NSInteger width = inSize.width;
+    NSInteger height = inSize.height;
     
-    pos.page = inLocate.page;
-    pos.offset = inLocate.offset;
+    pos.page = (int)inLocate.page;
+    pos.offset = (int)inLocate.offset;
 
     switch (inStyle) {
 		case kImageTypeColor:
@@ -913,7 +915,7 @@ static NSNumber *yes, *no;
 			break;
 
 		case kImageTypeMono:
-			err = eb_set_binary_mono_graphic(&_book, &pos, width, height);
+			err = eb_set_binary_mono_graphic(&_book, &pos, (int)width, (int)height);
 			break;
 
 		default:
@@ -963,9 +965,9 @@ static NSNumber *yes, *no;
 
 //-- fontImageWithCode:kind:size
 // 外字フォントのビットマップを生成する
-- (NSImage*) fontImageWithCode : (int) inCode
-						 kind : (int) inKind
-						 size : (int) inSize
+- (NSImage*) fontImageWithCode : (NSInteger) inCode
+						 kind : (NSInteger) inKind
+						 size : (NSInteger) inSize
 {
 	NSColor* blackColor = [NSColor colorWithCalibratedRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 	return [self fontImageWithCode:inCode kind:inKind size:inSize color:blackColor];
@@ -974,9 +976,9 @@ static NSNumber *yes, *no;
 
 //-- fontImageWithCode:kind:size
 // 外字フォントのビットマップを生成する
-- (NSImage*) fontImageWithCode:(int) code
-						 kind:(int) kind
-						 size:(int) size
+- (NSImage*) fontImageWithCode:(NSInteger) code
+						 kind:(NSInteger) kind
+						 size:(NSInteger) size
 						color:(NSColor*) color
 {
     unsigned char bitmap[EB_SIZE_WIDE_FONT_48];
@@ -1005,8 +1007,8 @@ static NSNumber *yes, *no;
     }
     
     err = (kind == kFontTypeNarrow) ?
-		eb_narrow_font_character_bitmap(&_book, code, (char*)bitmap)
-		: eb_wide_font_character_bitmap(&_book, code, (char*)bitmap);
+		eb_narrow_font_character_bitmap(&_book, (int)code, (char*)bitmap)
+		: eb_wide_font_character_bitmap(&_book, (int)code, (char*)bitmap);
     if(err != EB_SUCCESS){
 		NSLog(@"eb_wide_font_character_bitmap:%s", eb_error_message(err));
 		return NULL;
@@ -1027,10 +1029,10 @@ static NSNumber *yes, *no;
 
 //-- stringWithCode
 // 代替文字を返す
-- (NSString*) stringWithCode : (int) code 
-						kind : (int) kind
+- (NSString*) stringWithCode : (NSInteger) code
+						kind : (NSInteger) kind
 {
-	NSString* key = [[NSNumber numberWithInt:code] stringValue];
+	NSString* key = [[NSNumber numberWithInteger:code] stringValue];
 	
 	NSDictionary* dic = (kind == kFontTypeNarrow) ? 
 		[_narrowFontDic objectForKey:key] : [_wideFontDic objectForKey:key];
@@ -1041,10 +1043,10 @@ static NSNumber *yes, *no;
 
 //-- useAlternativeWithCode:kind
 // 代替文字を使うかどうかの設定
--(BOOL) useAlternativeWithCode:(int) code
-						  kind:(int) kind
+-(BOOL) useAlternativeWithCode:(NSInteger) code
+						  kind:(NSInteger) kind
 {
-	NSString* key = [[NSNumber numberWithInt:code] stringValue];
+	NSString* key = [[NSNumber numberWithInteger:code] stringValue];
 	
 	NSDictionary* item = (kind == kFontTypeNarrow) ? 
 		[_narrowFontDic objectForKey:key] : [_wideFontDic objectForKey:key];
@@ -1054,8 +1056,8 @@ static NSNumber *yes, *no;
 
 //-- setStringWithCode
 // 代替文字の設定
-- (void) setStringWithCode:(int) code
-					  kind:(int) kind
+- (void) setStringWithCode:(NSInteger) code
+					  kind:(NSInteger) kind
 					string:(NSString*) string
 {
 	[self setAlternativeString:string use:[self useAlternativeWithCode:code kind:kind] code:code kind:kind];
@@ -1064,7 +1066,7 @@ static NSNumber *yes, *no;
 
 //-- setUseAlternative:code:kind
 // 代替文字を使うかどうかの設定
--(void) setUseAlternative:(BOOL)use code:(int)code kind:(int)kind
+-(void) setUseAlternative:(BOOL)use code:(NSInteger)code kind:(NSInteger)kind
 {
 	[self setAlternativeString:[self stringWithCode:code kind:kind] use:use code:code kind:kind];
 }
@@ -1074,15 +1076,15 @@ static NSNumber *yes, *no;
 // 代替文字列に関する設定を変更する
 -(void) setAlternativeString:(NSString*) alternative
 						 use:(BOOL) use
-						code:(int) code
-						kind:(int) kind
+						code:(NSInteger) code
+						kind:(NSInteger) kind
 {
 	if(!yes){
 		yes = [[NSNumber alloc] initWithBool:YES];
 		no = [[NSNumber alloc] initWithBool:NO];
 	}
 	
-	NSString* key = [[NSNumber numberWithInt:code] stringValue];
+	NSString* key = [[NSNumber numberWithInteger:code] stringValue];
 	NSNumber* useAlternative = use ? yes : no;
 	NSDictionary* item = [NSDictionary dictionaryWithObjectsAndKeys:
 						  alternative, kAlternativeString, useAlternative, kUseAlternativeString, nil];
@@ -1097,7 +1099,7 @@ static NSNumber *yes, *no;
 //-- createFontTableWithProparty:kind
 // フォントテーブルの生成
 - (void) createFontTableWithProparty:(NSDictionary*) proparty
-								kind:(int) kind
+								kind:(NSInteger) kind
 {
    if(!yes){
 		yes = [[NSNumber alloc] initWithBool:YES];
@@ -1164,12 +1166,13 @@ static NSNumber *yes, *no;
 
 //-- fontTable
 // 外字一覧を返す
-- (NSArray*) fontTable : (int) inKind
+- (NSArray*) fontTable : (NSInteger) inKind
 {
     NSMutableArray* array;
     NSArray* keys;
     NSDictionary* dict;
-    int value, i, count;
+    int value, i;
+    NSUInteger count;
     
     dict = (inKind == kFontTypeNarrow) ? _narrowFontDic : _wideFontDic;
 	
@@ -1187,11 +1190,11 @@ static NSNumber *yes, *no;
 
 //-- fontTableElementWithCode:kind:
 // fontTableElementを返す
--(FontTableElement*) fontTableElementWithCode:(int) code
-										 kind:(int) kind
+-(FontTableElement*) fontTableElementWithCode:(NSInteger) code
+										 kind:(NSInteger) kind
 {
 	NSString* kchar = (kind == kFontTypeNarrow) ? @"n" : @"w";
-	NSString* path = [NSString stringWithFormat:@"/%lu/%@/%d", (unsigned long)_ebookNumber, kchar, code];
+	NSString* path = [NSString stringWithFormat:@"/%lu/%@/%ld", (unsigned long)_ebookNumber, kchar, code];
 	
 	return [FontTableElement elementWithURL:path
 								alternative:[self stringWithCode:code kind:kind]

@@ -59,7 +59,7 @@
 
 
 //-- numberOfItemsInComboBox: (protcol : NSComboBoxDataSource)
-- (int) numberOfItemsInComboBox : (NSComboBox *) aComboBox
+- (NSInteger) numberOfItemsInComboBox : (NSComboBox *) aComboBox
 {
     return [_history count];
 }

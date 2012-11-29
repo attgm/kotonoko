@@ -65,7 +65,7 @@
 	[border lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width, bounds.origin.y + bounds.size.height)];
 	[border lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width, bounds.origin.y)];
 	[border stroke];
-
+    
 	[NSGraphicsContext restoreGraphicsState];	
 }
 

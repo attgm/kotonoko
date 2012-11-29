@@ -18,14 +18,14 @@ enum {
 #define EBDictionaryName1xFormat	@"DicName"
 
 typedef struct _EBLocation {
-	int ebook;	// EBook ID
-	int page;	// page
-	int offset; // offset
+	NSInteger ebook;	// EBook ID
+	NSInteger page;	// page
+	NSInteger offset; // offset
 } EBLocation;
 
 typedef struct _SSize {
-    int		width;
-    int		height;
+    NSInteger		width;
+    NSInteger		height;
 } SSize;
 
 enum {
@@ -38,6 +38,7 @@ enum {
     kFontImageSizeSmall
 };
 
+
 typedef enum {
 	kImageTypeColor,
 	kImageTypeMono
@@ -47,7 +48,7 @@ typedef enum {
 
 #define page_NarrowFont 0
 #define page_WideFont 1
-FOUNDATION_STATIC_INLINE EBLocation EBMakeLocation(int ebook, int page, int offset) {
+FOUNDATION_STATIC_INLINE EBLocation EBMakeLocation(NSInteger ebook, NSInteger page, NSInteger offset) {
     EBLocation l;
 	l.ebook = ebook;
     l.page = page;
@@ -57,7 +58,7 @@ FOUNDATION_STATIC_INLINE EBLocation EBMakeLocation(int ebook, int page, int offs
 
 
 
-FOUNDATION_STATIC_INLINE SSize EBMakeSize(int width, int height) {
+FOUNDATION_STATIC_INLINE SSize EBMakeSize(NSInteger width, NSInteger height) {
     SSize s;
     s.width = width;
     s.height = height;

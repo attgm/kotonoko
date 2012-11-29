@@ -41,7 +41,7 @@
 +(EBDictionary*) dictionaryListItemWithEBook:(EBook*) book path:(NSString*) path  identify:(NSString*) dictionaryId;
 
 
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(BOOL) hasSearchMethod:(ESearchMethod) method;
 -(NSArray*) multiSearchTitles;
 

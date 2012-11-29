@@ -13,52 +13,42 @@
 // 背景を描く
 -(void) drawBezelWithFrame:(NSRect)frame inView:(NSView*)view
 {
-	NSImage* leftImage;
-	NSImage* image;
-	NSImage* rightImage;
-	if([self isHighlighted]){
-		leftImage = [NSImage imageNamed:@"tab_highlight_left"];
-		rightImage = [NSImage imageNamed:@"tab_right"];
-		image = [NSImage imageNamed:@"tab_highlight_center"];
+    NSColor* borderLineColor = [NSColor colorWithDeviceWhite:.63 alpha:1.0];
+
+    NSGradient* centerGradient;
+    if([self isHighlighted]){
+		centerGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:.89 alpha:1.0]
+                                                        endingColor:[NSColor colorWithDeviceWhite:.74 alpha:1.0]]
+                          autorelease];
 	}else if([self state] == NSOnState){
-		leftImage = [NSImage imageNamed:@"tab_on_left"];
-		rightImage = [NSImage imageNamed:@"tab_right"];
-		image = [NSImage imageNamed:@"tab_on_center"];
-	}else{
-		leftImage = [NSImage imageNamed:@"tab_off_left"];
-		rightImage = [NSImage imageNamed:@"tab_right"];
-		image = [NSImage imageNamed:@"tab_off_center"];
+		centerGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceRed:.78 green:.85 blue:.95 alpha:1.0]
+                                                        endingColor:[NSColor colorWithDeviceRed:.62 green:.69 blue:.80 alpha:1.0]]
+                          autorelease];
+    }else{
+    	centerGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:.83 alpha:1.0]
+                                                        endingColor:[NSColor colorWithDeviceWhite:.98 alpha:1.0]]
+                          autorelease];
 	}
-	
+
+    NSColor* highlightLineColor = [NSColor colorWithDeviceWhite:1.0 alpha:.50];
+    
 	NSRect  bounds = frame;
-    NSRect  srcRect, destRect;
-	// 左側のハイライト
-	srcRect.origin = NSZeroPoint;
-    srcRect.size = [leftImage size];
-	destRect.origin = NSMakePoint(bounds.origin.x,0);
-    destRect.size = srcRect.size;
-	[leftImage drawInRect:destRect fromRect:srcRect operation:NSCompositeCopy fraction:1.0f];
-	bounds.origin.x += srcRect.size.width;
-	bounds.size.width -= srcRect.size.width;
-	// 右側のシャドウ
-	srcRect.origin = NSZeroPoint;
-    srcRect.size = [rightImage size];
-    destRect.origin = NSMakePoint(bounds.origin.x + bounds.size.width - srcRect.size.width, 0);
-    destRect.size = srcRect.size;
-	[rightImage drawInRect:destRect fromRect:srcRect operation:NSCompositeCopy fraction:1.0f];
-	bounds.size.width -= srcRect.size.width;
-	// 真ん中
-	srcRect.origin = NSZeroPoint;
-    srcRect.size = [image size];
-    destRect.origin.y = 0;
-    destRect.size = srcRect.size;
-	
-	CGFloat x = bounds.origin.x;
-    while (x < bounds.size.width + bounds.origin.x) {
-        destRect.origin.x = x;
-        [image drawInRect:destRect fromRect:srcRect operation:NSCompositeCopy fraction:1.0f];
-        x += srcRect.size.width;
-    }	
+    
+    [NSGraphicsContext saveGraphicsState];
+    // fill gradient
+    [centerGradient drawInRect:bounds angle:90];
+    // draw border
+    [borderLineColor set];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + 0.5f)
+							  toPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + bounds.size.height - 0.5f)];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + 0.5f)
+							  toPoint:NSMakePoint(bounds.origin.x + bounds.size.width + 0.5f, bounds.origin.y + 0.5f)];
+    // draw highlight
+    [highlightLineColor set];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(bounds.origin.x+bounds.size.width - 0.5f, bounds.origin.y + 1.5f)
+							  toPoint:NSMakePoint(bounds.origin.x+bounds.size.width - 0.5f, bounds.origin.y + bounds.size.height - 0.5f)];
+    
+    [NSGraphicsContext restoreGraphicsState];	
 }
 
 

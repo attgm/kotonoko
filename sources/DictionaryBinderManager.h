@@ -41,7 +41,7 @@
 
 -(DictionaryBinder*) nextBinder:(DictionaryBinder*) binder;
 -(DictionaryBinder*) privBinder:(DictionaryBinder*) binder;
--(DictionaryBinder*) binderForId:(unsigned int) binderId;
+-(DictionaryBinder*) binderForId:(NSUInteger) binderId;
 -(DictionaryBinder*) binderForTitle:(NSString*) title;
 -(DictionaryBinder*) firstBinder;
 

@@ -58,7 +58,7 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 -(void) drawRect:(NSRect)rect {
 	NSRect frame = [self frame];
 	
-	int num = [_matrixCells count];
+	NSUInteger num = [_matrixCells count];
 	if(num > 0){
 		int width = frame.size.width / num;
 	
@@ -144,7 +144,7 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 		return -1;
 	}
 	
-	int num = [_matrixCells count];
+	NSUInteger num = [_matrixCells count];
 	if(num > 0){
 		int width = frame.size.width / num;
 		int offset = frame.size.width - (width * num);

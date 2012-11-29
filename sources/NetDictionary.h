@@ -27,7 +27,7 @@
 -(BOOL) selected;
 -(void) setSelected:(BOOL) selection;
 
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(BOOL)		hasSearchMethod:(ESearchMethod) method;
 -(NSArray*) searchMethods;
 

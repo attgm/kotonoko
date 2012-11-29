@@ -7,14 +7,12 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DictionaryDataSource : NSObject
+@interface DictionaryDataSource : NSObject <NSTableViewDataSource>
 {
     NSMutableArray*	mValue;
     int	mCount;
     
     IBOutlet id mTableView;
-    //IBOutlet id mDeletePathButton;
-    //IBOutlet id mAddAppendixButton;
     NSArray* mDraggedNodes;
     
     NSString* mEditString;
@@ -27,30 +25,39 @@
 - (void) setValues : (NSMutableArray*) aVolue;
 - (void) setValue : (NSString*) aName
 	     path : (NSString*) aPath
-	  subbook : (int) aSubbook;
+	  subbook : (NSInteger) aSubbook;
 - (void) removeSelectedvalue;
 - (void) setAppendixToSelected : (NSString*) inPath;
 
 /* TableView:dataSource (protocol:NSTableDataSource) */
-- (void) tableView 		: (NSTableView   *)	aTableView
-	 setObjectValue		: (id)			anObject
-	 forTableColumn 	: (NSTableColumn *)	aTableColumn
-	 row			: (int)			rowIndex;
 	 
--(int) numberOfRowsInTableView : (NSTableView*) aTableView;
+-(NSUInteger) numberOfRowsInTableView : (NSTableView*) aTableView;
 
--(id) tableView			: (NSTableView*)	aTableView
-    objectValueForTableColumn	: (NSTableColumn*)	aTableColumn
-    row				: (int)			rowIndex;
+-(id)				tableView : (NSTableView*) aTableView
+    objectValueForTableColumn : (NSTableColumn*) aTableColumn
+                          row : (NSInteger) rowIndex;
 
 /* TableView delegate */
 - (BOOL) tableView		: (NSTableView*)	aTableView
-    shouldSelectRow		: (int)			rowIndex;
+   shouldSelectRow		: (NSInteger)			rowIndex;
 
 - (BOOL) tableView              : (NSTableView*)             tableView
-	 acceptDrop             : (id <NSDraggingInfo>)      info
-	 row                    : (int)                      row
-	 dropOperation          : (NSTableViewDropOperation) operation;
+         acceptDrop             : (id <NSDraggingInfo>)      info
+         row                    : (NSInteger)                      row
+         dropOperation          : (NSTableViewDropOperation) operation;
 
-- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id <NSDraggingInfo>)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op;
+- (BOOL)    tableView : (NSTableView *)  tableView
+			writeRows : (NSArray*)       rows
+         toPasteboard : (NSPasteboard*)  pboard;
+
+- (BOOL) selectionShouldChangeInTableView : (NSTableView *)aTableView;
+
+- (BOOL)            tableView : (NSTableView *)aTableView
+        shouldEditTableColumn : (NSTableColumn *)aTableColumn
+                          row : (NSInteger)rowIndex;
+
+- (NSDragOperation)tableView:(NSTableView*) tv
+				validateDrop:(id <NSDraggingInfo>) info
+				 proposedRow:(NSInteger) row
+	   proposedDropOperation:(NSTableViewDropOperation) operation;
 @end

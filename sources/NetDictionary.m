@@ -183,7 +183,7 @@
 // 検索
 -(NSArray*) search:(NSString*) word
 			method:(ESearchMethod) method
-			   max:(int) maxHits
+			   max:(NSInteger) maxHits
 		 paramator:(NSDictionary*) paramator
 {
 	NSMutableArray* array = [[[NSMutableArray alloc] initWithCapacity:2] autorelease];

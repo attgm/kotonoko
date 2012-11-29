@@ -49,5 +49,4 @@
 -(void) didEntriesChanged;
 
 -(void) setContentsViewToSearchEntriesView;
-- (void) moveFocus;
 @end

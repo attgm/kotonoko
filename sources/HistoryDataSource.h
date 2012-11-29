@@ -15,6 +15,6 @@
 - (BOOL) addHistory : (NSString*) inString;
 
 - (id) comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(int)index;
-- (int) numberOfItemsInComboBox:(NSComboBox *)aComboBox;
+- (NSInteger) numberOfItemsInComboBox:(NSComboBox *)aComboBox;
 
 @end

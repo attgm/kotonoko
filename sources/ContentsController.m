@@ -340,7 +340,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 			textAttributes,									EBTextAttributes,
 			[NSNumber numberWithBool:_showGaijiCode],		EBShowGaijiCode,
 			[NSNumber numberWithBool:_contentsConinuity],	EBContentsConinuity,
-			[NSNumber numberWithInt:imageHeight],			EBFontImageHeight, 
+			[NSNumber numberWithInteger:imageHeight],			EBFontImageHeight,
 			[PreferenceModal colorForKey:kLinkColor],		EBReferenceTextColor, nil];
 }
 
@@ -734,9 +734,9 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
     [[_textView textStorage] beginEditing];// 編集開始
     // 検索用の素の文字列を取得
     NSString* contentString = [[_textView textStorage] string];
-    unsigned int length = [contentString length];
+    NSUInteger length = [contentString length];
     NSRange searchRange = NSMakeRange(0, [contentString length]);
-	unsigned int rangeNum = 0;
+	NSUInteger rangeNum = 0;
     // 背景色を削除する
     [[_textView textStorage] removeAttribute:NSBackgroundColorAttributeName range:searchRange];
     // 検索ルーチン
@@ -917,8 +917,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	[self showCharactorCodePane];
 	EBook* eb = [[DictionaryManager sharedDictionaryManager] ebookForEBookNumber:location.ebook];
 	
-    int kind = (location.page == page_NarrowFont) ? kFontTypeNarrow : kFontTypeWide;
-    int code = location.offset;
+    NSInteger kind = (location.page == page_NarrowFont) ? kFontTypeNarrow : kFontTypeWide;
+    NSInteger code = location.offset;
 	
 	[self setCurrentCharactorElement:[eb fontTableElementWithCode:code kind:kind]];
 	[[_charactorCodeString window] makeFirstResponder:_charactorCodeString];
@@ -1231,7 +1231,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
             _appendTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5f
                                                              target:self
                                                            selector:@selector(timeoutOverScrollingTimer:)
-                                                           userInfo:[NSNumber numberWithInt:detaction]
+                                                           userInfo:[NSNumber numberWithInteger:detaction]
                                                             repeats:NO] retain];
         }
     }else{

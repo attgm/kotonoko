@@ -308,7 +308,7 @@ static PreferenceWindowController *sSharedInstance = nil;
 	DictionaryListItem* obj;
 	NSMutableArray* dictionaries = [PreferenceModal prefForKey:kDirectoryPath];
 	while (obj = [e nextObject]){
-		unsigned index = [[DictionaryManager sharedDictionaryManager] removeDirectory:obj];
+		NSUInteger index = [[DictionaryManager sharedDictionaryManager] removeDirectory:obj];
 		[dictionaries removeObjectAtIndex:index];
 	}
 	[_treeController setSelectionIndexPath:nil]; 

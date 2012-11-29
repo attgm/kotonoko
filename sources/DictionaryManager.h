@@ -13,7 +13,7 @@
 @class EBook;
 
 @protocol DictionaryProtocol 
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(BOOL)		hasSearchMethod:(ESearchMethod) method;
 -(NSArray*) searchMethods;
 @end
@@ -38,7 +38,7 @@
 -(void) appendDirectory :(NSString*) path;
 
 -(id <DictionaryProtocol>) dictionaryForIdentity:(NSString*) identity;
--(EBook*) ebookForEBookNumber:(unsigned int) number;
+-(EBook*) ebookForEBookNumber:(NSUInteger) number;
 
 -(void) addDictionary : (id <DictionaryProtocol>) item;
 -(void) deleteDictionary:(id <DictionaryProtocol>) item;

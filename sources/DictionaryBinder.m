@@ -295,7 +295,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 
 //-- identifier
 // IDを返す
--(unsigned) binderId
+-(NSUInteger) binderId
 {
 	return _identifier;
 }
@@ -360,7 +360,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // 検索
 -(NSArray*) search:(NSString*)word
 			method:(ESearchMethod)method
-			   max:(int)maxHits
+			   max:(NSInteger)maxHits
 		 paramator:(NSDictionary*)paramator
 {
 	return nil;
@@ -429,7 +429,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // 検索を行う
 -(NSArray*) search:(NSString*)word
 			method:(ESearchMethod)method
-			   max:(int)maxHits
+			   max:(NSInteger)maxHits
 		 paramator:(NSDictionary*)paramator
 {
 	id <DictionaryProtocol> item = [[DictionaryManager sharedDictionaryManager] dictionaryForIdentity:_ebook];
@@ -478,7 +478,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 #pragma mark GAIJI Font
 //-- fontTable
 // 外字用フォントテーブルを返す
--(NSArray*) fontTable:(int) kind
+-(NSArray*) fontTable:(NSInteger) kind
 {
 	id item = 
 		[[DictionaryManager sharedDictionaryManager] dictionaryForIdentity:_ebook];
@@ -539,7 +539,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // 複合検索を行う
 -(NSArray*) multiSearch:(NSArray*) entries
 				  index:(NSInteger) idx
-					max:(int)maxHits
+					max:(NSInteger)maxHits
 			  paramator:(NSDictionary*)paramator
 					
 {
@@ -657,7 +657,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // 検索を行う
 -(NSArray*) search:(NSString*)word
 			method:(ESearchMethod)method
-			   max:(int)maxHits
+			   max:(NSInteger)maxHits
 		 paramator:(NSDictionary*)paramator
 {
 	NSMutableArray* array = [[NSMutableArray alloc] init];

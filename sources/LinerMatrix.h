@@ -26,7 +26,6 @@
 -(NSCell*) cellAtIndex:(int) index;
 -(void) setSelectedIndex:(int) index;
 
--(NSButtonCell*) appendCell;
 
 -(NSDictionary*) bindingItems;
 

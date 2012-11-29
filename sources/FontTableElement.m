@@ -17,7 +17,7 @@
 -(id) initWithURL:(NSString*) url
 	  alternative:(NSString*) string
 			  use:(BOOL) use
-		 identify:(int) identify
+		 identify:(NSInteger) identify
 {
     self = [super init];
     if(self){
@@ -35,7 +35,7 @@
 +(id) elementWithURL:(NSString*) url
 		 alternative:(NSString*) string
 				 use:(BOOL) use
-			identify:(int) identify
+			identify:(NSInteger) identify
 {
     return [[[FontTableElement alloc] 
 			 initWithURL:url alternative:string use:use identify:identify] autorelease];
@@ -101,7 +101,7 @@
 
 //-- identify
 // 識別子を返す
--(int) identify
+-(NSInteger) identify
 {
 	return _identify;
 }

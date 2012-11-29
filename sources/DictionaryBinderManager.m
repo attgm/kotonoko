@@ -94,7 +94,7 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 #pragma mark Interface
 //-- binderForId
 // binder id でbinderを検索する
--(DictionaryBinder*) binderForId:(unsigned int) binderId
+-(DictionaryBinder*) binderForId:(NSUInteger) binderId
 {
 	NSEnumerator* e = [_binders objectEnumerator];
 	DictionaryBinder* it;

@@ -29,7 +29,7 @@
 
 
 //--- setValues
-// value‚Ì’Ç‰Á
+// valueã®è¿½åŠ 
 - (void) setValues : (NSMutableArray*) inValues;
 {
     [mValue release];
@@ -45,7 +45,7 @@
 //
 - (void) setValue : (NSString*) aName
 			 path : (NSString*) aPath
-		  subbook : (int) aSubbook
+		  subbook : (NSInteger) aSubbook
 {
     [mValue addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:aName, @"name", aPath, @"path", nil]];
     [mTableView reloadData];
@@ -56,7 +56,7 @@
 //
 - (void) removeSelectedvalue
 {
-    int index = [mTableView selectedRow];
+    NSInteger index = [mTableView selectedRow];
     if(index > -1){
 		[mValue removeObjectAtIndex:index];
 		[mTableView deselectAll:self];
@@ -66,10 +66,10 @@
 
 
 //--- setAppendixToSelected
-// ‘I‘ğ‚µ‚Ä‚¢‚é«‘‚É•t˜^‚ğİ’è‚·‚é.
+// é¸æŠã—ã¦ã„ã‚‹è¾æ›¸ã«ä»˜éŒ²ã‚’è¨­å®šã™ã‚‹.
 - (void) setAppendixToSelected : (NSString*) inPath
 {
-    int index = [mTableView selectedRow];
+    NSInteger index = [mTableView selectedRow];
     if(index > -1){
 		[[mValue objectAtIndex:index] setObject:inPath forKey:@"appendix"];
     }
@@ -78,7 +78,7 @@
 
 //-- numberOfRowsInTableView:
 //
--(int) numberOfRowsInTableView : (NSTableView*) aTableView
+-(NSUInteger) numberOfRowsInTableView : (NSTableView*) aTableView
 {
     return [mValue count];
 }
@@ -88,7 +88,7 @@
 //
 -(id)				tableView : (NSTableView*) aTableView
     objectValueForTableColumn : (NSTableColumn*) aTableColumn
-						  row : (int) rowIndex
+						  row : (NSInteger) rowIndex
 {
     id identifier;
     
@@ -118,7 +118,7 @@
 //-- tableView:shouldSelectRow
 //
 - (BOOL) tableView		: (NSTableView*)	aTableView
-    shouldSelectRow		: (int)			rowIndex
+    shouldSelectRow		: (NSInteger)			rowIndex
 {
     if(rowIndex >=0 && rowIndex < [mValue count]){
 		//[mDeletePathButton setEnabled:YES];
@@ -133,19 +133,19 @@
 //
 - (BOOL) tableView              : (NSTableView*)             tableView
 	 acceptDrop             : (id <NSDraggingInfo>)      info
-	 row                    : (int)                      row
+	 row                    : (NSInteger)                      row
 	 dropOperation          : (NSTableViewDropOperation) operation
 {
 	NSPasteboard* pboard = [info draggingPasteboard];
     
 	if ([pboard availableTypeFromArray:[NSArray arrayWithObject:DictuinaryPboardType]]){
-		unsigned int count = [mDraggedNodes count];
+		NSUInteger count = [mDraggedNodes count];
 		NSEnumerator *draggedNodesEnum = [mDraggedNodes objectEnumerator];
 		NSMutableArray* draggedItems = [NSMutableArray arrayWithCapacity:count];
-		unsigned int insertIndex = row;
+		NSInteger insertIndex = row;
 		id obj;
 
-		// ˆê‰•¡”‘I‘ğ‰Â”\‚É‚·‚é‚æ‚¤‚É‚ª‚ñ‚Î‚Á‚Ä‚İ‚½
+		// ä¸€å¿œè¤‡æ•°é¸æŠå¯èƒ½ã«ã™ã‚‹ã‚ˆã†ã«ãŒã‚“ã°ã£ã¦ã¿ãŸ
 		while ((obj = [draggedNodesEnum nextObject])) {
 			unsigned int index = [obj intValue];
 			[draggedItems addObject:[mValue objectAtIndex:index]];
@@ -158,7 +158,7 @@
 			[mValue insertObject:obj atIndex:insertIndex++];
 		}
 		[mTableView reloadData];
-		// •¡”‘I‘ğ‰Â”\‚É‚·‚é‚È‚ç‚±‚±‚à‚È‚ñ‚Æ‚©‚µ‚È‚¢‚Æ‚Ë
+		// è¤‡æ•°é¸æŠå¯èƒ½ã«ã™ã‚‹ãªã‚‰ã“ã“ã‚‚ãªã‚“ã¨ã‹ã—ãªã„ã¨ã­
 		[mTableView selectRow:(insertIndex-1) byExtendingSelection:NO];
     }
     return TRUE;
@@ -193,7 +193,7 @@
 //
 - (NSDragOperation)tableView:(NSTableView*) tv
 				validateDrop:(id <NSDraggingInfo>) info
-				 proposedRow:(int) row
+				 proposedRow:(NSInteger) row
 	   proposedDropOperation:(NSTableViewDropOperation) operation
 {
     return (operation == NSTableViewDropAbove) ?
@@ -205,7 +205,7 @@
 //
 - (BOOL)            tableView : (NSTableView *)aTableView
         shouldEditTableColumn : (NSTableColumn *)aTableColumn
-                          row : (int)rowIndex
+                          row : (NSInteger)rowIndex
 {
     return NO;
 }

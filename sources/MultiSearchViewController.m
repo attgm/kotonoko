@@ -92,7 +92,7 @@ const NSInteger EBLayoutMargin = 20;
 // 検索メソッドの変更
 - (IBAction)switchSearchMethod:(id)sender
 {
-	[_windowController changeSearchMethod:[sender selectedTag]];
+	[_windowController changeSearchMethod:(ESearchMethod)[sender selectedTag]];
 	//[self searchWordAll:self];
 }
 

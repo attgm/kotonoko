@@ -121,7 +121,7 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 
 //-- dictionaryForEBookNumber
 // ebook numberから DictionaryListItemを返す
--(EBook*) ebookForEBookNumber:(unsigned int) number
+-(EBook*) ebookForEBookNumber:(NSUInteger) number
 {
 	for(id item in _dictionaries){
 		if([item respondsToSelector:@selector(valueForKey:)]){

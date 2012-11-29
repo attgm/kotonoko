@@ -42,7 +42,7 @@ enum {
 -(void) unbind:(NSString *) binding;
 -(void) unbindAll;
 
--(unsigned) binderId;
+-(NSUInteger) binderId;
 -(void) setBinderId:(unsigned) identifier;
 -(NSString*) title;
 -(void) setTitle:(NSString*) tagName;
@@ -58,7 +58,7 @@ enum {
 -(void) observeQuickTab:(ACBindingItem*) item;
 -(void) observeKeyEquivalent:(ACBindingItem*) item;
 
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(NSArray*) searchMethods;
 
 -(NSAttributedString*) copyrightWithParamator:(NSDictionary*) paramator;
@@ -72,14 +72,14 @@ enum {
 
 -(id) initWithDictionaryListItem:(DictionaryListItem*) item;
 +(SingleBinder*) binderWithDictionaryListItem:(DictionaryListItem*) item;
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
--(NSArray*) multiSearch:(NSArray*)entries index:(NSInteger)index max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) multiSearch:(NSArray*)entries index:(NSInteger)index max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(NSArray*) searchMethods;
 
 -(NSAttributedString*) copyrightWithParamator:(NSDictionary*)paramator;
 -(NSAttributedString*) menuWithParamator:(NSDictionary*) paramator;
 
--(NSArray*) fontTable:(int)kind;
+-(NSArray*) fontTable:(NSInteger)kind;
 -(void) savePrefToFile:(NSString*)filename format:(NSInteger)format;
 -(void) loadPrefFromFile:(NSString*)filename;
 -(NSArray*) multiSearchEntries:(NSInteger)index;
@@ -97,7 +97,7 @@ enum {
 +(MultiBinder*) binderWithParamators:(NSMutableDictionary*)tag prefId:(NSString*)identify;
 -(void) addDictionaryIdentify:(NSString*) identify;
 -(void) observeDictionaryList:(ACBindingItem*) item;
--(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 -(NSArray*) searchMethods;
 
 -(BOOL) hasSearchMethod:(ESearchMethod) method;

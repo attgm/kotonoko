@@ -70,9 +70,9 @@ extern NSString *const EBTagAttributes;
 - (NSString*) stringSubbookTitle;
 
 - (BOOL) haveSearchMethod : (ESearchMethod) inMethod;
-- (NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(int)maxHits paramator:(NSDictionary*)paramator;
+- (NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 - (EB_Error_Code) searchKeyword : (char*) inWord
-                         length : (int) inLength;
+                         length : (NSInteger) inLength;
 - (BOOL) isDuplicate:(EBLocation)losition at:(NSArray*)array;
 
 - (NSAttributedString*) copyrightWithParamator:(NSDictionary*) paramator;
@@ -83,30 +83,30 @@ extern NSString *const EBTagAttributes;
 - (NSString*) moviePath : (NSString*) inPath;
 - (NSData*) soundWithPath:(NSString*) path;
 // Font
-- (NSArray*) fontTable:(int) inKind;
-- (FontTableElement*) fontTableElementWithCode:(int)code kind:(int)kind;
+- (NSArray*) fontTable:(NSInteger) inKind;
+- (FontTableElement*) fontTableElementWithCode:(NSInteger)code kind:(NSInteger)kind;
 
 - (void) setFontSize;
-- (NSImage*) fontImageWithCode:(int)inCode kind:(int)inKind size:(int)inSize;
-- (NSImage*) fontImageWithCode:(int)code kind:(int)kind size:(int)size color:(NSColor*)color;
+- (NSImage*) fontImageWithCode:(NSInteger)inCode kind:(NSInteger)inKind size:(NSInteger)inSize;
+- (NSImage*) fontImageWithCode:(NSInteger)code kind:(NSInteger)kind size:(NSInteger)size color:(NSColor*)color;
 
-- (NSString*) stringWithCode:(int)inCode 
-						kind:(int)inKind;
-- (void) setStringWithCode:(int)inCode
-					  kind:(int)inKind
+- (NSString*) stringWithCode:(NSInteger)inCode
+						kind:(NSInteger)inKind;
+- (void) setStringWithCode:(NSInteger)inCode
+					  kind:(NSInteger)inKind
 					string:(NSString*)inString;
--(BOOL) useAlternativeWithCode:(int)code kind:(int)kind;
--(void) setUseAlternative:(BOOL)use code:(int)code kind:(int)kind;
--(void) setAlternativeString:(NSString*)alternative use:(BOOL)use code:(int)code kind:(int)kind;
+-(BOOL) useAlternativeWithCode:(NSInteger)code kind:(NSInteger)kind;
+-(void) setUseAlternative:(BOOL)use code:(NSInteger)code kind:(NSInteger)kind;
+-(void) setAlternativeString:(NSString*)alternative use:(BOOL)use code:(NSInteger)code kind:(NSInteger)kind;
 
-- (void) createFontTableWithProparty:(NSDictionary*)proparty kind:(int)kind;
+- (void) createFontTableWithProparty:(NSDictionary*)proparty kind:(NSInteger)kind;
 - (void) createFontTableAll;
 
 -(NSArray*) arrayMultiSearchTitle;
--(NSArray*) arrayMultiSearchEntry:(int)inIndex;
--(NSArray*) arrayMultiSearchCandidates:(int)inIndex  at:(int)inEntryID;
+-(NSArray*) arrayMultiSearchEntry:(NSInteger)inIndex;
+-(NSArray*) arrayMultiSearchCandidates:(NSInteger)inIndex  at:(NSInteger)inEntryID;
 -(NSArray*) arrayMultiSearchCandidatesWithLocation:(EBLocation)inIndex;
--(NSArray*) multiSearch:(NSArray*)entries index:(NSInteger)index max:(int)maxHits paramator:(NSDictionary*)paramator;
+-(NSArray*) multiSearch:(NSArray*)entries index:(NSInteger)index max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 
 -(NSAttributedString*) stringHeading:(EB_Position*)inPosition paramator:(NSDictionary*)code;
 -(NSAttributedString*) contentAt:(EBLocation)inLocation paramator:(NSDictionary*)code;

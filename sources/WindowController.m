@@ -563,7 +563,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		[_searchViewController selectSearchMethodWithTag:_searchMethod];
 		[_searchViewController setEnabled:NO];
 		_currentSearchViewController = _searchViewController;
-		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"menu:/%d", [_currentDictionaryBinder binderId]]];
+		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"menu:/%ld", [_currentDictionaryBinder binderId]]];
 		[_contentsController setContentURL:url appendHistory:YES refleshCache:YES];
 		[self setContentsViewToDictionaryContents];
 	}else if(_searchMethod < kSearchMethodMulti){
@@ -676,7 +676,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		[self setCurrentDictionaryBinder:binder];
 		[self selectQuickTab:binder];
 		if(![self adjustSearchMethod]){
-			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"copyright:/%d", [binder binderId]]];
+			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"copyright:/%ld", [binder binderId]]];
 			[_contentsController setContentURL:url appendHistory:NO refleshCache:YES];
 		}
         [self setWindowTitle:[binder tagName]];
@@ -810,9 +810,9 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 //-- searchWord:max:
 // 検索して見出し語を得る
 - (void) searchWord:(NSString*) inWord
-				max:(int) inMaxNumber
+				max:(NSInteger) inMaxNumber
 {
-	int max = inMaxNumber;
+	NSInteger max = inMaxNumber;
 	if(max < 1){
 		max = [_currentDictionaryBinder isKindOfClass:[MultiBinder class]] ? 10 : 50;
 	}
@@ -826,9 +826,9 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 //-- searchEntries:max:
 // 検索して見出し語を得る
 - (void) searchEntries:(NSArray*) entries
-				   max:(int) maxNumber
+				   max:(NSInteger) maxNumber
 {
-	int max = maxNumber;
+	NSInteger max = maxNumber;
 	if(max < 1){ max = [_currentDictionaryBinder isKindOfClass:[MultiBinder class]] ? 10 : 50; }
 	
 	ESearchMethod method = [self searchMethod];

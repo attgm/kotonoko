@@ -233,7 +233,7 @@
 	
 	NSRange limitRange = referenceRange;
 	NSUInteger endpoint = referenceRange.location + referenceRange.length;
-	int i;
+	NSUInteger i;
 	
 	NSRange range = NSMakeRange(0,0);
 	// 入れ子のreferenceを避けてreferenceを入れる

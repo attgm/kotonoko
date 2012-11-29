@@ -199,7 +199,7 @@
 // 検索する
 -(NSArray*) search:(NSString*)word
 			method:(ESearchMethod)method
-			   max:(int)maxHits
+			   max:(NSInteger)maxHits
 		 paramator:(NSDictionary*)paramator
 {
 	EBook* ebook = [self valueForKey:@"ebook"];

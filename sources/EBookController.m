@@ -474,7 +474,7 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 		NSAppleEventDescriptor* profDesc = [[[NSAppleEventDescriptor alloc] initRecordDescriptor] autorelease];
 		NSAppleEventDescriptor* tagDesc = [NSAppleEventDescriptor descriptorWithString:[binder tagName]];
 		[profDesc setDescriptor:tagDesc forKeyword:'tag_'];
-		NSAppleEventDescriptor* idDesc = [NSAppleEventDescriptor descriptorWithInt32:[binder binderId]];
+		NSAppleEventDescriptor* idDesc = [NSAppleEventDescriptor descriptorWithInt32:(SInt32)[binder binderId]];
 		[profDesc setDescriptor:idDesc forKeyword:'id__'];
 		[binderDescs insertDescriptor:profDesc atIndex:0];
 	}

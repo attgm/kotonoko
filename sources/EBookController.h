@@ -12,7 +12,6 @@
 @class HistoryDataSource;
 @class EBook;
 @class InputPanelController;
-@class MultiViewController;
 @class WindowController;
 
 @class FontPanelController;

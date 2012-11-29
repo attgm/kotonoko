@@ -96,8 +96,7 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 //-- _pushed
 - (void)_pushed:(id)sender
 {
-	int state;
-	state = [self state];
+	NSInteger state = [self state];
 	if (state == NSOnState) {
 		[self activate];
 	}
