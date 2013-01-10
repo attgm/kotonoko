@@ -90,7 +90,7 @@
 -(IBAction) closeCharactorCodePane:(id) sender;
 -(IBAction) changeCharactorCode:(id) sender;
 -(IBAction) searchInContent:(id)sender;
-
+-(IBAction) closeMoviePanel:(id)sender;
 
 @property(readonly) ContentsHistory* history;
 

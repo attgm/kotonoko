@@ -10,4 +10,6 @@
 
 @interface NVButtonCell : NSButtonCell
 
+-(void) drawBezelWithFrame:(NSRect)frame inView:(NSView*)view;
+
 @end

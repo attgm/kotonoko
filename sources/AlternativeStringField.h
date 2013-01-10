@@ -11,4 +11,7 @@
 	IBOutlet NSArrayController* _arrayController;
 }
 
+-(void) insertTab:(id) sender;
+-(BOOL)        textView:(NSTextView *) textView
+    doCommandBySelector:(SEL) selector;
 @end

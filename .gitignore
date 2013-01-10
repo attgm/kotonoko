@@ -18,12 +18,9 @@ testdir/
 local/
 *.xcworkspace
 xcuserdata
-CVS
-.svn
 *.mode1v3
 *.pbxuser
-
 /eblib/*
 !/eblib/*-patch
-
-
+kotonoko.entitlements
+.entitlements

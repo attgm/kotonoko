@@ -1194,7 +1194,7 @@ static NSNumber *yes, *no;
 										 kind:(NSInteger) kind
 {
 	NSString* kchar = (kind == kFontTypeNarrow) ? @"n" : @"w";
-	NSString* path = [NSString stringWithFormat:@"/%lu/%@/%ld", (unsigned long)_ebookNumber, kchar, code];
+	NSString* path = [NSString stringWithFormat:@"/%lu/%@/%ld", (unsigned long)_ebookNumber, kchar, (long)code];
 	
 	return [FontTableElement elementWithURL:path
 								alternative:[self stringWithCode:code kind:kind]

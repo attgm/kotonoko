@@ -140,6 +140,7 @@
 
 /* Begin PBXFileReference section */
 		0D02BD66165F727500CCD605 /* eb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = eb.xcodeproj; path = eblib/eb.xcodeproj; sourceTree = "<group>"; };
+		0DBDCC3D169DA4C4005AA9D9 /* kotonoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kotonoko.entitlements; sourceTree = SOURCE_ROOT; };
 		0DC49F2F16607B20003E1885 /* Info-ebooks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-ebooks.plist"; sourceTree = SOURCE_ROOT; };
 		0DC49F3116607B77003E1885 /* Prefix-ebooks.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-ebooks.pch"; sourceTree = SOURCE_ROOT; };
 		0DC8FA17165E2C2500307AB2 /* kotonoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kotonoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -600,6 +601,7 @@
 		0DC8FA22165E2C2500307AB2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0DBDCC3D169DA4C4005AA9D9 /* kotonoko.entitlements */,
 				0DC8FB9A165E365800307AB2 /* main.m */,
 				0DC49F3116607B77003E1885 /* Prefix-ebooks.pch */,
 				0DC49F2F16607B20003E1885 /* Info-ebooks.plist */,
@@ -1118,12 +1120,14 @@
 		0DC8FA36165E2C2600307AB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";
 				INFOPLIST_FILE = "Info-ebooks.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1131,12 +1135,14 @@
 		0DC8FA37165E2C2600307AB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";
 				INFOPLIST_FILE = "Info-ebooks.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

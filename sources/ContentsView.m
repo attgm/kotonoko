@@ -7,7 +7,6 @@
 
 #import "ContentsController.h"
 #import "ContentsView.h"
-//#import "EBookReference.h"
 #import "PreferenceModal.h"
 
 void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";

@@ -11,4 +11,8 @@
 	NSGradient* _backgroundGradient;
 }
 
+-(void) dealloc;
+-(void) awakeFromNib;
+-(void) drawRect:(NSRect)rect;
+
 @end

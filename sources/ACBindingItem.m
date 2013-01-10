@@ -10,14 +10,22 @@
 
 @implementation ACBindingItem
 
+@synthesize selector = _selector;
+@synthesize valueClass = _valueClass;
+@synthesize observedController = _observedController;
+@synthesize transformerName = _transformerName;
+@synthesize observedKeyPath = _observedKeyPath;
+@synthesize identifier = _identifier;
+
+
 #pragma mark Initializing
 //-- init
 -(id) init
 {
 	self = [super init];
     if(self){
-        _observedController = _observedKeyPath = _transformerName = nil;
-	}
+        self.observedController = self.observedKeyPath = self.transformerName = nil;
+    }
     return self;
 }
 
@@ -29,7 +37,7 @@
 {
 	self = [super init];
 	if(self){
-		_observedController = _observedKeyPath = _transformerName = nil;
+		self.observedController = self.observedKeyPath = self.transformerName = nil;
 		_selector = selector;
 		_valueClass = valueClass;
 		_identifier = (void*) identifier;
@@ -40,10 +48,10 @@
 //-- dealloc
 -(void) dealloc
 {
-	[_observedController release];
-	[_observedKeyPath release];
-	[_transformerName release];
-	[super dealloc];
+	self.observedController = nil;
+    self.observedKeyPath = nil;
+    self.transformerName = nil;
+    [super dealloc];
 }
 
 
@@ -70,81 +78,6 @@
 
 
 #pragma mark Interface
-//-- selector
-//
--(SEL) selector
-{
-	return _selector;
-}
-
-//-- valueClass
-//
--(Class) valueClass
-{
-	return _valueClass;
-}
-
-
-//-- identifier
-//
--(void*) identifier
-{
-	return _identifier;
-}
-
-
-//-- observedController
-//
--(id) observedController
-{
-	return _observedController;
-}
-
-
-//-- setObservedController
-//
--(void) setObservedController:(id) controller
-{
-	[_observedController release];
-	_observedController = [controller retain];
-}
-
-
-//-- observedKeyPath
-//
--(NSString*) observedKeyPath
-{
-	return _observedKeyPath;
-}
-
-
-
-//-- observedKeyPath
-//
--(void) setObservedKeyPath:(NSString*) keyPath
-{
-	[_observedKeyPath release];
-	_observedKeyPath = [keyPath copyWithZone:[self zone]];
-}
-
-
-//-- transformerName
-//
--(NSString*) transformerName
-{
-	return _transformerName;
-}
-
-
-//-- setTransformerName
-//
--(void) setTransformerName:(NSString*) transformerName
-{
-	[_transformerName release];
-	_transformerName = [transformerName copyWithZone:[self zone]];
-}
-
-
 //-- infoForBinding
 //
 -(NSDictionary*) infoForBinding

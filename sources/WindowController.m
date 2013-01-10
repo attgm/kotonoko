@@ -563,7 +563,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		[_searchViewController selectSearchMethodWithTag:_searchMethod];
 		[_searchViewController setEnabled:NO];
 		_currentSearchViewController = _searchViewController;
-		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"menu:/%ld", [_currentDictionaryBinder binderId]]];
+		NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"menu:/%ld", (long)[_currentDictionaryBinder binderId]]];
 		[_contentsController setContentURL:url appendHistory:YES refleshCache:YES];
 		[self setContentsViewToDictionaryContents];
 	}else if(_searchMethod < kSearchMethodMulti){
@@ -676,7 +676,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		[self setCurrentDictionaryBinder:binder];
 		[self selectQuickTab:binder];
 		if(![self adjustSearchMethod]){
-			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"copyright:/%ld", [binder binderId]]];
+			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"copyright:/%ld", (long)[binder binderId]]];
 			[_contentsController setContentURL:url appendHistory:NO refleshCache:YES];
 		}
         [self setWindowTitle:[binder tagName]];
@@ -692,6 +692,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	DictionaryBinder* binder = [self currentDictionaryBinder];
 	NSArray* searchMethods = [binder searchMethods];
 	
+    if([searchMethods count] == 0) return NO;
 	NSDictionary* firstMethod = [searchMethods objectAtIndex:0];
 	[self changeSearchMethod:[[firstMethod objectForKey:@"tag"] intValue]]; //前方検索に切り替える
 	

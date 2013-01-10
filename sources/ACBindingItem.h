@@ -18,6 +18,14 @@
 	void*	_identifier;
 }
 
+@property (nonatomic, readonly) SEL selector;
+@property (nonatomic, readonly) Class valueClass;
+
+@property (nonatomic, retain) id observedController;
+@property (nonatomic, copy) NSString* transformerName;
+@property (nonatomic, copy) NSString* observedKeyPath;
+@property (nonatomic, readonly) void* identifier;
+
 +(ACBindingItem*) bindingItemFromSelector : (SEL) selector
 							 valueClass : (Class) valueClass
 							  identifier: (const void*) identifier;
@@ -29,16 +37,6 @@
 			 identifier: (const void*) identifier;
 -(void) dealloc;
 
--(Class) valueClass;
--(SEL) selector;
-
--(void*) identifier;
--(id) observedController;
--(void) setObservedController:(id) controller;
--(NSString*) observedKeyPath;
--(void) setObservedKeyPath:(NSString*) keyPath;
--(NSString*) transformerName;
--(void) setTransformerName:(NSString*) transformerName;
 -(NSDictionary*) infoForBinding;
 -(void) unbind;
 

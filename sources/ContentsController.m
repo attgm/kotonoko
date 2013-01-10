@@ -131,7 +131,6 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 											   object:contentView];
     [_textContentsView setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"backgroundPattern"]]];
     
-    
     self.textFinder = [[[NSTextFinder alloc] init] autorelease];
 }
 
@@ -196,6 +195,13 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 -(IBAction) changeCharactorCode:(id) sender
 {
 	[self changeCharactorCode];
+}
+
+
+//-- closeMoviePanel
+-(IBAction)closeMoviePanel:(id)sender
+{
+    [self closeMoviePanel];
 }
 
 

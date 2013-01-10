@@ -80,7 +80,7 @@
 // locationをURL文字列に変換する
 +(NSString*) locationToURLString:(EBLocation) location
 {
-	return [NSString stringWithFormat:@"eb:/%ld/%ld/%ld", location.ebook, location.page, location.offset];
+	return [NSString stringWithFormat:@"eb:/%ld/%ld/%ld", (long)location.ebook, (long)location.page, (long)location.offset];
 }
 
 

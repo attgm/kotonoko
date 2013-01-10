@@ -11,4 +11,7 @@
 
 }
 
+-(void) drawBezelWithFrame:(NSRect)frame inView:(NSView*)view;
+-(void) drawInteriorWithFrame:(NSRect)frame inView:(NSView*)view;
+
 @end

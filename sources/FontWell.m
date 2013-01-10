@@ -27,6 +27,11 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 //
 - (void)dealloc
 {
+    [_observedControllerForValue release];
+    [_valueTransformerName release];
+    [_fontwellValue release];
+    [_observedKeyPathForValue release];
+    
 	[super dealloc];
 }
 
