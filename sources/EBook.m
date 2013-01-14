@@ -52,6 +52,7 @@ static NSNumber *yes, *no;
 
 @implementation EBook
 @synthesize ebookNumber = _ebookNumber;
+@synthesize securityScopeBookmark = _securityScopeBookmark;
 
 #pragma mark Initalize
 //-- initalizeLibrary
@@ -99,6 +100,8 @@ static NSNumber *yes, *no;
 
         _ebookNumber = gEBookNumber++;
         _hasSerialContents = NO;
+        
+        self.securityScopeBookmark = nil;
     }
     return self;
 }
@@ -123,13 +126,14 @@ static NSNumber *yes, *no;
 {
 	[self closeBook];
     [EBook initalizeLibrary:NO];
+    self.securityScopeBookmark = nil;
 	[super finalize];
 }
 
 
 //-- bind:
 // 辞書のバインド
--(BOOL) bind:(NSString*) inPath
+-(BOOL) bind:(NSString*)inPath
 {
     const char* path = [[NSFileManager defaultManager] fileSystemRepresentationWithPath:inPath];
 
@@ -142,6 +146,7 @@ static NSNumber *yes, *no;
     if(eb_subbook_list(&_book, _subbook, &_subbookNum) != EB_SUCCESS){
 		return NO;
     }
+    
     return YES;
 }
 
@@ -803,28 +808,40 @@ static NSNumber *yes, *no;
 	start.offset = [[path objectAtIndex:3] intValue];
 	end.page = [[path objectAtIndex:4] intValue];
 	end.offset = [[path objectAtIndex:5] intValue];
-		
-	if((err = eb_set_binary_wave(&_book, &start, &end)) != EB_SUCCESS){
-		NSLog(@"set_binary_wave : %s", eb_error_message(err));
-		return nil;
-	}
-
-    do {
-		err = eb_read_binary(&_book, EB_SIZE_PAGE, data, &length);
-		if(fmt && (strncmp("fmt ", &data[44], 4) == 0) && (strncmp("fmt ", &data[12], 4) != 0)){
-			[wave appendBytes:data length:12];
-			[wave appendBytes:(&data[44]) length:(length - 44)];
-		}else{
-			[wave appendBytes:data length:length];
-		}
-		fmt = false;
-    } while (err == EB_SUCCESS && length > 0);
-
-    if(err != EB_SUCCESS){
-		NSLog(@"eb_read_binary (wave) : %s", eb_error_message(err));
-		return nil;
+	
+    
+    if (_securityScopeBookmark) [_securityScopeBookmark startAccessingSecurityScopedResource];
+	@try {
+        if((err = eb_set_binary_wave(&_book, &start, &end)) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"set_binary_wave"
+                                     reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                   userInfo:nil] raise];
+        }
+        
+        do {
+            err = eb_read_binary(&_book, EB_SIZE_PAGE, data, &length);
+            if(err != EB_SUCCESS){
+                [[NSException exceptionWithName:@"eb_read_binary (wave)"
+                                         reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                       userInfo:nil] raise];
+            }
+            if(fmt && (strncmp("fmt ", &data[44], 4) == 0) && (strncmp("fmt ", &data[12], 4) != 0)){
+                [wave appendBytes:data length:12];
+                [wave appendBytes:(&data[44]) length:(length - 44)];
+            }else{
+                [wave appendBytes:data length:length];
+            }
+            fmt = false;
+        } while (length > 0);
     }
-
+    @catch (NSException *exception) {
+        NSLog(@"%@ : %@",[exception name], [exception reason]);
+        wave = nil;
+    }
+    @finally {
+        if (_securityScopeBookmark) [_securityScopeBookmark stopAccessingSecurityScopedResource];
+    }
+	
     return wave;
 }
 
@@ -839,27 +856,38 @@ static NSNumber *yes, *no;
     EB_Error_Code err;
     ssize_t length;
     
-    if((err = eb_decompose_movie_file_name(argv, [inPath UTF8String])) != EB_SUCCESS){
-		NSLog(@"decompose_movie_file_name : %s", eb_error_message(err));
-		return nil;
+    if (_securityScopeBookmark) [_securityScopeBookmark startAccessingSecurityScopedResource];
+    @try {
+        if((err = eb_decompose_movie_file_name(argv, [inPath UTF8String])) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"decompose_movie_file_name"
+                                     reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                   userInfo:nil] raise];
+        }
+        
+        if((err = eb_set_binary_mpeg(&_book, argv)) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"set_binary_mpeg"
+                                     reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                   userInfo:nil] raise];
+        }
+        
+        do {
+            err = eb_read_binary(&_book, EB_SIZE_PAGE, data, &length);
+            if(err != EB_SUCCESS){
+                [[NSException exceptionWithName:@"eb_read_binary (mpeg)"
+                                         reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                       userInfo:nil] raise];
+            }
+            [movie appendBytes:data length:length];
+        } while (length > 0);
     }
-
-    if((err = eb_set_binary_mpeg(&_book, argv)) != EB_SUCCESS){
-		NSLog(@"set_binary_mpeg : %s", eb_error_message(err));
-		return nil;
+    @catch (NSException *exception) {
+        NSLog(@"%@ : %@",[exception name], [exception reason]);
+        movie = nil;
     }
-
-
-    do {
-		err = eb_read_binary(&_book, EB_SIZE_PAGE, data, &length);
-		[movie appendBytes:data length:length];
-	} while (err == EB_SUCCESS && length > 0);
-
-    if(err != EB_SUCCESS){
-		NSLog(@"eb_read_binary (mpeg) : %s", eb_error_message(err));
-		return nil;
+    @finally {
+        if (_securityScopeBookmark) [_securityScopeBookmark stopAccessingSecurityScopedResource];
     }
-
+    
     return movie;
 }
 
@@ -990,6 +1018,7 @@ static NSNumber *yes, *no;
 
     fontsize = (size == kFontImageSizeLarge) ? _largeFontType : _smallFontType;
   
+    if(_securityScopeBookmark) [_securityScopeBookmark startAccessingSecurityScopedResource];
     eb_set_font(&_book, fontsize);
     width = fontsize;
     
@@ -1023,6 +1052,8 @@ static NSNumber *yes, *no;
 	eb_bitmap_to_png2((char*)bitmap, width, height, (char*)imagedata, &imagesize, rgb);
 	eb_unset_font(&_book);
 
+    if(_securityScopeBookmark) [_securityScopeBookmark stopAccessingSecurityScopedResource];
+    
     return [[[NSImage alloc] initWithData:[NSData dataWithBytes:imagedata length:imagesize]] autorelease];
 }
 

@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>302</string>
+	<string>311</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.reference</string>
 	<key>LSHasLocalizedDisplayName</key>
@@ -29,7 +29,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2001-2012 Atsushi Tagami. All rights reserved.</string>
+	<string>Copyright © 2001-2013 Atsushi Tagami.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

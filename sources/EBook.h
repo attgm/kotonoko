@@ -51,18 +51,19 @@ extern NSString *const EBTagAttributes;
     EB_Font_Code    _largeFontType;
 	
 	BOOL    _hasSerialContents;
+    NSURL*  _securityScopeBookmark;
 };
 
 @property (retain) NSString* tagName;
 @property (assign,readonly) NSUInteger ebookNumber;
-
+@property (retain) NSURL* securityScopeBookmark;
 
 + (void) initalizeLibrary : (BOOL) inInit;
 
 - (id) init;
 - (void) dealloc;
 - (void) finalize;
-- (BOOL) bind : (NSString*) inPath;
+- (BOOL) bind:(NSString*)inPath;
 - (void) closeBook;
 - (BOOL) bindAppendix : (NSString*) inPath;
 - (BOOL) selectSubbook : (int) inIndex;

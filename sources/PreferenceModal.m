@@ -58,6 +58,7 @@ static NSDictionary *defaultValues()
 			[NSDictionary dictionary], kDictionaryTable,
 			[NSDictionary dictionary], kAppendixTable,
 			[NSDictionary dictionary], kDictionaryIdTable,
+            [NSDictionary dictionary], kSecureBookmarkTable,
 			nil];
     }
     return defaults;
@@ -161,6 +162,7 @@ static NSDictionary *defaultValues()
 	sSharedPreferenceModal = nil;
 	[super dealloc];
 }
+
 
 #pragma mark Bindings Interface
 //-- setValue:forKey
@@ -271,5 +273,36 @@ static NSDictionary *defaultValues()
 	}
 	return copy;
 }
+
+#pragma mark Security Scoped Bookmark
+//-- setSecurityBookmark:
+// Secutiry-scoped bookmarkを保存する
++(void) setSecurityBookmark:(NSData*)bookmark forPath:(NSString*)path
+{
+    NSMutableDictionary *table = [PreferenceModal prefForKey:kSecureBookmarkTable];
+    [table setObject:bookmark forKey:path];
+}
+
+
+//-- setSecurityBookmark:
+// Secutiry-scoped bookmarkを保存する
++(NSURL*) securityBookmarkForPath:(NSString*)path
+{
+    if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6) return nil;
+    
+    NSData *bookmark = [[PreferenceModal prefForKey:kSecureBookmarkTable] objectForKey:path];
+    if(bookmark){
+        NSError* error = nil;
+        BOOL stale;
+        NSURL* bookmarkUrl = [NSURL URLByResolvingBookmarkData:bookmark
+                                                       options:NSURLBookmarkResolutionWithSecurityScope
+                                                 relativeToURL:nil
+                                           bookmarkDataIsStale:&stale
+                                                         error:&error];
+        if (stale == false && error == nil) return bookmarkUrl;
+    }
+    return nil;
+}
+
 
 @end

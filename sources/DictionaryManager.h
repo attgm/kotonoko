@@ -8,6 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ELDefines.h"
 #define kDidInitializeDictionaryManager @"DidInitializeDictionaryManager"
+#define kAllDictionariesIsLoaded @"AllLoaded"
 
 @class DictionaryListItem;
 @class EBook;
@@ -24,7 +25,10 @@
 	NSMutableArray* _netDictionaries;
 	
 	NSTimer* _progressTimer;
+    BOOL    _readableAll;
 }
+
+@property BOOL readableAll;
 
 +(DictionaryManager*) sharedDictionaryManager;
 -(id) init;
@@ -34,7 +38,8 @@
 -(void) createDictionaryArray;
 -(void) scanDictionary:(NSTimer*) timer;
 -(void) expandDirectory : (DictionaryListItem*) parent
-			  recursion : (BOOL) recursion;
+			  recursion : (BOOL) recursion
+               bookmark : (NSURL*) bookmark;
 -(void) appendDirectory :(NSString*) path;
 
 -(id <DictionaryProtocol>) dictionaryForIdentity:(NSString*) identity;

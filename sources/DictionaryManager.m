@@ -16,6 +16,8 @@
 DictionaryManager* sSharedDictionaryManager = NULL;
 
 @implementation DictionaryManager
+@synthesize readableAll = _readableAll;
+
 
 #pragma mark Shared Instance
 //-- sharedDictionaryManager
@@ -171,6 +173,8 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 	if(_progressTimer){
 		[_progressTimer invalidate];
 	}
+    
+    self.readableAll = YES;
 	_progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.00
 													  target:self
 													selector:@selector(scanDictionary:)
@@ -185,16 +189,23 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 {
 	id obj = [[timer userInfo] nextObject];
 	if(obj){
-		[self appendDirectory:obj];
-		_progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.00
+        NSFileManager* fm = [NSFileManager defaultManager];
+        if([fm fileExistsAtPath:obj] == YES && [fm isReadableFileAtPath:obj] == NO){
+            if ([PreferenceModal securityBookmarkForPath:obj] == nil){
+                self.readableAll = NO;
+            }
+        }
+        [self appendDirectory:obj];
+        _progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.00
 														  target:self
 														selector:@selector(scanDictionary:)
 														userInfo:[timer userInfo]
 														 repeats:NO];		
 	}else{
 		_progressTimer = nil;
-		[[NSNotificationCenter defaultCenter]
-			postNotificationName:kDidInitializeDictionaryManager object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter]
+			postNotificationName:kDidInitializeDictionaryManager object:self userInfo:
+                [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:[self readableAll]] forKey:kAllDictionariesIsLoaded]];
 	}
 }
 
@@ -203,19 +214,25 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 // 辞書パスの追加
 -(void) appendDirectory:(NSString*) path
 {
+    NSURL* bookmark = [PreferenceModal securityBookmarkForPath:path];
+    
+    if (bookmark) [bookmark startAccessingSecurityScopedResource];
 	NSIndexSet *indexset = [NSIndexSet indexSetWithIndex:[_root count]];
 	[self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexset forKey:@"root"];
 	DictionaryListItem* item = [DictionaryListItem dictionaryListItemWithPath:path];
-	[self expandDirectory:item recursion:YES];
+	[self expandDirectory:item recursion:YES bookmark:bookmark];
 	[_root addObject:item];
 	[self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexset forKey:@"root"];
+    if (bookmark) [bookmark stopAccessingSecurityScopedResource];
 }
+
 
 
 //-- expandDirectory
 // 辞書を展開する
 -(void) expandDirectory : (DictionaryListItem*) parent
 			  recursion : (BOOL) recursion
+               bookmark :(NSURL*) bookmark
 {
 	NSString* path = [parent valueForKey:@"path"];
 	EBook* book = [[EBook alloc] init];
@@ -229,11 +246,12 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 				NSString* dictionaryId = [self uniqueDictionaryIdFromPath:path directory:[book directoryName]];
 				if(dictionaryId){
 					[book loadPrefFromFile:nil];
+                    [book setSecurityScopeBookmark:bookmark];
 					EBDictionary* item = [EBDictionary dictionaryListItemWithEBook:book path:path identify:dictionaryId];
 					[book release];
 					[parent addChild:item];
 					[self addDictionary:item];
-				
+                    
 					book = [[EBook alloc] init];
 					[book bind:path];
 				}
@@ -250,7 +268,7 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 			BOOL isDirectory;
 			if([[NSFileManager defaultManager] fileExistsAtPath:new_path isDirectory:&isDirectory] && isDirectory){
 				DictionaryListItem* item = [DictionaryListItem dictionaryListItemWithPath:new_path];
-				[self expandDirectory:item recursion:NO];
+				[self expandDirectory:item recursion:NO bookmark:bookmark];
 				[parent addChild:item];
 			}
 		}

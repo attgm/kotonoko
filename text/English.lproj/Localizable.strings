@@ -10,3 +10,6 @@ EbMissmuchFile = "This file is not local charactors file for this dictionary. Do
 "Menu" = "Menu";
 "GAIJI" = "GAIJI:%@";
 "none" = "none";
+"Access Denied" = "Access Denied";
+"File Access is Denied" = "This application was denied access to certain dictionary folder. Please permit it by re-config dictionary folder.";
+"OK" = "OK";

@@ -30,4 +30,7 @@
 -(NSMutableArray*) mutableArrayFromArray:(NSArray*) array;
 -(NSMutableDictionary*) mutableDictionaryFromDictionary:(NSDictionary*) dic;
 
++(void) setSecurityBookmark:(NSData*)bookmark forPath:(NSString*)path;
++(NSURL*) securityBookmarkForPath:(NSString*)path;
+
 @end

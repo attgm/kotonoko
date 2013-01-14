@@ -43,6 +43,7 @@
 #define kContentsCharactersMax @"contentsCharacterMax"
 #define kFitWebViewScale @"fitWebViewScale"
 #define kSwipeBehavior @"swipeBehavior"
+#define kSecureBookmarkTable @"secureBookmarks"
 
 typedef enum {
     kFitScaleOff                    = 1000,

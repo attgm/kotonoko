@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1D477616A4092900F0F161 /* icon_movie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1D477516A4092900F0F161 /* icon_movie@2x.png */; };
 		0D76B0CA169F70C0009417F4 /* icon_automatic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0B5169F70C0009417F4 /* icon_automatic@2x.png */; };
 		0D76B0CB169F70C0009417F4 /* icon_bitmap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0B6169F70C0009417F4 /* icon_bitmap@2x.png */; };
 		0D76B0CC169F70C0009417F4 /* icon_font@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0B7169F70C0009417F4 /* icon_font@2x.png */; };
@@ -31,7 +32,10 @@
 		0D76B0E7169F729E009417F4 /* icon_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0E5169F729E009417F4 /* icon_add@2x.png */; };
 		0D76B0E8169F729E009417F4 /* icon_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0E6169F729E009417F4 /* icon_delete@2x.png */; };
 		0D76B0EB169F8655009417F4 /* icon_wave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D76B0EA169F8655009417F4 /* icon_wave@2x.png */; };
-		0DA927FE16607CA60098A01B /* libeb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D02BD6E165F727500CCD605 /* libeb.dylib */; };
+		0D8A6D0116A3CB0100E5F993 /* libeb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D02BD6E165F727500CCD605 /* libeb.dylib */; };
+		0D8A6D0216A3CB5900E5F993 /* libeb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0D02BD6E165F727500CCD605 /* libeb.dylib */; };
+		0DBE3E3C16A2A26000710D54 /* chujiten.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBE3E3A16A2A26000710D54 /* chujiten.plist */; };
+		0DBE3E3D16A2A26000710D54 /* dgx01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBE3E3B16A2A26000710D54 /* dgx01.plist */; };
 		0DC8FA1C165E2C2500307AB2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC8FA1B165E2C2500307AB2 /* Cocoa.framework */; };
 		0DC8FBDE165E370600307AB2 /* AcknowledgmentsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FBBE165E370600307AB2 /* AcknowledgmentsWindow.xib */; };
 		0DC8FBEB165E370600307AB2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FBD9165E370600307AB2 /* MainWindow.xib */; };
@@ -151,10 +155,32 @@
 			remoteGlobalIDString = 0DC8FA5C165E2EB500307AB2;
 			remoteInfo = eb;
 		};
+		0D8A6CFF16A3CAE900E5F993 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D02BD66165F727500CCD605 /* eb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DC8FA5B165E2EB500307AB2;
+			remoteInfo = eb;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0D8A6CFC16A3B4D700E5F993 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0D8A6D0216A3CB5900E5F993 /* libeb.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D02BD66165F727500CCD605 /* eb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = eb.xcodeproj; path = eblib/eb.xcodeproj; sourceTree = "<group>"; };
+		0D1D477516A4092900F0F161 /* icon_movie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_movie@2x.png"; path = "resources2x/icon_movie@2x.png"; sourceTree = SOURCE_ROOT; };
+		0D1D478016A43B4500F0F161 /* kotonoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kotonoko.entitlements; sourceTree = SOURCE_ROOT; };
 		0D76B0B5169F70C0009417F4 /* icon_automatic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_automatic@2x.png"; path = "resources2x/icon_automatic@2x.png"; sourceTree = SOURCE_ROOT; };
 		0D76B0B6169F70C0009417F4 /* icon_bitmap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_bitmap@2x.png"; path = "resources2x/icon_bitmap@2x.png"; sourceTree = SOURCE_ROOT; };
 		0D76B0B7169F70C0009417F4 /* icon_font@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_font@2x.png"; path = "resources2x/icon_font@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -179,7 +205,8 @@
 		0D76B0E5169F729E009417F4 /* icon_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_add@2x.png"; path = "resources2x/icon_add@2x.png"; sourceTree = SOURCE_ROOT; };
 		0D76B0E6169F729E009417F4 /* icon_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_delete@2x.png"; path = "resources2x/icon_delete@2x.png"; sourceTree = SOURCE_ROOT; };
 		0D76B0EA169F8655009417F4 /* icon_wave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_wave@2x.png"; path = "resources2x/icon_wave@2x.png"; sourceTree = SOURCE_ROOT; };
-		0DBDCC3D169DA4C4005AA9D9 /* kotonoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kotonoko.entitlements; sourceTree = SOURCE_ROOT; };
+		0DBE3E3A16A2A26000710D54 /* chujiten.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = chujiten.plist; path = xml/chujiten.plist; sourceTree = SOURCE_ROOT; };
+		0DBE3E3B16A2A26000710D54 /* dgx01.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = dgx01.plist; path = xml/dgx01.plist; sourceTree = SOURCE_ROOT; };
 		0DC49F2F16607B20003E1885 /* Info-ebooks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-ebooks.plist"; sourceTree = SOURCE_ROOT; };
 		0DC49F3116607B77003E1885 /* Prefix-ebooks.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-ebooks.pch"; sourceTree = SOURCE_ROOT; };
 		0DC8FA17165E2C2500307AB2 /* kotonoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kotonoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,7 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DA927FE16607CA60098A01B /* libeb.dylib in Frameworks */,
+				0D8A6D0116A3CB0100E5F993 /* libeb.dylib in Frameworks */,
 				0DC8FC80165E389F00307AB2 /* WebKit.framework in Frameworks */,
 				0DC8FC7E165E389100307AB2 /* QTKit.framework in Frameworks */,
 				0DC8FC7C165E388900307AB2 /* QuartzCore.framework in Frameworks */,
@@ -574,6 +601,7 @@
 		0D76B0E9169F8647009417F4 /* Content Icon */ = {
 			isa = PBXGroup;
 			children = (
+				0D1D477516A4092900F0F161 /* icon_movie@2x.png */,
 				0D76B0EA169F8655009417F4 /* icon_wave@2x.png */,
 			);
 			name = "Content Icon";
@@ -627,6 +655,15 @@
 				0DC8FC13165E374A00307AB2 /* icon_vertical.tiff */,
 			);
 			name = "Font Panel Icon";
+			sourceTree = "<group>";
+		};
+		0DBE3E3916A2A23000710D54 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				0DBE3E3A16A2A26000710D54 /* chujiten.plist */,
+				0DBE3E3B16A2A26000710D54 /* dgx01.plist */,
+			);
+			name = xml;
 			sourceTree = "<group>";
 		};
 		0DC8FA0C165E2C2500307AB2 = {
@@ -695,8 +732,8 @@
 		0DC8FA22165E2C2500307AB2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D1D478016A43B4500F0F161 /* kotonoko.entitlements */,
 				0DC8FC0A165E374A00307AB2 /* ham_icon.icns */,
-				0DBDCC3D169DA4C4005AA9D9 /* kotonoko.entitlements */,
 				0DC8FB9A165E365800307AB2 /* main.m */,
 				0DC49F3116607B77003E1885 /* Prefix-ebooks.pch */,
 				0DC49F2F16607B20003E1885 /* Info-ebooks.plist */,
@@ -800,6 +837,7 @@
 				0DC8FC5F165E375300307AB2 /* images@2x */,
 				0DC8FC08165E373B00307AB2 /* images */,
 				0DC8FBBD165E36ED00307AB2 /* xib */,
+				0DBE3E3916A2A23000710D54 /* xml */,
 			);
 			name = resources;
 			path = kotonoko;
@@ -870,12 +908,14 @@
 			buildConfigurationList = 0DC8FA35165E2C2600307AB2 /* Build configuration list for PBXNativeTarget "kotonoko" */;
 			buildPhases = (
 				0DC8FA13165E2C2500307AB2 /* Sources */,
+				0D8A6CFC16A3B4D700E5F993 /* CopyFiles */,
 				0DC8FA14165E2C2500307AB2 /* Frameworks */,
 				0DC8FA15165E2C2500307AB2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0D8A6D0016A3CAE900E5F993 /* PBXTargetDependency */,
 			);
 			name = kotonoko;
 			productName = kotonoko;
@@ -1002,6 +1042,9 @@
 				0D76B0E7169F729E009417F4 /* icon_add@2x.png in Resources */,
 				0D76B0E8169F729E009417F4 /* icon_delete@2x.png in Resources */,
 				0D76B0EB169F8655009417F4 /* icon_wave@2x.png in Resources */,
+				0DBE3E3C16A2A26000710D54 /* chujiten.plist in Resources */,
+				0DBE3E3D16A2A26000710D54 /* dgx01.plist in Resources */,
+				0D1D477616A4092900F0F161 /* icon_movie@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1117,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D8A6D0016A3CAE900E5F993 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = eb;
+			targetProxy = 0D8A6CFF16A3CAE900E5F993 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0DC8FBF0165E371900307AB2 /* FontPanel.xib */ = {
@@ -1240,6 +1291,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";
 				INFOPLIST_FILE = "Info-ebooks.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.7;
@@ -1254,8 +1307,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";
 				INFOPLIST_FILE = "Info-ebooks.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};

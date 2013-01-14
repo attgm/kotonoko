@@ -111,6 +111,14 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 	_fontPanelController = nil;
 	
 	_pasteboardWatcher = [[PasteboardWatcher alloc] initWithDelegate:self];
+    
+    
+    if([aNotification userInfo] != nil && [[[aNotification userInfo] objectForKey:kAllDictionariesIsLoaded] boolValue] == NO){
+        NSRunInformationalAlertPanel(NSLocalizedString(@"Access Denied", @"Access Denied"),
+                                     NSLocalizedString(@"File Access is Denied", @"File Access is Denied"),
+                                     NSLocalizedString(@"OK", @"OK"),
+                                     nil, nil);
+    }
 }
 
 

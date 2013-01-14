@@ -846,7 +846,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	[_qtView setMovie:movie];
 	NSRect qtRect = [_qtView frame];
 	NSRect controlBound = [_qtView movieControllerBounds];
-	if(size.width == 0) size.width = 240;
+	if (size.width == 0) size.width = 240;
 	size.height += controlBound.size.height;
 	CGFloat movieHeight = size.height + 32;
 	qtRect.size = size;

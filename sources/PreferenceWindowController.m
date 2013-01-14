@@ -263,9 +263,16 @@ static PreferenceWindowController *sSharedInstance = nil;
 // 辞書への追加
 -(void) addDictionary:(NSString*) path
 {
-	[[DictionaryManager sharedDictionaryManager] appendDirectory:path];
 	NSMutableArray* dictionaries = [PreferenceModal prefForKey:kDirectoryPath];
 	[dictionaries addObject:path];
+    
+    NSError *error = nil;
+    NSData *bookmarkData = [[NSURL fileURLWithPath:path]
+                            bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
+    [PreferenceModal setSecurityBookmark:bookmarkData forPath:path];
+    
+    
+    [[DictionaryManager sharedDictionaryManager] appendDirectory:path];
 }
 
 //-- selectFolder
