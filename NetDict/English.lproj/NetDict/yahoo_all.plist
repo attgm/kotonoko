@@ -4,8 +4,8 @@
 <dict>
 	<key>Hosts</key>
 	<array>
-		<string>100.yahoo.co.jp</string>
-		<string>srd.yahoo.co.jp</string>
+		<string>dic.yahoo.co.jp</string>
+		<string>rd.yahoo.co.jp</string>
 	</array>
 	<key>InputEncoding</key>
 	<string>UTF-8</string>
@@ -15,57 +15,57 @@
 			<key>SearchID</key>
 			<integer>0</integer>
 			<key>SearchURL</key>
-			<string>http://100.yahoo.co.jp/search</string>
+			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p_ngram={searchTerms}&amp;op=1&amp;n=10</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=prefix</string>
 			<key>Title</key>
-			<string>で始まる</string>
+			<string>Begins with</string>
 		</dict>
 		<dict>
 			<key>SearchID</key>
 			<string>1</string>
 			<key>SearchURL</key>
-			<string>http://100.yahoo.co.jp/search</string>
+			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p_ngram={searchTerms}&amp;op=2&amp;n=10</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=suffix</string>
 			<key>Title</key>
-			<string>で終わる</string>
+			<string>Ends with</string>
 		</dict>
 		<dict>
 			<key>SearchID</key>
 			<string>64</string>
 			<key>SearchURL</key>
-			<string>http://100.yahoo.co.jp/search</string>
+			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p_ngram={searchTerms}&amp;op=4&amp;n=10</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=exact</string>
 			<key>Title</key>
-			<string>に一致する</string>
+			<string>Matchs</string>
 		</dict>
 		<dict>
 			<key>SearchID</key>
 			<string>65</string>
 			<key>SearchURL</key>
-			<string>http://100.yahoo.co.jp/search</string>
+			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p_ngram={searchTerms}&amp;op=3&amp;n=10</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=partial</string>
 			<key>Title</key>
-			<string>を含む</string>
+			<string>Includes</string>
 		</dict>
 		<dict>
 			<key>SearchID</key>
 			<string>66</string>
 			<key>SearchURL</key>
-			<string>http://100.yahoo.co.jp/search</string>
+			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;op=1&amp;f=&amp;n=10</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=full</string>
 			<key>Title</key>
-			<string>を本文に含む</string>
+			<string>Includes on text</string>
 		</dict>
 	</array>
 	<key>ShortName</key>
-	<string>Yahoo!百科事典</string>
+	<string>Y! Dict.</string>
 	<key>title</key>
-	<string>Yahoo!百科事典</string>
+	<string>Yahoo! JAPAN Dictionaries</string>
 	<key>Version</key>
 	<real>1</real>
 </dict>

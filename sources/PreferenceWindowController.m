@@ -13,6 +13,8 @@
 #import "PreferenceWindowController.h"
 
 #import "DictionayArrayController.h"
+#import "EBookUtilities.h"
+
 
 enum {
 	kOpenFolder = 1,
@@ -265,12 +267,12 @@ static PreferenceWindowController *sSharedInstance = nil;
 {
 	NSMutableArray* dictionaries = [PreferenceModal prefForKey:kDirectoryPath];
 	[dictionaries addObject:path];
-    
-    NSError *error = nil;
-    NSData *bookmarkData = [[NSURL fileURLWithPath:path]
-                            bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
-    [PreferenceModal setSecurityBookmark:bookmarkData forPath:path];
-    
+    if(IsAppSandboxed()){
+        NSError *error = nil;
+        NSData *bookmarkData = [[NSURL fileURLWithPath:path]
+                                bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
+        [PreferenceModal setSecurityBookmark:bookmarkData forPath:path];
+    }
     
     [[DictionaryManager sharedDictionaryManager] appendDirectory:path];
 }

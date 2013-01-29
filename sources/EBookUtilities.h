@@ -7,9 +7,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-NSImage* MakeFontDataFromPath(NSString* path, int size);
-void SetFontAlternativeString(NSString* path, NSString* alternative);
-void SetFontUseAlternativeString(NSString* path, BOOL alternative);
-NSString* MakeApplicationSupportFolder(void);
-NSString* MakeHtmlFolder(void);
-NSString* MakeGaijiFolder(void);
+extern NSImage* MakeFontDataFromPath(NSString* path, int size);
+extern void SetFontAlternativeString(NSString* path, NSString* alternative);
+extern void SetFontUseAlternativeString(NSString* path, BOOL alternative);
+extern NSString* MakeApplicationSupportFolder(void);
+extern NSString* MakeHtmlFolder(void);
+extern NSString* MakeGaijiFolder(void);
+extern BOOL IsAppSandboxed(void);

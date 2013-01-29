@@ -83,7 +83,6 @@
 		0DC8FC70165E377A00307AB2 /* PreferenceToolbar.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FC69165E377A00307AB2 /* PreferenceToolbar.strings */; };
 		0DC8FC71165E377A00307AB2 /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FC6B165E377A00307AB2 /* ServicesMenu.strings */; };
 		0DC8FC78165E37BE00307AB2 /* template in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FC77165E37BE00307AB2 /* template */; };
-		0DC8FC7A165E37E200307AB2 /* NetDict in Resources */ = {isa = PBXBuildFile; fileRef = 0DC8FC79165E37E200307AB2 /* NetDict */; };
 		0DC8FC7C165E388900307AB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC8FC7B165E388900307AB2 /* QuartzCore.framework */; };
 		0DC8FC7E165E389100307AB2 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC8FC7D165E389100307AB2 /* QTKit.framework */; };
 		0DC8FC80165E389F00307AB2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC8FC7F165E389F00307AB2 /* WebKit.framework */; };
@@ -145,6 +144,7 @@
 		0DC8FCBC165E394100307AB2 /* VerboseComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8FBB7165E365800307AB2 /* VerboseComboBox.m */; };
 		0DC8FCBD165E394100307AB2 /* VerboseFieldEditer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8FBB9165E365800307AB2 /* VerboseFieldEditer.m */; };
 		0DC8FCBE165E394100307AB2 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8FBBB165E365800307AB2 /* WindowController.m */; };
+		0DD0CC1916AA3D5600451E08 /* NetDict in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0CC1716AA3D5600451E08 /* NetDict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,10 +387,11 @@
 		0DC8FC75165E378000307AB2 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/PreferenceToolbar.strings; sourceTree = SOURCE_ROOT; };
 		0DC8FC76165E378000307AB2 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = text/English.lproj/ServicesMenu.strings; sourceTree = SOURCE_ROOT; };
 		0DC8FC77165E37BE00307AB2 /* template */ = {isa = PBXFileReference; lastKnownFileType = folder; path = template; sourceTree = SOURCE_ROOT; };
-		0DC8FC79165E37E200307AB2 /* NetDict */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NetDict; sourceTree = SOURCE_ROOT; };
 		0DC8FC7B165E388900307AB2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0DC8FC7D165E389100307AB2 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		0DC8FC7F165E389F00307AB2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0DD0CC1816AA3D5600451E08 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Japanese; path = NetDict/Japanese.lproj/NetDict; sourceTree = "<group>"; };
+		0DD0CC1A16AA3D6800451E08 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = NetDict/English.lproj/NetDict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -671,7 +672,7 @@
 			children = (
 				0DC8FA21165E2C2500307AB2 /* src */,
 				0DC8FBBC165E36E200307AB2 /* resources */,
-				0DC8FC79165E37E200307AB2 /* NetDict */,
+				0DD0CC1716AA3D5600451E08 /* NetDict */,
 				0DC8FC77165E37BE00307AB2 /* template */,
 				0DC8FA22165E2C2500307AB2 /* Supporting Files */,
 				0DC8FA1A165E2C2500307AB2 /* Frameworks */,
@@ -1017,7 +1018,6 @@
 				0DC8FC70165E377A00307AB2 /* PreferenceToolbar.strings in Resources */,
 				0DC8FC71165E377A00307AB2 /* ServicesMenu.strings in Resources */,
 				0DC8FC78165E37BE00307AB2 /* template in Resources */,
-				0DC8FC7A165E37E200307AB2 /* NetDict in Resources */,
 				0D76B0CA169F70C0009417F4 /* icon_automatic@2x.png in Resources */,
 				0D76B0CB169F70C0009417F4 /* icon_bitmap@2x.png in Resources */,
 				0D76B0CC169F70C0009417F4 /* icon_font@2x.png in Resources */,
@@ -1045,6 +1045,7 @@
 				0DBE3E3C16A2A26000710D54 /* chujiten.plist in Resources */,
 				0DBE3E3D16A2A26000710D54 /* dgx01.plist in Resources */,
 				0D1D477616A4092900F0F161 /* icon_movie@2x.png in Resources */,
+				0DD0CC1916AA3D5600451E08 /* NetDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,6 +1227,15 @@
 			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
+		0DD0CC1716AA3D5600451E08 /* NetDict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DD0CC1816AA3D5600451E08 /* Japanese */,
+				0DD0CC1A16AA3D6800451E08 /* English */,
+			);
+			name = NetDict;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1287,6 +1297,7 @@
 		0DC8FA36165E2C2600307AB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";
@@ -1303,6 +1314,7 @@
 		0DC8FA37165E2C2600307AB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Prefix-ebooks.pch";

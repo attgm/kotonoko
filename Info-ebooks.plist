@@ -34,5 +34,32 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSKeyEquivalent</key>
+			<dict>
+				<key>default</key>
+				<string>K</string>
+			</dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Kotonoko/Lookup</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doLookupService</string>
+			<key>NSPortName</key>
+			<string>kotonoko</string>
+			<key>NSSendFileTypes</key>
+			<array/>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSServiceDescription</key>
+			<string>Look up dictionary by Kotonoko</string>
+		</dict>
+	</array>
 </dict>
 </plist>

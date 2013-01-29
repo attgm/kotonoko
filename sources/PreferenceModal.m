@@ -6,6 +6,7 @@
 
 #import "PreferenceUtilities.h"
 #import "PreferenceModal.h"
+#import "EBookUtilities.h"
 
 #import <WebKit/WebKit.h>
 
@@ -289,6 +290,7 @@ static NSDictionary *defaultValues()
 +(NSURL*) securityBookmarkForPath:(NSString*)path
 {
     if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6) return nil;
+    if (IsAppSandboxed() == NO) return nil;
     
     NSData *bookmark = [[PreferenceModal prefForKey:kSecureBookmarkTable] objectForKey:path];
     if(bookmark){

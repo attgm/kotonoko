@@ -17,7 +17,7 @@
 			<key>SearchURL</key>
 			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;enc=UTF-8&amp;stype=0&amp;dtype=2</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=prefix</string>
 			<key>Title</key>
 			<string>で始まる</string>
 		</dict>
@@ -27,7 +27,7 @@
 			<key>SearchURL</key>
 			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;enc=UTF-8&amp;stype=3&amp;dtype=2</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=suffix</string>
 			<key>Title</key>
 			<string>で終わる</string>
 		</dict>
@@ -37,7 +37,7 @@
 			<key>SearchURL</key>
 			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;enc=UTF-8&amp;stype=1&amp;dtype=2</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=exact</string>
 			<key>Title</key>
 			<string>に一致する</string>
 		</dict>
@@ -47,7 +47,7 @@
 			<key>SearchURL</key>
 			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;enc=UTF-8&amp;stype=2&amp;dtype=2</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=partial</string>
 			<key>Title</key>
 			<string>を含む</string>
 		</dict>
@@ -57,7 +57,7 @@
 			<key>SearchURL</key>
 			<string>http://dic.yahoo.co.jp/dsearch</string>
 			<key>Template</key>
-			<string>?p={searchTerms}&amp;enc=UTF-8&amp;stype=4&amp;dtype=2</string>
+			<string>?ei=UTF-8&amp;p={searchTerms}&amp;fr=dic&amp;stype=full</string>
 			<key>Title</key>
 			<string>を解説に含む</string>
 		</dict>

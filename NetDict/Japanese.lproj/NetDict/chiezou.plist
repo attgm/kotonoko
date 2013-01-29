@@ -4,7 +4,7 @@
 <dict>
 	<key>Hosts</key>
 	<array>
-		<string>chiezou.jp</string>
+		<string>kotobank.jp</string>
 	</array>
 	<key>InputEncoding</key>
 	<string>UTF-8</string>
@@ -14,18 +14,18 @@
 			<key>SearchID</key>
 			<integer>0</integer>
 			<key>SearchURL</key>
-			<string>http://chiezou.jp/search/result</string>
+			<string>http://kotobank.jp/word/</string>
 			<key>Template</key>
-			<string>?q={searchTerms}</string>
+			<string>{searchTerms}</string>
 			<key>Title</key>
 			<string>を含む</string>
 		</dict>
 	</array>
 	<key>ShortName</key>
-	<string>みんなの知恵蔵</string>
+	<string>コトバンク</string>
 	<key>Version</key>
 	<real>1</real>
 	<key>title</key>
-	<string>みんなの知恵蔵</string>
+	<string>コトバンク</string>
 </dict>
 </plist>

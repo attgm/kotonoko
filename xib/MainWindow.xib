@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1080</int>
+		<int key="IBDocument.SystemTarget">1070</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2843</string>
+			<string key="NS.object.0">2844</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSArrayController</string>
@@ -60,9 +60,10 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{288, 300}</string>
 				<object class="NSView" key="NSWindowView" id="352024120">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{475, 503}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMinSize">{288, 322}</string>
@@ -184,7 +185,7 @@
 								<int key="NSvFlags">2322</int>
 								<string key="NSFrameSize">{460, 173}</string>
 								<reference key="NSSuperview" ref="172113961"/>
-								<reference key="NSNextKeyView" ref="976833231"/>
+								<reference key="NSNextKeyView" ref="505728255"/>
 								<object class="NSTextContainer" key="NSTextContainer" id="64037382">
 									<object class="NSLayoutManager" key="NSLayoutManager">
 										<object class="NSTextStorage" key="NSTextStorage">
@@ -305,7 +306,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</array>
 				<string key="NSFrameSize">{460, 173}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="172113961"/>
+				<reference key="NSNextKeyView" ref="976833231"/>
 				<int key="NSsFlags">133136</int>
 				<reference key="NSVScroller" ref="505728255"/>
 				<reference key="NSHScroller" ref="976833231"/>
@@ -332,7 +333,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 										<array class="NSMutableArray" key="NSSubviews"/>
 										<string key="NSFrameSize">{126, 437}</string>
 										<reference key="NSSuperview" ref="726557946"/>
-										<reference key="NSNextKeyView" ref="507494477"/>
+										<reference key="NSNextKeyView" ref="403804882"/>
 										<bool key="NSEnabled">YES</bool>
 										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -449,7 +450,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						</array>
 						<string key="NSFrameSize">{126, 437}</string>
 						<reference key="NSSuperview" ref="819155891"/>
-						<reference key="NSNextKeyView" ref="726557946"/>
+						<reference key="NSNextKeyView" ref="507494477"/>
 						<int key="NSsFlags">264208</int>
 						<reference key="NSVScroller" ref="208240101"/>
 						<reference key="NSHScroller" ref="507494477"/>
@@ -577,7 +578,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<object class="NSButton" id="176156472">
 										<reference key="NSNextResponder" ref="213632190"/>
 										<int key="NSvFlags">257</int>
-										<string key="NSFrame">{{193, 2}, {26, 22}}</string>
+										<string key="NSFrame">{{193, 0}, {26, 22}}</string>
 										<reference key="NSSuperview" ref="213632190"/>
 										<reference key="NSNextKeyView" ref="428417530"/>
 										<bool key="NSEnabled">YES</bool>
@@ -1111,7 +1112,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSTextField" id="296043482">
 									<reference key="NSNextResponder" ref="125012138"/>
-									<int key="NSvFlags">310</int>
+									<int key="NSvFlags">274</int>
 									<string key="NSFrameSize">{126, 17}</string>
 									<reference key="NSSuperview" ref="125012138"/>
 									<reference key="NSNextKeyView" ref="1056693697"/>
@@ -1150,7 +1151,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<array class="NSMutableArray" key="NSSubviews">
 								<object class="NSTextField" id="648718542">
 									<reference key="NSNextResponder" ref="1056693697"/>
-									<int key="NSvFlags">310</int>
+									<int key="NSvFlags">274</int>
 									<string key="NSFrameSize">{126, 17}</string>
 									<reference key="NSSuperview" ref="1056693697"/>
 									<reference key="NSNextKeyView" ref="208240101"/>
@@ -1311,8 +1312,8 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="object" ref="529226709"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="826076796"/>
-							<reference ref="1056693697"/>
 							<reference ref="125012138"/>
+							<reference ref="1056693697"/>
 							<object class="NSCustomView" id="403804882">
 								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">274</int>
@@ -1617,6 +1618,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<real value="1070" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">

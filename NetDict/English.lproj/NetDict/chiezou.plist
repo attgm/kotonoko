@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hosts</key>
+	<array>
+		<string>kotobank.jp</string>
+	</array>
+	<key>InputEncoding</key>
+	<string>UTF-8</string>
+	<key>SearchMethods</key>
+	<array>
+		<dict>
+			<key>SearchID</key>
+			<integer>0</integer>
+			<key>SearchURL</key>
+			<string>http://kotobank.jp/word/</string>
+			<key>Template</key>
+			<string>{searchTerms}</string>
+			<key>Title</key>
+			<string>Include</string>
+		</dict>
+	</array>
+	<key>ShortName</key>
+	<string>kotobank.jp</string>
+	<key>Version</key>
+	<integer>1</integer>
+	<key>title</key>
+	<string>kotobank.jp</string>
+</dict>
+</plist>

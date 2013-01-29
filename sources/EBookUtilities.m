@@ -144,3 +144,12 @@ NSString* MakeGaijiFolder(void)
 	
 	return path;
 }
+
+
+//-- IsAppSandboxed
+// sandbox を使っているかどうか
+BOOL IsAppSandboxed()
+{
+	NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+    return  ([environment objectForKey:@"APP_SANDBOX_CONTAINER_ID"] != nil);
+}
