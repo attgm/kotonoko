@@ -455,11 +455,13 @@ static NSNumber *yes, *no;
 	
 		if (hitNum == 0) break;
 		int i;
+        
 		for(i=0; i<hitNum && [array count] < inMaxHits; i++){
 			EBLocation location = EBMakeLocation(_ebookNumber, hits[i].text.page, hits[i].text.offset);
-			if([self isDuplicate:location at:array] == NO){
-				EB_Position* position = &(hits[i].heading);
-				[array addObject:[DictionaryElement elementWithHeading:[self stringHeading:position paramator:paramator]
+            EB_Position* position = &(hits[i].heading);
+            NSAttributedString* heading = [self stringHeading:position paramator:paramator];
+            if([self isDuplicate:location heading:[heading string] at:array] == NO){
+				[array addObject:[DictionaryElement elementWithHeading:heading
 																anchor:location]];
 			}
 		}
@@ -549,9 +551,10 @@ static NSNumber *yes, *no;
 		int i;
 		for(i=0; i<hitNum && [array count] < maxHits; i++){
 			EBLocation location = EBMakeLocation(_ebookNumber, hits[i].text.page, hits[i].text.offset);
-			if([self isDuplicate:location at:array] == NO){
-				EB_Position* position = &(hits[i].heading);
-				[array addObject:[DictionaryElement elementWithHeading:[self stringHeading:position paramator:paramator]
+			EB_Position* position = &(hits[i].heading);
+            NSAttributedString* heading = [self stringHeading:position paramator:paramator];
+            if([self isDuplicate:location heading:[heading string] at:array] == NO){
+				[array addObject:[DictionaryElement elementWithHeading:heading
 																anchor:location]];
 			}
 		}
@@ -564,13 +567,15 @@ static NSNumber *yes, *no;
 //-- isDuplicate:at:
 // 検索語の重複チェック
 -(BOOL) isDuplicate:(EBLocation) location
+            heading:(NSString*) heading
 				 at:(NSArray*) array
 {
 	NSString* locationString = [DictionaryElement locationToURLString:location];
 	
 	for(DictionaryElement* it in array){
 		NSString* string = [it URLString];
-		if(string && [string isEqualToString:locationString]){
+        NSString* headingString = [it string];
+		if(string && [string isEqualToString:locationString] && headingString && [headingString isEqualToString:heading]){
 			return YES;
 		}
 	}

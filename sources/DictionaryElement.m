@@ -22,7 +22,6 @@
 		_url = nil;
 	}else{
 		_url = [[NSURL alloc] initWithString:[[self class] locationToURLString:location]];
-		
 	}
 	_rawData = (inRawData) ? [inRawData copyWithZone:[self zone]] : NULL;
     

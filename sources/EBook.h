@@ -74,7 +74,7 @@ extern NSString *const EBTagAttributes;
 - (NSArray*) search:(NSString*)word method:(ESearchMethod)method max:(NSInteger)maxHits paramator:(NSDictionary*)paramator;
 - (EB_Error_Code) searchKeyword : (char*) inWord
                          length : (NSInteger) inLength;
-- (BOOL) isDuplicate:(EBLocation)losition at:(NSArray*)array;
+- (BOOL) isDuplicate:(EBLocation)losition heading:(NSString*)heading at:(NSArray*)array;
 
 - (NSAttributedString*) copyrightWithParamator:(NSDictionary*) paramator;
 - (NSString*) directoryName;
