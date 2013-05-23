@@ -177,7 +177,13 @@
         [self setValue:book forKey:@"ebook"];
 	
         NSString* appendix = [[PreferenceModal prefForKey:kAppendixTable] objectForKey:path];
-        if(appendix) { [book bindAppendix:appendix]; };
+        if(appendix) {
+            NSURL* bookmark = [PreferenceModal securityBookmarkForPath:appendix];
+            
+            if (bookmark) [bookmark startAccessingSecurityScopedResource];
+            [book bindAppendix:appendix];
+            if (bookmark) [bookmark stopAccessingSecurityScopedResource];
+        };
         [self setValue:@"dictionary" forKey:@"type"];
     }
 	return self;

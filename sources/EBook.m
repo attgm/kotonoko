@@ -168,24 +168,37 @@ static NSNumber *yes, *no;
     int appendix;
     EB_Subbook_Code subbooks[EB_MAX_SUBBOOKS];
     EB_Error_Code err;
+    Boolean isSuccess = YES;
     
     const char* path = [[NSFileManager defaultManager] fileSystemRepresentationWithPath:inPath];
     if(path == NULL){
 		return NO;
     }
-    if((err = eb_bind_appendix(&_appendix, path)) != EB_SUCCESS){
-		NSLog(@"eb_bind_appendix:%s", eb_error_message(err));
-		return NO;
+    
+    @try {
+        if((err = eb_bind_appendix(&_appendix, path)) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"eb_bind_appendix"
+                                     reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                   userInfo:nil] raise];
+        }
+        
+        if((err = eb_appendix_subbook_list(&_appendix, subbooks, &appendix)) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"eb_appendix_subbook_list"
+                                     reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                   userInfo:nil] raise];
+        }
+        
+        if((err = eb_set_appendix_subbook(&_appendix, subbooks[_activeSubbook])) != EB_SUCCESS){
+            [[NSException exceptionWithName:@"eb_set_appendix_subbook"
+                                    reason:[NSString stringWithCString:eb_error_message(err) encoding:NSASCIIStringEncoding]
+                                  userInfo:nil] raise];
+        }
     }
-    if((err = eb_appendix_subbook_list(&_appendix, subbooks, &appendix)) != EB_SUCCESS){
-		NSLog(@"eb_appendix_subbook_list:%s", eb_error_message(err));
-		return NO;
+    @catch (NSException *exception) {
+        NSLog(@"%@ : %@",[exception name], [exception reason]);
+        isSuccess = NO;
     }
-    if((err = eb_set_appendix_subbook(&_appendix, subbooks[_activeSubbook])) != EB_SUCCESS){
-		NSLog(@"eb_set_appendix_subbook:%s", eb_error_message(err));
-		return NO;
-    }
-    return YES;
+    return isSuccess;
 }
 
 

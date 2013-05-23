@@ -286,7 +286,7 @@ static NSDictionary *defaultValues()
 
 
 //-- setSecurityBookmark:
-// Secutiry-scoped bookmarkを保存する
+// Secutiry-scoped bookmarkを取得する
 +(NSURL*) securityBookmarkForPath:(NSString*)path
 {
     if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6) return nil;

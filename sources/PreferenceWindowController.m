@@ -11,6 +11,7 @@
 #import "DictionaryBinderManager.h"
 #import "DictionaryManager.h"
 #import "PreferenceWindowController.h"
+#import "DictionaryListItem.h"
 
 #import "DictionayArrayController.h"
 #import "EBookUtilities.h"
@@ -273,7 +274,6 @@ static PreferenceWindowController *sSharedInstance = nil;
                                 bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
         [PreferenceModal setSecurityBookmark:bookmarkData forPath:path];
     }
-    
     [[DictionaryManager sharedDictionaryManager] appendDirectory:path];
 }
 
@@ -336,6 +336,24 @@ static PreferenceWindowController *sSharedInstance = nil;
 	id obj;
 	while (obj = [e nextObject]){
 		[obj setValue:path forKey:@"appendix"];
+	}
+    
+    if(IsAppSandboxed()){
+        NSError *error = nil;
+        NSData *bookmarkData = [[NSURL fileURLWithPath:path]
+                                bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope includingResourceValuesForKeys:nil relativeToURL:nil error:&error];
+        [PreferenceModal setSecurityBookmark:bookmarkData forPath:path];
+    }
+}
+
+//-- deleteAppendix
+// appendixの削除
+-(IBAction) deleteAppendix:(id)sender
+{
+    NSEnumerator* e = [[_treeController selectedObjects] objectEnumerator];
+	id obj;
+	while (obj = [e nextObject]){
+		[obj setValue:nil forKey:@"appendix"];
 	}
 }
 
