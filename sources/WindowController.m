@@ -1,7 +1,7 @@
 //	WindowController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "EBook.h" // for EB...Attributes
@@ -30,12 +30,11 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 // 初期化ルーチン
 - (id) initWithController:(EBookController*)inController
 {
-    self = [super init];
+    self = [super initWithWindowNibName:@"MainWindow" owner:self];
     
     if(self){
         _ebookController = inController;
 		_searchMethod = -1;
-	    [self createMainWindow];
     }
     
     return self;
@@ -67,26 +66,20 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 }
 
 
-//-- createMainWindow
+//-- windowDidLoad
 // nib から mainwindowを生成する
-- (void) createMainWindow
+- (void) windowDidLoad
 {
-    if(!_window){
-        if (![NSBundle loadNibNamed:@"MainWindow" owner:self]){ 
-			NSLog(@"Failed to load MainWindow.nib");
-			NSBeep();
-		}
-		
-		[self setWindowTitle:nil];
-		[_searchClip setBackgroundColor:[NSColor windowBackgroundColor]];
-		// 検索Viewを初期化する
-		_searchViewController = [[SearchViewController alloc] initWithWindowController:self];
-		[self setSearchView:[_searchViewController view]];
-		_currentSearchViewController = _searchViewController;
+    [self setWindowTitle:nil];
+	[_searchClip setBackgroundColor:[NSColor windowBackgroundColor]];
+	// 検索Viewを初期化する
+	_searchViewController = [[SearchViewController alloc] initWithWindowController:self];
+	[self setSearchView:[_searchViewController view]];
+	_currentSearchViewController = _searchViewController;
         
-        [_headingTable setFloatsGroupRows:YES];
-	}
-    [_window makeKeyAndOrderFront:nil];
+    [_headingTable setFloatsGroupRows:YES];
+    [self updateHeadingFont];
+    [self.window makeKeyAndOrderFront:nil];
 }
 
 
@@ -103,9 +96,9 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 				   toObject:[DictionaryBinderManager sharedDictionaryBinderManager]
 				withKeyPath:@"quickTagFilterPredicate"
 					options:nil];
-	NSRect frame = [(NSView*)[_window contentView] frame];
+	NSRect frame = [(NSView*)[self.window contentView] frame];
 	[_contentView setFrame:frame];
-	[_window setContentView:_contentView];
+	[self.window setContentView:_contentView];
 	
 	[self setContentsViewToDictionaryContents];
 
@@ -116,7 +109,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(becomeMainWindow:)
 												 name:NSWindowDidBecomeKeyNotification
-											   object:_window];
+											   object:self.window];
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(searchViewAnimeFinished:)
 												 name:kFinichSearchViewAnimation
@@ -144,9 +137,9 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 - (void) setWindowTitle : (NSString*) inTitle
 {
 	if(inTitle){
-		[_window setTitle:inTitle];
+		[self.window setTitle:inTitle];
 	}else{
-		[_window setTitle:NSLocalizedString(@"Application Name", @"kotonoko")];
+		[self.window setTitle:NSLocalizedString(@"Application Name", @"kotonoko")];
 	}
 }
 
@@ -297,7 +290,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
     [_searchClip setFrame:top_frame];
     [_splitView setFrame:bottom_frame];
     
-    [_window display];
+    [self.window display];
 }
 
 
@@ -325,7 +318,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	BOOL isVertical;
 	int windowStyle = [[PreferenceModal prefForKey:kWindowStyle] intValue];
 	if(windowStyle == kWindowStyleAutomatic){
-		NSSize size = [_window frame].size;
+		NSSize size = [self.window frame].size;
 		isVertical = (size.width > [[PreferenceModal prefForKey:kWSSwitchingWidth] intValue]);
 	}else{
 		isVertical = (windowStyle == kWindowStyleVertical);
@@ -372,27 +365,18 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 // 前面に移動する
 - (void) showFront
 {
-    //if(_windowState == ws_MiniWindow){
+    //if(self.windowState == ws_MiniWindow){
 	//	[mMiniWindowController moveFront];
     //}else{
         // もし最小化されていれば前面にだす
-        if([_window isMiniaturized] == YES){
-            [_window deminiaturize:self];
+        if([self.window isMiniaturized] == YES){
+            [self.window deminiaturize:self];
         }
         // もし隠されていたら表にだす
-        if([_window isKeyWindow] == NO){
-            [_window makeKeyAndOrderFront:nil];
+        if([self.window isKeyWindow] == NO){
+            [self.window makeKeyAndOrderFront:nil];
         }
 }
-
-
-//-- window
-// ウィンドウを返す
-- (NSWindow*) window
-{
-    return _window;
-}
-
 
 
 //-- selectQuickTab:
@@ -419,7 +403,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 {
 	// Focusの移動
 	if([_headingTable window]){
-		[_window makeFirstResponder:_headingTable];
+		[self.window makeFirstResponder:_headingTable];
 		
 		if([self selectFirstHeading] == NO){
 			[_contentsController setEmptyContents];
@@ -452,7 +436,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 -(NSDictionary*) headingParamator
 {
 	NSFont* contentsFont = [PreferenceModal fontForKey:kHeadingFont];
-	NSFont* scriptFont = [NSFont fontWithName:[contentsFont fontName] size:([contentsFont pointSize]*0.75)];
+	NSFont* scriptFont = [NSFont fontWithName:[contentsFont fontName] size:([contentsFont pointSize]*.75f)];
 	
 	NSColor* contentsColor = [PreferenceModal colorForKey:kHeadingColor];
 	
@@ -465,11 +449,11 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
     NSColor* tagColor = [PreferenceModal colorForKey:kDictionaryNameColor];
     NSMutableParagraphStyle *paragraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
     [paragraph setLineBreakMode:NSLineBreakByTruncatingTail];
-    
+    [paragraph setAlignment:NSCenterTextAlignment];
 	NSDictionary* tagAttributes;
     if([tagFont pointSize] > 10.0f){
         NSShadow* tagShadow = [[[NSShadow alloc] init] autorelease];
-        [tagShadow setShadowColor:[NSColor blackColor]];
+        [tagShadow setShadowColor:[NSColor grayColor]];
         [tagShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [tagShadow setShadowBlurRadius:1.0f];
         tagAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -528,7 +512,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 {
     NSPageLayout *pageLayout = [NSPageLayout pageLayout];
     [pageLayout beginSheetWithPrintInfo : [NSPrintInfo sharedPrintInfo]
-						 modalForWindow : _window
+						 modalForWindow : self.window
 							   delegate : nil
 						 didEndSelector : NULL
 							contextInfo : NULL];
@@ -540,7 +524,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 - (void) print
 {
     NSPrintOperation *printOperation = [NSPrintOperation printOperationWithView:[_contentsController textView]];
-    [printOperation runOperationModalForWindow : _window
+    [printOperation runOperationModalForWindow : self.window
 									  delegate : nil
 								didRunSelector : NULL
 								   contextInfo : NULL];
@@ -763,8 +747,8 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 // Windowがキーウィンドウになった時の処理
 - (void) becomeMainWindow : (NSNotification *) inNotification
 {
-	if(!([[_window firstResponder] isKindOfClass:[NSTextView class]] &&
-		 [(NSTextView*)[_window firstResponder] isEditable])){
+	if(!([[self.window firstResponder] isKindOfClass:[NSTextView class]] &&
+		 [(NSTextView*)[self.window firstResponder] isEditable])){
 		// focusを検索フィールドに移す
 		[self moveFocusToSearchView];
 	}
@@ -895,7 +879,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	if(!_progressPanel){
 		_progressPanel = [[ProgressPanel alloc] init];
 	}
-	[_progressPanel beginSheetForWindow:_window caption:caption];
+	[_progressPanel beginSheetForWindow:self.window caption:caption];
 }
 
 

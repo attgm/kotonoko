@@ -1,7 +1,7 @@
 //	PreferenceModal.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "PreferenceUtilities.h"
@@ -33,7 +33,7 @@ static NSDictionary *defaultValues()
 			@"0.0 0.0 0.0 1.0", kHeadingColor,
 			@"0.0 0.0 1.0 1.0", kIndexColor,
 			@"1.0 0.0 0.0 1.0", kLinkColor,
-			@"1.0 1.0 1.0 1.0", kDictionaryNameColor,
+			@".25 .25 .25 .25", kDictionaryNameColor,
 			@"1.0 0.75 0.5 1.0", kFindColor,
 			@"0.45 0.50 0.60 1.0", kDictionaryBackgroundColor,
 			@"", kCurrentDictionary,

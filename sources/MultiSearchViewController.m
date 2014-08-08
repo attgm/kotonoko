@@ -1,7 +1,7 @@
 //	MultiSearchViewController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "PreferenceModal.h"
@@ -21,7 +21,7 @@ const NSInteger EBLayoutMargin = 20;
 // 初期化
 - (id) initWithWindowController:(WindowController*) inWindowController
 {
-    self = [super init];
+    self = [super initWithNibName:@"MultiSearchView" bundle:nil];
     
     if(self){
         _windowController = inWindowController;
@@ -49,12 +49,7 @@ const NSInteger EBLayoutMargin = 20;
 // nib から search viewを生成する
 - (void) createSearchView
 {
-    if(!_searchFieldView){
-        if (![NSBundle loadNibNamed:@"MultiSearchView" owner:self]){
-			NSLog(@"Failed to load MultiSearchView.nib");
-			NSBeep();
-		}
-    }
+    [self loadView];
 }
 
 
@@ -185,7 +180,7 @@ const NSInteger EBLayoutMargin = 20;
 		NSInteger entry = 0;
 		for(NSString* title in array){
 			NSArray* candidates = [singleBinder multiSearchCandidates:index entry:entry++];
-			MultiSearchEntry* entry = [MultiSearchEntry entryWithTitle:title candidates:candidates];
+			MultiSearchEntry* entry = [MultiSearchEntry entryWithLabel:title candidates:candidates];
 			[entry setController:self];
 			[_entriesArray addObject:entry];
 		}

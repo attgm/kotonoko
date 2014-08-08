@@ -1,7 +1,7 @@
 //	DictionaryElement.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 

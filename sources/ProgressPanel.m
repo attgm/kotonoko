@@ -1,7 +1,7 @@
 //	ProgressPanel.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -14,6 +14,12 @@
 @synthesize animate = _animate;
 
 
+-(instancetype) init
+{
+    self = [super initWithNibName:@"ProgressPanel" bundle:nil];
+    return self;
+}
+
 #pragma mark Progress Sheet
 //-- beginSheetForWindow:didEndSelector
 // sheetwindowを表示させる
@@ -21,17 +27,13 @@
 					 caption : (NSString*) caption
 {
     // SheetWindowをnibファイルから生成する
-    if (!_panel) {
-		if (![NSBundle loadNibNamed:@"ProgressPanel" owner:self])  {
-			NSLog(@"Failed to load ProgressPanel.nib");
-			NSBeep();
-            return;
-		}
+    if (!self.view) {
+        [self loadView];
     }
 	
 	NSRect frame = [[window contentView] frame];
-	[_panel setFrame:frame];
-	[window setContentView:_panel];
+	[self.view setFrame:frame];
+	[window setContentView:self.view];
     
 	[self setCaption:caption];
 	
@@ -43,7 +45,7 @@
 // sheet windowを閉じる
 -(void) endSheet
 {
-	[_panel removeFromSuperview];
+	[self.view removeFromSuperview];
 	[self setAnimate:NO];
 }
 

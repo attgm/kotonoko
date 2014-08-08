@@ -1,7 +1,7 @@
 //	PreferenceWindowController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "PreferenceDefines.h"
@@ -77,14 +77,15 @@ static PreferenceWindowController *sSharedInstance = nil;
 
 //-- init
 // initialize
-- (id)init
+- (id) init
 {
     if (sSharedInstance) {
 		[self dealloc];
     } else {
-        self = [super init];
+        self = [super initWithWindowNibName:@"Preferences" owner:self];
 		_preferenceModal = [PreferenceModal sharedPreference];
         sSharedInstance = self;
+        _initialized = NO;
     }
     return sSharedInstance;
 }
@@ -112,15 +113,10 @@ static PreferenceWindowController *sSharedInstance = nil;
 // display preference panel
 -(void) showPanel:(id) sender
 {
-	if (!_preferenceWindow) {
-		
-		if (![NSBundle loadNibNamed:@"Preferences" owner:self])  {
-			NSLog(@"Failed to load Preferences.nib");
-			NSBeep();
-			return;
-		}
-	
-		[_preferenceWindow setExcludedFromWindowsMenu:YES];
+	if (_initialized == NO) {
+        [self loadWindow];
+        
+        [_preferenceWindow setExcludedFromWindowsMenu:YES];
 		[_preferenceWindow setMenu:nil];
 		[_preferenceWindow center];
 		[self createToolbar];
@@ -142,6 +138,8 @@ static PreferenceWindowController *sSharedInstance = nil;
 		
 		DictionaryBinderManager* binder = [DictionaryBinderManager sharedDictionaryBinderManager];
 		[_quickTagController bind:@"contentArray" toObject:binder withKeyPath:@"binders" options:nil];
+        
+        _initialized = YES;
 	}
 	[_preferenceWindow makeKeyAndOrderFront:nil];
 }
@@ -294,7 +292,7 @@ static PreferenceWindowController *sSharedInstance = nil;
 	
     [op beginSheetModalForWindow:_preferenceWindow
                completionHandler:^(NSInteger result){
-                   if(result == NSOKButton){
+                   if(result == NSModalResponseOK){
                        NSString* filename = [[op URL] path];
                        switch([sender tag]){
                            case kOpenFolder:

@@ -1,7 +1,7 @@
 //	SearchViewController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -18,9 +18,8 @@
 // 初期化
 - (id) initWithWindowController:(WindowController*) inWindowController
 {
-    self = [super init];
+    self = [super initWithNibName:@"SearchView" bundle:nil];
     if(self){
-        [self createSearchView];
   		_windowController = inWindowController;
     }    
     return self;
@@ -35,26 +34,6 @@
 }
 
 
-
-//-- createSearchView
-// nib から search viewを生成する
-- (void) createSearchView
-{
-    if(!_searchView){
-        if (![NSBundle loadNibNamed:@"SearchView" owner:self]){
-			NSLog(@"Failed to load SearchView.nib");
-			NSBeep();
-		}
-    }
-}
-
-
-//-- view
-// search viewを返す
-- (NSView*) view
-{
-    return _searchView;
-}
 
 #pragma mark Action
 //-- switchSearchMethod
@@ -121,7 +100,7 @@
 // focusをtext fieldに移動させる
 - (void) moveFocus
 {
-    NSWindow* window = [_searchView window];
+    NSWindow* window = [self.view window];
     if(window){
         [window makeFirstResponder:_inputTextField];
     }

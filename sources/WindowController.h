@@ -1,7 +1,7 @@
 //	WindowController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -22,7 +22,7 @@
 @class VerboseFieldEditer;
 
 
-@interface WindowController :  NSObject <NSAnimationDelegate>
+@interface WindowController :  NSWindowController <NSAnimationDelegate>
 {
     // MainWindow.nib
     IBOutlet LinerMatrix*		_binderMatrix;
@@ -30,8 +30,7 @@
     IBOutlet NSClipView*		_searchClip;
     IBOutlet NSView*			_contentsClip;
     IBOutlet NSSplitView*		_splitView;
-    IBOutlet NSWindow*			_window;
-	IBOutlet NSView*			_contentView;
+    IBOutlet NSView*			_contentView;
 
 	IBOutlet NSArrayController* _binderController;
 	IBOutlet NSArrayController* _headingController;
@@ -69,13 +68,11 @@
 - (void) selectBinder:(DictionaryBinder*) binder;
 
 - (id) initWithController:(EBookController*) inController;
-- (void) createMainWindow;
 - (void) createWindowContent;
 - (void) syncWindowStyle;
 
 - (void) setWindowTitle:(NSString*) inTitle;
 - (void) showFront;
-- (NSWindow*) window;
 
 - (void) setContentsView:(NSView*) contentsView;
 - (NSView*) currentContentsView;

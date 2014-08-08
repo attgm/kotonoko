@@ -1,7 +1,7 @@
 //	HeadingController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "HeadingRowView.h"
@@ -21,11 +21,29 @@
 }
 
 
+//-- background
+/*-(NSColor*) backgroundColor
+{
+    if(self.isGroupRowStyle){
+        return [NSColor colorWithCalibratedWhite:0.95f alpha:.5f];
+    }else{
+        return [super backgroundColor];
+    }
+}*/
+
+
+
+
 //-- drawRect
 //
-- (void)drawBackgroundInRect:(NSRect)dirtyRect
+/*- (void)drawBackgroundInRect:(NSRect)dirtyRect
 {
     if(self.isGroupRowStyle == YES){
+        NSRect bounds = self.bounds;
+        NSColor* color = [NSColor colorWithCalibratedWhite:0.95f alpha:.5f];
+        [color set];
+        NSRectFill(bounds);
+ 
         NSRect bounds = self.bounds;
         
         // NSColor* color = [PreferenceModal colorForKey:kDictionaryBackgroundColor];
@@ -45,7 +63,7 @@
     }else{
         [super drawBackgroundInRect:dirtyRect];
     }
-}
+}*/
 
 
 @end

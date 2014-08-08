@@ -1,7 +1,7 @@
 //	EBookController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 // * service method added by Hiroshi TOMIE 2002-03-15
 

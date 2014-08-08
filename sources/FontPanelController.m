@@ -1,7 +1,7 @@
 //	FontPanelController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "ELDefines.h"
@@ -21,11 +21,13 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // 初期化
 - (id) init
 {
-	self = [super init];
+	self = [super initWithWindowNibName:@"FontPanel" owner:self];
 	if(self){
         [self setFontsArray:nil];
         _fontKind = kFontTypeNarrow;
         _selectedFonts = [[NSIndexSet alloc] init];
+        [self.window setMenu:nil];
+        [self.window center];
 	}
     return self;
 }
@@ -51,16 +53,7 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // Font Panelを表示する
 - (void) showFontPanel
 {
-	if (!_window) {
-		if (![NSBundle loadNibNamed:@"FontPanel" owner:self])  {
-			NSLog(@"Failed to load FontPanel.nib");
-			NSBeep();
-            return;
-		}
-		[_window setMenu:nil];
-        [_window center];
-	}
-    [_window makeKeyAndOrderFront:nil];
+    [self.window makeKeyAndOrderFront:nil];
     [self observeDictionary:nil];
 }
 
@@ -141,13 +134,13 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 	[_panel setAccessoryView:_accessoryView];
     [_panel setDirectoryURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
     [_panel setNameFieldStringValue:[NSString stringWithFormat:@"%@.%@", [binder tagName], kPlistFileType]];
-    [_panel beginSheetModalForWindow:_window 
+    [_panel beginSheetModalForWindow:self.window
                    completionHandler:^(NSInteger result){
                        if(_currentBinder == kFalseBinderId){ return; }
                        DictionaryBinder* binder = [DictionaryBinderManager findDictionaryBinderForId:_currentBinder];
                        if(!binder || ![binder isKindOfClass:[SingleBinder class]]){ return; };
                            
-                       if (result == NSOKButton) {
+                       if (result == NSModalResponseOK) {
                            NSString* filePath = [[_panel URL] path];
                            BOOL hideExtension = [_panel isExtensionHidden];
                            [(SingleBinder*)binder savePrefToFile:filePath format:[_formatPopup selectedTag]];
@@ -197,12 +190,12 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
     [op setPrompt:NSLocalizedString(@"Select", @"Select")];
 	
     [op setDirectoryURL:[NSURL fileURLWithPath:NSHomeDirectory()]];
-    [op beginSheetModalForWindow:_window completionHandler:^(NSInteger result) {
+    [op beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if(_currentBinder == kFalseBinderId){ return; }
         DictionaryBinder* binder = [DictionaryBinderManager findDictionaryBinderForId:_currentBinder];
         if(!binder || ![binder isKindOfClass:[SingleBinder class]]){ return; };
         
-        if ( result == NSOKButton ) {
+        if ( result == NSModalResponseOK ) {
             NSString* filePath = [[op URL] path];
             [(SingleBinder*)binder loadPrefFromFile:filePath];
             [self observeDictionary:nil];
@@ -218,7 +211,7 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 					 returnCode : (int) inReturnCode
 					contextInfo : (NSArray *) inContextInfo
 {
-    if (inReturnCode == NSAlertDefaultReturn) {
+    if (inReturnCode == NSAlertFirstButtonReturn) {
 		//[mCurrentEBook loadPrefFromArray:inContextInfo];
 		[inContextInfo release];
 		[self observeDictionary:nil];
@@ -328,14 +321,14 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // 辞書の変更を認識する
 -(void) observeDictionary:(ACBindingItem*) item
 {
-	if (_window && [_window isVisible]) {
+	if (self.window && [self.window isVisible]) {
 		if(!item){
 			item = [self bindingItem];
 		}
 		DictionaryBinder* binder = [[item observedController] valueForKeyPath:[item observedKeyPath]];
 	
 		if(binder && [binder isKindOfClass:[DictionaryBinder class]]){
-			[_window setTitle:[NSString stringWithFormat:NSLocalizedString(@"GAIJI", @"GAIJI"), [binder title]]];
+			[self.window setTitle:[NSString stringWithFormat:NSLocalizedString(@"GAIJI", @"GAIJI"), [binder title]]];
 			if([binder isKindOfClass:[SingleBinder class]]){
 				[self setFontsArray:[(SingleBinder*)binder fontTable:_fontKind]];
 				_currentBinder = [binder binderId];

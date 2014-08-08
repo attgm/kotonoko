@@ -1,7 +1,7 @@
 //	ContentsController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -13,25 +13,14 @@
 @class EBookController;
 @class WindowController;
 @class NavibarView;
-@class WebView;
-@class WebFrame;
 @class QTMovieView;
 @class QTMovie;
 @class FontTableElement;
 @class SwipeView;
 @class ContentsHistory;
-
-@interface WebViewAnimation : NSAnimation {
-    WebView* _webview;
-    CGFloat _endScale;
-    CGFloat _startScale;
-}
-
--(id)initWithWebView:(WebView*)webview duration:(NSTimeInterval)duration animationCurve:(NSAnimationCurve)animationCurve;
--(void)setScale:(CGFloat) scale;
--(void)setCurrentProgress:(NSAnimationProgress)progress;
-@end;
-
+@class WebViewController;
+@class PlayerViewController;
+@class GaijiViewController;
 
 
 @interface ContentsController : NSObject <SwipeViewDelegate> {
@@ -47,8 +36,6 @@
 	IBOutlet NavibarView*		_charactorCodeView;
 	IBOutlet NSTextField*		_charactorCodeString;
 	
-	IBOutlet WebView*			_webview;
-	IBOutlet NSView*			_webContentsView;
 	IBOutlet NSProgressIndicator*	_progressIndicator;
 	IBOutlet NSButton*			_forwardButton;
 	IBOutlet NSButton*			_backButton;
@@ -76,9 +63,17 @@
     
     
     NSTextFinder*               _textFinder;
+    
+    GaijiViewController*        _gaijiViewController;
+    
 }
 
+
 @property (assign, nonatomic) NSTextFinder* textFinder;
+@property (retain, nonatomic) WebViewController* webviewController;
+
+@property (retain, nonatomic) PlayerViewController* playerViewController;
+
 
 -(id) init;
 -(void) awakeFromNib;
@@ -87,15 +82,14 @@
 
 -(IBAction) backHistory:(id) sender;
 -(IBAction) forwardHistory:(id) sender;
--(IBAction) closeCharactorCodePane:(id) sender;
--(IBAction) changeCharactorCode:(id) sender;
+
 -(IBAction) searchInContent:(id)sender;
 -(IBAction) closeMoviePanel:(id)sender;
 
 @property(readonly) ContentsHistory* history;
 
 -(void) searchInTextContent;
--(void) searchInWebContent;
+//-(void) searchInWebContent;
 
 -(void) moveFocusToContentsSearch;
 
@@ -119,6 +113,7 @@
 
 -(void) updateContentsFont:(NSNotification*) notification;
 
+-(void) reloadContents;
 
 
 -(void) playWave:(NSURL*) reference;
@@ -136,9 +131,6 @@
 -(BOOL) showGaijiCode;
 
 -(NSInteger) isOvercrollingContents;
-
-- (void) addWebFramesWithParent:(WebFrame*) webFrame inArray:(NSMutableArray*) array;
--(NSArray*) webFrames:(WebView*) webview;
 -(EBLocation) locationFromURL:(NSURL*) url;
 
 -(void) setMenu:(NSURL*) url;
@@ -147,8 +139,6 @@
 -(void) setNextKeyView:(NSView*) view;
 -(NSView*) firstKeyView;
 
--(void) showErrorPage:(NSError*)error forFrame:(WebFrame*)frame;
--(NSString*) createErrorHtml:(NSError*) error;
 
 -(void) contentBoundsDidChange:(NSNotification*) notify;
 -(BOOL) hasContents:(NSInteger) detaction;

@@ -1,7 +1,7 @@
 //	EBookController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 // * set next key of HeadingTable by Shiio 2002-01-31
 // * service method added by Hiroshi TOMIE 2002-03-15
@@ -113,12 +113,21 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 	_pasteboardWatcher = [[PasteboardWatcher alloc] initWithDelegate:self];
     
     
-    if([aNotification userInfo] != nil && [[[aNotification userInfo] objectForKey:kAllDictionariesIsLoaded] boolValue] == NO){
+   if([aNotification userInfo] != nil && [[[aNotification userInfo] objectForKey:kAllDictionariesIsLoaded] boolValue] == NO){
+
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_10
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Access Denied", @"Access Denied")];
+        [alert setInformativeText:NSLocalizedString(@"File Access is Denied", @"File Access is Denied")];
+        [alert runModal];
+        [alert release];
+#else
         NSRunInformationalAlertPanel(NSLocalizedString(@"Access Denied", @"Access Denied"),
                                      NSLocalizedString(@"File Access is Denied", @"File Access is Denied"),
                                      NSLocalizedString(@"OK", @"OK"),
                                      nil, nil);
-    }
+#endif
+   }
 }
 
 

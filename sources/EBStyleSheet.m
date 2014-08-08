@@ -1,7 +1,7 @@
 //	EBStyleSheet.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <WebKit/WebKit.h>
@@ -11,7 +11,7 @@
 #import "EBStyleSheet.h"
 
 static EBStyleSheet* sSharedEBStyleSheet = nil;
-static NSString* const kStyleSheetSheme = @"style:default";
+//static NSString* const kStyleSheetSheme = @"style:default";
 static NSString* const kWebKitIdentifier = @"KotonokoViewer";
 static void* const kStyleSheetBindingsIdentifier = (void*) @"styleSheet";
 

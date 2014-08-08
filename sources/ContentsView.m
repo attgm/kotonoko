@@ -1,7 +1,7 @@
 //	ContentsView.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -83,7 +83,7 @@ void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";
 	BOOL hasUnderLine = [[PreferenceModal prefForKey:kLinkUnderLine] boolValue];
 	
 	[self setLinkTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-		[NSNumber numberWithInt:(hasUnderLine ? NSSingleUnderlineStyle : NSNoUnderlineStyle)], NSUnderlineStyleAttributeName,
+		[NSNumber numberWithInt:(hasUnderLine ? NSUnderlineStyleSingle : NSUnderlineStyleNone)], NSUnderlineStyleAttributeName,
 		[PreferenceModal colorForKey:kLinkColor], NSForegroundColorAttributeName,
 		[NSCursor pointingHandCursor], NSCursorAttributeName,
 		nil]];

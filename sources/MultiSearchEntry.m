@@ -1,7 +1,7 @@
 //	MultiSearchEntry.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "MultiSearchViewController.h"
@@ -13,10 +13,12 @@
 // 初期化
 -(id) init
 {
-	self = [super init];
+	self = [super initWithNibName:@"MultiSearchEntry" bundle:nil];
 	if(self){
-        _view = nil;
+        [self loadView];
         _candidateData = nil;
+        [_entryField setStringValue:_label];
+        [self adjustCandidates];
 	}
     return self;
 }
@@ -24,15 +26,20 @@
 
 //-- initWithTitle
 // 初期化
--(id) initWithTitle:(NSString*) title
+-(id) initWithLabel:(NSString*) label
 		 candidates:(NSArray*) candidates
 {
-	self = [super init];
+    self = [super initWithNibName:@"MultiSearchEntry" bundle:nil];
 	if(self){
-        _view = nil;
+        [self loadView];
         _candidateData = nil;
-        _title = [title copyWithZone:[self zone]];
+        
+        _label = [label copyWithZone:[self zone]];
         _candidates = [candidates retain];
+        
+        [_entryField setStringValue:_label];
+        [self adjustCandidates];
+
 	}
 	return self;
 }
@@ -40,10 +47,10 @@
 
 //-- entryWithTitle:candidates:
 // 
-+(MultiSearchEntry*) entryWithTitle:(NSString*) title
++(MultiSearchEntry*) entryWithLabel:(NSString*) label
 						 candidates:(NSArray*) candidates
 {
-	return [[[MultiSearchEntry alloc] initWithTitle:title candidates:candidates] autorelease];
+	return [[[MultiSearchEntry alloc] initWithLabel:label candidates:candidates] autorelease];
 }
 
 
@@ -51,10 +58,7 @@
 // 後片付け
 -(void) dealloc
 {
-	[_view removeFromSuperview];
-	[_view release];
-	
-	[_title release];
+	[_label release];
 	[_candidates release];
 	
 	[super dealloc];
@@ -62,24 +66,6 @@
 
 
 #pragma mark view
-//-- view
-// 表示用のviewを返す
--(NSView*) view
-{
-	if(!_view){
-		if (![NSBundle loadNibNamed:@"MultiSearchEntry" owner:self]){
-			NSLog(@"Failed to load MultiSearchEntry.nib");
-			NSBeep();
-			return nil;
-		}
-		
-		[_entryField setStringValue:_title];
-		[self adjustCandidates];
-	}
-	return _view;
-}
-
-
 //-- adjustCandidates
 // 候補メニューの作成
 -(void) adjustCandidates

@@ -1,7 +1,7 @@
 //	NetDictionary.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -43,13 +43,13 @@
 // データを読み込む
 -(BOOL) parseData:(NSData*) data
 {
-	NSString *error;
+	NSError *error;
 	NSPropertyListFormat format;
-	id property = [NSPropertyListSerialization propertyListFromData:data
-												   mutabilityOption:NSPropertyListImmutable
+	id property = [NSPropertyListSerialization propertyListWithData:data
+                                                            options:NSPropertyListImmutable
 															 format:&format
-												   errorDescription:&error];
-	if(!property){NSLog(@"%@", error); [error release]; return NO;};
+                                                              error:&error];
+	if(!property){NSLog(@"%@", [error description]); return NO;};
 	if(![property isKindOfClass:[NSDictionary class]]){
 		return NO;
 	}

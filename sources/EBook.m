@@ -1,7 +1,7 @@
 //	EBook.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -1334,12 +1334,13 @@ static NSNumber *yes, *no;
 		NSDictionary* property= [NSDictionary dictionaryWithObjectsAndKeys:
 								 _narrowFontDic, kNarrowFontTable,
 								 _wideFontDic, kWideFontTable, nil];
-		NSString* error;
-		NSData* data = [NSPropertyListSerialization dataFromPropertyList:property 
-																  format:NSPropertyListBinaryFormat_v1_0 
-														errorDescription:&error];
+		NSError* error;
+		NSData* data = [NSPropertyListSerialization dataWithPropertyList:property
+																  format:NSPropertyListBinaryFormat_v1_0
+                                                                 options:0
+                                                                   error:&error];
 		if(!data){
-			NSLog(@"%@", error);
+			NSLog(@"%@", [error description]);
 			[error release];
 		}
 	
@@ -1370,13 +1371,13 @@ static NSNumber *yes, *no;
 		}
 	}
 	NSData *data = [NSData dataWithContentsOfFile:path];
-	NSString *error;
+	NSError *error;
 	NSPropertyListFormat format;
-	id property = [NSPropertyListSerialization propertyListFromData:data
-												   mutabilityOption:NSPropertyListImmutable
+	id property = [NSPropertyListSerialization propertyListWithData:data
+                                                            options:NSPropertyListImmutable
 															 format:&format
-												   errorDescription:&error];
-	if(!property) { NSLog(@"%@", error); [error release]; };
+                                                              error:&error];
+	if(!property) { NSLog(@"%@", [error description]); };
 	if([property isKindOfClass:[NSArray class]]){
 		[self convert1xPropertyWithPath:path];
 	}else{
