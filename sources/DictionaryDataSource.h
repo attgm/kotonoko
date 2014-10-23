@@ -20,7 +20,6 @@
 
 //- (void) init;
 - (void) awakeFromNib;
-- (void) dealloc;
 
 - (void) setValues : (NSMutableArray*) aVolue;
 - (void) setValue : (NSString*) aName

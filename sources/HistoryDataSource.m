@@ -18,11 +18,6 @@
 
 
 //-- dealloc
-- (void) dealloc
-{
-    [_history release];
-	[super dealloc];
-}
 
 
 //-- addHistory

@@ -16,7 +16,6 @@
 
 -(id) initWithString:(NSAttributedString*)string location:(EBLocation)location;
 +(id) candidateWithString:(NSAttributedString*)string location:(EBLocation)location;
--(void) dealloc;
 
 -(NSAttributedString*) attributedString;
 -(EBLocation) location;
@@ -30,7 +29,6 @@
 
 -(id) initWithString:(NSAttributedString*)string candidate:(NSData*)candidate;
 +(id) candidateWithString:(NSAttributedString*)string candidate:(NSData*)candidate;
--(void) dealloc;
 
 -(NSAttributedString*) attributedString;
 -(NSData*) candidate;
@@ -43,7 +41,6 @@
 }
 
 -(id)initWithEBook:(EBook*)inBook;
--(void)dealloc;
 
 -(NSArray*) candidates;
 -(void) beginCandidate;

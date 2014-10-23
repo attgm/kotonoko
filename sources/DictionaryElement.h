@@ -14,10 +14,10 @@
 	NSURL*				_url;
 };
 
-@property (readonly) NSAttributedString* attributedString;
-@property (readonly) NSString* string;
-@property (readonly) NSURL* anchor;
-@property (readonly) NSString* URLString;
+@property (weak, readonly) NSAttributedString* attributedString;
+@property (weak, readonly) NSString* string;
+@property (weak, readonly) NSURL* anchor;
+@property (weak, readonly) NSString* URLString;
 
 - (id) initWithHeading : (NSAttributedString*) inHeading
 				anchor : (EBLocation) inLocation
@@ -35,7 +35,6 @@
 + (id) elementWithHeading : (NSAttributedString*) inHeading
 					  url : (NSString*) url;
 
-- (void) dealloc;
 
 - (BOOL) canSelect;
 - (NSData*) dataForEntry;

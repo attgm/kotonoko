@@ -3,6 +3,7 @@
 //
 //	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
+#import <objc/objc-runtime.h>
 
 #import "ELDefines.h"
 #import "EBook.h"
@@ -37,11 +38,8 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // 後片付け
 -(void) dealloc
 {
-	[_fontsArray release];
-	[_selectedFonts release];
 	[self unbind:EBFontPanelDictionaryIdentifier];
 	
-	[super dealloc];
 }
 
 
@@ -92,7 +90,6 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // 現在選択しているelementを変更する
 -(void) setCurrentElement:(FontTableElement*) element
 {
-	[_currentElement release];
 	_currentElement = element;
 }
 
@@ -109,8 +106,7 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 // 外字一覧を設定する
 -(void) setFontsArray:(NSArray*) fonts
 {
-	[_fontsArray autorelease];
-	_fontsArray = [fonts retain];
+	_fontsArray = fonts;
 }
 
 
@@ -213,7 +209,6 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 {
     if (inReturnCode == NSAlertFirstButtonReturn) {
 		//[mCurrentEBook loadPrefFromArray:inContextInfo];
-		[inContextInfo release];
 		[self observeDictionary:nil];
     }
 }
@@ -263,7 +258,9 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -278,9 +275,11 @@ NSString* const EBFontPanelDictionaryIdentifier = @"FontPanelDitionary";
 						 change : (NSDictionary *) change
 						context : (void *) context
 {
-	if(context == EBFontPanelDictionaryIdentifier){
+	if(context == (__bridge void *)(EBFontPanelDictionaryIdentifier)){
 		ACBindingItem* item = [self bindingItem];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}

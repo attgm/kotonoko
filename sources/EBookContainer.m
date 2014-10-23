@@ -32,15 +32,6 @@
 
 //-- dealloc
 // 後かたづけ
-- (void)dealloc
-{
-    self.paramator = nil;
-    
-    [_string release];
-	[_attribute release];
-	[_referenceURL release];
-	[super dealloc];
-}
 
 
 //-- ebookNumber
@@ -57,7 +48,7 @@
 {
 	if(string){
 		NSAttributedString* appendString = 
-		[[[NSAttributedString alloc] initWithString:string attributes:_attribute] autorelease];
+		[[NSAttributedString alloc] initWithString:string attributes:_attribute];
 		[_string appendAttributedString:appendString];
 	}
 }
@@ -79,7 +70,7 @@
 {
 	if(string){
 		NSAttributedString* appendString = 
-			[[[NSAttributedString alloc] initWithString:string attributes:_attribute] autorelease];
+			[[NSAttributedString alloc] initWithString:string attributes:_attribute];
 		[_string insertAttributedString:appendString atIndex:index];
 	}
 }
@@ -139,7 +130,6 @@
 		NSMutableParagraphStyle* style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment:NSCenterTextAlignment];
 		[_attribute setObject:style forKey:NSParagraphStyleAttributeName];
-        [style release];
 	}else{
 		[_attribute removeObjectForKey:NSParagraphStyleAttributeName];
 	}
@@ -205,8 +195,7 @@
 -(void) setReferenceURL:(NSString*)string
 {
 	if(string != _referenceURL){
-		[_referenceURL release];
-		_referenceURL = [string retain];
+		_referenceURL = string;
 	}
 }
 
@@ -220,7 +209,6 @@
 		_referenceStack = NSUIntegerMax;
 	}
 }
-
 
 
 //-- insertReferenceWithURL:range:
@@ -255,9 +243,9 @@
 // 画像を挿入する
 -(void) appendImage:(NSImage*) image
 {
-	NSTextAttachment* attachment = [[[NSTextAttachment alloc] init] autorelease];
+	NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
 	
-	NSTextAttachmentCell* cell = [[[NSTextAttachmentCell alloc] initImageCell:image] autorelease];
+	NSTextAttachmentCell* cell = [[NSTextAttachmentCell alloc] initImageCell:image];
 	[attachment setAttachmentCell:cell];
 	NSUInteger start = [_string length];
 	[_string appendAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];

@@ -46,14 +46,6 @@
 }
 
 //-- dealloc
--(void) dealloc
-{
-	self.observedController = nil;
-    self.observedKeyPath = nil;
-    self.transformerName = nil;
-    [super dealloc];
-}
-
 
 //-- bingindItemFromSelector:valueClass:identifier:
 //
@@ -61,9 +53,9 @@
 							  valueClass : (Class) valueClass
 							   identifier: (const void*) identifier
 {
-	return [[[ACBindingItem alloc] initWithSelector:selector
+	return [[ACBindingItem alloc] initWithSelector:selector
 									   valueClass:valueClass
-									   identifier:identifier] autorelease];
+									   identifier:identifier];
 }
 
 
@@ -71,9 +63,9 @@
 //
 +(ACBindingItem*) bingindItemFromACBindingItem : (ACBindingItem*) item
 {
-	return [[[ACBindingItem alloc] initWithSelector:[item selector]
+	return [[ACBindingItem alloc] initWithSelector:[item selector]
 									   valueClass:[item valueClass]
-									   identifier:[item identifier]] autorelease];
+									   identifier:[item identifier]];
 }
 
 

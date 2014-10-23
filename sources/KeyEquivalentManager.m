@@ -35,11 +35,6 @@ static KeyEquivalentManager* sKeyEquivalentManager = nil;
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_keyEquivalent release];
-	[super dealloc];
-}
 
 
 //-- setKeyEquivalent

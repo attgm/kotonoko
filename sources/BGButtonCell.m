@@ -57,8 +57,9 @@
     NSColor* backgroundColor;
     if([self isHighlighted]){
         backgroundColor = [NSColor colorWithDeviceWhite:.75f alpha:1.0f];
-    }else if([self state] == NSOnState){
-        backgroundColor = [NSColor colorWithDeviceRed:.62 green:.69 blue:.80 alpha:1.0];
+    }else if([self state] == NSOnState){ // 16
+        backgroundColor = [NSColor colorWithDeviceRed:.62 green:.69 blue:.85 alpha:1.0];
+        //backgroundColor = [NSColor colorWithDeviceRed:.67f green:.84f blue:1.0f alpha:1.0];
     }else{
         backgroundColor = [NSColor colorWithDeviceWhite:.85f alpha:1.0f];
     }
@@ -89,7 +90,7 @@
 	if(gap > 0.0){
 		innerRect = NSInsetRect(innerRect, 0, gap/2);
 	}
-	NSMutableParagraphStyle *parapraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+	NSMutableParagraphStyle *parapraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[parapraphStyle setAlignment:[self alignment]];
 	[parapraphStyle setLineBreakMode:[self lineBreakMode]];
 	NSDictionary* stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys:

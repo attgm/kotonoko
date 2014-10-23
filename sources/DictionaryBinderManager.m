@@ -4,6 +4,7 @@
 //	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
+#import <objc/objc-runtime.h>
 
 #import "PreferenceModal.h"
 #import "DictionaryManager.h"
@@ -48,7 +49,6 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 {
 	self = [super init];
 	if(sSharedDictionaryBinderManager){
-		[self release];
 		return sSharedDictionaryBinderManager;
 	}
     if(self){
@@ -64,13 +64,9 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 -(void) dealloc
 {
 	[self unbindAll];
-	[_binders release];
-	[_bindingItems release];
 	if(sSharedDictionaryBinderManager == self){
 		sSharedDictionaryBinderManager = nil;
 	}
-	[_quickTagFilterPredicate release];
-	[super dealloc];
 }
 
 
@@ -78,7 +74,7 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 // 初期化
 -(void) initialize
 {
-	_quickTagFilterPredicate = [[NSPredicate predicateWithFormat:@"SELF.quickTag == YES"] retain];
+	_quickTagFilterPredicate = [NSPredicate predicateWithFormat:@"SELF.quickTag == YES"];
 		
 	[self		bind:@"single" 
 			toObject:[DictionaryManager sharedDictionaryManager]
@@ -164,7 +160,7 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 	id it;
 	while(it = [e nextObject]){
 		DictionaryBinder* binder = [SingleBinder binderWithDictionaryListItem:it];
-		[binder addObserver:self forKeyPath:@"quickTag" options:NSKeyValueObservingOptionNew context:(id)kQuickTabBindingIdentifier];
+		[binder addObserver:self forKeyPath:@"quickTag" options:NSKeyValueObservingOptionNew context:(__bridge void *)((id)kQuickTabBindingIdentifier)];
 		[_binders addObject:binder];
 		_numOfSingleDictionaties++;
 	}
@@ -181,7 +177,7 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 	while(it = [e nextObject]){
 		MultiBinder* binder = [MultiBinder binderWithParamators:it
                                                          prefId:[NSString stringWithFormat:@"binder:%lu", (unsigned long)(idx++)]];
-		[binder addObserver:self forKeyPath:@"quickTag" options:NSKeyValueObservingOptionNew context:(id)kQuickTabBindingIdentifier];
+		[binder addObserver:self forKeyPath:@"quickTag" options:NSKeyValueObservingOptionNew context:(__bridge void *)((id)kQuickTabBindingIdentifier)];
 		[_binders addObject:binder];
 	}	
 }
@@ -196,11 +192,11 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 		_bindingItems = [[NSDictionary alloc] initWithObjectsAndKeys:
 			[ACBindingItem bindingItemFromSelector:@selector(observeSingleDictionaries:)
 										valueClass:[NSArray class]
-										identifier:kSingleDictionariesBindingIdentifier]
+										identifier:(__bridge const void *)(kSingleDictionariesBindingIdentifier)]
 			, kSingleDictionariesBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeMultipleDictionaries:)
 										valueClass:[NSArray class]
-										identifier:kMultipleDictionariesBindingIdentifier]
+										identifier:(__bridge const void *)(kMultipleDictionariesBindingIdentifier)]
 			, kMultipleDictionariesBindingIdentifier,
 			nil];
 	}
@@ -239,7 +235,9 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self,[item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -254,10 +252,10 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 						 change : (NSDictionary *) change
 						context : (void *) context
 {
-	ACBindingItem* item = [[self bindingItems] objectForKey:context];
-	if(item){
-		[self performSelector:[item selector] withObject:item];
-	}else if(context == kQuickTabBindingIdentifier){
+	ACBindingItem* item = [[self bindingItems] objectForKey:(__bridge id)(context)];
+	if(item && [self respondsToSelector:[item selector]]){
+        objc_msgSend(self, [item selector], item);
+	}else if(context == (__bridge void *)(kQuickTabBindingIdentifier)){
 		[self observeQuickTab];
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -319,7 +317,6 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 		while(it = [e nextObject]){
 			[it removeObserver:self forKeyPath:@"quickTag"];
 		}
-		[_binders release];
 	}
 	_binders = [[NSMutableArray alloc] init];
 	
@@ -369,11 +366,10 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 -(void) observeQuickTab
 {
 	[self willChangeValueForKey:@"quickTagFilterPredicate"];
-	[_quickTagFilterPredicate release];
 	_quickTagFilterPredicate = nil;
 	[self didChangeValueForKey:@"quickTagFilterPredicate"];	
 	[self willChangeValueForKey:@"quickTagFilterPredicate"];
-	_quickTagFilterPredicate = [[NSPredicate predicateWithFormat:@"SELF.quickTag == YES"] retain];
+	_quickTagFilterPredicate = [NSPredicate predicateWithFormat:@"SELF.quickTag == YES"];
 	[self didChangeValueForKey:@"quickTagFilterPredicate"];	
 	
 }
@@ -401,7 +397,6 @@ DictionaryBinderManager* sSharedDictionaryBinderManager = NULL;
 	[self willChangeValueForKey:@"binders"];
 	NSSortDescriptor* descriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
 	[_binders sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-	[descriptor release];
 	[self didChangeValueForKey:@"binders"];
 }
 

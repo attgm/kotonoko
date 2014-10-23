@@ -12,9 +12,9 @@
 
 @interface WebViewController : NSViewController
 
-@property (assign, nonatomic) IBOutlet WebView* webview;
-@property (retain, nonatomic) ContentsHistory* history;
-@property (assign, nonatomic, setter=setIndicator:) NSProgressIndicator* indicator;
+@property (weak, nonatomic) IBOutlet WebView* webview;
+@property (strong, nonatomic) ContentsHistory* history;
+@property (weak, nonatomic, setter=setIndicator:) NSProgressIndicator* indicator;
 
 -(instancetype) init;
 
@@ -40,7 +40,7 @@
 
 @interface WebViewAnimation : NSAnimation
 
-@property (assign, atomic) WebView* webview;
+@property (weak, atomic) WebView* webview;
 @property (assign, readonly) CGFloat endScale;
 @property (assign, readonly) CGFloat startScale;
 

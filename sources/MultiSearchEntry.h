@@ -20,7 +20,7 @@
 	MultiSearchViewController* _controller;
 }
 
-@property (retain, nonatomic) NSString* label;
+@property (strong, nonatomic) NSString* label;
 
 -(id) init;
 -(void) adjustCandidates;

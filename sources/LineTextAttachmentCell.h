@@ -14,7 +14,7 @@
 	CGFloat	_width;
 }
 
-@property (retain, nonatomic) NSTextAttachment* attachment;
+@property (strong, nonatomic) NSTextAttachment* attachment;
 
 
 @end

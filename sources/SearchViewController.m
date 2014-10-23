@@ -28,10 +28,6 @@
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[super dealloc];
-}
 
 
 
@@ -138,7 +134,7 @@
 		if([title isEqualToString:@"-"]){
 			[[_methodPopup menu] addItem:[NSMenuItem separatorItem]];
 		}else{
-			NSMenuItem* item = [[[NSMenuItem alloc] init] autorelease];
+			NSMenuItem* item = [[NSMenuItem alloc] init];
 			[item setTitle:NSLocalizedString(title, title)];
 			[item setTag:[[obj objectForKey:@"tag"] intValue]];
 			[[_methodPopup menu] addItem:item];

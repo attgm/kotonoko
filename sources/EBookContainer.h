@@ -10,7 +10,7 @@
 @class EBook;
 
 @interface EBookContainer : NSObject {
-	EBook*			_ebook;
+	EBook*			__weak _ebook;
 	NSDictionary*	_paramator;
 	
 	NSMutableAttributedString* _string;
@@ -20,13 +20,12 @@
 	NSString*		_referenceURL;
 }
 
-@property (assign, readonly) EBook* ebook;
+@property (weak, readonly) EBook* ebook;
 @property (assign, readonly, getter=ebookNumber) NSUInteger ebookNumber;
-@property (retain) NSDictionary* paramator;
+@property (strong) NSDictionary* paramator;
 
 
 -(id)initWithEBook:(EBook*)inBook;
--(void)dealloc;
 
 -(void) setParamator:(NSDictionary*) paramator;
 -(id) paramatorForkey:(NSString*) key;

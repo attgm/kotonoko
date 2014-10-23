@@ -13,6 +13,7 @@
 #import "FontNameToFontFamilyTransformer.h"
 #import "PreferenceWindowController.h"
 #import "PreferenceModal.h"
+#import "ACMenuBinder.h"
 
 #import "EBook.h"
 #import "EBookController.h"
@@ -41,15 +42,15 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 - (void) applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	_binderManager = nil;
-	_acknowledgmentsWindowController = nil;
+	self.acknowledgmentsWindowController = nil;
 	// ValueTransformerの登録
-	[NSValueTransformer setValueTransformer:[[[FontNameToFontTransformer alloc] init] autorelease]
+	[NSValueTransformer setValueTransformer:[[FontNameToFontTransformer alloc] init]
 									forName:[FontNameToFontTransformer className]];
-	[NSValueTransformer setValueTransformer:[[[ColorNameToColorTransformer alloc] init] autorelease]
+	[NSValueTransformer setValueTransformer:[[ColorNameToColorTransformer alloc] init]
 									forName:[ColorNameToColorTransformer className]];
-	[NSValueTransformer setValueTransformer:[[[KeyEquivalentToNumberTransformer alloc] init] autorelease]
+	[NSValueTransformer setValueTransformer:[[KeyEquivalentToNumberTransformer alloc] init]
 									forName:[KeyEquivalentToNumberTransformer className]];
-	[NSValueTransformer setValueTransformer:[[[FontNameToFontFamilyTransformer alloc] init] autorelease]
+	[NSValueTransformer setValueTransformer:[[FontNameToFontFamilyTransformer alloc] init]
 									forName:[FontNameToFontFamilyTransformer className]];
 	// メインウィンドウの表示
     _windowController = [[WindowController alloc] initWithController:self];
@@ -120,7 +121,6 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
         [alert setMessageText:NSLocalizedString(@"Access Denied", @"Access Denied")];
         [alert setInformativeText:NSLocalizedString(@"File Access is Denied", @"File Access is Denied")];
         [alert runModal];
-        [alert release];
 #else
         NSRunInformationalAlertPanel(NSLocalizedString(@"Access Denied", @"Access Denied"),
                                      NSLocalizedString(@"File Access is Denied", @"File Access is Denied"),
@@ -133,12 +133,6 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 
 //-- dealloc
 //
--(void) dealloc
-{
-	[_pasteboardWatcher release];
-    [_acknowledgmentsWindowController release];
-	[super dealloc];
-}
 
 
 //-- rescanDictionary
@@ -205,25 +199,6 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 
 
 #pragma mark -
-//-- windowController
-// window controllerを返す
--(WindowController*) windowController
-{
-	return _windowController;
-}
-
-
-//-- setWindowController
-// ウィンドウコントローラの設定
--(void) setWindowController:(WindowController*) controller
-{
-	if(controller != _windowController){
-		[_windowController release];
-		_windowController = [controller retain];
-	}
-}
-
-
 //-- haveSearchMethodByTag
 // seach methodを持っているかどうか
 - (BOOL) haveSearchMethodByTag : (int) inTag
@@ -382,11 +357,12 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 //-- showAcknowledgments
 - (IBAction)showAcknowledgments:(id)sender
 {
-    if(_acknowledgmentsWindowController == nil){
-        _acknowledgmentsWindowController = [[AcknowledgmentsWindowController alloc] init];
+    if(self.acknowledgmentsWindowController == nil){
+        self.acknowledgmentsWindowController = [[AcknowledgmentsWindowController alloc] init];
     }
-    [_acknowledgmentsWindowController showWindow];
+    [self.acknowledgmentsWindowController showWindow];
 }
+
 
 #pragma mark Service Menu / Pasteboard
 //-- doLookupService:userData:error
@@ -485,10 +461,10 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 {
 	DictionaryBinderManager* bm = [DictionaryBinderManager sharedDictionaryBinderManager];
 	NSArray* binders = [bm valueForKeyPath:@"binders"];
-	NSAppleEventDescriptor* binderDescs = [[[NSAppleEventDescriptor alloc] initListDescriptor] autorelease];
+	NSAppleEventDescriptor* binderDescs = [[NSAppleEventDescriptor alloc] initListDescriptor];
 	
 	for(DictionaryBinder* binder in binders){
-		NSAppleEventDescriptor* profDesc = [[[NSAppleEventDescriptor alloc] initRecordDescriptor] autorelease];
+		NSAppleEventDescriptor* profDesc = [[NSAppleEventDescriptor alloc] initRecordDescriptor];
 		NSAppleEventDescriptor* tagDesc = [NSAppleEventDescriptor descriptorWithString:[binder tagName]];
 		[profDesc setDescriptor:tagDesc forKeyword:'tag_'];
 		NSAppleEventDescriptor* idDesc = [NSAppleEventDescriptor descriptorWithInt32:(SInt32)[binder binderId]];
@@ -558,7 +534,7 @@ NSString* const EBPasteboardSearchBindingsIdentifier = @"pasteboardSearch";
 						change : (NSDictionary *) change
 					   context : (void *) context
 {	
-	if(context == EBPasteboardSearchBindingsIdentifier){
+	if(context == (__bridge void *)(EBPasteboardSearchBindingsIdentifier)){
 		//[self setContentURL:_currentLocation appendHistory:NO];
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

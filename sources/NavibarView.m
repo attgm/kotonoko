@@ -33,11 +33,15 @@
         NSRectFill(bounds);
         
         [[NSColor colorWithWhite:0.5f alpha:1.0] set];
-        NSBezierPath* line = [[[NSBezierPath alloc] init] autorelease];
+        NSBezierPath* line = [[NSBezierPath alloc] init];
         [line moveToPoint:NSMakePoint(bounds.origin.x,
                                       bounds.origin.y)];
         [line lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width,
                                       bounds.origin.y)];
+        [line moveToPoint:NSMakePoint(bounds.origin.x,
+                                      bounds.origin.y + bounds.size.height)];
+        [line lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width,
+                                      bounds.origin.y + bounds.size.height)];
         [line setLineWidth: 1.0f];
         [line stroke];
     }

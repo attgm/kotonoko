@@ -114,21 +114,11 @@ static NSNumber *yes, *no;
 	[self closeBook];
     [EBook initalizeLibrary:NO];
 	
-	[_narrowFontDic release];
-	[_wideFontDic release];
-	[super dealloc];
 };
 
 
 //-- finaize
 // 終了処理
--(void) finalize
-{
-	[self closeBook];
-    [EBook initalizeLibrary:NO];
-    self.securityScopeBookmark = nil;
-	[super finalize];
-}
 
 
 //-- bind:
@@ -256,7 +246,7 @@ static NSNumber *yes, *no;
     if(eb_subbook_title2(&_book, _subbook[_activeSubbook], title) == EB_SUCCESS){
 		length = strlen(title);
 		tmp = [NSData dataWithBytes:title length:length];
-		return [[[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding] autorelease];
+		return [[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding];
     }else{
 		return NULL;
     }
@@ -266,7 +256,6 @@ static NSNumber *yes, *no;
 -(void) setTagName : (NSString*) inTagName
 {
     if(inTagName != nil && ![inTagName isEqualToString:@""]){
-		[_tagName release];
 		_tagName = [[NSString alloc] initWithString:inTagName];
     }
 }
@@ -301,7 +290,7 @@ static NSNumber *yes, *no;
         length = strlen(title);
         tmp = [NSData dataWithBytes:title length:length];
         [array addObject:
-            [[[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding] autorelease]];
+            [[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding]];
     }
     return array;
 }
@@ -336,7 +325,7 @@ static NSNumber *yes, *no;
 			length = strlen(label);
 			tmp = [NSData dataWithBytes:label length:length];
 			[array addObject:
-				[[[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding] autorelease]];
+				[[NSString alloc] initWithData:tmp encoding:NSJapaneseEUCStringEncoding]];
 		}
     }
     
@@ -380,7 +369,7 @@ static NSNumber *yes, *no;
     EB_Position position;
     EB_Error_Code err;
     NSMutableArray* candidates = [NSMutableArray arrayWithCapacity:1];
-	CandidateContainer* container = [[[CandidateContainer alloc] initWithEBook:self] autorelease];
+	CandidateContainer* container = [[CandidateContainer alloc] initWithEBook:self];
 	
 	position.page = (int) inLocation.page;
     position.offset = (int) inLocation.offset;
@@ -389,7 +378,7 @@ static NSNumber *yes, *no;
     eb_seek_text(&_book, &position);
 
     do {
-		err = eb_read_text(&_book, &_appendix, &_candidatesHookset, container, sizeof(buffer) - 1, buffer, &length);
+		err = eb_read_text(&_book, &_appendix, &_candidatesHookset, (__bridge void *)(container), sizeof(buffer) - 1, buffer, &length);
     } while (err == EB_SUCCESS && length > 0);
     
     
@@ -453,8 +442,8 @@ static NSNumber *yes, *no;
 		return array;
     }
     
-	NSAttributedString* tagName = [[[NSAttributedString alloc] initWithString:[self tagName]
-																   attributes:[paramator objectForKey:EBTagAttributes]] autorelease];
+	NSAttributedString* tagName = [[NSAttributedString alloc] initWithString:[self tagName]
+																   attributes:[paramator objectForKey:EBTagAttributes]];
     [array addObject:[DictionaryElement elementWithHeading:tagName
 													anchor:EBMakeLocation(_ebookNumber, -1, 0)]];
 	//NSDictionary* parametor = [self headingParamator];
@@ -548,8 +537,8 @@ static NSNumber *yes, *no;
 		return array;
     }
     
-	NSAttributedString* tagName = [[[NSAttributedString alloc] initWithString:[self tagName]
-																   attributes:[paramator objectForKey:EBTagAttributes]] autorelease];
+	NSAttributedString* tagName = [[NSAttributedString alloc] initWithString:[self tagName]
+																   attributes:[paramator objectForKey:EBTagAttributes]];
     [array addObject:[DictionaryElement elementWithHeading:tagName
 													anchor:EBMakeLocation(_ebookNumber, -1, 0)]];
 	int hitNum;
@@ -658,12 +647,12 @@ static NSNumber *yes, *no;
     ssize_t length;
     
     buffer[sizeof(buffer) - 1] = '\0';
-    EBookContainer* container = [[[EBookContainer alloc] initWithEBook:self] autorelease];
+    EBookContainer* container = [[EBookContainer alloc] initWithEBook:self];
     [container setParamator:paramator];
 	[container setAttribute:[paramator objectForKey:EBTextAttributes]];
 
     eb_seek_text(&_book, inPosition);
-    eb_read_heading(&_book, &_appendix, &_headingHookset, container, sizeof(buffer) - 1, buffer, &length);
+    eb_read_heading(&_book, &_appendix, &_headingHookset, (__bridge void *)(container), sizeof(buffer) - 1, buffer, &length);
     return [container attributedString];
 }
 
@@ -693,13 +682,13 @@ static NSNumber *yes, *no;
     position.offset = (int)location.offset;
 
 	eb_seek_text(&_book, &position);
-    EBookContainer* container = [[[EBookContainer alloc] initWithEBook:self] autorelease];
+    EBookContainer* container = [[EBookContainer alloc] initWithEBook:self];
 	
 	char buffer[1024];
 	ssize_t length;
 	EB_Error_Code err;
 	do {
-		err = eb_read_text(&_book, &_appendix, &_htmlHookset, container, sizeof(buffer) - 1, buffer, &length);
+		err = eb_read_text(&_book, &_appendix, &_htmlHookset, (__bridge void *)(container), sizeof(buffer) - 1, buffer, &length);
 	} while (err == EB_SUCCESS && length > 0);
 	
 	return [container string];
@@ -771,7 +760,7 @@ static NSNumber *yes, *no;
 // テキストを読み込む
 - (NSAttributedString*) readTextWithParamator:(NSDictionary*) paramator
 {
-	EBookContainer* container = [[[EBookContainer alloc] initWithEBook:self] autorelease];
+	EBookContainer* container = [[EBookContainer alloc] initWithEBook:self];
 	BOOL coninuity = NO;
 	
 	if(paramator){
@@ -786,13 +775,13 @@ static NSNumber *yes, *no;
 		ssize_t length;
 		EB_Error_Code err;
 		do {
-			err = eb_read_text(&_book, &_appendix, &_textHookset, container, sizeof(buffer) - 1, buffer, &length);
+			err = eb_read_text(&_book, &_appendix, &_textHookset, (__bridge void *)(container), sizeof(buffer) - 1, buffer, &length);
 		} while (err == EB_SUCCESS && length > 0);
 		// 追加のテキストがあるかどうかの確認
 		err = eb_forward_text(&_book, &_appendix);
 		if(err == EB_SUCCESS){
-			NSTextAttachment* attachment = [[[NSTextAttachment alloc] init] autorelease];
-			[attachment setAttachmentCell:[[[LineTextAttachmentCell alloc] init] autorelease]];
+			NSTextAttachment* attachment = [[NSTextAttachment alloc] init];
+			[attachment setAttachmentCell:[[LineTextAttachmentCell alloc] init]];
 		
 			[container appendAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
 			[container appendString:@"\r"];
@@ -983,7 +972,7 @@ static NSNumber *yes, *no;
 		return nil;
     }
     
-    return [[[NSImage alloc] initWithData:image] autorelease];
+    return [[NSImage alloc] initWithData:image];
 }
 
 
@@ -1072,7 +1061,7 @@ static NSNumber *yes, *no;
 
     if(_securityScopeBookmark) [_securityScopeBookmark stopAccessingSecurityScopedResource];
     
-    return [[[NSImage alloc] initWithData:[NSData dataWithBytes:imagedata length:imagesize]] autorelease];
+    return [[NSImage alloc] initWithData:[NSData dataWithBytes:imagedata length:imagesize]];
 }
 
 
@@ -1162,7 +1151,6 @@ static NSNumber *yes, *no;
     EB_Error_Code err = (kind == kFontTypeNarrow) ? 
 		eb_narrow_font_start(&_book, &ch) : eb_wide_font_start(&_book, &ch);
     if(err != EB_SUCCESS){
-		[table release];
         return;
     }
     
@@ -1195,10 +1183,8 @@ static NSNumber *yes, *no;
     }
     eb_unset_font(&_book);
 	if(kind == kFontTypeNarrow){
-		[_narrowFontDic release];
 		_narrowFontDic = table;
     }else{
-		[_wideFontDic release];
 		_wideFontDic = table;
 	}
 }
@@ -1341,7 +1327,6 @@ static NSNumber *yes, *no;
                                                                    error:&error];
 		if(!data){
 			NSLog(@"%@", [error description]);
-			[error release];
 		}
 	
 		[data writeToFile:path atomically:NO];

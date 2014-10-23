@@ -16,7 +16,7 @@
 	BOOL	_animate;
 }
 
-@property (nonatomic, retain) NSString* caption;
+@property (nonatomic, strong) NSString* caption;
 @property (nonatomic, assign) BOOL animate;
 
 -(instancetype) init;

@@ -38,11 +38,6 @@ const NSInteger EBLayoutMargin = 20;
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_entriesArray release];
-	[super dealloc];
-}
 
 
 //-- createSearchView
@@ -125,7 +120,7 @@ const NSInteger EBLayoutMargin = 20;
 // 検索エントリを表示させる
 -(void) setContentsViewToSearchEntriesView
 {
-	[_windowController setContentsView:_searchView];
+	[_windowController setContentsView:_searchView withAnimation:YES];
 	[_disclosureButton setState:NSOnState];
 }
 
@@ -145,7 +140,7 @@ const NSInteger EBLayoutMargin = 20;
 		if([title isEqualToString:@"-"]){
 			[[_methodPopup menu] addItem:[NSMenuItem separatorItem]];
 		}else{
-			NSMenuItem* item = [[[NSMenuItem alloc] init] autorelease];
+			NSMenuItem* item = [[NSMenuItem alloc] init];
 			[item setTitle:NSLocalizedString(title, title)];
 			[item setTag:[[obj objectForKey:@"tag"] intValue]];
 			[[_methodPopup menu] addItem:item];

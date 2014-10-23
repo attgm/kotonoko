@@ -26,7 +26,6 @@
 -(void) dealloc
 {
     self.window = nil;
-    [super dealloc];
 }
 
 

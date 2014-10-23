@@ -32,7 +32,6 @@
 
 +(DictionaryManager*) sharedDictionaryManager;
 -(id) init;
--(void) dealloc;
 -(void) initialize;
 
 -(void) createDictionaryArray;

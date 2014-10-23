@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GaijiPopoverController">
+            <connections>
+                <outlet property="alternativeString" destination="Ke8-Xr-Sg7" id="Gim-Xo-mOq"/>
+                <outlet property="popover" destination="HjU-0X-8Us" id="c0B-MP-fzv"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRr-n1-wiR">
+                    <rect key="frame" x="17" y="36" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="631-lt-JGS"/>
+                        <constraint firstAttribute="width" constant="64" id="fGP-LE-AWW"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="xHk-hm-vKo"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="representedObject.largeImageRepresentation" id="EUb-Zc-7Nx"/>
+                    </connections>
+                </imageView>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ke8-Xr-Sg7">
+                    <rect key="frame" x="92" y="39" width="120" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="Y59-GB-dvY"/>
+                        <constraint firstAttribute="height" constant="34" id="rBH-9S-sMv"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="vTL-VY-GZ9">
+                        <font key="font" metaFont="system" size="24"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="closePopover:" target="-2" id="42z-Wb-82p"/>
+                        <binding destination="-2" name="value" keyPath="representedObject.alternativeString" id="l4a-YQ-8bE"/>
+                    </connections>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lB-AI-Ox2">
+                    <rect key="frame" x="218" y="44" width="71" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="67" id="YcH-Nw-bK0"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Tg3-o0-WBv">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment image="icon_font" width="32" tag="1">
+                                <nil key="label"/>
+                            </segment>
+                            <segment image="icon_bitmap" width="32" selected="YES">
+                                <nil key="label"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <binding destination="-2" name="selectedTag" keyPath="representedObject.useAlternativeString" id="jHZ-gC-l9D">
+                            <dictionary key="options">
+                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </segmentedControl>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8cx-vB-uwu">
+                    <rect key="frame" x="18" y="20" width="68" height="11"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="RJd-Q4-em4">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="representedObject.identify" id="OYd-bu-YqB"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="eRr-n1-wiR" firstAttribute="leading" secondItem="8cx-vB-uwu" secondAttribute="leading" id="3DN-9m-bJu"/>
+                <constraint firstAttribute="bottom" secondItem="8cx-vB-uwu" secondAttribute="bottom" constant="20" symbolic="YES" id="422-rc-KBJ"/>
+                <constraint firstAttribute="trailing" secondItem="9lB-AI-Ox2" secondAttribute="trailing" constant="20" symbolic="YES" id="GJg-G9-cBh"/>
+                <constraint firstItem="9lB-AI-Ox2" firstAttribute="centerY" secondItem="Ke8-Xr-Sg7" secondAttribute="centerY" id="MRg-FE-A8E"/>
+                <constraint firstItem="eRr-n1-wiR" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="Qdw-an-USZ"/>
+                <constraint firstItem="eRr-n1-wiR" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="eVk-dF-zBd"/>
+                <constraint firstItem="8cx-vB-uwu" firstAttribute="trailing" secondItem="eRr-n1-wiR" secondAttribute="trailing" id="eYa-g0-LI3"/>
+                <constraint firstAttribute="bottom" secondItem="Ke8-Xr-Sg7" secondAttribute="bottom" constant="39" id="kEw-Cj-kwH"/>
+                <constraint firstItem="8cx-vB-uwu" firstAttribute="top" secondItem="eRr-n1-wiR" secondAttribute="bottom" constant="8" symbolic="YES" id="nyU-YT-tX0"/>
+                <constraint firstItem="Ke8-Xr-Sg7" firstAttribute="leading" secondItem="eRr-n1-wiR" secondAttribute="trailing" constant="8" symbolic="YES" id="pRF-ZR-xCR"/>
+                <constraint firstItem="9lB-AI-Ox2" firstAttribute="leading" secondItem="Ke8-Xr-Sg7" secondAttribute="trailing" constant="8" symbolic="YES" id="sht-ee-Eaq"/>
+            </constraints>
+            <point key="canvasLocation" x="321.5" y="334.5"/>
+        </customView>
+        <popover id="HjU-0X-8Us">
+            <connections>
+                <outlet property="contentViewController" destination="-2" id="RKz-Mj-39t"/>
+            </connections>
+        </popover>
+        <userDefaultsController representsSharedInstance="YES" id="Hox-0q-nUU"/>
+    </objects>
+    <resources>
+        <image name="icon_bitmap" width="12" height="12"/>
+        <image name="icon_font" width="12" height="12"/>
+    </resources>
+</document>

@@ -74,7 +74,7 @@
 - (void) setWindowTitle:(NSString*) inTitle;
 - (void) showFront;
 
-- (void) setContentsView:(NSView*) contentsView;
+- (void) setContentsView:(NSView*) contentsView withAnimation:(Boolean) isAnimation;
 - (NSView*) currentContentsView;
 - (void) setContentsViewToDictionaryContents;
 

@@ -17,13 +17,13 @@
 				  data : (NSData*) inRawData
 {
     self = [super init];
-    _heading = [heading copyWithZone:[self zone]];
+    _heading = [heading copyWithZone:nil];
 	if(location.page < 0){
 		_url = nil;
 	}else{
 		_url = [[NSURL alloc] initWithString:[[self class] locationToURLString:location]];
 	}
-	_rawData = (inRawData) ? [inRawData copyWithZone:[self zone]] : NULL;
+	_rawData = (inRawData) ? [inRawData copyWithZone:nil] : NULL;
     
     return self;
 }
@@ -36,7 +36,7 @@
 {
     self = [super init];
     if(self){
-        _heading = [heading copyWithZone:[self zone]];
+        _heading = [heading copyWithZone:nil];
         _url	 = [[NSURL alloc] initWithString:url];
         _rawData = nil;
     }    
@@ -50,8 +50,8 @@
 + (id) elementWithHeading : (NSAttributedString*) inHeading
 				   anchor : (EBLocation) inLocation
 {
-    return [[[DictionaryElement alloc]
-                    initWithHeading:inHeading anchor:inLocation data:NULL] autorelease];
+    return [[DictionaryElement alloc]
+                    initWithHeading:inHeading anchor:inLocation data:NULL];
 }
 
 
@@ -61,8 +61,8 @@
 				   anchor : (EBLocation) inLocation
 					 data : (NSData*) inRawData
 {
-    return [[[DictionaryElement alloc]
-                    initWithHeading:inHeading anchor:inLocation data:inRawData] autorelease];
+    return [[DictionaryElement alloc]
+                    initWithHeading:inHeading anchor:inLocation data:inRawData];
 }
 
 
@@ -71,7 +71,7 @@
 + (id) elementWithHeading : (NSAttributedString*) inHeading
 					  url : (NSString*) url
 {
-    return [[[DictionaryElement alloc] initWithHeading:inHeading url:url] autorelease];
+    return [[DictionaryElement alloc] initWithHeading:inHeading url:url];
 }
 
 
@@ -85,13 +85,6 @@
 
 //-- dealloc
 // 開放処理
-- (void) dealloc
-{
-    [_heading release];
-	[_url release];
-    [_rawData release];
-	[super dealloc];
-}
 
 
 //-- stringHeading

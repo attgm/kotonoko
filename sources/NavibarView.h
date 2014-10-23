@@ -10,7 +10,7 @@
 @interface NavibarView : NSView {
 }
 
-@property (retain, nonatomic) NSColor* backgroundPattern;
+@property (strong, nonatomic) NSColor* backgroundPattern;
 
 -(id) initWithFrame : (NSRect)frame;
 -(void) drawRect:(NSRect)rect;

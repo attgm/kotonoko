@@ -46,9 +46,7 @@ void* kUseBPSBindingIdentifier = (void*) @"useBPS";
 {
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kUseBackgroundPastebordSearch];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kUsePasteboardSearch];
-    self.delegate = nil;
     
-	[super dealloc];
 }
 
 

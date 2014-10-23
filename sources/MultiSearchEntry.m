@@ -34,8 +34,8 @@
         [self loadView];
         _candidateData = nil;
         
-        _label = [label copyWithZone:[self zone]];
-        _candidates = [candidates retain];
+        _label = [label copyWithZone:nil];
+        _candidates = candidates;
         
         [_entryField setStringValue:_label];
         [self adjustCandidates];
@@ -50,19 +50,12 @@
 +(MultiSearchEntry*) entryWithLabel:(NSString*) label
 						 candidates:(NSArray*) candidates
 {
-	return [[[MultiSearchEntry alloc] initWithLabel:label candidates:candidates] autorelease];
+	return [[MultiSearchEntry alloc] initWithLabel:label candidates:candidates];
 }
 
 
 //--dealloc
 // 後片付け
--(void) dealloc
-{
-	[_label release];
-	[_candidates release];
-	
-	[super dealloc];
-}
 
 
 #pragma mark view
@@ -91,13 +84,13 @@
 	// セパレタ
 	[menu insertItem:[NSMenuItem separatorItem] atIndex:0];
 	//タイトルの生成
-	NSMenuItem* item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"none", @"none")
+	NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"none", @"none")
 												   action:@selector(selectCandidate:)
-											keyEquivalent:@""] autorelease];
+											keyEquivalent:@""];
 	[item setTarget:self];
 	[menu insertItem:item atIndex:0];
 	//タイトルの生成
-	NSMenuItem* title = [[[NSMenuItem alloc] initWithTitle:@"title" action:nil keyEquivalent:@""] autorelease]; 
+	NSMenuItem* title = [[NSMenuItem alloc] initWithTitle:@"title" action:nil keyEquivalent:@""]; 
 	[menu insertItem:title atIndex:0];
 	
 	return menu;
@@ -109,7 +102,7 @@
 // NSMenuの作成
 -(NSMenu*) menuFromCandidates:(NSArray*) candidates
 {
-	NSMenu* menu = [[[NSMenu alloc] init] autorelease];
+	NSMenu* menu = [[NSMenu alloc] init];
 	for(NSDictionary* candidate in candidates){
 		NSMenuItem* item = [[NSMenuItem alloc] initWithTitle:@""
 													  action:@selector(selectCandidate:)
@@ -126,7 +119,6 @@
 			[item setRepresentedObject:data];
 		}
 		[menu addItem:item];
-		[item release];
 	}
 	return menu;
 }

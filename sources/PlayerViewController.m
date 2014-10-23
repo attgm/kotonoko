@@ -25,11 +25,6 @@
     return self;
 }
 
-- (void) dealloc
-{
-    if(_player){ [_player dealloc]; }
-    [super dealloc];
-}
 
 //-- showMoviePanel
 // movie用のパネルを表示する

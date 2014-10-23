@@ -13,7 +13,7 @@
 	
 	id _delegate;
 }
-@property (retain, nonatomic) id delegate;
+@property (strong, nonatomic) id delegate;
 
 
 -(id) initWithDelegate:(id) delegate;

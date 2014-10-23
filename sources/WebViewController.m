@@ -142,10 +142,10 @@
         NSRect webViewRect = [_webview frame];
         
         CGFloat scale = webViewRect.size.width / webFrameRect.size.width;
-        WebViewAnimation* animation = [[[WebViewAnimation alloc] initWithWebView:_webview
+        WebViewAnimation* animation = [[WebViewAnimation alloc] initWithWebView:_webview
                                                                            scale:scale
                                                                         duration:0.2
-                                                                  animationCurve:NSAnimationLinear] autorelease];
+                                                                  animationCurve:NSAnimationLinear];
         [animation setAnimationBlockingMode:NSAnimationNonblocking];
         [animation startAnimation];
     }
@@ -216,7 +216,7 @@
     }
     [html appendString:@"</div></body></html>"];
     
-    return [html autorelease];
+    return html;
 }
 
 
@@ -248,7 +248,7 @@
                 NSAppleScript *as = [[NSAppleScript alloc] initWithSource:
                                      [NSString stringWithFormat:@"open location \"%@\"", [[request URL] absoluteString]]];
                 [as executeAndReturnError:&asErrDic];
-                [as autorelease];
+                //[as autorelease];
             }
             return;
         }

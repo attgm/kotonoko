@@ -25,15 +25,6 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 
 //-- dealloc
 //
-- (void)dealloc
-{
-    [_observedControllerForValue release];
-    [_valueTransformerName release];
-    [_fontwellValue release];
-    [_observedKeyPathForValue release];
-    
-	[super dealloc];
-}
 
 
 //-- awakeFromNib
@@ -55,10 +46,7 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 //
 - (void) setValue : (id) value
 {
-	if (_fontwellValue) {
-		[_fontwellValue release];
-	}
-	_fontwellValue = (value != nil) ? [value retain] : [[NSFont userFontOfSize:0.0] retain];
+	_fontwellValue = (value != nil) ? value : [NSFont userFontOfSize:0.0];
 	
 	[self setTitle:[NSString stringWithFormat:@"%@ - %gpt", [_fontwellValue displayName], [_fontwellValue pointSize]]];
 	
@@ -153,15 +141,13 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 //
 -(void) setObservedControllerForValue:(id) controller
 {
-	if (_observedControllerForValue) [_observedControllerForValue release];
-	_observedControllerForValue = [controller retain];
+	_observedControllerForValue = controller;
 }
 
 //-- setObservedKeyPathForValue
 //
 -(void) setObservedKeyPathForValue:(NSString*) keypath
 {
-	if (_observedKeyPathForValue) [_observedKeyPathForValue release];
 	_observedKeyPathForValue = (keypath != nil) ? [keypath copy] : nil;
 }
 
@@ -170,7 +156,6 @@ static void *kFontValueBindingIdentifier = (void *) @"FontValue";
 //
 -(void) setValueTransformerName:(NSString*) name
 {
-	if (_valueTransformerName) [_valueTransformerName release];
 	_valueTransformerName =  (name != nil) ? [name copy] : nil;
 }
 

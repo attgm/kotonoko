@@ -16,11 +16,10 @@
 
 +(ContentsHistoryItem*) historyItemWithUrl:(NSURL*)url bitmap:(NSBitmapImageRep*)bitmap;
 -(id) initWithUrl:(NSURL*)url bitmap:(NSBitmapImageRep*)bitmap;
--(void) dealloc;
--(void) finalize;
 
-@property(retain) NSURL* url;
-@property(retain) NSBitmapImageRep* bitmapCache;
+
+@property(strong) NSURL* url;
+@property(strong) NSBitmapImageRep* bitmapCache;
 
 
 @end
@@ -34,7 +33,7 @@
 }
 
 @property(readonly) NSUInteger historyIndex;
-@property(retain) NSURL* currentURL;
+@property(strong) NSURL* currentURL;
 @property(readonly) BOOL canBackHistory, canForwardHistory;
 
 -(void) addHistoryItem:(ContentsHistoryItem*)item;

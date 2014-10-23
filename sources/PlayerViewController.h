@@ -12,7 +12,7 @@
     AVPlayer* _player;
 }
 
-@property (assign, nonatomic) IBOutlet AVPlayerView* playerView;
+@property (weak, nonatomic) IBOutlet AVPlayerView* playerView;
 
 -(instancetype) init;
 -(void) playMovie:(NSString*)path over:(NSView*)textview;

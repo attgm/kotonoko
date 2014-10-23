@@ -29,18 +29,11 @@ static void* kDictionariesBindingIdentifier = (void*) @"dictionaries";
 {
 	[_dictionarySetController removeObserver:self forKeyPath:@"selection"];
 	[[DictionaryManager sharedDictionaryManager] removeObserver:self forKeyPath:@"dictionaries"];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[_dictionarySetController removeObserver:self forKeyPath:@"selection"];
-	[[DictionaryManager sharedDictionaryManager] removeObserver:self forKeyPath:@"dictionaries"];
-	[super finalize];
-}
 
 
 //-- awakeFromNib

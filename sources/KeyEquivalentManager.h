@@ -15,7 +15,6 @@
 +(KeyEquivalentManager*) sharedKeyEquivalentManager;
 
 -(id) init;
--(void) dealloc;
 
 -(void) setKeyEquivalent:(NSString*)keyEquivalent toObject:(id)object;
 -(void) unsetKeyEquivalent:(NSString*)keyEquivalent toObject:(id)object;

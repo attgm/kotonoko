@@ -144,7 +144,7 @@ EB_Error_Code hook_img_tags(EB_Book*			book,
 							int					argc,
 							const unsigned int*	argv)
 {
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	EBook* ebook = [container ebook];
 	
 	switch(code){
@@ -184,7 +184,7 @@ EB_Error_Code hook_mono_img_tags(EB_Book*			book,
 								 int					argc,
 								 const unsigned int*	argv)
 {
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	EBook* ebook = [container ebook];
 	static SSize imageSize;
 	EBLocation location;
@@ -220,7 +220,7 @@ EB_Error_Code hook_wav_tags(EB_Book*			book,
 							int					argc,
 							const unsigned int*	argv)
 {
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	
 	switch(code){
 		case EB_HOOK_BEGIN_WAVE:
@@ -246,7 +246,7 @@ EB_Error_Code hook_mpeg_tags(EB_Book* inBook,EB_Appendix* inAppendix,void* useri
 						int argc, const unsigned int* argv)
 {
 	char filename[EB_MAX_DIRECTORY_NAME_LENGTH + 1];
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	
 	switch(code){
 		case EB_HOOK_BEGIN_MPEG:
@@ -286,7 +286,7 @@ EB_Error_Code hook_style_tags(EB_Book*		inBook,
 							 int			argc,
 							 const unsigned int*	argv)
 {
-    EBookContainer* container = (EBookContainer*)inContainer; 
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     switch(inCode){
 		case EB_HOOK_NEWLINE:
@@ -329,7 +329,7 @@ EB_Error_Code hook_anchor(EB_Book*				book,
 						  int					argc,
 						  const unsigned int*	argv)
 {
-	EBookContainer* container = (EBookContainer*) userinfo;
+	EBookContainer* container = (__bridge EBookContainer*) userinfo;
 	
 	switch(code){
 		case EB_HOOK_BEGIN_REFERENCE:
@@ -356,7 +356,7 @@ EB_Error_Code hook_narrow_font_tags(EB_Book*				book,
 									int						argc,
 									const unsigned int*		argv)
 {
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	
 	EBook* ebook = [container ebook];
 	if(![container hasParamator] || [ebook useAlternativeWithCode:argv[0] kind:kFontTypeNarrow]){
@@ -382,7 +382,7 @@ EB_Error_Code hook_narrow_font_tags(EB_Book*				book,
 		NSUInteger start = [container referenceMaker];
 		NSString* tag = [NSString stringWithFormat:@"N:%d", argv[0]];
 		[container appendAttributedString:
-		 [[[NSAttributedString alloc] initWithString:tag attributes:[container paramatorForkey:EBGaijiAttributes]] autorelease]];
+		 [[NSAttributedString alloc] initWithString:tag attributes:[container paramatorForkey:EBGaijiAttributes]]];
 		NSUInteger end = [container referenceMaker];
 		[container insertReferenceWithURL:url range:NSMakeRange(start, end-start)];
 	}
@@ -408,7 +408,7 @@ EB_Error_Code hook_wide_font_tags(EB_Book*				book,
 								  int					argc,
 								  const unsigned int*	argv)
 {
-	EBookContainer* container = (EBookContainer*)userinfo;
+	EBookContainer* container = (__bridge EBookContainer*)userinfo;
 	
 	EBook* ebook = [container ebook];
 	if(![container hasParamator] || [ebook useAlternativeWithCode:argv[0] kind:kFontTypeWide]){
@@ -434,7 +434,7 @@ EB_Error_Code hook_wide_font_tags(EB_Book*				book,
 		NSUInteger start = [container referenceMaker];
 		NSString* tag = [NSString stringWithFormat:@"W:%d", argv[0]];
 		[container appendAttributedString:
-		 [[[NSAttributedString alloc] initWithString:tag attributes:[container paramatorForkey:EBGaijiAttributes]] autorelease]];
+		 [[NSAttributedString alloc] initWithString:tag attributes:[container paramatorForkey:EBGaijiAttributes]]];
 		NSUInteger end = [container referenceMaker];
 		[container insertReferenceWithURL:url range:NSMakeRange(start, end-start)];
 	}
@@ -462,7 +462,7 @@ EB_Error_Code hook_scripts(EB_Book*			inBook,
 						   int					argc,
 						   const unsigned int*	argv)
 {
-    EBookContainer* container = (EBookContainer*)inContainer; 
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     switch(inCode){
 		case EB_HOOK_BEGIN_SUPERSCRIPT:
@@ -491,7 +491,7 @@ EB_Error_Code hook_test(EB_Book*			inBook,
 						   int					argc,
 						   const unsigned int*	argv)
 {
-    EBookContainer* container = (EBookContainer*)inContainer; 
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     [container appendString:[NSString stringWithFormat:@"<%d>", code]];
     
@@ -508,7 +508,7 @@ EB_Error_Code hook_candidate_tags(EB_Book*				book,
 								  int					argc, 
 								  const unsigned int*	argv)
 {
-    CandidateContainer* container = (CandidateContainer*)userinfo;
+    CandidateContainer* container = (__bridge CandidateContainer*)userinfo;
 	
 	switch(code){
 		case EB_HOOK_BEGIN_CANDIDATE:
@@ -538,7 +538,7 @@ EB_Error_Code hook_html_tags(EB_Book*		inBook,
 							  int			argc,
 							  const unsigned int*	argv)
 {
-    EBookContainer* container = (EBookContainer*)inContainer; 
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     switch(inCode){
 		case EB_HOOK_NEWLINE:
@@ -621,7 +621,7 @@ hook_euc_to_unicode(EB_Book*		inBook,
     unsigned char code[3];
     NSString*	string;
     unsigned char outcode = 0;
-    EBookContainer* container = (EBookContainer*)inContainer;
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     
     code[0] = argv[0] >> 8;
@@ -652,7 +652,6 @@ hook_euc_to_unicode(EB_Book*		inBook,
     }
     
     [container appendString:string];
-    [string release];
     return EB_SUCCESS;
 }
 
@@ -670,7 +669,7 @@ hook_gb_to_unicode (EB_Book*			inBook,
 {
     unsigned char code[3];
     NSString*	string;
-    EBookContainer* container = (EBookContainer*)inContainer;
+    EBookContainer* container = (__bridge EBookContainer*)inContainer;
     
     code[0] = argv[0] >> 8;
     code[1] = argv[0] & 0xff;
@@ -683,6 +682,5 @@ hook_gb_to_unicode (EB_Book*			inBook,
 	string = [[NSString alloc] initWithData:[NSData dataWithBytes:code length:2]
 								   encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_CN)];
     [container appendString:string];
-    [string release];
     return EB_SUCCESS;
 }

@@ -29,8 +29,8 @@ enum {
 	NSString*	_prefId;
 }
 
-@property (retain) NSNumber* index;
-@property (retain) NSString* prefId;
+@property (strong) NSNumber* index;
+@property (strong) NSString* prefId;
 
 -(id) init;
 -(void) dealloc;

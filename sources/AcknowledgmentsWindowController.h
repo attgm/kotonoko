@@ -10,7 +10,7 @@
 {
 }
 
-@property (nonatomic, assign) IBOutlet NSTextView* acknowledgmentText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextView* acknowledgmentText;
 
 
 - (id)init;

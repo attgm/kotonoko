@@ -17,9 +17,6 @@
 
 -(id) initWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
 +(id) elementWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
-
--(void) dealloc;
-
 -(NSString*) alternativeString;
 -(void) setAlternativeString:(NSString*) string;
 

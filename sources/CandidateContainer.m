@@ -16,7 +16,7 @@
 {
 	self = [super init];
     if(self){
-        _string = [string copyWithZone:[self zone]];
+        _string = [string copyWithZone:nil];
         _location = location;
     }
 	return self;
@@ -28,16 +28,7 @@
 +(id) candidateWithString:(NSAttributedString*)string
 				 location:(EBLocation)location
 {
-	return [[[CandidateGroup alloc] initWithString:string location:location] autorelease];
-}
-
-
-//-- dealloc
-// あとかたづけ
--(void) dealloc
-{
-	[_string release];
-	[super dealloc];
+	return [[CandidateGroup alloc] initWithString:string location:location];
 }
 
 
@@ -67,8 +58,8 @@
 {
 	self = [super init];
     if(self){
-        _string = [string copyWithZone:[self zone]];
-        _candidate = [candidate copyWithZone:[self zone]];
+        _string = [string copyWithZone:nil];
+        _candidate = [candidate copyWithZone:nil];
     }
 	return self;
 }
@@ -79,19 +70,12 @@
 +(id) candidateWithString:(NSAttributedString*)string
 				candidate:(NSData*)candidate
 {
-	return [[[CandidateLeaf alloc] initWithString:string candidate:candidate] autorelease];
+	return [[CandidateLeaf alloc] initWithString:string candidate:candidate];
 }
 
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_string release];
-	[_candidate release];
-	
-	[super dealloc];
-}
 
 
 //-- string
@@ -131,12 +115,6 @@
 
 //-- dealloc
 // 後片付け
--(void)dealloc
-{
-	[_candidates release];
-	[_data release];
-	[super dealloc];
-}
 
 
 //-- candidates

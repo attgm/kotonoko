@@ -36,7 +36,6 @@ static void* const kStyleSheetBindingsIdentifier = (void*) @"styleSheet";
 	self = [super init];
 	if(self){
         if(sSharedEBStyleSheet){
-            [self release];
             return sSharedEBStyleSheet;
         }
         sSharedEBStyleSheet = self;
@@ -53,18 +52,12 @@ static void* const kStyleSheetBindingsIdentifier = (void*) @"styleSheet";
 -(void) dealloc
 {
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsFont];
-	[super dealloc];
 }
 
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsFont];
-	[super finalize];
-}
 
 
 //-- registerStyleSheet

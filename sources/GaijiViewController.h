@@ -13,8 +13,8 @@
 }
 
 
-@property (assign, nonatomic) IBOutlet NSTextField* charactorCodeString;
-@property (assign, nonatomic) ContentsController* contentsController;
+@property (weak, nonatomic) IBOutlet NSTextField* charactorCodeString;
+@property (weak, nonatomic) ContentsController* contentsController;
 
 
 -(instancetype) initWithOverView:(NSView*) textview;

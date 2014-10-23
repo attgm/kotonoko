@@ -45,19 +45,11 @@ void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSUnderlineStyleAttributeName];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSForegroundColorAttributeName];
 	
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSUnderlineStyleAttributeName];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSForegroundColorAttributeName];
-	
-	[super finalize];
-}
 
 
 #pragma mark Observer
@@ -80,7 +72,8 @@ void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";
 // linkの色を設定する
 -(void) observeLinkAttributes
 {
-	BOOL hasUnderLine = [[PreferenceModal prefForKey:kLinkUnderLine] boolValue];
+	BOOL hasUnderLine = [[PreferenceModal prefForKey:kLinkUnderLine] boolValue]
+        && self.layoutOrientation != NSTextLayoutOrientationVertical;
 	
 	[self setLinkTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 		[NSNumber numberWithInt:(hasUnderLine ? NSUnderlineStyleSingle : NSUnderlineStyleNone)], NSUnderlineStyleAttributeName,

@@ -36,7 +36,6 @@
 - (IBAction) selectFolder : (id) sender;
 - (IBAction) deleteFolder : (id) sender;
 - (id) init;
-- (void) dealloc;
 - (void) windowWillClose : (NSNotification *) aNote;
 - (void) showPanel : (id) sender;
 

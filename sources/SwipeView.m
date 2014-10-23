@@ -63,6 +63,7 @@ const static CGFloat PAGE_CURL_ANGLE = M_PI - M_PI / 12;
     return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
 }
 
+
 //-- scrollWheel
 // 
 - (void)scrollWheel:(NSEvent *)event
@@ -78,19 +79,20 @@ const static CGFloat PAGE_CURL_ANGLE = M_PI - M_PI / 12;
     Boolean isBackword = [event scrollingDeltaX] > 0.0f ? YES : NO;
     if (![_delegate canSwipeBy:(isBackword ? -1 : 1)]) return;
     
+    
     NSBitmapImageRep* image = [self bitmapImageRepForCachingDisplayInRect:self.bounds];
     [self cacheDisplayInRect:self.bounds toBitmapImageRep:image];
     
-    CIImage* currentImage = [[[CIImage alloc] initWithBitmapImageRep:image] autorelease];
+    CIImage* currentImage = [[CIImage alloc] initWithBitmapImageRep:image];
     [_delegate refleshCurrentDisplayCache:image];
     
     NSBitmapImageRep* nextImage = [_delegate getHistoryDisplayCacheBy:(isBackword ? -1 : 1)];
-    CIImage* targetImage = (nextImage != nil) ? [[[CIImage alloc] initWithBitmapImageRep:nextImage] autorelease] : currentImage;
+    CIImage* targetImage = (nextImage != nil) ? [[CIImage alloc] initWithBitmapImageRep:nextImage] : currentImage;
     _imageRect = [currentImage extent];
     [self setSubviews:[NSArray array]];
     
     NSRect rect = [self bounds];
-    _transitionFilter = [[CIFilter filterWithName:@"CIPageCurlWithShadowTransition"] retain];
+    _transitionFilter = [CIFilter filterWithName:@"CIPageCurlWithShadowTransition"];
     
     [_transitionFilter setDefaults];
     [_transitionFilter setValue:[NSNumber numberWithFloat:PAGE_CURL_ANGLE] forKey:@"inputAngle"];
@@ -140,7 +142,6 @@ const static CGFloat PAGE_CURL_ANGLE = M_PI - M_PI / 12;
 // swipe to backword/forward contents
 -(void) swipeTo:(NSInteger) offset
 {
-    [_transitionFilter release];
     _transitionFilter = nil;
     _animationPosition = nil;
     [_delegate swipeBy:offset];
@@ -150,6 +151,7 @@ const static CGFloat PAGE_CURL_ANGLE = M_PI - M_PI / 12;
 // old style swipe event
 -(void) swipeWithEvent:(NSEvent *)event
 {
+    NSLog(@"koko!");
     SwipeBehavior behavior = [[PreferenceModal prefForKey:kSwipeBehavior] intValue];
     if (behavior == kSwipeBehaviorOff) return;
     if([event deltaX] == 1.0f && [event deltaY] == 0.0f){
@@ -178,6 +180,9 @@ const static CGFloat PAGE_CURL_ANGLE = M_PI - M_PI / 12;
     
     return image;
 }
+
+
+//--
 
 -(BOOL) respondsToSelector:(SEL)aSelector
 {

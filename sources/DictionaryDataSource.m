@@ -21,20 +21,13 @@
 
 //-- dealloc
 //
-- (void) dealloc
-{
-    [mValue release];
-	[super dealloc];
-}
 
 
 //--- setValues
 // valueの追加
 - (void) setValues : (NSMutableArray*) inValues;
 {
-    [mValue release];
     mValue = inValues;
-    [mValue retain];
     
     [mTableView deselectAll:self];
     [mTableView reloadData];

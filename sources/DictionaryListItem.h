@@ -19,7 +19,6 @@
 -(id) initWithPath:(NSString*) path;
 +(DictionaryListItem*) dictionaryListItemWithPath:(NSString*) path ;
 
--(void) dealloc;
 
 -(void) addChild:(DictionaryListItem*) item;
 -(NSArray*) children;

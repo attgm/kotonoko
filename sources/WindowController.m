@@ -25,6 +25,7 @@
 void* kWindowStyleBindingIdentifier = (void*) @"windowStyle";
 void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 
+
 @implementation WindowController
 //-- initWithController
 // 初期化ルーチン
@@ -49,21 +50,11 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kHeadingFont];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kHeadingColor];
 
-	[_fieldEditer release];
-	[_resultsArray release];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
-- (void) finalize
-{
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kWindowStyle];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kHeadingFont];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kHeadingColor];	
-	[super finalize];
-}
 
 
 //-- windowDidLoad
@@ -92,7 +83,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 											options:NSKeyValueObservingOptionNew context:kWindowStyleBindingIdentifier];
 	[self syncWindowStyle];
 	
-	[_binderController bind:@"filterPredicate"
+    [_binderController bind:@"filterPredicate"
 				   toObject:[DictionaryBinderManager sharedDictionaryBinderManager]
 				withKeyPath:@"quickTagFilterPredicate"
 					options:nil];
@@ -100,7 +91,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	[_contentView setFrame:frame];
 	[self.window setContentView:_contentView];
 	
-	[self setContentsViewToDictionaryContents];
+    [self setContentsView:_splitView withAnimation:NO];
 
 	[_binderMatrix bind:@"value" toObject:_binderController withKeyPath:@"arrangedObjects" options:nil];
 	[_binderMatrix bind:@"selectedIndex" toObject:_binderController withKeyPath:@"selectionIndex" options:nil];
@@ -147,41 +138,49 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 #pragma mark ContentsView
 //-- setContentsView
 // コンテンツviewの設定
--(void) setContentsView:(NSView*) contentsView;
+-(void) setContentsView:(NSView*) contentsView
+          withAnimation:(Boolean) isAnimation
 {
 	if ([self currentContentsView] == contentsView) return;
-	
-	// サイズを合わせて設定する
-	[contentsView setFrame:[_contentsClip frame]];
-	
+    
 	// 既に含まれているsubviewをfadeoutさせる
 	NSArray* subviews = [_contentsClip subviews];
-	NSMutableArray* animations = [[NSMutableArray alloc] initWithCapacity:([subviews count] + 1)];
-	for(NSView* view in subviews){
-		if(view != contentsView){
-            NSRect frame = [view frame];
-			NSDictionary* fadeout = [NSDictionary dictionaryWithObjectsAndKeys:
-									 view, NSViewAnimationTargetKey,
-                                     [NSValue valueWithRect:frame], NSViewAnimationStartFrameKey,
-                                     [NSValue valueWithRect:NSOffsetRect(frame, 0, frame.size.height/2)],NSViewAnimationEndFrameKey,
-									 NSViewAnimationFadeOutEffect, NSViewAnimationEffectKey, nil];
-			[animations addObject:fadeout];
-		}
-	}
+    NSMutableArray* animations = isAnimation ? [[NSMutableArray alloc] initWithCapacity:([subviews count] + 1)] : nil;
+    if(isAnimation){
+        for(NSView* view in subviews){
+            if(view != contentsView){
+                NSRect frame = [view frame];
+                NSDictionary* fadeout = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         view, NSViewAnimationTargetKey,
+                                         [NSValue valueWithRect:frame], NSViewAnimationStartFrameKey,
+                                         [NSValue valueWithRect:NSOffsetRect(frame, 0, frame.size.height/2)],NSViewAnimationEndFrameKey,
+                                         NSViewAnimationFadeOutEffect, NSViewAnimationEffectKey, nil];
+                [animations addObject:fadeout];
+            }
+        }
+    }else{
+        for(NSView* view in subviews){
+            if(view != contentsView){
+                [view removeFromSuperview];
+            }
+        }
+    }
 	
 	[_contentsClip addSubview:contentsView];
-	NSDictionary* fadein = [NSDictionary dictionaryWithObjectsAndKeys:
-							contentsView, NSViewAnimationTargetKey,
-							NSViewAnimationFadeInEffect, NSViewAnimationEffectKey,
-							nil];
-	[animations addObject:fadein];
-	NSViewAnimation* viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations:animations];
-	[viewAnimation setDuration:0.5];
-	[viewAnimation setAnimationCurve:NSAnimationEaseIn];
-	[viewAnimation setDelegate:self];
-	[viewAnimation startAnimation];
-	[viewAnimation release];
-	[animations release];
+    NSRect rect = NSMakeRect(0, 0, _contentsClip.frame.size.width, _contentsClip.frame.size.height);
+    [contentsView setFrame:rect];
+    if(isAnimation){
+        NSDictionary* fadein = [NSDictionary dictionaryWithObjectsAndKeys:
+                                contentsView, NSViewAnimationTargetKey,
+                                NSViewAnimationFadeInEffect, NSViewAnimationEffectKey,
+                                nil];
+        [animations addObject:fadein];
+        NSViewAnimation* viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations:animations];
+        [viewAnimation setDuration:0.5];
+        [viewAnimation setAnimationCurve:NSAnimationEaseIn];
+        [viewAnimation setDelegate:self];
+        [viewAnimation startAnimation];
+    }
 }
 
 
@@ -214,7 +213,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 // contents viewを辞書内容に変更する
 -(void) setContentsViewToDictionaryContents
 {
-	[self setContentsView:_splitView];
+    [self setContentsView:_splitView withAnimation:YES];
 }
 
 
@@ -447,11 +446,11 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 	
     NSFont* tagFont = [[NSFontManager sharedFontManager] convertFont:contentsFont toHaveTrait:NSBoldFontMask];
     NSColor* tagColor = [PreferenceModal colorForKey:kDictionaryNameColor];
-    NSMutableParagraphStyle *paragraph = [[[NSMutableParagraphStyle alloc] init] autorelease];
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
     [paragraph setLineBreakMode:NSLineBreakByTruncatingTail];
     [paragraph setAlignment:NSCenterTextAlignment];
 	NSDictionary* tagAttributes;
-    if([tagFont pointSize] > 10.0f){
+    /*if([tagFont pointSize] > 10.0f){
         NSShadow* tagShadow = [[[NSShadow alloc] init] autorelease];
         [tagShadow setShadowColor:[NSColor grayColor]];
         [tagShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
@@ -462,13 +461,13 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
                                    tagShadow,                       NSShadowAttributeName,
                                    paragraph,                       NSParagraphStyleAttributeName,
                                    nil];
-    }else{
+    }else{*/
         tagAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                          tagFont,						NSFontAttributeName,
                          tagColor,						NSForegroundColorAttributeName,
                          paragraph,                     NSParagraphStyleAttributeName,
                          nil];
-    }
+    //}
 	CGFloat gap = [contentsFont ascender] - [scriptFont ascender];
 	NSDictionary* superscriptAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 										   scriptFont, NSFontAttributeName,
@@ -497,11 +496,14 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 -(void) updateHeadingFont
 {
 	NSFont* font = [PreferenceModal fontForKey:kHeadingFont];
-	NSLayoutManager* lm = [[NSLayoutManager alloc] init];
-	[_headingTable setRowHeight:([lm defaultLineHeightForFont:font] + 2.0)];
+    CGFloat height = font.boundingRectForFont.size.height;
+    
+    [_headingTable setRowHeight:(height + 2.0)];
+    
+    //[_headingTable noteHeightOfRowsWithIndexesChanged:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, 10)]];
     
 	[_currentSearchViewController research];
-	[lm release];
+	//[lm release];
 }
 
 
@@ -603,8 +605,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 -(void) setCurrentDictionaryBinder:(DictionaryBinder*) binder
 {
 	if(_currentDictionaryBinder != binder){
-		[_currentDictionaryBinder release];
-		_currentDictionaryBinder = [binder retain];
+		_currentDictionaryBinder = binder;
 	}
 }
 
@@ -837,8 +838,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 -(void) setResultsArray:(NSArray*) results
 {
 	if(results != _resultsArray){
-		[_resultsArray release];
-		_resultsArray = [results retain];
+		_resultsArray = results;
 	}
 }
 
@@ -866,7 +866,7 @@ void* kHeadingFontBindingsIdentifier = (void*) @"headingFont";
 		[self syncWindowStyle];
 	}else if(context == kHeadingFontBindingsIdentifier){
 		[self updateHeadingFont];
-	}else{
+    }else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
 }    

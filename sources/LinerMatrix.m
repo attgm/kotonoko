@@ -4,7 +4,7 @@
 //	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
-
+#import <objc/objc-runtime.h>
 #import "LinerMatrix.h"
 #import "ACBindingItem.h"
 #import "PreferenceModal.h"
@@ -37,19 +37,11 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 -(void) dealloc
 {
 	[self unbindAll];
-	[_bindingItems release];
-	[_matrixCells release];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[self unbindAll];
-	[super finalize];
-}
 
 
 #pragma mark User Interface
@@ -87,7 +79,7 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 // 新規にcellを作成する
 -(NSButtonCell*) appendCell
 {
-	BGButtonCell* cell = [[[BGButtonCell alloc] initTextCell:@""] autorelease];
+	BGButtonCell* cell = [[BGButtonCell alloc] initTextCell:@""];
 	[cell setBezeled:NO];
 	//[cell setBezelStyle:NSShadowlessSquareBezelStyle];
 	
@@ -189,11 +181,11 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 		_bindingItems = [[NSDictionary alloc] initWithObjectsAndKeys:
 			[ACBindingItem bindingItemFromSelector:@selector(observeValue:)
 										valueClass:[NSArray class]
-										identifier:kMatrixValueBindingIdentifier]
+										identifier:(__bridge const void *)(kMatrixValueBindingIdentifier)]
 			, kMatrixValueBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeSelectedIndex:)
 										valueClass:[NSNumber class]
-										identifier:kMatrixSelectionBindingIdentifier]
+										identifier:(__bridge const void *)(kMatrixSelectionBindingIdentifier)]
 			, kMatrixSelectionBindingIdentifier,
 			nil];
 	}
@@ -231,7 +223,9 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -246,10 +240,10 @@ const NSString* kMatrixSelectionBindingIdentifier = @"selectedIndex";
 						 change : (NSDictionary *) change
 						context : (void *) context
 {
-	ACBindingItem* item = [[self bindingItems] objectForKey:context];
-	if(item){
-		[self performSelector:[item selector] withObject:item];
-	}else{
+	ACBindingItem* item = [[self bindingItems] objectForKey:(__bridge id)(context)];
+	if(item && [self respondsToSelector:[item selector]]){
+        objc_msgSend(self, [item selector], item);
+    }else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
 }    

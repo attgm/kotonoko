@@ -11,11 +11,6 @@
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_backgroundGradient release];
-	[super dealloc];
-}
 
 
 

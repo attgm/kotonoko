@@ -33,7 +33,7 @@
 	CGFloat startWhite = enable ? (highlighted ? .65 : .99) : .93;
 	CGFloat endWhite = enable ? (highlighted ? .62 : .95) : .95;
 	CGFloat baseWhite = enable ? (highlighted ? .59 : .9) : .92;
-	
+    
 	NSRect bounds = frame;
 	bounds = NSMakeRect(bounds.origin.x+1, bounds.origin.y, bounds.size.width-2, bounds.size.height-1);
 	
@@ -41,7 +41,7 @@
 	NSRect highlight = NSMakeRect(bounds.origin.x, bounds.origin.y, bounds.size.width, halfHeight);
 	NSColor* startColor = [NSColor colorWithDeviceWhite:startWhite alpha:1.0];
 	NSColor* endColor = [NSColor colorWithDeviceWhite:endWhite alpha:1.0];
-	NSGradient *backgroundGradient = [[[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor] autorelease];
+	NSGradient *backgroundGradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
 	[backgroundGradient drawInRect:highlight angle:90];
 
 	NSRect baseRect = NSMakeRect(bounds.origin.x, bounds.origin.y + halfHeight, bounds.size.width, bounds.size.height - halfHeight);

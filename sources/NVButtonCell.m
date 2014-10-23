@@ -22,7 +22,7 @@
         NSColor *beginColor = [NSColor colorWithDeviceRed:0.27f green:0.31f blue:0.39f alpha:1.0f];
         NSColor *endColor = [NSColor colorWithDeviceRed:0.41f green:0.45f blue:0.53f alpha:1.0f];
         NSGradient *gradient =
-            [[[NSGradient alloc] initWithStartingColor:beginColor endingColor:endColor] autorelease];
+            [[NSGradient alloc] initWithStartingColor:beginColor endingColor:endColor];
         [gradient drawInRect:frame angle:90];
         
         [[NSColor colorWithDeviceWhite:0.2f alpha:0.8f] set];

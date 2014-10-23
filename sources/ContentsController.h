@@ -13,17 +13,16 @@
 @class EBookController;
 @class WindowController;
 @class NavibarView;
-@class QTMovieView;
-@class QTMovie;
 @class FontTableElement;
 @class SwipeView;
 @class ContentsHistory;
 @class WebViewController;
 @class PlayerViewController;
-@class GaijiViewController;
+//@class GaijiViewController;
+@class GaijiPopoverController;
 
 
-@interface ContentsController : NSObject <SwipeViewDelegate> {
+@interface ContentsController : NSObject <SwipeViewDelegate, NSPopoverDelegate>{
 	IBOutlet WindowController* _windowController;
 	
 	IBOutlet SwipeView*			_contentsView;
@@ -31,7 +30,6 @@
 	IBOutlet NSTextField*		_searchField;
 		
 	IBOutlet NSView*			_moviePanel;
-	IBOutlet QTMovieView*		_qtView;
 	
 	IBOutlet NavibarView*		_charactorCodeView;
 	IBOutlet NSTextField*		_charactorCodeString;
@@ -64,21 +62,22 @@
     
     NSTextFinder*               _textFinder;
     
-    GaijiViewController*        _gaijiViewController;
+    GaijiPopoverController*     _gaijiPopoverController;
     
 }
 
 
-@property (assign, nonatomic) NSTextFinder* textFinder;
-@property (retain, nonatomic) WebViewController* webviewController;
+@property (strong, nonatomic) NSTextFinder* textFinder;
+@property (strong, nonatomic) WebViewController* webviewController;
 
-@property (retain, nonatomic) PlayerViewController* playerViewController;
+@property (strong, nonatomic) PlayerViewController* playerViewController;
+@property (assign, nonatomic) BOOL isTextOrientationVertical;
+
 
 
 -(id) init;
 -(void) awakeFromNib;
 -(void) dealloc;
--(void) finalize;
 
 -(IBAction) backHistory:(id) sender;
 -(IBAction) forwardHistory:(id) sender;
@@ -115,14 +114,15 @@
 
 -(void) reloadContents;
 
+-(void) refleshTextOrientation;
+
 
 -(void) playWave:(NSURL*) reference;
 -(void) playMovie:(NSURL*) reference;
--(void) showMoviePanel:(QTMovie*) movie;
 -(void) closeMoviePanel;
 
--(void) showCharactorCode:(EBLocation) location;
--(void) showCharactorCodePane;
+-(void) showCharactorCode:(EBLocation) location inRect:(NSRect)rect;
+-(void) showCharactorCodePaneInRect:(NSRect)rect;
 -(void) closeCharactorCodePane;
 -(void) changeCharactorCode;
 -(void) setWebContents:(NSURL*)url;
@@ -139,6 +139,7 @@
 -(void) setNextKeyView:(NSView*) view;
 -(NSView*) firstKeyView;
 
+-(void) adjustTextViewSize;
 
 -(void) contentBoundsDidChange:(NSNotification*) notify;
 -(BOOL) hasContents:(NSInteger) detaction;

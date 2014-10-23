@@ -60,6 +60,7 @@ static NSDictionary *defaultValues()
 			[NSDictionary dictionary], kAppendixTable,
 			[NSDictionary dictionary], kDictionaryIdTable,
             [NSDictionary dictionary], kSecureBookmarkTable,
+            [NSNumber numberWithInt:kTextOrientationHorizontal], kTextOrientation,
 			nil];
     }
     return defaults;
@@ -146,7 +147,6 @@ static NSDictionary *defaultValues()
 	self = [super init];
     if(self){
         if(sSharedPreferenceModal){
-            [self release];
             return sSharedPreferenceModal;
         }
         sSharedPreferenceModal = self;
@@ -161,7 +161,6 @@ static NSDictionary *defaultValues()
 - (void) dealloc
 {
 	sSharedPreferenceModal = nil;
-	[super dealloc];
 }
 
 
@@ -248,7 +247,7 @@ static NSDictionary *defaultValues()
 		}else if([it isKindOfClass:[NSArray class]]){
 			[copy addObject:[self mutableArrayFromArray:it]];
 		}else{
-			[copy addObject:[[it copyWithZone:[self zone]] autorelease]];
+			[copy addObject:[it copyWithZone:nil]];
 		}
 	}
 	return copy;
@@ -269,7 +268,7 @@ static NSDictionary *defaultValues()
 		}else if([obj isKindOfClass:[NSArray class]]){
 			[copy setObject:[self mutableArrayFromArray:obj] forKey:key];
 		}else{
-			[copy setObject:[[obj copyWithZone:[self zone]] autorelease] forKey:key];
+			[copy setObject:[obj copyWithZone:nil] forKey:key];
 		}
 	}
 	return copy;
