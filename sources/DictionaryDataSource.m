@@ -1,7 +1,7 @@
 //	DictionaryDataSource.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "DictionaryDataSource.h"
@@ -21,20 +21,13 @@
 
 //-- dealloc
 //
-- (void) dealloc
-{
-    [mValue release];
-	[super dealloc];
-}
 
 
 //--- setValues
 // valueの追加
 - (void) setValues : (NSMutableArray*) inValues;
 {
-    [mValue release];
     mValue = inValues;
-    [mValue retain];
     
     [mTableView deselectAll:self];
     [mTableView reloadData];

@@ -1,7 +1,7 @@
 //	MultiSearchViewController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "PreferenceModal.h"
@@ -21,7 +21,7 @@ const NSInteger EBLayoutMargin = 20;
 // 初期化
 - (id) initWithWindowController:(WindowController*) inWindowController
 {
-    self = [super init];
+    self = [super initWithNibName:@"MultiSearchView" bundle:nil];
     
     if(self){
         _windowController = inWindowController;
@@ -38,23 +38,13 @@ const NSInteger EBLayoutMargin = 20;
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_entriesArray release];
-	[super dealloc];
-}
 
 
 //-- createSearchView
 // nib から search viewを生成する
 - (void) createSearchView
 {
-    if(!_searchFieldView){
-        if (![NSBundle loadNibNamed:@"MultiSearchView" owner:self]){
-			NSLog(@"Failed to load MultiSearchView.nib");
-			NSBeep();
-		}
-    }
+    [self loadView];
 }
 
 
@@ -130,7 +120,7 @@ const NSInteger EBLayoutMargin = 20;
 // 検索エントリを表示させる
 -(void) setContentsViewToSearchEntriesView
 {
-	[_windowController setContentsView:_searchView];
+	[_windowController setContentsView:_searchView withAnimation:YES];
 	[_disclosureButton setState:NSOnState];
 }
 
@@ -150,7 +140,7 @@ const NSInteger EBLayoutMargin = 20;
 		if([title isEqualToString:@"-"]){
 			[[_methodPopup menu] addItem:[NSMenuItem separatorItem]];
 		}else{
-			NSMenuItem* item = [[[NSMenuItem alloc] init] autorelease];
+			NSMenuItem* item = [[NSMenuItem alloc] init];
 			[item setTitle:NSLocalizedString(title, title)];
 			[item setTag:[[obj objectForKey:@"tag"] intValue]];
 			[[_methodPopup menu] addItem:item];
@@ -185,7 +175,7 @@ const NSInteger EBLayoutMargin = 20;
 		NSInteger entry = 0;
 		for(NSString* title in array){
 			NSArray* candidates = [singleBinder multiSearchCandidates:index entry:entry++];
-			MultiSearchEntry* entry = [MultiSearchEntry entryWithTitle:title candidates:candidates];
+			MultiSearchEntry* entry = [MultiSearchEntry entryWithLabel:title candidates:candidates];
 			[entry setController:self];
 			[_entriesArray addObject:entry];
 		}

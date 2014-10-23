@@ -1,7 +1,7 @@
 //	PreferenceDefines.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #define kContentsConinuity @"contentsConinuity"
@@ -23,7 +23,7 @@
 #define kUseSmallWindow @"useSmallWindow"
 #define kDiminishRescan @"deminichRescan"
 #define kSearchAllMax @"searchAllMax"
-#define kDictionaryNameColor @"dictionaryIndexColor"
+#define kDictionaryNameColor @"dictionaryNameColor"
 #define kDictionaryBackgroundColor @"dictionaryBackgroundColor"
 #define kShowOnlyEBookSet @"ShowOnlyEBookSet"
 #define kEBookSetTitle @"title"
@@ -44,6 +44,8 @@
 #define kFitWebViewScale @"fitWebViewScale"
 #define kSwipeBehavior @"swipeBehavior"
 #define kSecureBookmarkTable @"secureBookmarks"
+#define kTextOrientation @"textOrientation"
+
 
 typedef enum {
     kFitScaleOff                    = 1000,
@@ -64,6 +66,12 @@ typedef enum {
 	kWindowStyleVertical   = 1002,
 	kWindowStyleAutomatic  = 1003
 } WindowStyle;
+
+typedef enum {
+    kTextOrientationHorizontal = 1001,
+    kTextOrientationVertical = 1002
+} TextOrientation;
+
 
 #define kTagEBook @"ebook"
 #define kTagNetworkDictionary @"network"

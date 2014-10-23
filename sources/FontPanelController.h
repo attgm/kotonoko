@@ -1,7 +1,7 @@
 //	FontPanelController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 @class EBookController;
@@ -12,9 +12,8 @@
 
 extern NSString* const EBFontPanelDictionaryIdentifier;
 
-@interface FontPanelController : NSObject 
+@interface FontPanelController : NSWindowController
 {
-    IBOutlet NSWindow*		_window;
     IBOutlet NSImageView*	_imageView;
 	IBOutlet NSTextField*	_identifyField;
 	IBOutlet NSTextField*	_stringField;

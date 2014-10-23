@@ -1,7 +1,7 @@
 //	HeadingController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -41,10 +41,10 @@
 		//[cell setTextColor:[PreferenceModal colorForKey:kHeadingColor]];
 		[cell setAlignment:NSNaturalTextAlignment];
 	}else{
-        [cell setDrawsBackground:YES];
-		[cell setBackgroundColor:[PreferenceModal colorForKey:kDictionaryBackgroundColor]];
+        [cell setDrawsBackground:NO];
+		//[cell setBackgroundColor:[PreferenceModal colorForKey:kDictionaryBackgroundColor]];
         //[cell setFont:[[NSFontManager sharedFontManager] 
-        //  convertFont:[PreferenceModal fontForKey:kHeadingFont] toHaveTrait:NSBoldFontMask]];
+        //  convertFont:[PreferenceModal fontForKey:st] toHaveTrait:NSBoldFontMask]];
 		//[cell setTextColor:[PreferenceModal colorForKey:kDictionaryNameColor]];
 		[cell setAlignment:NSCenterTextAlignment];
 		[cell setBordered:NO];

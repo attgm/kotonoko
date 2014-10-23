@@ -1,7 +1,7 @@
 //	LineTextAttachmentCell.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -14,7 +14,7 @@
 	CGFloat	_width;
 }
 
-@property (retain, nonatomic) NSTextAttachment* attachment;
+@property (strong, nonatomic) NSTextAttachment* attachment;
 
 
 @end

@@ -1,7 +1,7 @@
 //	PasteboardWatcher.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -13,7 +13,7 @@
 	
 	id _delegate;
 }
-@property (retain, nonatomic) id delegate;
+@property (strong, nonatomic) id delegate;
 
 
 -(id) initWithDelegate:(id) delegate;

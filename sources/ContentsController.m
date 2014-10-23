@@ -1,12 +1,11 @@
 //	ContentsController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
 #import <WebKit/WebKit.h>
-#import <QTKit/QTkit.h>
 
 #import "ContentsController.h"
 #import "EBookController.h"
@@ -16,8 +15,10 @@
 #import "DictionaryBinder.h"
 #import "EBook.h"
 #import "PreferenceModal.h"
+#import "WebViewController.h"
 #import "WindowController.h"
 #import "NavibarView.h"
+#import "PlayerViewController.h"
 
 #import "EBStyleSheet.h"
 #import "FontTableElement.h"
@@ -25,66 +26,16 @@
 #import "EBookUtilities.h"
 #import "SwipeView.h"
 #import "ContentsHistory.h"
+#import "GaijiPopoverController.h"
+
+//#import "objc/runtime.h"
 
 NSString* const EBContentFontBindingsIdentifier = @"contentFont";
+NSString* const EBTextOrientationIdentifier = @"textOrientation";
+
 NSInteger const OVERSCROLL_MARGIN = 12;
 NSInteger const DIRECTION_OVER_TOP = -1;
 NSInteger const DIRECTION_OVER_BOTTOM = 1;
-
-
-@interface WebHTMLView : NSView <WebDocumentView>
-- (NSUInteger)markAllMatchesForText:(NSString *)string caseSensitive:(BOOL)caseFlag limit:(unsigned)limit;
-- (void)unmarkAllTextMatches;
-- (void)setMarkedTextMatchesAreHighlighted:(BOOL)newValue;
-@end
-
-@interface WebView (WebPendingPublic)
-@property float pageSizeMultiplier;
--(IBAction)resetPageZoom:(id)sender;
-@end
-
-
-@implementation WebViewAnimation
-//-- initWithDuration:animationCurve:
-//
-- (id)initWithWebView:(WebView*)webview
-             duration:(NSTimeInterval)duration
-       animationCurve:(NSAnimationCurve)animationCurve
-{
-    self = [super initWithDuration:duration animationCurve:animationCurve];
-    if(self){
-        _webview = webview;
-    }
-    return self;
-}
-
-//-- setStartScale
-// setStartScale
--(void) setScale:(CGFloat) scale
-{
-    if(_webview != nil){
-        _endScale = scale;
-        if([_webview respondsToSelector:@selector(pageSizeMultiplier)]){
-            _startScale = [_webview pageSizeMultiplier];
-        }else{
-            _startScale = 1.0f;
-        }
-    }
-}
-
-//-- setCurrentProgress:
-// 
-- (void)setCurrentProgress:(NSAnimationProgress)progress
-{
-    [super setCurrentProgress:progress];
-    
-    if([_webview respondsToSelector:@selector(setPageSizeMultiplier:)]){
-        CGFloat scale = progress * (_endScale - _startScale) + _startScale;
-        [_webview setPageSizeMultiplier:scale];
-    }
-}
-@end;
-
 
 @implementation ContentsController
 @synthesize history = _history;
@@ -110,9 +61,15 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
                                              forKeyPath:kContentsColor
                                                 options:NSKeyValueObservingOptionNew
                                                 context:(void*)EBContentFontBindingsIdentifier];
+        [[PreferenceModal sharedPreference] addObserver:self
+                                             forKeyPath:kTextOrientation
+                                                options:NSKeyValueObservingOptionNew
+                                                context:(void*)EBTextOrientationIdentifier];
+        
         _contentsConinuity = [[PreferenceModal prefForKey:kContentsConinuity] boolValue];
 	
-        _history = [[[ContentsHistory alloc] init] retain];
+        _history = [[ContentsHistory alloc] init];
+        self.webviewController = nil;
     }
 	return self;
 }
@@ -129,9 +86,10 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 											 selector:@selector(contentBoundsDidChange:)
 												 name:NSViewBoundsDidChangeNotification
 											   object:contentView];
-    [_textContentsView setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"backgroundPattern"]]];
+    //[_textContentsView setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"backgroundPattern"]]];
     
-    self.textFinder = [[[NSTextFinder alloc] init] autorelease];
+    [self refleshTextOrientation];
+    self.textFinder = [[NSTextFinder alloc] init];
 }
 
 
@@ -142,23 +100,14 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsFont];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kIndexColor];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsColor];
+    [[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kTextOrientation];
 	
-	[_appendTimer release];
 	
-	[super dealloc];
 }
 
 
 //-- finalize
 //
--(void) finalize
-{
-    [[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsFont];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kIndexColor];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kContentsColor];
-	
-    [super finalize];
-}
 
 
 #pragma mark Action
@@ -183,19 +132,6 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 
 
 
-//-- closeCharactorCodePane
-// 外字paneを閉じる
--(IBAction) closeCharactorCodePane:(id) sender
-{
-	[self closeCharactorCodePane];
-}
-
-
-//-- changeCharactorCode
--(IBAction) changeCharactorCode:(id) sender
-{
-	[self changeCharactorCode];
-}
 
 
 //-- closeMoviePanel
@@ -210,9 +146,10 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 //  表示viewを指定する
 -(void) setContentView:(NSView*) view
 {
-	if(_webview && [_webview isLoading]){
-		[_webview stopLoading:self];
-	}
+    if(_webviewController) {
+        [_webviewController stopLoading];
+    }
+    
 	if([view superview] == nil){
 		NSRect frame = [_contentsView frame];
 		frame.origin.x = frame.origin.y = 0.0;
@@ -231,8 +168,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // content viewに合わせてtoolbarを切り替える
 -(void) adjustToolbar:(NSView*) view
 {
-	[_largeButton setHidden:!(view == _webContentsView)];
-	[_smallButton setHidden:!(view == _webContentsView)];
+    [_largeButton setHidden:![view isKindOfClass:[WebView class]]];
+	[_smallButton setHidden:![view isKindOfClass:[WebView class]]];
 	[_showGaijiButton setHidden:!(view == _textContentsView)]; 
 	[_contentsConinuityButton setHidden:!(view == _textContentsView)]; 
 }
@@ -298,7 +235,6 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 {
 	if(_appendTimer){
 		[_appendTimer invalidate];
-		[_appendTimer release];
 		_appendTimer = nil;
 	}
 }
@@ -311,6 +247,9 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSFont* scriptFont = [NSFont fontWithName:[contentsFont fontName] size:([contentsFont pointSize]*0.75)];
 	
 	NSColor* contentsColor = [PreferenceModal colorForKey:kContentsColor];
+    
+    NSNumber* underLine = [NSNumber numberWithInt:(_isTextOrientationVertical == YES ? NSUnderlineStyleNone : NSUnderlineStyleSingle)];
+    
 	NSDictionary* textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 									contentsFont,							NSFontAttributeName,
 									contentsColor,							NSForegroundColorAttributeName, nil];
@@ -328,14 +267,14 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	NSDictionary* emphasisAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 										contentsColor,									 NSForegroundColorAttributeName,
 										contentsFont,									 NSFontAttributeName,
-										[NSNumber numberWithInt:NSSingleUnderlineStyle], NSUnderlineStyleAttributeName, nil];
+										underLine,                                       NSUnderlineStyleAttributeName, nil];
 	NSDictionary* keywordAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 									   contentsFont,									 NSFontAttributeName,
 									   [PreferenceModal colorForKey:kIndexColor],		 NSForegroundColorAttributeName, nil];
 	NSDictionary* gaijiAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 									 scriptFont,										NSFontAttributeName,
 									 [NSNumber numberWithFloat:-2.0],					NSBaselineOffsetAttributeName,
-									 [NSNumber numberWithInt:NSSingleUnderlineStyle],	NSUnderlineStyleAttributeName, nil];
+									 underLine,                                         NSUnderlineStyleAttributeName, nil];
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:
 			superscriptAttributes,							EBSuperScriptAttributes,
@@ -346,7 +285,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 			textAttributes,									EBTextAttributes,
 			[NSNumber numberWithBool:_showGaijiCode],		EBShowGaijiCode,
 			[NSNumber numberWithBool:_contentsConinuity],	EBContentsConinuity,
-			[NSNumber numberWithInteger:imageHeight],			EBFontImageHeight,
+			[NSNumber numberWithInteger:imageHeight],		EBFontImageHeight,
 			[PreferenceModal colorForKey:kLinkColor],		EBReferenceTextColor, nil];
 }
 
@@ -360,9 +299,9 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	[_textView scrollRangeToVisible:NSMakeRange(0,0)];
 	[[_textView textStorage] beginEditing];
 	[[_textView textStorage] setAttributedString:
-	 [[[NSAttributedString alloc] initWithString:@""] autorelease]];
+	 [[NSAttributedString alloc] initWithString:@""]];
 	[[_textView textStorage] endEditing];
-	[_textView sizeToFit];
+    [self adjustTextViewSize];
 }
 
 
@@ -388,15 +327,16 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	[[_textView textStorage] beginEditing];
 	[[_textView textStorage] setAttributedString:text];
 	[[_textView textStorage] endEditing];
-	[_textView sizeToFit];
+    [self adjustTextViewSize];
+    
 	
     if([self contentsConinuity] && ([self isOvercrollingContents] == DIRECTION_OVER_BOTTOM)  && _hasSerialContents){
 		[self stopAppendTimer];
-		_appendTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5f
+		_appendTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f
 														 target:self
 													   selector:@selector(timeoutOverScrollingTimer:)
 													   userInfo:[NSNumber numberWithInt:1]
-														repeats:NO] retain];
+														repeats:NO];
 	}
 }
 
@@ -413,23 +353,39 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	
 	NSAttributedString* text = [eb contentAt:location paramator:[self contentsParamator]];
 	
-    NSInteger originalHeight = [[_textContentsView documentView] frame].size.height;
-    [[_textView textStorage] beginEditing];
+    NSInteger originalHeight = _isTextOrientationVertical ?
+        [[_textContentsView documentView] frame].size.width : [[_textContentsView documentView] frame].size.height;
+    
+     [[_textView textStorage] beginEditing];
     if(direction < 0){
         [[_textView textStorage] insertAttributedString:text atIndex:0];
     }else{
         [[_textView textStorage] appendAttributedString:text];
     }
 	[[_textView textStorage] endEditing];
-    [_textView sizeToFit];
-	
-    NSInteger offset = [[_textContentsView documentView] frame].size.height - originalHeight;
-    if(offset > OVERSCROLL_MARGIN && direction == DIRECTION_OVER_TOP){
+    [self adjustTextViewSize];
+    
+    [self closeCharactorCodePane];
+    
+    NSInteger offset = _isTextOrientationVertical ?
+        [[_textContentsView documentView] frame].size.width - originalHeight
+        : [[_textContentsView documentView] frame].size.height - originalHeight;
+    if(offset > OVERSCROLL_MARGIN &&
+       ((direction == DIRECTION_OVER_TOP && _isTextOrientationVertical == NO)
+        || (direction == DIRECTION_OVER_BOTTOM && _isTextOrientationVertical == YES))){
         NSClipView* clipView = [_textContentsView contentView];
         NSPoint origin = [clipView bounds].origin;
-        origin.y += offset;
+        if(_isTextOrientationVertical == YES){
+            origin.x += offset;
+        }else{
+            origin.y += offset;
+        }
         [clipView setBoundsOrigin:origin];
-        origin.y -= OVERSCROLL_MARGIN;
+        if(_isTextOrientationVertical == YES){
+            origin.x -= OVERSCROLL_MARGIN;
+        }else{
+            origin.y -= OVERSCROLL_MARGIN;
+        }
         [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
             [[clipView animator] setBoundsOrigin:origin];
         } completionHandler:^{}];
@@ -443,11 +399,11 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
         _serialLocation.ebook = location.ebook;
 	
         if([self contentsConinuity] && ([self isOvercrollingContents] == DIRECTION_OVER_BOTTOM) && _hasSerialContents){
-            _appendTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5
+            _appendTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                              target:self
                                                            selector:@selector(timeoutOverScrollingTimer:)
                                                            userInfo:[NSNumber numberWithInt:1]
-                                                            repeats:NO] retain];
+                                                            repeats:NO];
         }
     }
 }
@@ -459,11 +415,18 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 {
     if ([[_textView textStorage] length] > [[PreferenceModal prefForKey:kContentsCharactersMax] intValue]) return NO;
     
-    NSRect cv = [[_textContentsView contentView] bounds]; 
-	NSRect df = [[_textContentsView documentView] frame];
-	
-	return (cv.origin.y - df.origin.y) < 0 ? DIRECTION_OVER_TOP
-        : (df.size.height - (cv.origin.y + cv.size.height - df.origin.y)) <= 0 ? DIRECTION_OVER_BOTTOM : 0;
+    NSRect df = [[_textContentsView documentView] frame];
+    NSRect cv = [[_textContentsView contentView] bounds];
+    
+    if(_isTextOrientationVertical == YES){
+        NSRect cf = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer];
+        
+        return  ((cv.origin.x - df.origin.x) < 0 || (cf.size.height < cv.size.width)) ? DIRECTION_OVER_BOTTOM
+            : (df.size.width - (cv.origin.x + cv.size.width - df.origin.x)) < 0 ? DIRECTION_OVER_TOP : 0;
+    }else{
+        return (cv.origin.y - df.origin.y) < 0 ? DIRECTION_OVER_TOP
+            : (df.size.height - (cv.origin.y + cv.size.height - df.origin.y)) <= 0 ? DIRECTION_OVER_BOTTOM : 0;
+    }
 }
 
 
@@ -483,13 +446,13 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	}
 
 	if(!text){
-		text = [[[NSAttributedString alloc] initWithString:@""] autorelease];
+		text = [[NSAttributedString alloc] initWithString:@""];
 	}
 	[_textView scrollRangeToVisible:NSMakeRange(0,0)];
 	[[_textView textStorage] beginEditing];
 	[[_textView textStorage] setAttributedString:text];
 	[[_textView textStorage] endEditing];
-	[_textView sizeToFit];
+    [self adjustTextViewSize];
 }
 
 
@@ -509,13 +472,15 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 	}
 	
 	if(!text){
-		text = [[[NSAttributedString alloc] initWithString:@""] autorelease];
+		text = [[NSAttributedString alloc] initWithString:@""];
 	}
 	[_textView scrollRangeToVisible:NSMakeRange(0,0)];
 	[[_textView textStorage] beginEditing];
 	[[_textView textStorage] setAttributedString:text];
 	[[_textView textStorage] endEditing];
-	[_textView sizeToFit];
+    [self adjustTextViewSize];
+    
+    
 	[_windowController setResultsArray:[NSArray array]];
 }
 
@@ -524,26 +489,22 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // Webコンテンツの表示
 -(void) setWebContents:(NSURL*) url
 {
-	if(!_webContentsView){
-		if (![NSBundle loadNibNamed:@"WebView" owner:self])  {
-			NSLog(@"Failed to load WebView.nib");
-			NSBeep();
-            return;
-		}
+	if(!self.webviewController){
+        WebViewController* webViewController = [[WebViewController alloc] init];
+        self.webviewController = webViewController;
+        [webViewController loadView];
+        webViewController.history = _history;
+        webViewController.indicator = _progressIndicator;
+        
+        WebView* webview = [self.webviewController webview];
 		[EBStyleSheet sharedStyleSheet];
 		
-		[_progressIndicator bind:@"value" toObject:_webview withKeyPath:@"estimatedProgress" options:nil];
-		[_progressIndicator bind:@"hidden" toObject:_webview withKeyPath:@"isLoading" 
-						 options:[NSDictionary dictionaryWithObject:@"NSNegateBoolean" forKey:@"NSValueTransformerName"]];
-		[_largeButton setAction:@selector(makeTextLarger:)];
-		[_largeButton setTarget:_webview];
-		[_largeButton bind:@"enabled" toObject:_webview withKeyPath:@"canMakeTextLarger" options:nil];
+        [_largeButton setAction:@selector(makeTextLarger:)];
+		[_largeButton setTarget:webview];
+		[_largeButton bind:@"enabled" toObject:webview withKeyPath:@"canMakeTextLarger" options:nil];
 		[_smallButton setAction:@selector(makeTextSmaller:)];
-		[_smallButton setTarget:_webview];
-		[_smallButton bind:@"enabled" toObject:_webview withKeyPath:@"canMakeTextSmaller" options:nil];
-        
-        
-        _textFinder = [[NSTextFinder alloc] init];
+		[_smallButton setTarget:webview];
+		[_smallButton bind:@"enabled" toObject:webview withKeyPath:@"canMakeTextSmaller" options:nil];
 	}
 	
 	NSString* urlString = [url absoluteString];
@@ -552,9 +513,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 		NSRange scheme = [urlString rangeOfString:hostname];
 		NSString* path = [urlString substringFromIndex:(scheme.location + scheme.length + 1)]; // 最初の1文字(/)を削除
 
-		[self setContentView:_webContentsView];
-        [_webview resetPageZoom:nil];
-		[[_webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
+		[self setContentView:self.webviewController.view];
+        [self.webviewController loadURL:[NSURL URLWithString:path]];
 	}
 }
 
@@ -564,6 +524,53 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 -(void) reloadContents
 {
     [self setContentURL:[_history currentURL] appendHistory:NO refleshCache:NO];
+}
+
+
+
+//-- refleshTextOrientation
+//
+-(void) refleshTextOrientation
+{
+    TextOrientation orientation = [[PreferenceModal prefForKey:kTextOrientation] intValue];
+    if(_textView.layoutOrientation == (orientation == kTextOrientationVertical ?
+                                       NSTextLayoutOrientationVertical : NSTextLayoutOrientationHorizontal)){
+        return;
+    }
+    
+    [self setEmptyContents];
+    if(orientation == kTextOrientationVertical){
+        _textView.layoutOrientation = NSTextLayoutOrientationVertical;
+        _textView.enclosingScrollView.hasHorizontalScroller = YES;
+        _textView.horizontallyResizable = YES;
+        _textView.textContainer.widthTracksTextView = YES;
+        
+        _textView.enclosingScrollView.hasVerticalScroller = NO;
+        _textView.verticallyResizable = NO;
+        _textView.textContainer.heightTracksTextView = NO;
+        
+        //_textView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        
+        
+        //_textView.textContainer.containerSize = NSMakeSize(FLT_MAX, _textView.frame.size.height);
+        
+        self.isTextOrientationVertical = YES;
+    }else{
+        _textView.layoutOrientation = NSTextLayoutOrientationHorizontal;
+        _textView.enclosingScrollView.hasHorizontalScroller = NO;
+        _textView.horizontallyResizable = NO;
+        _textView.textContainer.widthTracksTextView = YES;
+        
+        _textView.enclosingScrollView.hasVerticalScroller = YES;
+        _textView.verticallyResizable = YES;
+        _textView.textContainer.heightTracksTextView = NO;
+        
+        //_textView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+        
+        //_textView.textContainer.containerSize = NSMakeSize(_textView.frame.size.width, FLT_MAX);
+        
+        self.isTextOrientationVertical = NO;
+    }
 }
 
 
@@ -627,7 +634,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // can swipe
 -(BOOL) canSwipeBy:(NSInteger) offset
 {
-    return ((offset < 0 && [_history canBackHistory]) || (offset > 0 && [_history canForwardHistory]));
+    return _isTextOrientationVertical == YES
+        ? NO :((offset < 0 && [_history canBackHistory]) || (offset > 0 && [_history canForwardHistory]));
 }
 
 
@@ -663,66 +671,20 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 }
 
 
-//-- webFrames
-// webframeに含まれるframeをすべて返す
-- (void) addWebFramesWithParent:(WebFrame*)webFrame inArray:(NSMutableArray*)array
-{
-    [array addObject:webFrame];
-    
-    NSEnumerator*   e = [[webFrame childFrames] objectEnumerator];
-    WebFrame*       frame;
-	while (frame = [e nextObject]) {
-        [self addWebFramesWithParent:frame inArray:array];
-    }
-}
 
-
-
-//-- webFrames
-// webviewに含まれるframeをすべて返す
--(NSArray*) webFrames:(WebView*) webview
-{
-	NSMutableArray* array = [NSMutableArray array];
-	
-	[self addWebFramesWithParent:[webview mainFrame] inArray:array];
-	return array;
-}
 
 
 //-- searchInContent
 // 本文表示エリアの中を検索する
 -(IBAction) searchInContent:(id)sender
 {
+    NSString* searchString = [_searchField stringValue];
     
 	if([_textContentsView window] != nil){
 		[self searchInTextContent];
 	}
-	if([_webContentsView window] != nil){
-		[self searchInWebContent];
-	}
-}
-
-
--(void) searchInWebContent
-{  
-	//NSColor* color = [PreferenceModal colorForKey:kFindColor];
-	NSString* searchString = [_searchField stringValue]; // 検索文字列の取得
-	
-	
-    //[_webview searchFor:searchString direction:YES caseSensitive:NO wrap:YES];
-	NSEnumerator* e = [[self webFrames:_webview] objectEnumerator];
-	WebFrame* frame;
-	while (frame = [e nextObject]) {
-		id  documentView = [[frame frameView] documentView];
-		if ([documentView respondsToSelector:@selector(unmarkAllTextMatches)]){
-			[documentView unmarkAllTextMatches];
-		}
-		if ([documentView respondsToSelector:@selector(setMarkedTextMatchesAreHighlighted:)]){
-			[documentView setMarkedTextMatchesAreHighlighted:YES];
-		}
-		if ([documentView respondsToSelector:@selector(markAllMatchesForText:caseSensitive:limit:)]){
-			[documentView markAllMatchesForText:searchString caseSensitive:NO limit:0];
-		}
+	if([[_webviewController view] window] != nil){
+        [_webviewController searchInContent:searchString];
 	}
 }
 
@@ -781,6 +743,8 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 // 音声の再生
 -(void) playWave:(NSURL*) url
 {
+    /*
+     
 	NSArray* path = [[url path] pathComponents];
 	if([path count] == 6){
 		int ebookNumber = [[path objectAtIndex:1] intValue];
@@ -800,7 +764,22 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 				NSLog(@"ERROR:%@", [error localizedDescription]);
 			}
 		}
-	}
+	}*/
+    NSArray* path = [[url path] pathComponents];
+    if([path count] == 6){
+        int ebookNumber = [[path objectAtIndex:1] intValue];
+        EBook* eb = [[DictionaryManager sharedDictionaryManager] ebookForEBookNumber:ebookNumber];
+        NSData* data = [eb soundWithPath:[url path]];
+       
+        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"kotonoko.wav"];
+        [data writeToFile:path atomically:NO];
+        
+        if(!self.playerViewController){
+            self.playerViewController = [[PlayerViewController alloc] init];
+        }
+        
+        [self.playerViewController playMovie:path over:_textContentsView];
+    }
 }
 
 
@@ -814,89 +793,40 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 		EBook* eb = [[DictionaryManager sharedDictionaryManager] ebookForEBookNumber:ebookNumber];;
 		
 		NSData* data = [eb movieByName:[path objectAtIndex:2]];
-		QTDataReference* reference = [QTDataReference dataReferenceWithReferenceToData:data
-																				  name:@"kotonoko.mpg"
-																			  MIMEType:@"movie/mpeg"];
-		
-		NSError* error;
-		QTMovie* movie = [QTMovie movieWithDataReference:reference error:&error];
-		
-		if(movie){
-			[self showMoviePanel:movie];
-		}else{
-			NSLog(@"ERROR:%@", [error localizedDescription]);
-		}
+        NSString* path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"kotonoko.mpg"];
+        [data writeToFile:path atomically:NO];
+        
+        if(!self.playerViewController){
+            self.playerViewController = [[PlayerViewController alloc] init];
+        }
+        
+        [self.playerViewController playMovie:path over:_textContentsView];
 	}
 }
 
 
-//-- showMoviePanel
-// movie用のパネルを表示する
--(void) showMoviePanel:(QTMovie*) movie
-{
-	if(!_moviePanel){
-		if(![NSBundle loadNibNamed:@"MoviePanel" owner:self]){
-			NSLog(@"Failed to load MoviePanel.nib");
-			NSBeep();
-		}
-	}
-	
-	NSSize size = [[movie attributeForKey:QTMovieNaturalSizeAttribute] sizeValue];
-	
-	[_qtView setMovie:movie];
-	NSRect qtRect = [_qtView frame];
-	NSRect controlBound = [_qtView movieControllerBounds];
-	if (size.width == 0) size.width = 240;
-	size.height += controlBound.size.height;
-	CGFloat movieHeight = size.height + 32;
-	qtRect.size = size;
-	 
-	CGFloat currentHeight = 0;
-	if([_moviePanel superview] == nil){
-		[_contentsView addSubview:_moviePanel];
-		currentHeight = 0;
-	}else{
-		currentHeight = ([_moviePanel frame]).size.height;
-	}
-	
-	NSRect movieRect = [_moviePanel frame];
-	NSRect contentsRect = [_textContentsView frame];
-	
-	movieRect.size.height = movieHeight;
-	contentsRect.size.height -= (movieRect.size.height - currentHeight);
-	movieRect.size.width = contentsRect.size.width;
-	movieRect.origin.x = 0; movieRect.origin.y = contentsRect.size.height + contentsRect.origin.y;
-	[_moviePanel setFrame:movieRect];
-	[_textContentsView setFrame:contentsRect];
-	
-	qtRect.origin.x = round((movieRect.size.width - size.width) / 2);
-	[_qtView setFrame:qtRect];
-	
-	[_moviePanel setNeedsDisplay:YES];
-	if([PreferenceModal prefForKey:kPlaySoundAutomatically]){
-		[_qtView play:self];
-	}
-}
 
 
 //-- closeMoviePanel
 // movie panelを閉じる
 -(void) closeMoviePanel
 {
-	if([_moviePanel superview] != nil){		
-		[_qtView pause:self];
-		[_qtView setMovie:nil];
-		NSRect movieRect = [_moviePanel frame];
-		NSRect contentsRect = [_textContentsView frame];
-	
-		contentsRect.size.height += movieRect.size.height;
-		[_textContentsView setFrame:contentsRect];
-		[_moviePanel removeFromSuperview];
-	}
+    if(self.playerViewController){
+        [self.playerViewController closePanel:_textContentsView];
+    }
 }
 
 
 #pragma mark Charactor Code
+//-- closeCharactorCodePanel
+//
+-(void) closeCharactorCodePane
+{
+    if(_gaijiPopoverController){
+        [_gaijiPopoverController closePopover];
+    }
+}
+
 //-- currentCharactorElement
 // 現在選択されている外字フォント
 -(FontTableElement*) currentCharactorElement
@@ -910,72 +840,43 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 -(void) setCurrentCharactorElement:(FontTableElement*) element
 {
 	if(element != _currentCharactorElement){
-		[_currentCharactorElement release];
-		_currentCharactorElement = [element retain];
+		_currentCharactorElement = element;
 	}
 }
 
 
 //--- showCharactorCodeImage
 // 外字Drawerに外字フォントを表示する
--(void) showCharactorCode:(EBLocation) location;
+-(void) showCharactorCode:(EBLocation) location inRect:(NSRect)rect
 {
-	[self showCharactorCodePane];
 	EBook* eb = [[DictionaryManager sharedDictionaryManager] ebookForEBookNumber:location.ebook];
 	
     NSInteger kind = (location.page == page_NarrowFont) ? kFontTypeNarrow : kFontTypeWide;
     NSInteger code = location.offset;
 	
 	[self setCurrentCharactorElement:[eb fontTableElementWithCode:code kind:kind]];
-	[[_charactorCodeString window] makeFirstResponder:_charactorCodeString];
+    
+    [self showCharactorCodePaneInRect:rect];
 }
 
 
 //--- showCharactorCodePane
 // 外字ビューワを表示する
--(void) showCharactorCodePane
+-(void) showCharactorCodePaneInRect:(NSRect)rect
 {
-	if(!_charactorCodeView){
-		if (![NSBundle loadNibNamed:@"GaijiPanel" owner:self]){ 
-			NSLog(@"Failed to load GaijiPanel.nib");
-			NSBeep();
-		}
-		[_charactorCodeView setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"backgroundPattern"]]];
-		[_charactorCodeString bind:@"fontName"
-						  toObject:[PreferenceModal sharedPreference]
-						withKeyPath:kContentsFont
-						   options:[NSDictionary dictionaryWithObject:@"FontNameToFontFamilyTransformer"
-															   forKey:@"NSValueTransformerName"]];
-	}
-	if([_charactorCodeView superview] == nil){
-		NSRect ccRect = [_charactorCodeView frame];
-		NSRect svRect = [_textContentsView frame];
-		svRect.size.height -= ccRect.size.height;
-		svRect.origin.y += ccRect.size.height;
-		ccRect.size.width = svRect.size.width;
-		ccRect.origin.x = ccRect.origin.y = 0;
-		[_contentsView addSubview:_charactorCodeView];
-		[_charactorCodeView setFrame:ccRect];
-		[_textContentsView setFrame:svRect];
-	}
-	[_charactorCodeView setNeedsDisplay:YES];
+    if(!_gaijiPopoverController){
+        _gaijiPopoverController = [[GaijiPopoverController alloc] init];
+        
+        _gaijiPopoverController.popover.delegate = self;
+        _gaijiPopoverController.popover.animates = YES;
+        _gaijiPopoverController.popover.behavior = NSPopoverBehaviorSemitransient;
+    }
+    _gaijiPopoverController.representedObject = _currentCharactorElement;
+    [_gaijiPopoverController showPopoverRelativeToRect:rect ofView:_textView];
 }
 
 
-//-- closeCharactorCodePane
-// 外字Paneを閉じる
--(void) closeCharactorCodePane
-{
-	if([_charactorCodeView superview]){
-		NSRect ccRect = [_charactorCodeView frame];
-		NSRect svRect = [_textContentsView frame];
-		svRect.size.height += ccRect.size.height;
-		svRect.origin.y = 0;
-		[_textContentsView setFrame:svRect];	
-		
-		[_charactorCodeView removeFromSuperview];
-	}
-}
+
 
 
 //-- setShowGaijiCode
@@ -986,7 +887,7 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
     [self reloadContents];
     
     if(!_showGaijiCode){
-        [self closeCharactorCodePane:self];
+        [self closeCharactorCodePane];
 	}
 }
 
@@ -1036,12 +937,19 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
     BOOL returnCode = NO;
     
 	if([link isKindOfClass:[NSURL class]]){
-		NSURL* url = (NSURL*)[link copyWithZone:[self zone]];
+		NSURL* url = (NSURL*)[link copyWithZone:nil];
 		
 		NSString* scheme = [url scheme];
 		if([scheme isEqualToString:@"ebgaiji"]){
 			EBLocation location = [self locationFromURL:url];
-			[self showCharactorCode:location];
+            NSRange textRange = [[textview layoutManager] glyphRangeForCharacterRange:NSMakeRange(charindex, 1) actualCharacterRange:nil];
+            NSRect layoutRect = [[textview layoutManager] boundingRectForGlyphRange:textRange inTextContainer:[textview textContainer]];
+            
+            NSPoint containerOrigin = [textview textContainerOrigin];
+            layoutRect.origin.x += containerOrigin.x;
+            layoutRect.origin.y += containerOrigin.y;
+
+            [self showCharactorCode:location inRect:layoutRect];
 			returnCode = YES;
 		}else if([scheme isEqualToString:@"eb"]){
 			[self setContentURL:url appendHistory:YES refleshCache:YES];
@@ -1053,7 +961,6 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 			[self playMovie:url];
             returnCode = YES;
 		}
-        [url release];
         
 	}
 	return returnCode;
@@ -1061,150 +968,24 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 
 
 
-#pragma mark WebKit Delegate
-
-//-- webView:didCommitLoadForFrame:
-// 
--(void)             webView:(WebView*)sender 
-      didFinishLoadForFrame:(WebFrame*)frame
-{
-
-    if ([sender mainFrame] == frame) {
-        NSView* clipView = [[[_webview mainFrame] frameView] documentView];
-        NSRect webFrameRect = [clipView bounds];
-        NSRect webViewRect = [_webview frame];
-        
-        CGFloat scale = webViewRect.size.width / webFrameRect.size.width;
-        WebViewAnimation* animation = [[[WebViewAnimation alloc] initWithWebView:_webview duration:0.2 animationCurve:NSAnimationLinear] autorelease];
-        [animation setScale:scale];
-        [animation setAnimationBlockingMode:NSAnimationNonblocking];
-        [animation startAnimation];
-        /*NSSize size = [[clipView superview] convertSize:NSMakeSize(1.0f, 1.0f) fromView:nil];
-        [[clipView superview] scaleUnitSquareToSize:size];
-        [[clipView superview] scaleUnitSquareToSize:NSMakeSize(scale, scale)];
-        [[clipView superview] setNeedsDisplay:YES];*/
-    }
-}
-
-
-//-- webView:decidePolicyForNavigationAction:request:frame:decisionListener:
-// webページの変更用
-- (void)                   webView:(WebView      *) sender
-   decidePolicyForNavigationAction:(NSDictionary *) info
-                           request:(NSURLRequest *) request
-                             frame:(WebFrame     *) frame
-                  decisionListener:(id <WebPolicyDecisionListener >) listener
-{
-	if([[info objectForKey:WebActionNavigationTypeKey] intValue] == WebNavigationTypeLinkClicked){
-		NSString* identify = [[_history currentURL] host];
-		id dictionary = [[DictionaryManager sharedDictionaryManager] dictionaryForIdentity:identify];
-		if(dictionary && [dictionary isKindOfClass:[NetDictionary class]]){
-			if([dictionary isDictionaryHost:[[request URL] host]]){
-				[listener use];
-				NSURL* historyURL = 
-					[NSURL URLWithString:[NSString stringWithFormat:@"web://%@/%@", identify, [[request URL] absoluteString]]];
-				[self addLocationHistory:historyURL];
-				if([_history currentURL] != historyURL){
-					[_history setCurrentURL:historyURL];
-				}
-			}else{
-				[listener ignore];
-				NSDictionary  *asErrDic = nil;
-				NSAppleScript *as = [[NSAppleScript alloc] initWithSource:
-									 [NSString stringWithFormat:@"open location \"%@\"", [[request URL] absoluteString]]];
-				[as executeAndReturnError:&asErrDic];
-				[as autorelease];
-			}
-			return;
-		}
-	}
-	[listener use];
-}
-
 
 //-- locationFromURL
 // パスからlocationを抽出する
 -(EBLocation) locationFromURL:(NSURL*) url
 {
-	NSArray* path = [[url path] pathComponents];
-	EBLocation location;
-	
-	if([path count] == 4){
-		int ebookNumber = [[path objectAtIndex:1] intValue];
-		int page = [[path objectAtIndex:2] intValue];
-		int offset = [[path objectAtIndex:3] intValue];
-	
-		location = EBMakeLocation(ebookNumber, page, offset);
-	}
-	
-	return location;
-}
-
-
-//-- webView:didFailLoadWithError:forFrame:
-// エラー処理
--(void)			 webView:(WebView *)sender
-	didFailLoadWithError:(NSError *)error
-				forFrame:(WebFrame *)frame
-{
-	[self showErrorPage:error forFrame:frame];
-}
-
-
-//-- webView:didFailProvisionalLoadWithError:forFrame:
-// エラー処理
-- (void)					webView:(WebView*)webView 
-	didFailProvisionalLoadWithError:(NSError*)error 
-							forFrame:(WebFrame*)frame
-{
-	[self showErrorPage:error forFrame:frame];
-}
-
-
-//-- showErrorPage
-// エラーページを作成し表示する
--(void) showErrorPage:(NSError*) error
-			forFrame:(WebFrame*) frame
-{
-	NSString* domain = [error domain];
-    NSInteger code = [error code];
-    if (([domain isEqualToString:NSURLErrorDomain] && code == NSURLErrorCancelled) || 
-        ([domain isEqualToString:WebKitErrorDomain] && code == WebKitErrorFrameLoadInterruptedByPolicyChange)){
-        return;
+    NSArray* path = [[url path] pathComponents];
+    EBLocation location;
+    
+    if([path count] == 4){
+        int ebookNumber = [[path objectAtIndex:1] intValue];
+        int page = [[path objectAtIndex:2] intValue];
+        int offset = [[path objectAtIndex:3] intValue];
+        
+        location = EBMakeLocation(ebookNumber, page, offset);
     }
     
-	NSString* path = MakeHtmlFolder();
-	path = [path stringByAppendingPathComponent:@"error.html"];
-	NSString* html = [self createErrorHtml:error];
-	NSError* err;
-	if(![html writeToFile:path atomically:YES encoding:NSUTF8StringEncoding  error:&err]){
-		NSLog(@"%@", [err localizedDescription]);
-		return;
-	}
-    [frame loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+    return location;
 }
-
-
-
-//-- createErrorHtml
-// エラー処理
--(NSString*) createErrorHtml:(NSError*) error
-{
-	NSMutableString* html = [[NSMutableString alloc] init];
-	[html appendString:@"<html><head>"
-						@"<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>"
-						@"<link rel='stylesheet' href='styles.css' type='text/css'>"];
-	[html appendFormat:@"<title>%@</title>", [error localizedDescription]];
-	[html appendString:@"</head><body><div class=\"error-container\">"];
-	[html appendFormat:@"<p class=\"error-title\">%@</p>", [error localizedDescription]];
-	if([error localizedRecoverySuggestion]){
-		[html appendFormat:@"<p class=\"error-message\">%@</p>", [error localizedRecoverySuggestion]];
-	}
-	[html appendString:@"</div></body></html>"];
-	
-	return [html autorelease];
-}
-
 
 
 #pragma mark Binding
@@ -1214,9 +995,11 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
 					  ofObject : (id) object
 						change : (NSDictionary *) change
 					   context : (void *) context
-{	
-	if(context == EBContentFontBindingsIdentifier){
+{
+	if(context == (__bridge void *)(EBContentFontBindingsIdentifier)){
 		[self reloadContents];
+    }else if(context == (__bridge void*)(EBTextOrientationIdentifier)){
+        [self refleshTextOrientation];
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
@@ -1234,11 +1017,11 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
     if([self contentsConinuity] && detaction != 0 && [self hasContents:detaction]){
         if([_appendTimer userInfo] == nil || [[_appendTimer userInfo] intValue] != detaction){
             [self stopAppendTimer];
-            _appendTimer = [[NSTimer scheduledTimerWithTimeInterval:0.5f
+            _appendTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f
                                                              target:self
                                                            selector:@selector(timeoutOverScrollingTimer:)
                                                            userInfo:[NSNumber numberWithInteger:detaction]
-                                                            repeats:NO] retain];
+                                                            repeats:NO];
         }
     }else{
         [self stopAppendTimer];
@@ -1263,6 +1046,35 @@ NSInteger const DIRECTION_OVER_BOTTOM = 1;
     [self stopAppendTimer];	
     [self appendEBookContents:direction];
 }
+
+
+//-- adjustTextViewSize
+// NSTextViewのサイズを合わせる
+-(void) adjustTextViewSize
+{
+    [_textView sizeToFit];
+    
+    if(_isTextOrientationVertical){
+        NSRect frame = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer];
+        NSRect bounds = _textView.bounds;
+        if(bounds.size.height < frame.size.height){
+            _textView.frame = NSMakeRect(0, 0, frame.size.height, frame.size.width);
+        }
+    }
+}
+
+#pragma mark -
+#pragma mark NSPopoverDelegate
+
+
+//-- popoverDidClose
+//
+- (void)popoverDidClose:(NSNotification *)notification
+{
+    [self reloadContents];
+}
+
+
 
 
 @end

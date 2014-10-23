@@ -1,7 +1,7 @@
 //	KeyEquivalentManager.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -15,7 +15,6 @@
 +(KeyEquivalentManager*) sharedKeyEquivalentManager;
 
 -(id) init;
--(void) dealloc;
 
 -(void) setKeyEquivalent:(NSString*)keyEquivalent toObject:(id)object;
 -(void) unsetKeyEquivalent:(NSString*)keyEquivalent toObject:(id)object;

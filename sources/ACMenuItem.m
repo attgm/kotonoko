@@ -1,12 +1,11 @@
 //	ACMenuItem.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
-
-
 #import "ACMenuItem.h"
 #import "ACBindingItem.h"
+#import <objc/objc-runtime.h>
 
 const NSString*	kMenuTitleBindingIdentifier = @"title";
 const NSString* kMenuStateBindingIdentifier = @"state";
@@ -28,8 +27,6 @@ const NSString* kMenuKeyEquivalentIdentifier = @"keyEquivalent";
 - (void)dealloc
 {
 	[self unbindAll];
-	[_bindingItems release];
-	[super dealloc];
 }
 
 
@@ -43,15 +40,15 @@ const NSString* kMenuKeyEquivalentIdentifier = @"keyEquivalent";
 		_bindingItems = [[NSDictionary alloc] initWithObjectsAndKeys:
 			[ACBindingItem bindingItemFromSelector:@selector(observeTitle:)
 										valueClass:[NSString class]
-										identifier:kMenuTitleBindingIdentifier]
+										identifier:(__bridge const void *)(kMenuTitleBindingIdentifier)]
 			, kMenuTitleBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeState:)
 										valueClass:[NSNumber class]
-										identifier:kMenuStateBindingIdentifier]
+										identifier:(__bridge const void *)(kMenuStateBindingIdentifier)]
 			, kMenuStateBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeKeyEquivalent:)
 										valueClass:[NSString class]
-										identifier:kMenuKeyEquivalentIdentifier]
+										identifier:(__bridge const void *)(kMenuKeyEquivalentIdentifier)]
 			, kMenuKeyEquivalentIdentifier,
 			nil];
 	}
@@ -88,7 +85,9 @@ const NSString* kMenuKeyEquivalentIdentifier = @"keyEquivalent";
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if ([self respondsToSelector:[item selector]]) {
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -103,9 +102,11 @@ const NSString* kMenuKeyEquivalentIdentifier = @"keyEquivalent";
 						 change : (NSDictionary *) change
 						context : (void *) context
 {
-	ACBindingItem* item = [[self bindingItems] objectForKey:context];
+	ACBindingItem* item = [[self bindingItems] objectForKey:(__bridge id)(context)];
 	if(item){
-		[self performSelector:[item selector] withObject:item];
+        if ([self respondsToSelector:[item selector]]) {
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}

@@ -1,36 +1,34 @@
 //	MultiSearchEntry.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
 @class MultiSearchViewController;
 
-@interface MultiSearchEntry : NSObject {
-	IBOutlet NSView* _view;
+@interface MultiSearchEntry : NSViewController {
 	IBOutlet NSTextField*	_entryField;
 	IBOutlet NSPopUpButton* _candidatePopUp;
 	IBOutlet NSTextField*	_textField;
-	
-	NSString* _title;
-	NSInteger _entry;
+    
+    NSInteger _entry;
 	NSArray* _candidates;
 	
 	id _candidateData;
 	MultiSearchViewController* _controller;
 }
 
+@property (strong, nonatomic) NSString* label;
 
 -(id) init;
--(NSView*) view;
 -(void) adjustCandidates;
 -(NSMenu*) createCandidatesMenu;
 -(NSMenu*) menuFromCandidates:(NSArray*) candidates;
 
--(id) initWithTitle:(NSString*)title candidates:(NSArray*)candidates;
-+(MultiSearchEntry*) entryWithTitle:(NSString*) title candidates:(NSArray*) candidates;
+-(id) initWithLabel:(NSString*)label candidates:(NSArray*)candidates;
++(MultiSearchEntry*) entryWithLabel:(NSString*) title candidates:(NSArray*) candidates;
 -(void) setController:(MultiSearchViewController*) controller;
 
 -(IBAction) selectCandidate:(id) sender;

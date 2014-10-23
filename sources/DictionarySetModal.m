@@ -1,7 +1,7 @@
 //	DictionarySetModal.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "PreferenceModal.h"
@@ -29,18 +29,11 @@ static void* kDictionariesBindingIdentifier = (void*) @"dictionaries";
 {
 	[_dictionarySetController removeObserver:self forKeyPath:@"selection"];
 	[[DictionaryManager sharedDictionaryManager] removeObserver:self forKeyPath:@"dictionaries"];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[_dictionarySetController removeObserver:self forKeyPath:@"selection"];
-	[[DictionaryManager sharedDictionaryManager] removeObserver:self forKeyPath:@"dictionaries"];
-	[super finalize];
-}
 
 
 //-- awakeFromNib

@@ -1,7 +1,7 @@
 //	LineTextAttachmentCell.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -30,8 +30,8 @@
 //
 -(void) drawWithFrame:(NSRect)cellFrame inView:(NSView *)aView
 {
-	[[NSColor grayColor] set];
-	NSBezierPath* line = [[[NSBezierPath alloc] init] autorelease];
+	[[NSColor colorWithWhite:0.90f alpha:1.0] set];
+	NSBezierPath* line = [[NSBezierPath alloc] init];
 	[line moveToPoint:NSMakePoint(cellFrame.origin.x + 4,
 								  cellFrame.origin.y + cellFrame.size.height/2)];
 	[line lineToPoint:NSMakePoint(cellFrame.origin.x + cellFrame.size.width,
@@ -79,7 +79,7 @@
 //-- cellSize
 - (NSSize) cellSize
 {
-	return NSMakeSize(_width, 3);
+	return NSMakeSize(_width, 5);
 }
 
 

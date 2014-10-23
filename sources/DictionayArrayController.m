@@ -1,7 +1,7 @@
 //	DictionayArrayController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -80,7 +80,7 @@ writeRowsWithIndexes:(NSIndexSet*)rowIndexes
     
 	NSMutableArray* droppingRows = [NSMutableArray array];
 	NSUInteger insertIndex = row;
-	NSMutableIndexSet* indexes = [[[NSMutableIndexSet alloc] init] autorelease];
+	NSMutableIndexSet* indexes = [[NSMutableIndexSet alloc] init];
 	for(NSNumber* droppingIndex in droppingReps){
 		NSUInteger index = [droppingIndex unsignedIntValue];
 		

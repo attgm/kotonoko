@@ -1,7 +1,7 @@
 //	DictionaryListItem.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -40,7 +40,7 @@
 // パスから初期化する
 +(DictionaryListItem*) dictionaryListItemWithPath:(NSString*) path
 {
-	return [[[DictionaryListItem alloc] initWithPath:path] autorelease];
+	return [[DictionaryListItem alloc] initWithPath:path];
 }
 
 
@@ -48,12 +48,6 @@
 
 
 //-- dealloc
--(void) dealloc
-{
-	[_children release];
-	[_paramators release];
-	[super dealloc];
-}
 
 
 #pragma mark Bindings
@@ -196,7 +190,7 @@
 										path:(NSString*) path
 									identify:(NSString*) dictionaryId
 {
-	return [[[EBDictionary alloc] initWithEBook:book path:path identify:dictionaryId] autorelease];
+	return [[EBDictionary alloc] initWithEBook:book path:path identify:dictionaryId];
 }
 
 
@@ -237,7 +231,7 @@
 // 検索タイトルの一覧
 -(NSArray*) searchMethods
 {
-	NSMutableArray* searchMethods = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray* searchMethods = [[NSMutableArray alloc] init];
 	
 	if([self hasSearchMethod:kSearchMethodWord]){
 		[searchMethods addObject:[NSDictionary dictionaryWithObjectsAndKeys:

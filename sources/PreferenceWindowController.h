@@ -1,14 +1,14 @@
 //	PreferenceWindowController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 @class PreferenceModal;
 @class DictionaryManager;
 
-@interface PreferenceWindowController : NSObject <NSToolbarDelegate>
+@interface PreferenceWindowController : NSWindowController <NSToolbarDelegate>
 {
 	IBOutlet NSWindow* _preferenceWindow;
     IBOutlet NSView*	_panelBase;
@@ -30,10 +30,12 @@
 	NSMutableArray* _dictionaryList;
 }
 
+@property (assign, nonatomic) Boolean initialized;
+
+
 - (IBAction) selectFolder : (id) sender;
 - (IBAction) deleteFolder : (id) sender;
 - (id) init;
-- (void) dealloc;
 - (void) windowWillClose : (NSNotification *) aNote;
 - (void) showPanel : (id) sender;
 

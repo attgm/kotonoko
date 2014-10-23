@@ -1,7 +1,7 @@
 //	DictionaryBinder.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -29,8 +29,8 @@ enum {
 	NSString*	_prefId;
 }
 
-@property (retain) NSNumber* index;
-@property (retain) NSString* prefId;
+@property (strong) NSNumber* index;
+@property (strong) NSString* prefId;
 
 -(id) init;
 -(void) dealloc;

@@ -1,7 +1,7 @@
 //	FontTableElement.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "ELDefines.h"
@@ -21,9 +21,9 @@
 {
     self = [super init];
     if(self){
-        _alternative = [string copyWithZone:[self zone]];
+        _alternative = [string copyWithZone:nil];
         _useAlternative = use;
-        _url = [url copyWithZone:[self zone]];
+        _url = [url copyWithZone:nil];
         _identify = identify;
 	}
     return self;
@@ -37,20 +37,14 @@
 				 use:(BOOL) use
 			identify:(NSInteger) identify
 {
-    return [[[FontTableElement alloc] 
-			 initWithURL:url alternative:string use:use identify:identify] autorelease];
+    return [[FontTableElement alloc] 
+			 initWithURL:url alternative:string use:use identify:identify];
 }
 
 
 
 //-- dealloc
 // ディストラクタ
-- (void) dealloc
-{
-    [_alternative release];
-    [_url release];
-    [super dealloc];
-}
 
 #pragma mark -
 
@@ -59,7 +53,7 @@
 // 文字列を返す
 - (NSString*) alternativeString
 {
-	return [[_alternative retain] autorelease];
+	return _alternative;
 }
 
 
@@ -69,8 +63,7 @@
 {
 	@synchronized(self) {
 		if(![_alternative isEqualToString:string]){
-			[_alternative release];
-			_alternative = [string copyWithZone:[self zone]];
+			_alternative = [string copyWithZone:nil];
 			if(!_useAlternative){
 				[self setUseAlternativeString:YES];
 			}

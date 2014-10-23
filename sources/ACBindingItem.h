@@ -1,7 +1,7 @@
 //	ACBindingItem.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -21,7 +21,7 @@
 @property (nonatomic, readonly) SEL selector;
 @property (nonatomic, readonly) Class valueClass;
 
-@property (nonatomic, retain) id observedController;
+@property (nonatomic, strong) id observedController;
 @property (nonatomic, copy) NSString* transformerName;
 @property (nonatomic, copy) NSString* observedKeyPath;
 @property (nonatomic, readonly) void* identifier;
@@ -35,7 +35,6 @@
 -(id) initWithSelector : (SEL) selector
 			valueClass : (Class) valueClass
 			 identifier: (const void*) identifier;
--(void) dealloc;
 
 -(NSDictionary*) infoForBinding;
 -(void) unbind;

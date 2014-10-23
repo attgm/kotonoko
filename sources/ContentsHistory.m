@@ -1,7 +1,7 @@
 //	ContentsHistory.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -17,7 +17,7 @@
 +(ContentsHistoryItem*) historyItemWithUrl:(NSURL*) url
                                     bitmap:(NSBitmapImageRep*) bitmap
 {
-    return [[[ContentsHistoryItem alloc] initWithUrl:url bitmap:bitmap] autorelease];
+    return [[ContentsHistoryItem alloc] initWithUrl:url bitmap:bitmap];
 }
 
 
@@ -28,27 +28,17 @@
 {
     self = [super init];
     if(self){
-        _url = [url retain];
-        _bitmapCache = [bitmap retain];
+        _url = url;
+        _bitmapCache = bitmap;
     }
     return self;
 }
 
 //-- dealloc
 //
--(void) dealloc
-{
-    [_url release];
-    [_bitmapCache release];
-    [super dealloc];
-}
 
 //-- finalize
 //
--(void) finalize
-{
-    [super finalize];
-}
 @end
 
 
@@ -63,7 +53,7 @@
 {
     self = [super init];
     if(self){
-        _values = [[[NSMutableArray alloc] init] retain];
+        _values = [[NSMutableArray alloc] init];
         _historyIndex = 0;
     }
     return self;
@@ -72,18 +62,9 @@
 
 //-- dealloc
 // deallocation
--(void) dealloc
-{
-    [_values release];
-    [super dealloc];
-}
 
 //-- finalize
 // finalization
--(void) finalize
-{
-    [super finalize];
-}
 
 
 #pragma mark operation

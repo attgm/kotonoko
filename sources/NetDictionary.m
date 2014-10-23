@@ -1,7 +1,7 @@
 //	NetDictionary.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -22,7 +22,6 @@
 	self = [super init];
 	if(self){
 		if(![self parseData:data]){
-			[self release];
 			return nil;
 		}
 	}
@@ -34,7 +33,7 @@
 // 辞書を作成する
 +(NetDictionary*) netDictionaryWithData:(NSData*) data
 {
-	return [[[NetDictionary alloc] initWithData:data] autorelease];
+	return [[NetDictionary alloc] initWithData:data];
 }
 
 
@@ -43,13 +42,13 @@
 // データを読み込む
 -(BOOL) parseData:(NSData*) data
 {
-	NSString *error;
+	NSError *error;
 	NSPropertyListFormat format;
-	id property = [NSPropertyListSerialization propertyListFromData:data
-												   mutabilityOption:NSPropertyListImmutable
+	id property = [NSPropertyListSerialization propertyListWithData:data
+                                                            options:NSPropertyListImmutable
 															 format:&format
-												   errorDescription:&error];
-	if(!property){NSLog(@"%@", error); [error release]; return NO;};
+                                                              error:&error];
+	if(!property){NSLog(@"%@", [error description]); return NO;};
 	if(![property isKindOfClass:[NSDictionary class]]){
 		return NO;
 	}
@@ -186,10 +185,10 @@
 			   max:(NSInteger) maxHits
 		 paramator:(NSDictionary*) paramator
 {
-	NSMutableArray* array = [[[NSMutableArray alloc] initWithCapacity:2] autorelease];
+	NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];
 	
-	NSAttributedString* tagName = [[[NSAttributedString alloc] initWithString:[self valueForKey:@"ShortName"]
-																   attributes:[paramator objectForKey:EBTagAttributes]] autorelease];
+	NSAttributedString* tagName = [[NSAttributedString alloc] initWithString:[self valueForKey:@"ShortName"]
+																   attributes:[paramator objectForKey:EBTagAttributes]];
 	[array addObject:[DictionaryElement elementWithHeading:tagName
 													anchor:EBMakeLocation(0, -1, 0)]];
 	
@@ -206,8 +205,8 @@
 			NSString* url = [NSString stringWithFormat:@"web://%@/%@%@", identify, searchURL,
 							 [template stringByReplacingOccurrencesOfString:@"{searchTerms}" withString:word]];
 			NSString* escapedURL = [url stringByAddingPercentEscapesUsingEncoding:encoding];
-			NSAttributedString* heading = [[[NSAttributedString alloc] initWithString:word
-																		   attributes:[paramator objectForKey:EBTextAttributes]] autorelease];
+			NSAttributedString* heading = [[NSAttributedString alloc] initWithString:word
+																		   attributes:[paramator objectForKey:EBTextAttributes]];
 			[array addObject:[DictionaryElement elementWithHeading:heading url:escapedURL]];
 		}
 	}
@@ -230,7 +229,7 @@
 // 検索タイトルの一覧
 -(NSArray*) searchMethods
 {
-	NSMutableArray* searchMethods = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray* searchMethods = [[NSMutableArray alloc] init];
 	NSArray* methods = [self valueForKey:@"SearchMethods"];
 	
 	for(NSDictionary* it in methods){

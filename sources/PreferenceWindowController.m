@@ -1,8 +1,9 @@
 //	PreferenceWindowController.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
+#import <objc/objc-runtime.h>
 
 #import "PreferenceDefines.h"
 #import "PreferenceModal.h"
@@ -37,18 +38,20 @@ static NSToolbarItem* addToolbarItem(NSMutableDictionary *inDict,
 									 SEL 	inAction,
 									 NSMenu   *inMenu)
 {
-    NSToolbarItem *item = [[[NSToolbarItem alloc] initWithItemIdentifier:inIdentifier] autorelease];
+    NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:inIdentifier];
     
     [item setLabel:inLabel];
     [item setPaletteLabel:inPaletteLabel];
     [item setToolTip:inToolTip];
     [item setTarget:inTarget];
     
-    [item performSelector:inSettingSelector withObject:inItemContent];
+    if([item respondsToSelector:inSettingSelector]){
+        objc_msgSend(item, inSettingSelector, inItemContent);
+    }
     [item setAction:inAction];
     
     if (inMenu != NULL) {
-		NSMenuItem* menuItem=[[[NSMenuItem alloc] init] autorelease];
+		NSMenuItem* menuItem=[[NSMenuItem alloc] init];
 		[menuItem setSubmenu:inMenu];
 		[menuItem setTitle:[inMenu title]];
 		[item setMenuFormRepresentation:menuItem];
@@ -77,14 +80,14 @@ static PreferenceWindowController *sSharedInstance = nil;
 
 //-- init
 // initialize
-- (id)init
+- (id) init
 {
     if (sSharedInstance) {
-		[self dealloc];
     } else {
-        self = [super init];
+        self = [super initWithWindowNibName:@"Preferences" owner:self];
 		_preferenceModal = [PreferenceModal sharedPreference];
         sSharedInstance = self;
+        _initialized = NO;
     }
     return sSharedInstance;
 }
@@ -92,18 +95,10 @@ static PreferenceWindowController *sSharedInstance = nil;
 
 //-- dealloc
 //
--(void)dealloc {
-    [_panelViews release];
-    [_toolbarItems release];
-	[super dealloc];
-}
 
 
 //-- finalize
 //
--(void)finalize {
-	[super finalize];
-}
 
 
 #pragma mark User Interface
@@ -112,15 +107,10 @@ static PreferenceWindowController *sSharedInstance = nil;
 // display preference panel
 -(void) showPanel:(id) sender
 {
-	if (!_preferenceWindow) {
-		
-		if (![NSBundle loadNibNamed:@"Preferences" owner:self])  {
-			NSLog(@"Failed to load Preferences.nib");
-			NSBeep();
-			return;
-		}
-	
-		[_preferenceWindow setExcludedFromWindowsMenu:YES];
+	if (_initialized == NO) {
+        [self loadWindow];
+        
+        [_preferenceWindow setExcludedFromWindowsMenu:YES];
 		[_preferenceWindow setMenu:nil];
 		[_preferenceWindow center];
 		[self createToolbar];
@@ -134,7 +124,6 @@ static PreferenceWindowController *sSharedInstance = nil;
 			_viewPanel,			kTagView,
 			_etcPanel,			kTagEtc, nil ];
 		_displayedPanel = _panelBase;
-		[_panelBase retain];
 		
 		[self switchPrefPanelById:kTagEBook animate:YES];
 		[[_preferenceWindow toolbar] setSelectedItemIdentifier:kTagEBook];
@@ -142,6 +131,8 @@ static PreferenceWindowController *sSharedInstance = nil;
 		
 		DictionaryBinderManager* binder = [DictionaryBinderManager sharedDictionaryBinderManager];
 		[_quickTagController bind:@"contentArray" toObject:binder withKeyPath:@"binders" options:nil];
+        
+        _initialized = YES;
 	}
 	[_preferenceWindow makeKeyAndOrderFront:nil];
 }
@@ -167,8 +158,7 @@ static PreferenceWindowController *sSharedInstance = nil;
 // tool barの生成
 -(void) createToolbar
 {
-	[_toolbarItems release];
-	_toolbarItems = [[NSMutableDictionary dictionary] retain];
+	_toolbarItems = [NSMutableDictionary dictionary];
 	addToolbarItem(_toolbarItems, kTagEBook, @"EBook", @"EBook",
 				   NULL, self,
 				   @selector(setImage:), [NSImage imageNamed:@"toolbar_ebook"],
@@ -198,7 +188,7 @@ static PreferenceWindowController *sSharedInstance = nil;
 				   @selector(setImage:), [NSImage imageNamed:@"toolbar_etc"],
 				   @selector(switchPrefPanel:), NULL);
 	
-	NSToolbar* toolbar = [[[NSToolbar alloc] initWithIdentifier:@"PreferenceToolBar"] autorelease];
+	NSToolbar* toolbar = [[NSToolbar alloc] initWithIdentifier:@"PreferenceToolBar"];
 	[toolbar setDelegate:self];
 	[toolbar setAllowsUserCustomization:NO];
 	[toolbar setAutosavesConfiguration:YES];
@@ -294,7 +284,7 @@ static PreferenceWindowController *sSharedInstance = nil;
 	
     [op beginSheetModalForWindow:_preferenceWindow
                completionHandler:^(NSInteger result){
-                   if(result == NSOKButton){
+                   if(result == NSModalResponseOK){
                        NSString* filename = [[op URL] path];
                        switch([sender tag]){
                            case kOpenFolder:
@@ -390,7 +380,7 @@ static PreferenceWindowController *sSharedInstance = nil;
           itemForItemIdentifier : (NSString *) itemIdentifier
       willBeInsertedIntoToolbar : (BOOL) flag
 {
-    NSToolbarItem *newItem = [[[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier] autorelease];
+    NSToolbarItem *newItem = [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier];
     NSToolbarItem *item=[_toolbarItems objectForKey:itemIdentifier];
     
 	

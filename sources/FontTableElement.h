@@ -1,7 +1,7 @@
 //	FontTableElement.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -17,9 +17,6 @@
 
 -(id) initWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
 +(id) elementWithURL:(NSString*)url alternative:(NSString*)string use:(BOOL)use identify:(NSInteger)identify;
-
--(void) dealloc;
-
 -(NSString*) alternativeString;
 -(void) setAlternativeString:(NSString*) string;
 

@@ -1,7 +1,7 @@
 //	NavibarView.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "NavibarView.h"
@@ -15,36 +15,35 @@
 - (id) initWithFrame : (NSRect)frame
 {
     self = [super initWithFrame:frame];
-    if(self){
-		_backgroundPattern = nil;
-	}
     return self;
 }
-
-
-//-- setBackgroundColor
-// 背景に描画するイメージの名前を設定する
--(void) setBackgroundColor:(NSColor*) color
-{
-	if(_backgroundPattern != nil){ [_backgroundPattern release]; };
-	_backgroundPattern = [color retain];
-}
-
 
 #pragma mark Draw
 //-- drawRect
 // 背景を描く
 - (void)drawRect:(NSRect)rect
 {
-    if(_backgroundPattern != nil){
-        [_backgroundPattern set];
-        NSRectFill([self bounds]);
+    if(self.backgroundPattern != nil){
+        [self.backgroundPattern set];
+        NSRectFill(self.bounds);
     }else{
-        NSColor *beginColor = [NSColor colorWithDeviceRed:0.57f green:0.62f blue:0.72f alpha:1.0f];
-        NSColor *endColor = [NSColor colorWithDeviceRed:0.37f green:0.42f blue:0.52f alpha:1.0f];
-        NSGradient *gradient =
-            [[[NSGradient alloc] initWithStartingColor:beginColor endingColor:endColor] autorelease];
-        [gradient drawInRect:[self bounds] angle:270];
+        NSRect bounds = self.bounds;
+        
+        [[NSColor colorWithWhite:1.0f alpha:1.0f] set];
+        NSRectFill(bounds);
+        
+        [[NSColor colorWithWhite:0.5f alpha:1.0] set];
+        NSBezierPath* line = [[NSBezierPath alloc] init];
+        [line moveToPoint:NSMakePoint(bounds.origin.x,
+                                      bounds.origin.y)];
+        [line lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width,
+                                      bounds.origin.y)];
+        [line moveToPoint:NSMakePoint(bounds.origin.x,
+                                      bounds.origin.y + bounds.size.height)];
+        [line lineToPoint:NSMakePoint(bounds.origin.x + bounds.size.width,
+                                      bounds.origin.y + bounds.size.height)];
+        [line setLineWidth: 1.0f];
+        [line stroke];
     }
 }
 

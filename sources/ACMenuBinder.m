@@ -1,7 +1,7 @@
 //	ACMenuBinder.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -10,6 +10,8 @@
 #import "ACBindingItem.h"
 #import "ACMenuItem.h"
 #import "DictionaryBinder.h"
+#import <objc/objc-runtime.h>
+
 
 const void* kMenusBindingIdentifier = (void*)@"menus";
 
@@ -31,18 +33,11 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 - (void)dealloc
 {
 	[[_bindingItem observedController] removeObserver:self forKeyPath:[_bindingItem observedKeyPath]];
-	[_bindingItem release];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[[_bindingItem observedController] removeObserver:self forKeyPath:[_bindingItem observedKeyPath]];
-	[super finalize];
-}
 
 
 #pragma mark Bindings
@@ -63,7 +58,7 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 //
 - (Class) valueClassForBinding:(NSString *)binding {
 	
-	if([binding isEqualToString:(NSString*)kMenusBindingIdentifier]){
+	if([binding isEqualToString:(__bridge NSString*)kMenusBindingIdentifier]){
 		return [[self bindingItem] valueClass];
 	}else{
 		return [super valueClassForBinding:binding];
@@ -79,7 +74,7 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 		 withKeyPath:(NSString *) keyPath
 			 options:(NSDictionary *) options
 {
-	if([binding isEqualToString:(NSString*)kMenusBindingIdentifier]){
+	if([binding isEqualToString:(__bridge NSString*)kMenusBindingIdentifier]){
 		ACBindingItem* item = [self bindingItem];
 		[item setObservedController:observableObject];
 		[item setObservedKeyPath:keyPath];
@@ -88,7 +83,9 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -105,8 +102,10 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 {
 	if(context == kMenusBindingIdentifier){
 		ACBindingItem* item = [self bindingItem];
-		[self performSelector:[item selector] withObject:item];
-	}else{
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
+    }else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
 }    
@@ -116,7 +115,7 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 //
 - (NSDictionary*) infoForBinding : (NSString *) binding
 {
-	if(binding == kMenusBindingIdentifier){
+	if(binding == (__bridge NSString *)(kMenusBindingIdentifier)){
 		ACBindingItem* item = [self bindingItem];
 		return [item infoForBinding];
 	}else{
@@ -130,7 +129,7 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 // 
 - (void) unbind : (NSString *) binding
 {
-	if(binding == kMenusBindingIdentifier){
+	if(binding == (__bridge NSString *)(kMenusBindingIdentifier)){
 		[self removeAllMenus];
 		ACBindingItem* item = [self bindingItem];
 		
@@ -167,7 +166,7 @@ const void* kMenusBindingIdentifier = (void*)@"menus";
 		NSEnumerator* e = [array objectEnumerator];
 		id it;
 		while(it = [e nextObject]){
-			ACMenuItem* mi = [[[ACMenuItem alloc] init] autorelease];
+			ACMenuItem* mi = [[ACMenuItem alloc] init];
 			[mi bind:@"title" toObject:it withKeyPath:@"title" options:nil];
 			[mi bind:@"keyEquivalent" toObject:it withKeyPath:@"keyEquivalent" options:nil];
 			[mi setTag:[it binderId]];

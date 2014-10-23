@@ -1,7 +1,7 @@
 //	SearchViewController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -10,12 +10,11 @@
 @class EBookController;
 @class WindowController;
 
-@interface SearchViewController : NSObject
+@interface SearchViewController : NSViewController
 {
     IBOutlet HistoryDataSource*	_history;
     IBOutlet NSComboBox*		_inputTextField;
     IBOutlet NSPopUpButton*		_methodPopup;
-    IBOutlet NSView*			_searchView;
     
     WindowController*	_windowController;	
 	unsigned int _resultsMax;
@@ -25,8 +24,6 @@
 - (IBAction)searchWordAll:(id)sender;
 
 - (id) initWithWindowController:(WindowController*)inWindowController;
-- (void) createSearchView;
-- (NSView*) view;
 - (NSView*) firstController;
 
 - (NSTextField*) inputField;

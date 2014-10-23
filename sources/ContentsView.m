@@ -1,7 +1,7 @@
 //	ContentsView.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -45,19 +45,11 @@ void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSUnderlineStyleAttributeName];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSForegroundColorAttributeName];
 	
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSUnderlineStyleAttributeName];
-	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:NSForegroundColorAttributeName];
-	
-	[super finalize];
-}
 
 
 #pragma mark Observer
@@ -80,10 +72,11 @@ void* kLinkAttributesBindingIdentifier = (void*) @"linkAttribute";
 // linkの色を設定する
 -(void) observeLinkAttributes
 {
-	BOOL hasUnderLine = [[PreferenceModal prefForKey:kLinkUnderLine] boolValue];
+	BOOL hasUnderLine = [[PreferenceModal prefForKey:kLinkUnderLine] boolValue]
+        && self.layoutOrientation != NSTextLayoutOrientationVertical;
 	
 	[self setLinkTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-		[NSNumber numberWithInt:(hasUnderLine ? NSSingleUnderlineStyle : NSNoUnderlineStyle)], NSUnderlineStyleAttributeName,
+		[NSNumber numberWithInt:(hasUnderLine ? NSUnderlineStyleSingle : NSUnderlineStyleNone)], NSUnderlineStyleAttributeName,
 		[PreferenceModal colorForKey:kLinkColor], NSForegroundColorAttributeName,
 		[NSCursor pointingHandCursor], NSCursorAttributeName,
 		nil]];

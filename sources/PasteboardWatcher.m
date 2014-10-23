@@ -1,7 +1,7 @@
 //	PasteboardWatcher.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "EBookController.h"
@@ -46,9 +46,7 @@ void* kUseBPSBindingIdentifier = (void*) @"useBPS";
 {
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kUseBackgroundPastebordSearch];
 	[[PreferenceModal sharedPreference] removeObserver:self forKeyPath:kUsePasteboardSearch];
-    self.delegate = nil;
     
-	[super dealloc];
 }
 
 

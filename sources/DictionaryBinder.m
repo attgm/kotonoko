@@ -1,10 +1,10 @@
 //	DictionaryBinder.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
-
+#import <objc/objc-runtime.h>
 #import "PreferenceModal.h"
 #import "DictionaryListItem.h"
 #import "DictionaryBinder.h"
@@ -45,23 +45,11 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 	[[KeyEquivalentManager sharedKeyEquivalentManager] unsetKeyEquivalent:_keyEquivalent toObject:self];
 	[self unbindAll];
 	
-	[_bindingItems release];
-	[_tagName release];
-	[_title release];
-	[_keyEquivalent release];
-	[_index release];
-	[super dealloc];
 }
 
 
 //-- finalize
 // 後片付け
--(void) finalize
-{
-	[[KeyEquivalentManager sharedKeyEquivalentManager] unsetKeyEquivalent:_keyEquivalent toObject:self];
-	[self unbindAll];
-	[super finalize];
-}
 
 
 #pragma mark Binding
@@ -74,19 +62,19 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		_bindingItems = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 			[ACBindingItem bindingItemFromSelector:@selector(observeTagName:)
 										valueClass:[NSString class]
-										identifier:kTagBindingIdentifier]
+										identifier:(__bridge const void *)(kTagBindingIdentifier)]
 			, kTagBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeTitle:)
 										valueClass:[NSString class]
-										identifier:kTitleBindingIdentifier]
+										identifier:(__bridge const void *)(kTitleBindingIdentifier)]
 			, kTitleBindingIdentifier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeQuickTab:)
 										valueClass:[NSNumber class]
-										identifier:kQuickTabBindingIdentidier]
+										identifier:(__bridge const void *)(kQuickTabBindingIdentidier)]
 			, kQuickTabBindingIdentidier,
 			[ACBindingItem bindingItemFromSelector:@selector(observeKeyEquivalent:)
 										valueClass:[NSString class]
-										identifier:kKeyEquivalentBindingIdentifier]
+										identifier:(__bridge const void *)(kKeyEquivalentBindingIdentifier)]
 			, kKeyEquivalentBindingIdentifier, nil];
 	}
 	
@@ -124,7 +112,9 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 						   forKeyPath:keyPath
 							  options:0
 							  context:[item identifier]];
-		[self performSelector:[item selector] withObject:item];
+        if([self respondsToSelector:[item selector]]){
+            objc_msgSend(self, [item selector], item);
+        }
 	}else{
 		[super bind:binding toObject:observableObject withKeyPath:keyPath options:options];
 	}
@@ -139,9 +129,9 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 						 change : (NSDictionary *) change
 						context : (void *) context
 {
-	ACBindingItem* item = [[self bindingItems] objectForKey:context];
-	if(item){
-		[self performSelector:[item selector] withObject:item];
+	ACBindingItem* item = [[self bindingItems] objectForKey:(__bridge id)(context)];
+	if(item && [self respondsToSelector:[item selector]]){
+        objc_msgSend(self, [item selector], item);
 	}else{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 	}
@@ -195,9 +185,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 {
 	[self willChangeValueForKey:@"tagName"];
 	id value = [[item observedController] valueForKeyPath:[item observedKeyPath]];
-	[_tagName release];
-	_tagName = (value && [value isKindOfClass:[NSString class]]) ?
-		[value copyWithZone:[self zone]] : [[NSString alloc] initWithString:@""];
+	_tagName = (value && [value isKindOfClass:[NSString class]]) ? [value copyWithZone:nil] : @"";
 	[self didChangeValueForKey:@"tagName"];
 }
 
@@ -208,9 +196,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 {
 	//[self willChangeValueForKey:@"title"];
 	id value = [[item observedController] valueForKeyPath:[item observedKeyPath]];
-	[_title release];
-	_title = (value && [value isKindOfClass:[NSString class]]) ?
-		[value copyWithZone:[self zone]] : [[NSString alloc] initWithString:@""];
+	_title = (value && [value isKindOfClass:[NSString class]]) ? [value copyWithZone:nil] : @"";
 	//[self didChangeValueForKey:@"title"];
 }
 
@@ -239,7 +225,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		KeyEquivalentManager* km = [KeyEquivalentManager sharedKeyEquivalentManager];
 		[km unsetKeyEquivalent:value toObject:self];
 		
-		_keyEquivalent = [value copyWithZone:[self zone]];
+		_keyEquivalent = [value copyWithZone:nil];
 		[km setKeyEquivalent:value toObject:self];
 	}
 	[self didChangeValueForKey:@"keyEquivalent"];
@@ -259,9 +245,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // タグの設定
 -(void) setTagName:(NSString*) tagName
 {
-	[_tagName release];
-	_tagName = (tagName && [tagName isKindOfClass:[NSString class]]) ?
-		[tagName copyWithZone:[self zone]] : [[NSString alloc] initWithString:@""];
+	_tagName = (tagName && [tagName isKindOfClass:[NSString class]]) ? [tagName copyWithZone:nil] : @"";
 	
 	ACBindingItem* item = [[self bindingItems] objectForKey:(NSString*)kTagBindingIdentifier];
 	if(item && [item observedController]){
@@ -282,9 +266,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // タイトルの設定
 -(void) setTitle:(NSString*) title
 {
-	[_title release];
-	_title = (title && [title isKindOfClass:[NSString class]]) ?
-		[title copyWithZone:[self zone]] : [[NSString alloc] initWithString:@""];
+	_title = (title && [title isKindOfClass:[NSString class]]) ? [title copyWithZone:nil] : @"";
 	
 	ACBindingItem* item = [[self bindingItems] objectForKey:(NSString*)kTitleBindingIdentifier];
 	if(item && [item observedController]){
@@ -343,9 +325,8 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 {
 	KeyEquivalentManager* km = [KeyEquivalentManager sharedKeyEquivalentManager];
 	[km unsetKeyEquivalent:_keyEquivalent toObject:self];
-	[_keyEquivalent release];
 	
-	_keyEquivalent = [keyEquivalent copyWithZone:[self zone]];
+	_keyEquivalent = [keyEquivalent copyWithZone:nil];
 	[km setKeyEquivalent:keyEquivalent toObject:self];
 	
 	ACBindingItem* item = [[self bindingItems] objectForKey:(NSString*)kKeyEquivalentBindingIdentifier];
@@ -379,7 +360,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // コピーライトを返す
 -(NSAttributedString*) copyrightWithParamator:(NSDictionary*) paramator
 {
-	return [[[NSAttributedString alloc] initWithString:@""] autorelease];
+	return [[NSAttributedString alloc] initWithString:@""];
 }
 
 @end
@@ -395,14 +376,14 @@ static unsigned sBinderIdentifier = kFirstBinderId;
     if(self){
         [self bind:@"tagName" toObject:item withKeyPath:@"tagName" options:nil];
         [self bind:@"title" toObject:item withKeyPath:@"title" options:nil];
-        _ebook = [[item valueForKey:@"id"] copyWithZone:[self zone]];
+        _ebook = [[item valueForKey:@"id"] copyWithZone:nil];
         id dictionaryPreference = [PreferenceModal dictioanryPreferenceForId:_ebook];
         [self bind:@"quickTag" toObject:dictionaryPreference withKeyPath:@"quickTag" options:nil];
         [self bind:@"keyEquivalent" toObject:dictionaryPreference withKeyPath:@"dictionaryPreference" options:nil];
     
-        _prefId = [_ebook copyWithZone:[self zone]];
+        _prefId = [_ebook copyWithZone:nil];
         NSNumber* idx = [dictionaryPreference valueForKey:@"index"];
-        _index = idx ? [idx copyWithZone:[self zone]] : [NSNumber numberWithUnsignedInt:0];
+        _index = idx ? [idx copyWithZone:nil] : [NSNumber numberWithUnsignedInt:0];
 	}
 	return self;
 }
@@ -412,17 +393,12 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // コンストラクタ
 +(SingleBinder*) binderWithDictionaryListItem:(DictionaryListItem*) item
 {
-	return [[[SingleBinder alloc] initWithDictionaryListItem:item] autorelease];
+	return [[SingleBinder alloc] initWithDictionaryListItem:item];
 }
 
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_ebook release];
-	[super dealloc];
-}
 
 #pragma mark Search
 //-- search:method:max
@@ -567,11 +543,11 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		[self bind:@"quickTag" toObject:paramators withKeyPath:@"quickTag" options:nil];
 		[self bind:@"dictionaryList" toObject:paramators withKeyPath:@"dictionaries" options:nil];
 		[self bind:@"keyEquivalent" toObject:paramators withKeyPath:@"dictionaryPreference" options:nil];
-		_prefId = [identify copyWithZone:[self zone]];
+		_prefId = [identify copyWithZone:nil];
 		id pref = [PreferenceModal dictioanryPreferenceForId:_prefId];
 		if(pref){
 			NSNumber* idx = [pref valueForKey:@"index"];
-			_index = idx ? [idx copyWithZone:[self zone]] : [NSNumber numberWithUnsignedInt:0];
+			_index = idx ? [idx copyWithZone:nil] : [NSNumber numberWithUnsignedInt:0];
 		}
 	}
 	return self;
@@ -582,17 +558,12 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // コンストラクタ
 +(MultiBinder*) binderWithParamators:(NSMutableDictionary*)params prefId:(NSString*)identify
 {
-	return [[[MultiBinder alloc] initWithParamators:params prefId:(NSString*)identify] autorelease];
+	return [[MultiBinder alloc] initWithParamators:params prefId:(NSString*)identify];
 }
 
 
 //-- dealloc
 // 後片付け
--(void) dealloc
-{
-	[_dictionaryList release];
-	[super dealloc];
-}
 
 
 #pragma mark Binding
@@ -606,7 +577,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		}
 		[_bindingItems setObject:[ACBindingItem bindingItemFromSelector:@selector(observeDictionaryList:)
 															 valueClass:[NSArray class]
-															 identifier:kDictionaryListBindingIdentifier]
+															 identifier:(__bridge const void *)(kDictionaryListBindingIdentifier)]
 						  forKey:(NSString*)kDictionaryListBindingIdentifier];
 	}
 	
@@ -674,7 +645,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		}
 	}
 
-	return [array autorelease];
+	return array;
 }
 
 
@@ -682,7 +653,7 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 // 検索可能な検索手法のリストを返す
 -(NSArray*) searchMethods
 {
-	NSMutableArray* searchMethods = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray* searchMethods = [[NSMutableArray alloc] init];
 	
 	if([self hasSearchMethod:kSearchMethodWord]){
 		[searchMethods addObject:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -726,16 +697,16 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 -(NSAttributedString*) copyrightWithParamator:(NSDictionary*) paramator
 {
 	NSMutableAttributedString* copyright = [[NSMutableAttributedString alloc] initWithString:@""];
-	NSMutableParagraphStyle* style = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+	NSMutableParagraphStyle* style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 	[style setAlignment:NSCenterTextAlignment];
 	
-	[copyright appendAttributedString:[[[NSAttributedString alloc] initWithString:@"\r\r"] autorelease]];
+	[copyright appendAttributedString:[[NSAttributedString alloc] initWithString:@"\r\r"]];
 	
 	[copyright appendAttributedString:
-	 [[[NSAttributedString alloc] initWithString:[self tagName]
-									  attributes:[paramator objectForKey:EBTextAttributes]] autorelease]];
+	 [[NSAttributedString alloc] initWithString:[self tagName]
+									  attributes:[paramator objectForKey:EBTextAttributes]]];
 	[copyright addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, [copyright length])];
-	[copyright appendAttributedString:[[[NSAttributedString alloc] initWithString:@"\r\r\r"] autorelease]];
+	[copyright appendAttributedString:[[NSAttributedString alloc] initWithString:@"\r\r\r"]];
 	
 	NSEnumerator* e = [_dictionaryList objectEnumerator];
 	NSString* it;
@@ -744,11 +715,11 @@ static unsigned sBinderIdentifier = kFirstBinderId;
 		id item = [dm dictionaryForIdentity:it];
 		if(item){
 			[copyright appendAttributedString:
-			 [[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\r", [item valueForKey:@"title"]]
-											  attributes:[paramator objectForKey:EBTextAttributes]] autorelease]];
+			 [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\r", [item valueForKey:@"title"]]
+											  attributes:[paramator objectForKey:EBTextAttributes]]];
 		}
 	}
-	return [copyright autorelease];
+	return copyright;
 }
 
 

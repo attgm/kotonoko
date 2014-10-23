@@ -1,7 +1,7 @@
 //	DictionaryListItem.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -19,7 +19,6 @@
 -(id) initWithPath:(NSString*) path;
 +(DictionaryListItem*) dictionaryListItemWithPath:(NSString*) path ;
 
--(void) dealloc;
 
 -(void) addChild:(DictionaryListItem*) item;
 -(NSArray*) children;

@@ -1,7 +1,7 @@
 //	EBook.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -54,15 +54,14 @@ extern NSString *const EBTagAttributes;
     NSURL*  _securityScopeBookmark;
 };
 
-@property (retain) NSString* tagName;
+@property (strong) NSString* tagName;
 @property (assign,readonly) NSUInteger ebookNumber;
-@property (retain) NSURL* securityScopeBookmark;
+@property (strong) NSURL* securityScopeBookmark;
 
 + (void) initalizeLibrary : (BOOL) inInit;
 
 - (id) init;
 - (void) dealloc;
-- (void) finalize;
 - (BOOL) bind:(NSString*)inPath;
 - (void) closeBook;
 - (BOOL) bindAppendix : (NSString*) inPath;

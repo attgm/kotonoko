@@ -1,7 +1,7 @@
 //	BGButtonCell.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "BGButtonCell.h"
@@ -13,6 +13,7 @@
 // 背景を描く
 -(void) drawBezelWithFrame:(NSRect)frame inView:(NSView*)view
 {
+/*
     NSColor* borderLineColor = [NSColor colorWithDeviceWhite:.63 alpha:1.0];
 
     NSGradient* centerGradient;
@@ -49,6 +50,30 @@
 							  toPoint:NSMakePoint(bounds.origin.x+bounds.size.width - 0.5f, bounds.origin.y + bounds.size.height - 0.5f)];
     
     [NSGraphicsContext restoreGraphicsState];	
+ */
+    
+    NSColor* borderLineColor = [NSColor colorWithDeviceWhite:.63 alpha:1.0];
+    
+    NSColor* backgroundColor;
+    if([self isHighlighted]){
+        backgroundColor = [NSColor colorWithDeviceWhite:.75f alpha:1.0f];
+    }else if([self state] == NSOnState){ // 16
+        backgroundColor = [NSColor colorWithDeviceRed:.62 green:.69 blue:.85 alpha:1.0];
+        //backgroundColor = [NSColor colorWithDeviceRed:.67f green:.84f blue:1.0f alpha:1.0];
+    }else{
+        backgroundColor = [NSColor colorWithDeviceWhite:.85f alpha:1.0f];
+    }
+    
+    NSRect  bounds = frame;
+    
+    [backgroundColor set];
+    NSRectFill(bounds);
+    // draw border
+    [borderLineColor set];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + 0.5f)
+                              toPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + bounds.size.height - 0.5f)];
+    [NSBezierPath strokeLineFromPoint:NSMakePoint(bounds.origin.x + 0.5f, bounds.origin.y + 0.5f)
+                              toPoint:NSMakePoint(bounds.origin.x + bounds.size.width + 0.5f, bounds.origin.y + 0.5f)];
 }
 
 
@@ -65,7 +90,7 @@
 	if(gap > 0.0){
 		innerRect = NSInsetRect(innerRect, 0, gap/2);
 	}
-	NSMutableParagraphStyle *parapraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+	NSMutableParagraphStyle *parapraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[parapraphStyle setAlignment:[self alignment]];
 	[parapraphStyle setLineBreakMode:[self lineBreakMode]];
 	NSDictionary* stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys:

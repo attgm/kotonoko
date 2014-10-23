@@ -1,7 +1,7 @@
 //	FontCell.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "FontCell.h"
@@ -33,14 +33,18 @@
 	NSSize imageSize = [image size]; 
 	NSPoint imageOrigin = NSMakePoint(ceil((innerRect.size.width - imageSize.width) / 2 + innerRect.origin.x),  
 									  innerRect.origin.y + 4.0 + imageSize.height);
-	//[image drawAtPoint:imageOrigin fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
-	[image compositeToPoint:imageOrigin operation:NSCompositeSourceOver];
+    NSRect imageRect = NSMakeRect(ceil((innerRect.size.width - imageSize.width) / 2 + innerRect.origin.x),
+                                  innerRect.origin.y + 4.0 , //+ imageSize.height,
+                                  imageSize.width,
+                                  imageSize.height);
+    [image drawInRect:imageRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+    //[image compositeToPoint:imageOrigin operation:NSCompositeSourceOver];
 	
 	NSFont* font = [self font];
 	CGFloat fontHeight = [font ascender] - [font descender] + 3.0;
 	NSRect fontRect = NSMakeRect(innerRect.origin.x, imageOrigin.y + 4.0, innerRect.size.width, fontHeight);
 	
-	NSMutableParagraphStyle *parapraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+	NSMutableParagraphStyle *parapraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[parapraphStyle setAlignment:[self alignment]];
 	[parapraphStyle setLineBreakMode:[self lineBreakMode]];
 	NSColor* fontColor = [[self representedObject] useAlternativeString] ? [NSColor blackColor] : [NSColor grayColor];

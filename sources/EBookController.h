@@ -1,7 +1,7 @@
 //	EBookController.h
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 // * service method added by Hiroshi TOMIE 2002-03-15
 
@@ -23,8 +23,6 @@
 
 @interface EBookController : NSObject <NSApplicationDelegate>
 {
-	IBOutlet ACMenuBinder* _dictionaryMenuBinder;
-	
 	DictionaryBinderManager* _binderManager;
 	DictionaryBinder* _currentDictionaryBinder;
 	NSArrayController*	_dictionaryController;
@@ -33,11 +31,12 @@
 	BOOL _hasVolumes;
     
 	FontPanelController* _fontPanelController;
-
-    WindowController* _windowController;	
 	PasteboardWatcher* _pasteboardWatcher;
-    AcknowledgmentsWindowController* _acknowledgmentsWindowController;
 }
+
+@property (weak) IBOutlet ACMenuBinder* dictionaryMenuBinder;
+@property (strong, nonatomic) WindowController* windowController;
+@property (strong, nonatomic) AcknowledgmentsWindowController* acknowledgmentsWindowController;
 
 
 - (IBAction)newSearch:(id)sender;
@@ -75,8 +74,6 @@
 //-(DictionaryBinder*) currentDictionaryBinder;
 //-(void) setCurrentDictionaryBinder:(DictionaryBinder*) binder;
 
--(WindowController*) windowController;
--(void) setWindowController:(WindowController*) controller;
 
 -(void) searchPasteboardString;
 

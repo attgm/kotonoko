@@ -1,7 +1,7 @@
 //	DictionaryManager.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 #import "DictionaryListItem.h"
@@ -39,7 +39,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 	self = [super init];
     if(self){
         if(sSharedDictionaryManager){
-            [self release];
             return sSharedDictionaryManager;
         }
         sSharedDictionaryManager = self;
@@ -53,13 +52,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 
 //-- dealloc
 // メモリの解放
--(void) dealloc
-{
-	[_root release];
-	[_dictionaries release];
-	[_netDictionaries release];
-	[super dealloc];
-}
 
 
 //-- initialize
@@ -248,7 +240,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 					[book loadPrefFromFile:nil];
                     [book setSecurityScopeBookmark:bookmark];
 					EBDictionary* item = [EBDictionary dictionaryListItemWithEBook:book path:path identify:dictionaryId];
-					[book release];
 					[parent addChild:item];
 					[self addDictionary:item];
                     
@@ -273,7 +264,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 			}
 		}
 	}
-	[book release];
 }
 
 
@@ -316,7 +306,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 	if([indeces count] > 0){
 		[self deleteDictionaryAtIndex:indeces];
 	}
-	[indeces release];
 }
 
 
@@ -325,7 +314,6 @@ DictionaryManager* sSharedDictionaryManager = NULL;
 // ネットワーク辞書の走査
 -(void) createNetDictionaryArray
 {
-	[_netDictionaries release];
 	NSArray* files = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"NetDict"];
 	_netDictionaries = [[NSMutableArray alloc] initWithCapacity:[files count]];
 	

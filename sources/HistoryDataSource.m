@@ -1,7 +1,7 @@
 //	HistoryDataSource.m
 //	kotonoko
 //
-//	Copyright 2001-2012 Atsushi Tagami. All rights reserved.
+//	Copyright 2001 - 2014 Atsushi Tagami. All rights reserved.
 //
 
 
@@ -18,11 +18,6 @@
 
 
 //-- dealloc
-- (void) dealloc
-{
-    [_history release];
-	[super dealloc];
-}
 
 
 //-- addHistory
